@@ -1,5 +1,6 @@
-;
+import ResearchPage from "./Research";
 import HomePage from "./Home";
+
 
 /**
  * @typedef {Object} routerType
@@ -10,12 +11,17 @@ import HomePage from "./Home";
 
 /** @type {routerType[]} */
 const pagesData = [
+  
+    {
+        path: "/research",
+        element: <ResearchPage />,
+        title: "Research",
+    },
     {
         path: "/",
         element: <HomePage />,
-        title: "hcd",
+        title: "HCD",
     },
-    
 ];
 
 export default pagesData;
