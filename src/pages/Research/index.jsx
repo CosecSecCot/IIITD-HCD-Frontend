@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../../components/Navbar';
 import axios from 'axios';
+import publicationsBanner from '../../assets/publications-banner.svg';
 
 const App = () => {
   const [activeTab, setActiveTab] = useState('current');
@@ -25,73 +26,116 @@ const App = () => {
     fetchStudents();
   }, [activeTab]);
 
+  const totalColumns = 3;
+  const totalRows = Math.ceil(students.length / totalColumns);
+
   return (
-    <div className="min-h-screen bg-[#ffffff] font-sans">
+    <div className="relative min-h-screen font-sans bg-white">
+      {/* Navbar */}
       <Navbar />
 
-      <div className="max-w-screen-xl mx-auto px-6 mt-20">
-        {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-2">Publications</h1>
-          <p className="text-gray-700 text-lg max-w-4xl">
-            We are a collective of diverse thinkers reimagining how human-technology interactions can be seamless and meaningful.
-          </p>
-        </div>
+      {/* Banner */}
+      <img
+        src={publicationsBanner}
+        alt="Publications Banner"
+        className="-mt-[64px] w-full object-cover"
+      />
 
+      {/* Full Height Vertical Lines */}
+      <div className="fixed inset-0 pointer-events-none z-5">
+        <div className="max-w-screen-xl mx-auto h-full relative">
+          <div className="absolute top-0 bottom-0 left-0 w-[0.5px] bg-gray-400" />
+          <div className="absolute top-0 bottom-0 right-0 w-[0.5px] bg-gray-400" />
+          <div className="absolute top-0 bottom-0 left-1/3 w-[0.5px] bg-gray-400 lg:block hidden" />
+          <div className="absolute top-0 bottom-0 left-2/3 w-[0.5px] bg-gray-400 lg:block hidden" />
+          <div className="absolute top-0 bottom-0 left-1/2 w-[0.5px] bg-gray-400 sm:block lg:hidden hidden" />
+        </div>
+      </div>
+
+      {/* Content Section */}
+      <div className="relative max-w-screen-xl mx-auto pt-12 pb-12">
         {/* Tabs */}
-        <div className="flex gap-3 mb-10">
+        <div className="flex border border-gray-400 w-fit mb-10">
           <button
             onClick={() => setActiveTab('current')}
-            className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 border
+            className={`min-w-[427px] px-6 py-1 text-sm font-medium transition-all duration-200 border-r border-gray-400
               ${activeTab === 'current'
-                ? 'bg-[#096964] text-white border-[#096964]'
-                : 'bg-white text-black border-gray-300 hover:bg-gray-100'}`}
+                ? 'bg-[#096964] text-white'
+                : 'bg-white text-black hover:bg-gray-100'}`}
           >
             CURRENT
           </button>
           <button
             onClick={() => setActiveTab('archive')}
-            className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 border
+            className={`min-w-[425px] px-6 py-1 text-sm font-medium transition-all duration-200
               ${activeTab === 'archive'
-                ? 'bg-[#096964] text-white border-[#096964]'
-                : 'bg-white text-black border-gray-300 hover:bg-gray-100'}`}
+                ? 'bg-[#096964] text-white'
+                : 'bg-white text-black hover:bg-gray-100'}`}
           >
             ARCHIVE
           </button>
         </div>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 divide-x divide-y border border-gray-200">
-          {students.map((student, index) => (
-            <div
-              key={student.id}
-              className={`flex p-4 gap-4 items-start bg-[#ffffff]`}
-              style={{
-                borderTop: index < 3 ? 'none' : '1px solid #E5E7EB',
-                borderLeft: index % 3 === 0 ? 'none' : '1px solid #E5E7EB',
-              }}
-            >
-              <img
-                src={student.imageUrl}
-                alt={student.name}
-                className="w-28 h-28 object-cover"
-              />
-              <div className="flex flex-col justify-between">
-                <div>
-                  <h3 className="font-semibold text-md text-black"> {student.name}</h3>
-                  <p className="text-sm text-gray-600 mt-1">
-                    {student.bio || "We are a collective of diverse thinkers reimagining how."}
-                  </p>
-                </div>
-                <a
-                  href="#"
-                  className="mt-3 text-black text-sm font-medium hover:underline"
+        {/* Student Grid */}
+        <div className="relative border border-gray-400">
+          {/* Grid lines inside */}
+          <div className="absolute inset-0 pointer-events-none z-10">
+            <div className="absolute top-0 bottom-0 left-1/3 w-[0.5px] bg-gray-400 lg:block hidden" />
+            <div className="absolute top-0 bottom-0 left-2/3 w-[0.5px] bg-gray-400 lg:block hidden" />
+            <div className="absolute top-0 bottom-0 left-1/2 w-[0.5px] bg-gray-400 sm:block lg:hidden hidden" />
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+            {students.map((student, index) => {
+              const col = index % totalColumns;
+              const row = Math.floor(index / totalColumns);
+              const isLastRow = row === totalRows - 1;
+
+              return (
+                <div
+                  key={student.id}
+                  className={`flex border border-gray-300 ${
+                    !isLastRow ? 'border-b' : ''
+                  }`}
+                  style={{
+                    width: '100%',
+                    minHeight: '200px',
+                    borderRight: col !== totalColumns - 1 ? '0.5px solid #ccc' : undefined,
+                  }}
                 >
-                  VIEW ALL →
-                </a>
-              </div>
-            </div>
-          ))}
+                  {/* Image Section */}
+                  <div className="w-[40%] h-full p-4 flex items-center justify-center">
+                    <img
+                      src={student.imageUrl}
+                      alt={student.name}
+                      className="h-[160px] w-auto object-contain"
+                    />
+                  </div>
+
+                  {/* Text Section */}
+                  <div className="flex flex-col justify-center w-[60%] p-4">
+                    <div>
+                      <h3 className="font-bold text-lg text-black leading-tight">
+                        {student.name?.split(' ')[0]} <br />
+                        {student.name?.split(' ').slice(1).join(' ')}
+                      </h3>
+                      <p className="mt-2 text-gray-500 text-[16px] leading-snug">
+                        {student.bio || 'We are a collective of diverse thinkers reimagining how.'}
+                      </p>
+                    </div>
+                    <div className="mt-4">
+                      <a
+                        href="#"
+                        className="text-black text-md font-semibold hover:underline"
+                      >
+                        VIEW ALL →
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>

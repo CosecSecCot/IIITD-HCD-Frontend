@@ -1,5 +1,6 @@
 import ResearchPage from "./Research";
 import HomePage from "./Home";
+import Departmentprojects from "./Departmentprojects"
 
 
 /**
@@ -13,7 +14,7 @@ import HomePage from "./Home";
 const pagesData = [
   
     {
-        path: "/research",
+        path: "/research_current",
         element: <ResearchPage />,
         title: "Research",
     },
@@ -21,6 +22,11 @@ const pagesData = [
         path: "/",
         element: <HomePage />,
         title: "HCD",
+    },
+    {
+        path: "/department_projects",
+        element: <Departmentprojects />,
+        title: "Department Projects",
     },
 ];
 
