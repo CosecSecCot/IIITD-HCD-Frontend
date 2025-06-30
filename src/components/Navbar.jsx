@@ -20,20 +20,20 @@ const navigationMap = [
     title: "study",
     url: "/study",
     children: [
-      { title: "overview", url: "/study/overview" },
-      { title: "courses & electives", url: "/study/courses" },
+      { title: "-", url: "" },
+      { title: "-", url: "" },
     ],
   },
   {
-    title: "research",
-    url: "/research",
+    title: "Publications",
+    url: "/research_current",
     children: [
-      { title: "areas", url: "/research/areas" },
-      { title: "publications", url: "/research/publications" },
-      { title: "labs", url: "/research/labs" },
+      { title: "-", url: "" },
+      { title: "-", url: "" },
+      { title: "-", url: "" },
     ],
   },
-  { title: "our work", url: "/work" },
+  { title: "our work", url: "/department_projects" },
   {
     title: "people",
     url: "/people",
