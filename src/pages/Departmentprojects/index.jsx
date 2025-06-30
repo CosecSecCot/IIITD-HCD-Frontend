@@ -38,7 +38,7 @@ const App = () => {
       <img
         src={publicationsBanner}
         alt="Publications Banner"
-        className="-mt-[64px] w-full object-cover"
+        className="w-full object-cover"
       />
 
       {/* Full Height Vertical Lines */}

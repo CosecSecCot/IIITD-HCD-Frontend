@@ -51,7 +51,7 @@ const Navbar = () => {
   const [sideBarOpen, setSideBarOpen] = useState(false);
 
   return (
-    <header>
+    <header className="absolute w-full">
       <nav className="text-white flex justify-between items-center xl:px-[200px] px-[30px] xl:py-[30px] py-[15px] bg-black/30">
         <a href="/" className="flex items-center gap-1">
           <img
