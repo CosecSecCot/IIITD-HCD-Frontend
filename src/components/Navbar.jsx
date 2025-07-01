@@ -1,4 +1,4 @@
-import HCDLogo from "../assets/logo.svg";
+import HCDLogoLarge from "../assets/HCD_logo_with_text_large.svg";
 import IIITDLogo from "../assets/IIITD_logo.svg";
 import { ChevronRight, Menu, Search, X } from "lucide-react";
 import { useState } from "react";
@@ -51,33 +51,24 @@ const Navbar = () => {
   const [sideBarOpen, setSideBarOpen] = useState(false);
 
   return (
-    <header className="absolute w-full">
+    <header className="absolute z-50 top-0 w-full">
       <nav className="text-white flex justify-between items-center xl:px-[200px] px-[30px] xl:py-[30px] py-[15px] bg-black/30">
-        <a href="/" className="flex items-center gap-1">
-          <img
-            src={HCDLogo}
-            alt="HCD IIITD"
-            className="lg:h-[116px] h-auto lg:w-auto w-[30px]"
-          />
-          <span className="lg:text-[24px] text-[12px] leading-tight">
-            HUMAN CENTRED
-            <br />
-            DESIGN DEPARTMENT
-          </span>
+        <a href="/">
+          <img src={HCDLogoLarge} alt="HCD IIITD" className="max-lg:h-[54px]" />
         </a>
         <div className="flex items-center gap-[110px]">
           <div className="flex items-center xl:gap-[40px] gap-[20px]">
-            <div className="max-md:w-[86px] flex justify-between lg:gap-[16px] gap-[8px] px-[1em] py-[0.5em] border border-white rounded-full overflow-hidden">
+            <div className="flex justify-between items-center lg:gap-[16px] gap-[8px] lg:px-[1.5em] px-[1.25em] lg:py-[1em] py-[0.75em] border border-white rounded-full overflow-hidden">
               <input
                 type="text"
                 placeholder="SEARCH"
-                className="max-md:w-[38px] max-lg:text-[10px] bg-transparent outline-none placeholder:text-white/80"
+                className="max-lg:w-[5em] max-lg:text-[0.75em] bg-transparent outline-none placeholder:text-white/80"
               />
-              <Search />
+              <Search size={16} />
             </div>
             {/* Two buttons for toggling desktop and mobile menu respectively */}
-            <div className="xl:hidden cursor-pointer">
-              <Menu size={40} />
+            <div className="xl:hidden cursor-pointer" onClick={() => {}}>
+              <Menu size={40} className="lg:w-[40px] w-[24px] aspect-square" />
             </div>
             <div
               className="max-xl:hidden cursor-pointer"
@@ -93,12 +84,9 @@ const Navbar = () => {
             <div className="relative flex flex-col justify-center w-[30vw] bg-[#096964] text-white">
               <button
                 onClick={() => setSideBarOpen(false)}
-                className="absolute top-[65px] right-[70px] flex items-center gap-[2px] border border-white rounded-full px-[1.5em] py-[1em]"
+                className="absolute top-[65px] right-[70px] flex items-center gap-[2px] border border-white rounded-full p-[1em]"
               >
-                <span className="text-[24px] leading-none font-medium">
-                  CLOSE
-                </span>
-                <X size={24} />
+                <X size={40} />
               </button>
               <div>
                 {navigationMap.map((linkGroup, idx) => {
