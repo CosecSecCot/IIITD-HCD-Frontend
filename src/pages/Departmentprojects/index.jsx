@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState/*, useEffect*/ } from 'react';
 import Navbar from '../../components/Navbar';
-import axios from 'axios';
+// import axios from 'axios';
 import publicationsBanner from '../../assets/department_project.svg';
+import ArrowRight from '../../assets/Arrow - Right.svg';
 
 const App = () => {
+  // Commented out backend fetching
+  /*
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
@@ -25,12 +28,37 @@ const App = () => {
 
     fetchProjects();
   }, []);
+  */
+
+  const [projects] = useState([
+    {
+      id: 1,
+      title: "AI Empowered Attention Evaluation among Children with ADHD",
+      description: "We are a collective of diverse thinkers reimagining how human-technology interactions can be seamless and meaningful.",
+      source: "TIH-Anubhuti",
+      
+    },
+    {
+      id: 2,
+      title: "AI Empowered Attention Evaluation among Children with ADHD",
+      description: "We are a collective of diverse thinkers reimagining how human-technology interactions can be seamless and meaningful.",
+      source: "TIH-Anubhuti",
+      imageUrl: "https://via.placeholder.com/300x150",
+    },
+    {
+      id: 3,
+      title: "AI Empowered Attention Evaluation among Children with ADHD",
+      description: "We are a collective of diverse thinkers reimagining how human-technology interactions can be seamless and meaningful.",
+      source: "TIH-Anubhuti",
+      imageUrl: "https://via.placeholder.com/300x150",
+    },
+  ]);
 
   const totalColumns = 3;
   const totalRows = Math.ceil(projects.length / totalColumns);
 
   return (
-    <div className="relative min-h-screen font-sans bg-white">
+    <div className="relative min-h-screen font-myfont bg-white">
       {/* Navbar */}
       <Navbar />
 
@@ -76,10 +104,10 @@ const App = () => {
                   key={project.id}
                   className={`relative flex flex-col bg-white ${
                     !isLastRow ? 'border-b border-neutral-500' : ''
-                  }`}
+                  } font-myfont`}
                 >
                   {/* Card Content */}
-                  <div className="p-5 flex flex-col justify-between h-full bg-white">
+                  <div className="p-5 flex flex-col justify-between h-full bg-white font-myfont">
                     <img
                       src={project.imageUrl}
                       alt={project.title}
@@ -87,22 +115,29 @@ const App = () => {
                     />
                     <div className="flex flex-col justify-between grow">
                       <div>
-                        <h3 className="text-black font-semibold text-[15px] leading-snug">
+                        <h3 className="text-black font-semibold text-[15px] leading-snug font-myfont">
                           {project.title}
                         </h3>
-                        <p className="text-gray-600 text-sm mt-2 leading-snug">
+                        <p
+                          className="text-gray-600 text-sm mt-2 leading-snug"
+                          style={{
+                            fontFamily: '"Helvetica Now Display", sans-serif',
+                            fontStyle: "normal",
+                          }}
+                        >
                           {project.description}
                         </p>
-                        <p className="text-black font-medium text-sm mt-4">
+                        <p className="text-black font-medium text-sm mt-4 font-myfont">
                           {project.source}
                         </p>
                       </div>
                       <div className="mt-6 text-right">
                         <a
                           href="#"
-                          className="text-black font-semibold text-sm hover:underline"
+                          className="text-black font-semibold text-sm hover:underline font-myfont inline-flex items-center gap-1"
                         >
-                          VIEW DETAILS →
+                          VIEW DETAILS
+                          <img src={ArrowRight} alt="" className="inline w-4 h-4 ml-1" />
                         </a>
                       </div>
                     </div>
