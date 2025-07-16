@@ -14,3 +14,10 @@
     will-change: transform;
     filter: grayscale(100%);
 }
+
+@font-face {
+  font-family: 'Anybody';
+  src: url('/src/assets/fonts/Anybody-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
