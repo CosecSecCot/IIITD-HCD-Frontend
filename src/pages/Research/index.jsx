@@ -95,7 +95,7 @@ const App = () => {
   const labsToShow = dummyLabs; // Change as needed for archive logic
 
   return (
-    <div className="relative min-h-screen font-myfont bg-[#f7f9fa]">
+    <div className="relative min-h-screen font-myfont bg-wh">
       <Navbar />
       <div className="relative w-full">
         <img
@@ -161,7 +161,7 @@ const App = () => {
                 return (
                   <div
                     key={lab.id}
-                    className="lg:col-span-2 lg:row-span-2 bg-[#597494] text-white p-12 transition-all duration-300 ease-in-out flex flex-col relative"
+                    className="lg:col-span-2 lg:row-span-2 bg-[#597494] text-white p-24 transition-all duration-300 ease-in-out flex flex-col relative"
                     style={{
                       minHeight: '620px',
                       gridColumn: 'span 2 / span 2',
