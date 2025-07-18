@@ -3,6 +3,8 @@ import Navbar from '../../components/Navbar';
 import background from '../../assets/backgr.svg';
 import phdHeading from '../../assets/phd-heading.svg';
 import gradientRing from '../../assets/gradient-ring.svg'; // <-- Your quarter arc SVG
+import leftrectangleLine from '../../assets/leftRectangle.svg';
+import rightrectangleLine from '../../assets/rightRectangle.svg';
 
 const CourseDirectory = () => {
   return (
@@ -43,13 +45,16 @@ const CourseDirectory = () => {
 
       {/* PhD Section */}
       <div className="relative z-10 w-full pb-20 pt-10 bg-white font-sans">
-        <div className="w-full overflow-hidden mb-10">
-          <img
-            src={phdHeading}
-            alt="Study PhD @IIITD with Lines"
-            className="w-screen h-auto block"
-          />
-        </div>
+  {/* Replace Image Heading with this custom line-heading */}
+  <div className="w-full flex items-baseline mb-10 px-[0px]">
+    <img src={leftrectangleLine} alt="Left Line" className="h-auto w-[200px] mr-auto" />
+
+    <h2 className="text-[45px] font-light text-black tracking-wide">
+      Study <span className="text-[#0b5e5e] font-semibold">PhD</span> @IIITD
+    </h2>
+
+    <img src={rightrectangleLine} alt="Right Line" className="h-auto w-[960px] ml-auto" />
+  </div>
 
         <div className="px-[160px] ml-[600px]">
           <p className="text-[17px] text-[#333] font-light leading-[1.8] max-w-[780px] text-left">

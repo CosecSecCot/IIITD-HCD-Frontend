@@ -8,8 +8,17 @@ import searchIcon from '../../assets/Search.svg';
 import programmeHeading from '../../assets/programmeHeading.svg';
 import leftverticalLine from '../../assets/leftverticalLine.svg' ;
 import rightverticalLine from '../../assets/rightverticalLine.svg';
+import leftrectangleLine from '../../assets/leftRectangle.svg';
+import rightrectangleLine from '../../assets/rightRectangle.svg';
+import admissionleftLine from '../../assets/admissionleft.svg';
+import admissionrightLine from '../../assets/admissionright.svg';
+import programleftLine from '../../assets/programleft.svg';
+import programrightLine from '../../assets/programright.svg';
+import textureBg from '../../assets/textureBg.svg';
+import Vectorbtech from '../../assets/Vectorbtech.svg';
 
 const CourseDirectory = () => {
+  
   return (
     <div className="relative min-h-screen font-sans bg-white overflow-x-hidden">
       {/* Background */}
@@ -18,6 +27,9 @@ const CourseDirectory = () => {
         alt="Background"
         className="absolute top-0 left-0 w-full object-contain object-left z-0 brightness-90 contrast-125"
       />
+      
+
+
 
       {/* Navbar */}
       <Navbar />
@@ -43,8 +55,16 @@ const CourseDirectory = () => {
 
       {/* BTech Info Section */}
       <div className="relative z-10 w-full pb-20 pt-10 bg-white font-sans">
-        <div className="w-full overflow-hidden mb-10">
-          <img src={btechHeading} alt="Study BTech @IIITD with Lines" className="w-screen h-auto block" />
+        <div className="relative z-10 w-full pb-4 pt-10 bg-white font-sans">
+          <div className="w-full flex items-baseline  mb-10 px-[0px]">
+            <img src={leftrectangleLine} alt="Left Line" className="h-auto w-[200px] mr-auto" />
+
+            <h2 className="text-[45px] font-light text-black tracking-wide">
+              Study <span className="text-[#0b5e5e] font-semibold">CSD</span> @IIITD
+            </h2>
+
+            <img src={rightrectangleLine} alt="Right Line" className="h-auto w-[960px] ml-auto" />
+          </div>
         </div>
 
         <div className="px-[160px] ml-[610px]">
@@ -61,9 +81,17 @@ const CourseDirectory = () => {
       </div>
 
       {/* Admission Section */}
-      <div className="w-full overflow-hidden mb-10">
-        <img src={admissionHeading} alt="Admissions @IIITD with Lines" className="w-screen h-auto block" />
-      </div>
+      <div className="relative z-10 w-full pb-4 pt-4 bg-white font-sans">
+          <div className="w-full flex items-baseline  mb-10 px-[0px]">
+            <img src={admissionleftLine} alt="Left Line" className="h-auto w-[910px] mr-auto" />
+
+            <h2 className="text-[45px] font-light text-black tracking-wide">
+               <span className="text-[#0b5e5e] font-semibold">Admissions</span> Process
+            </h2>
+
+            <img src={admissionrightLine} alt="Right Line" className="h-auto w-[200px] ml-auto" />
+          </div>
+        </div>
 
       {/* Admissions Process */}
       <div className="relative z-10 w-full bg-white px-[160px]  py-4">
@@ -85,57 +113,62 @@ const CourseDirectory = () => {
             {/* Programme Structure Section */}
       <div className="relative z-10 bg-white  py-20">
         {/* Heading */}
-        <div className="mb-10">
-          <img
-            src={programmeHeading}
-            alt="Programme Structure Heading"
-            className="w-screen h-auto block"
-          />
+        <div className="relative z-10 w-full pb-4 pt-4 bg-white font-sans">
+          <div className="w-full flex items-center mb-10 px-[0px]">
+            <img src={programleftLine} alt="Left Line" className="h-auto w-[530px] mr-auto" />
+
+            <h2 className="text-[45px] font-light text-black tracking-wide">
+               <span className="text-[#0b5e5e] font-semibold">Programme</span> Structure
+            </h2>
+
+            <img src={programrightLine} alt="Right Line" className="h-auto w-[530px] ml-auto" />
+          </div>
         </div>
         <br />
 
-        {/* Structure Cards */}
-        <div className="relative flex items-start justify-between gap-0">
-          {/* Left Rectangle Line */}
-          <img src={leftverticalLine} alt="line" className="h-[380px] w-[150px]" />
+<div className="relative flex items-start justify-between gap-0">
+  {/* Left Rectangle Line */}
+  <img src={leftverticalLine} alt="line" className="h-[380px] w-[180px]" />
+
+  {/* Cards Container with uniform spacing */}
+  <div className="flex gap-x-8">
+    {[
+      {
+        text: 'Ability to function effectively in teams to accomplish a common goal.',
+        num: '01',
+      },
+      {
+        text: 'Ability to design and implement efficient software solutions using suitable algorithms, data structures, and other computing techniques.',
+        num: '02',
+      },
+      {
+        text: 'Understanding of design principles and techniques and ability to apply these for developing solutions to human/societal problems.',
+        num: '03',
+      },
+      {
+        text: 'Ability to independently investigate a problem which can be solved by an Human Computer Interaction (HCI).',
+        num: '04',
+      },
+      {
+        text: 'Ability to effectively use suitable tools and platforms, as well as enhance them, to develop applications/ products.',
+        num: '05',
+      },
+    ].map((item, idx) => (
+      <div
+        key={idx}
+        className="w-[210px] border border-[#9fc5c5] min-h-[430px] bg-white shadow-sm flex flex-col justify-between px-8 py-6"
+      >
+        <p className="text-[16px] text-gray-800 leading-[1.6] text-right">{item.text}</p>
+        <p className="text-[#0b5e5e] text-[80px] font-light text-right">{item.num}</p>
+      </div>
+    ))}
+  </div>
+
+  {/* Right Rectangle Line */}
+  <img src={leftverticalLine} alt="line" className="h-[380px] w-[180px]" />
+</div>
 
 
-          {/* 5 Cards */}
-          {[
-            {
-              text: 'Ability to function effectively in teams to accomplish a common goal.',
-              num: '01',
-            },
-            {
-              text: 'Ability to design and implement efficient software solutions using suitable algorithms, data structures, and other computing techniques.',
-              num: '02',
-            },
-            {
-              text: 'Understanding of design principles and techniques and ability to apply these for developing solutions to human/societal problems.',
-              num: '03',
-            },
-            {
-              text: 'Ability to independently investigate a problem which can be solved by an Human Computer Interaction (HCI).',
-              num: '04',
-            },
-            {
-              text: 'Ability to effectively use suitable tools and platforms, as well as enhance them, to develop applications/ products.',
-              num: '05',
-            },
-          ].map((item, idx) => (
-            <div
-              key={idx}
-              className="w-[210px] border border-[#9fc5c5] px-8 py-6 min-h-[430px] bg-white shadow-sm flex flex-col justify-between"
-            >
-              <p className="text-[16px] text-gray-800 leading-[1.6] text-right">{item.text}</p>
-              <p className="text-[#0b5e5e] text-[80px] font-light text-right">{item.num}</p>
-            </div>
-          ))}
-
-          {/* Right Rectangle Line */}
-          <img src={rightverticalLine} alt="line" className="h-[380px] w-[150px]" />
-
-        </div>
       </div>
 
       {/* View Courses Section */}
