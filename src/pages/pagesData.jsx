@@ -4,6 +4,7 @@ import Departmentprojects from "./Departmentprojects"
 import CourseListPage from "./CourseListPage";
 import StudyPhDPage from "./StudyPhDPage";
 import StudyBTechPage from "./StudyBTechPage";
+import Publication from "./Publication";
 
 
 /**
@@ -17,7 +18,7 @@ import StudyBTechPage from "./StudyBTechPage";
 const pagesData = [
   
     {
-        path: "/research_current",
+        path: "/research",
         element: <ResearchPage />,
         title: "Research",
     },
@@ -27,7 +28,7 @@ const pagesData = [
         title: "HCD",
     },
     {
-        path: "/department_projects",
+        path: "/departmentprojects",
         element: <Departmentprojects />,
         title: "Department Projects",
     },
@@ -46,6 +47,11 @@ const pagesData = [
         path: "/study_btech",
         element: <StudyBTechPage />,
         title: "Study BTech",
+    },
+    {
+        path: "/publications",
+        element: <Publication />,
+        title: "Publications",
     }
 ];
 
