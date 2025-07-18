@@ -5,6 +5,7 @@ import searchIcon from '../../assets/Search.svg'; // assuming this is your impor
 
 const CourseDirectory = () => {
   const [courses, setCourses] = useState([]);
+  const [activeTab, setActiveTab] = useState('design');
 
   useEffect(() => {
     setCourses([
@@ -101,17 +102,32 @@ const CourseDirectory = () => {
             className="w-full border border-black outline-none py-2 px-4 mb-6 bg-transparent placeholder-black text-black"
           />
 
-          {/* Tabs */}
+          {/* Tabs with toggle */}
           <div className="grid grid-cols-3 border border-black mb-10">
-            <button className="flex items-center justify-center px-4 py-2 border-r border-black bg-[#084c4c] text-white font-medium">
+            <button
+              onClick={() => setActiveTab('design')}
+              className={`flex items-center justify-center px-4 py-2 border-r border-black font-medium ${
+                activeTab === 'design' ? 'bg-[#084c4c] text-white' : 'text-black'
+              }`}
+            >
               <img src={searchIcon} alt="search" className="w-4 h-4 mr-2" />
               Design Courses
             </button>
-            <button className="flex items-center justify-center px-4 py-2 border-r border-black text-black font-medium">
+            <button
+              onClick={() => setActiveTab('cse')}
+              className={`flex items-center justify-center px-4 py-2 border-r border-black font-medium ${
+                activeTab === 'cse' ? 'bg-[#084c4c] text-white' : 'text-black'
+              }`}
+            >
               <img src={searchIcon} alt="search" className="w-4 h-4 mr-2" />
               CSE Courses
             </button>
-            <button className="flex items-center justify-center px-4 py-2 text-black font-medium">
+            <button
+              onClick={() => setActiveTab('ssh')}
+              className={`flex items-center justify-center px-4 py-2 font-medium ${
+                activeTab === 'ssh' ? 'bg-[#084c4c] text-white' : 'text-black'
+              }`}
+            >
               <img src={searchIcon} alt="search" className="w-4 h-4 mr-2" />
               SSH Courses
             </button>

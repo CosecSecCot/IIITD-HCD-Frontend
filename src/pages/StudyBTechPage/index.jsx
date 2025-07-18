@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '../../components/Navbar';
 import background from '../../assets/backgr.svg';
 import btechHeading from '../../assets/btech-heading.svg';
@@ -6,7 +6,7 @@ import admissionHeading from '../../assets/admissionHeading.svg';
 import gradientRing from '../../assets/gradient-ring.svg';
 import searchIcon from '../../assets/Search.svg';
 import programmeHeading from '../../assets/programmeHeading.svg';
-import leftverticalLine from '../../assets/leftverticalLine.svg' ;
+import leftverticalLine from '../../assets/leftverticalLine.svg';
 import rightverticalLine from '../../assets/rightverticalLine.svg';
 import leftrectangleLine from '../../assets/leftRectangle.svg';
 import rightrectangleLine from '../../assets/rightRectangle.svg';
@@ -18,7 +18,8 @@ import textureBg from '../../assets/textureBg.svg';
 import Vectorbtech from '../../assets/Vectorbtech.svg';
 
 const CourseDirectory = () => {
-  
+  const [activePortal, setActivePortal] = useState('UCEED');
+
   return (
     <div className="relative min-h-screen font-sans bg-white overflow-x-hidden">
       {/* Background */}
@@ -27,9 +28,6 @@ const CourseDirectory = () => {
         alt="Background"
         className="absolute top-0 left-0 w-full object-contain object-left z-0 brightness-90 contrast-125"
       />
-      
-
-
 
       {/* Navbar */}
       <Navbar />
@@ -82,25 +80,40 @@ const CourseDirectory = () => {
 
       {/* Admission Section */}
       <div className="relative z-10 w-full pb-4 pt-4 bg-white font-sans">
-          <div className="w-full flex items-baseline  mb-10 px-[0px]">
-            <img src={admissionleftLine} alt="Left Line" className="h-auto w-[910px] mr-auto" />
-
-            <h2 className="text-[45px] font-light text-black tracking-wide">
-               <span className="text-[#0b5e5e] font-semibold">Admissions</span> Process
-            </h2>
-
-            <img src={admissionrightLine} alt="Right Line" className="h-auto w-[200px] ml-auto" />
-          </div>
+        <div className="w-full flex items-baseline  mb-10 px-[0px]">
+          <img src={admissionleftLine} alt="Left Line" className="h-auto w-[910px] mr-auto" />
+          <h2 className="text-[45px] font-light text-black tracking-wide">
+            <span className="text-[#0b5e5e] font-semibold">Admissions</span> Process
+          </h2>
+          <img src={admissionrightLine} alt="Right Line" className="h-auto w-[200px] ml-auto" />
         </div>
+      </div>
 
       {/* Admissions Process */}
       <div className="relative z-10 w-full bg-white px-[160px]  py-4">
         <div className="flex mb-6">
-          <div className="bg-[#0b5e5e] text-white px-6 py-2 text-[13px] font-semibold uppercase tracking-wide cursor-pointer min-w-[285px] justify-center flex items-center gap-2">
+          {/* UCEED Button */}
+          <div
+            onClick={() => setActivePortal('UCEED')}
+            className={`px-6 py-2 text-[13px] font-semibold uppercase tracking-wide cursor-pointer min-w-[285px] justify-center flex items-center gap-2 ${
+              activePortal === 'UCEED'
+                ? 'bg-[#0b5e5e] text-white'
+                : 'bg-white border border-[#c4c4c4] text-black'
+            }`}
+          >
             <img src={searchIcon} alt="Search Icon" className="w-[16px] h-[16px]" />
             UCEED PORTAL
           </div>
-          <div className="bg-white border border-[#c4c4c4] text-black px-6 py-2 text-[13px] font-semibold uppercase tracking-wide cursor-pointer min-w-[285px] justify-center flex items-center gap-2">
+
+          {/* JEE Button */}
+          <div
+            onClick={() => setActivePortal('JEE')}
+            className={`px-6 py-2 text-[13px] font-semibold uppercase tracking-wide cursor-pointer min-w-[285px] justify-center flex items-center gap-2 ${
+              activePortal === 'JEE'
+                ? 'bg-[#0b5e5e] text-white'
+                : 'bg-white border border-[#c4c4c4] text-black'
+            }`}
+          >
             <img src={searchIcon} alt="Search Icon" className="w-[16px] h-[16px]" />
             JEE PORTAL
           </div>
@@ -110,65 +123,56 @@ const CourseDirectory = () => {
           Admission to this program will be through two channels – approximately half of the seats will be through the Joint Admission Counselling (JAC) of Delhi, which takes students through JEE (Main), and approximately half the seats will be filled through UCEED conducted by IIT Bombay. More information about the admission to all the B.Tech. programs at IIIT-Delhi will be made available on the admissions pages from time to time. More details regarding admissions are available here.
         </div>
       </div>
-            {/* Programme Structure Section */}
+
+      {/* Programme Structure Section */}
       <div className="relative z-10 bg-white  py-20">
-        {/* Heading */}
         <div className="relative z-10 w-full pb-4 pt-4 bg-white font-sans">
           <div className="w-full flex items-center mb-10 px-[0px]">
             <img src={programleftLine} alt="Left Line" className="h-auto w-[530px] mr-auto" />
-
             <h2 className="text-[45px] font-light text-black tracking-wide">
-               <span className="text-[#0b5e5e] font-semibold">Programme</span> Structure
+              <span className="text-[#0b5e5e] font-semibold">Programme</span> Structure
             </h2>
-
             <img src={programrightLine} alt="Right Line" className="h-auto w-[530px] ml-auto" />
           </div>
         </div>
         <br />
 
-<div className="relative flex items-start justify-between gap-0">
-  {/* Left Rectangle Line */}
-  <img src={leftverticalLine} alt="line" className="h-[380px] w-[180px]" />
-
-  {/* Cards Container with uniform spacing */}
-  <div className="flex gap-x-8">
-    {[
-      {
-        text: 'Ability to function effectively in teams to accomplish a common goal.',
-        num: '01',
-      },
-      {
-        text: 'Ability to design and implement efficient software solutions using suitable algorithms, data structures, and other computing techniques.',
-        num: '02',
-      },
-      {
-        text: 'Understanding of design principles and techniques and ability to apply these for developing solutions to human/societal problems.',
-        num: '03',
-      },
-      {
-        text: 'Ability to independently investigate a problem which can be solved by an Human Computer Interaction (HCI).',
-        num: '04',
-      },
-      {
-        text: 'Ability to effectively use suitable tools and platforms, as well as enhance them, to develop applications/ products.',
-        num: '05',
-      },
-    ].map((item, idx) => (
-      <div
-        key={idx}
-        className="w-[210px] border border-[#9fc5c5] min-h-[430px] bg-white shadow-sm flex flex-col justify-between px-8 py-6"
-      >
-        <p className="text-[16px] text-gray-800 leading-[1.6] text-right">{item.text}</p>
-        <p className="text-[#0b5e5e] text-[80px] font-light text-right">{item.num}</p>
-      </div>
-    ))}
-  </div>
-
-  {/* Right Rectangle Line */}
-  <img src={leftverticalLine} alt="line" className="h-[380px] w-[180px]" />
-</div>
-
-
+        <div className="relative flex items-start justify-between gap-0">
+          <img src={leftverticalLine} alt="line" className="h-[380px] w-[180px]" />
+          <div className="flex gap-x-8">
+            {[
+              {
+                text: 'Ability to function effectively in teams to accomplish a common goal.',
+                num: '01',
+              },
+              {
+                text: 'Ability to design and implement efficient software solutions using suitable algorithms, data structures, and other computing techniques.',
+                num: '02',
+              },
+              {
+                text: 'Understanding of design principles and techniques and ability to apply these for developing solutions to human/societal problems.',
+                num: '03',
+              },
+              {
+                text: 'Ability to independently investigate a problem which can be solved by an Human Computer Interaction (HCI).',
+                num: '04',
+              },
+              {
+                text: 'Ability to effectively use suitable tools and platforms, as well as enhance them, to develop applications/ products.',
+                num: '05',
+              },
+            ].map((item, idx) => (
+              <div
+                key={idx}
+                className="w-[210px] border border-[#9fc5c5] min-h-[430px] bg-white shadow-sm flex flex-col justify-between px-8 py-6"
+              >
+                <p className="text-[16px] text-gray-800 leading-[1.6] text-right">{item.text}</p>
+                <p className="text-[#0b5e5e] text-[80px] font-light text-right">{item.num}</p>
+              </div>
+            ))}
+          </div>
+          <img src={leftverticalLine} alt="line" className="h-[380px] w-[180px]" />
+        </div>
       </div>
 
       {/* View Courses Section */}
@@ -196,8 +200,6 @@ const CourseDirectory = () => {
           ))}
         </div>
       </div>
-
-
     </div>
   );
 };
