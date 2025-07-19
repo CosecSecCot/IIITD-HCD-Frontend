@@ -21,23 +21,14 @@ const navigationMap = [
     ],
   },
   {
-    title: "study",
-    url: "/study",
-    children: [
-      { title: "-", url: "" },
-      { title: "-", url: "" },
-    ],
+    title: "Research",
+    url: "/research",
   },
   {
     title: "Publications",
-    url: "/research_current",
-    children: [
-      { title: "-", url: "" },
-      { title: "-", url: "" },
-      { title: "-", url: "" },
-    ],
+    url: "/publications",
   },
-  { title: "our work", url: "/department_projects" },
+  { title: "our work", url: "/departmentprojects" },
   {
     title: "people",
     url: "/people",
@@ -142,122 +133,135 @@ const Navbar = () => {
   });
 
   return (
-    <header className="absolute z-50 top-0 w-full">
-      <nav className="text-white flex justify-between items-center xl:px-[200px] px-[30px] xl:py-[30px] py-[15px] bg-black/30">
-        <a href="/">
-          <img src={HCDLogoLarge} alt="HCD IIITD" className="max-lg:h-[54px]" />
-        </a>
-        <div className="flex items-center gap-[110px]">
-          <div className="flex items-center xl:gap-[40px] gap-[20px]">
-            <div className="flex justify-between items-center lg:gap-[16px] gap-[8px] lg:px-[1.5em] px-[1.25em] lg:py-[1em] py-[0.75em] border border-white rounded-full overflow-hidden">
-              <input
-                type="text"
-                placeholder="SEARCH"
-                className="max-lg:w-[5em] max-lg:text-[0.75em] bg-transparent outline-none placeholder:text-white/80"
-              />
-              <Search size={16} />
+    <div id="navigation-menu" className="font-anybody">
+      <header className="absolute z-[999] top-0 w-full">
+        <nav className="relative text-white flex justify-between items-center xl:py-[30px] py-[15px] bg-black/30 backdrop-blur-sm">
+          <a
+            className="relative left-[12.5vw] xl:left-[calc(12.5vw-96px)]"
+            href="/"
+          >
+            <img
+              src={HCDLogoLarge}
+              alt="HCD IIITD"
+              className="max-lg:h-[54px]"
+            />
+          </a>
+          <div className="relative right-[12.5vw] xl:right-[calc(12.5vw-82px)] flex items-center gap-[110px]">
+            <div className="flex items-center xl:gap-[40px] gap-[20px]">
+              <div className="flex justify-between items-center lg:gap-[16px] gap-[8px] lg:px-[1.5em] px-[0.75em] lg:py-[1em] py-[0.5em] border border-white rounded-full overflow-hidden">
+                <input
+                  type="text"
+                  placeholder="SEARCH"
+                  className="max-lg:w-[5em] max-lg:text-[0.75em] bg-transparent outline-none placeholder:text-white/80"
+                />
+                <Search size={16} />
+              </div>
+              {/* Two buttons for toggling desktop and mobile menu respectively */}
+              <div className="xl:hidden cursor-pointer" onClick={() => {}}>
+                <Menu
+                  size={40}
+                  className="lg:w-[40px] w-[24px] aspect-square"
+                  aria-haspopup="menu"
+                />
+              </div>
+              <div
+                className="max-xl:hidden cursor-pointer"
+                onClick={openFirstSidebar}
+              >
+                <Menu size={40} aria-haspopup="menu" />
+              </div>
             </div>
-            {/* Two buttons for toggling desktop and mobile menu respectively */}
-            <div className="xl:hidden cursor-pointer" onClick={() => {}}>
-              <Menu size={40} className="lg:w-[40px] w-[24px] aspect-square" />
-            </div>
-            <div
-              className="max-xl:hidden cursor-pointer"
-              onClick={openFirstSidebar}
-            >
-              <Menu size={40} />
-            </div>
+            <img src={IIITDLogo} alt="IIITD" className="max-xl:hidden" />
           </div>
-          <img src={IIITDLogo} alt="IIITD" className="max-xl:hidden" />
-        </div>
+        </nav>
+      </header>
+      <div
+        id="nav-bg"
+        className={`${firstSidebarOpen ? "" : "hidden"} absolute z-[9998] top-0 left-0 h-[100vh] w-full bg-black/20 backdrop-blur-sm`}
+        onClick={closeSidebar}
+      />
+      <div
+        id="nav-container"
+        className={`${firstSidebarOpen ? "" : "hidden"} fixed z-[9999] top-0 right-0 h-[100vh] flex justify-end`}
+        style={{
+          transform: "translate(100%, 0)",
+        }}
+      >
         <div
-          id="nav-bg"
-          className={`${firstSidebarOpen ? "" : "hidden"} absolute z-40 top-0 left-0 h-[100vh] w-full bg-black/20 backdrop-blur-sm`}
-          onClick={closeSidebar}
-        />
-        <div
-          id="nav-container"
-          className="fixed z-50 top-0 right-0 h-[100vh] flex justify-end"
-          style={{
-            transform: "translate(100%, 0)",
-          }}
+          id="nav-sidebar-first"
+          className="relative flex flex-col justify-center w-[30vw] bg-[#096964] text-white"
         >
-          <div
-            id="nav-sidebar-first"
-            className="relative flex flex-col justify-center w-[30vw] bg-[#096964] text-white"
+          <button
+            onClick={closeSidebar}
+            className="absolute top-[65px] right-[70px] flex items-center gap-[2px] border border-white rounded-full p-[1em] hover:bg-white hover:text-[#096964] transition-all ease-out duration-150"
           >
-            <button
-              onClick={closeSidebar}
-              className="absolute top-[65px] right-[70px] flex items-center gap-[2px] border border-white rounded-full p-[1em] hover:bg-white hover:text-[#096964] transition-all ease-out duration-150"
-            >
-              <X size={40} />
-            </button>
-            <div>
-              {navigationMap.map((linkGroup, idx) => {
-                return (
-                  <div
-                    key={idx}
-                    onClick={() => {
-                      if (linkGroup.children) {
-                        setActiveGroup(linkGroup);
-                        openSecondSidebar();
-                      } else {
-                        contextSafe(() =>
-                          gsap.to("#nav-container", {
-                            x: "50%",
-                            ease: "expo.out",
-                          }),
-                        )();
-                        setActiveGroup(null);
-                      }
-                    }}
-                    className={`relative flex justify-between w-full px-[70px] py-[20px] ${linkGroup.children ? "cursor-pointer" : ""} group hover:pl-[80px] transition-all duration-[300ms]`}
-                  >
-                    <a
-                      id="nav-link-primary"
-                      href={linkGroup.url}
-                      className="relative z-10 uppercase text-[32px] leading-tight font-medium hover:underline"
-                    >
-                      {linkGroup.title}
-                    </a>
-                    {linkGroup.children && (
-                      <ChevronRight
-                        size={36}
-                        color="white"
-                        className={`z-10 ${activeGroup === linkGroup ? "rotate-180" : ""} transition-all duration-250`}
-                      />
-                    )}
-                    <div
-                      className={`absolute top-0 left-0 ${activeGroup === linkGroup ? "h-full" : "h-0"} w-full group-hover:h-full ${activeGroup === linkGroup ? "bg-[#033836]" : "bg-[#033836]/75"} transition-all ease-[cubic-bezier(.06,.92,.35,1)] duration-1000`}
-                    />
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-          <div
-            id="nav-sidebar-second"
-            className="flex flex-col justify-center min-h-[50%] w-[30vw] bg-[#033836] text-white"
-          >
-            {activeGroup &&
-              activeGroup.children &&
-              activeGroup.children.map((child, idx) => (
-                <div className="relative px-[70px] py-[20px] group">
+            <X size={40} />
+          </button>
+          <div>
+            {navigationMap.map((linkGroup, idx) => {
+              return (
+                <div
+                  key={idx}
+                  onClick={() => {
+                    if (linkGroup.children) {
+                      setActiveGroup(linkGroup);
+                      openSecondSidebar();
+                    } else {
+                      contextSafe(() =>
+                        gsap.to("#nav-container", {
+                          x: "50%",
+                          ease: "expo.out",
+                        }),
+                      )();
+                      setActiveGroup(null);
+                    }
+                  }}
+                  className={`relative flex justify-between w-full px-[70px] py-[20px] ${linkGroup.children ? "cursor-pointer" : ""} group hover:pl-[80px] transition-all duration-[300ms]`}
+                >
                   <a
-                    id="nav-link-secondary"
-                    key={idx}
-                    href={child.url}
+                    id="nav-link-primary"
+                    href={linkGroup.url}
                     className="relative z-10 uppercase text-[32px] leading-tight font-medium hover:underline"
                   >
-                    {child.title}
+                    {linkGroup.title}
                   </a>
-                  <div className="absolute top-0 left-0 h-0 w-full group-hover:h-full bg-[#096964]/75 transition-all ease-[cubic-bezier(.06,.92,.35,1)] duration-1000" />
+                  {linkGroup.children && (
+                    <ChevronRight
+                      size={36}
+                      color="white"
+                      className={`z-10 ${activeGroup === linkGroup ? "rotate-180" : ""} transition-all duration-250`}
+                    />
+                  )}
+                  <div
+                    className={`absolute top-0 left-0 ${activeGroup === linkGroup ? "h-full" : "h-0"} w-full group-hover:h-full ${activeGroup === linkGroup ? "bg-[#033836]" : "bg-[#033836]/75"} transition-all ease-[cubic-bezier(.06,.92,.35,1)] duration-1000`}
+                  />
                 </div>
-              ))}
+              );
+            })}
           </div>
         </div>
-      </nav>
-    </header>
+        <div
+          id="nav-sidebar-second"
+          className="flex flex-col justify-center min-h-[50%] w-[30vw] bg-[#033836] text-white"
+        >
+          {activeGroup &&
+            activeGroup.children &&
+            activeGroup.children.map((child, idx) => (
+              <div className="relative px-[70px] py-[20px] group">
+                <a
+                  id="nav-link-secondary"
+                  key={idx}
+                  href={child.url}
+                  className="relative z-10 uppercase text-[32px] leading-tight font-medium hover:underline"
+                >
+                  {child.title}
+                </a>
+                <div className="absolute top-0 left-0 h-0 w-full group-hover:h-full bg-[#096964]/75 transition-all ease-[cubic-bezier(.06,.92,.35,1)] duration-1000" />
+              </div>
+            ))}
+        </div>
+      </div>
+    </div>
   );
 };
 
