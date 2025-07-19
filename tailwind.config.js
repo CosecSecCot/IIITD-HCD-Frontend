@@ -5,6 +5,7 @@ export default {
     extend: {
       fontFamily: {
         anybody: ['"Anybody"', "sans-serif"],
+        helvetica_now_display: ['"Helvetica Now Display"', "sans-serif"],
       },
       colors: {
         brand: {

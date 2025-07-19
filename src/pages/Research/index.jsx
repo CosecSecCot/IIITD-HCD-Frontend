@@ -3,7 +3,7 @@ import Navbar from "../../components/Navbar";
 import LabLogo from "../../assets/research-lab-logo.svg";
 import GridLines from "../../components/GridLines";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, X } from "lucide-react";
 
 const dummyLabs = [
   {
@@ -96,9 +96,9 @@ const Research = () => {
       </section>
       <main className="w-[75vw] mx-[12.5vw] mt-[30px]">
         <ControlPanel activeTab={activeTab} setActiveTab={setActiveTab} />
-        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 divide-y divide-black/10 mt-[30px]">
+        <section className="grid grid-cols-1 lg:grid-cols-3 divide-y divide-black/10 mt-[30px]">
           {dummyLabs.map((lab, idx) => (
-            <LabCard key={idx} lab={lab} expanded={false} />
+            <LabCard key={idx} lab={lab} expanded={lab.id == 4} />
           ))}
         </section>
       </main>
@@ -143,7 +143,7 @@ function ControlPanelTabButton({ text, active, onClick }) {
 function LabCard({ lab, expanded }) {
   return (
     <div
-      className={`w-full flex flex-col gap-[48px] p-[40px] ${expanded ? "z-[9999] col-span-2 row-span-2 bg-[#47638A] text-white" : ""}`}
+      className={`w-full flex flex-col justify-between gap-[48px] p-[40px] ${expanded ? "z-[9999] col-span-2 row-span-2 bg-[#47638A] text-white" : ""}`}
     >
       <div className="flex flex-col gap-[24px]">
         <div className="flex flex-col gap-[16px]">
@@ -156,18 +156,40 @@ function LabCard({ lab, expanded }) {
             )}
           </div>
           {expanded ? (
-            <p className="text-[24px] opacity-80">{lab.full}</p>
+            <p className="font-helvetica_now_display text-[24px] opacity-80">
+              {lab.full}
+            </p>
           ) : (
-            <p className="text-[18px] opacity-60">{lab.short}</p>
+            <p className="font-helvetica_now_display text-[18px] opacity-60">
+              {lab.short}
+            </p>
           )}
         </div>
-        <p className="text-[18px] opacity-80">{lab.lead}</p>
+        {expanded ? (
+          <p className="text-[24px] font-medium opacity-80">{lab.lead}</p>
+        ) : (
+          <p className="text-[18px] opacity-60">{lab.lead}</p>
+        )}
       </div>
-      <div className="relative w-full">
-        <button className="absolute bottom-0 right-0 flex items-center text-[18px] gap-[0.5em]">
-          <span>VIEW DETAILS</span>
-          <ArrowRight className="w-[16px] h-[16px]" />
-        </button>
+      <div className="flex justify-between flex-row-reverse w-full">
+        {expanded ? (
+          <button className="flex items-center text-[20px] gap-[0.5em]">
+            <span>CLOSE</span>
+            <X className="w-[16px] h-[16px]" />
+          </button>
+        ) : (
+          <button className="flex items-center text-[18px] gap-[0.5em]">
+            <span>VIEW DETAILS</span>
+            <ArrowRight className="w-[16px] h-[16px]" />
+          </button>
+        )}
+        {expanded ? (
+          <button className="text-[20px] px-[2em] py-[0.5em] border border-brand-gray1">
+            VISIT WEBSITE
+          </button>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
