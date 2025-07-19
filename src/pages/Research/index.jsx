@@ -87,7 +87,14 @@ const Research = () => {
       <div className="texture-overlay" />
       <Navbar />
       <GridLines count={isSmallScreen ? 3 : 4} />
-      <section role="banner" className="bg-brand-accent2">
+      <section role="banner" className="relative bg-brand-accent2">
+        <p className="absolute top-[40%] right-[12.5vw] text-[20px] text-white">
+          <span className="opacity-50">RESEARCH /</span>
+          <span> LABS</span>
+        </p>
+        <h1 className="absolute bottom-4 left-[12.5vw] text-[72px] text-white">
+          {activeTab == "research" ? "RESEARCH LABS" : "TEACHING LABS"}
+        </h1>
         <img
           src="/main-banner-back.png"
           alt="banner"
@@ -98,7 +105,7 @@ const Research = () => {
         <ControlPanel activeTab={activeTab} setActiveTab={setActiveTab} />
         <section className="grid grid-cols-1 lg:grid-cols-3 divide-y divide-black/10 mt-[30px]">
           {dummyLabs.map((lab, idx) => (
-            <LabCard key={idx} lab={lab} expanded={lab.id == 4} />
+            <LabCard key={idx} lab={lab} expanded={lab.id == 1} />
           ))}
         </section>
       </main>
@@ -143,48 +150,58 @@ function ControlPanelTabButton({ text, active, onClick }) {
 function LabCard({ lab, expanded }) {
   return (
     <div
-      className={`w-full flex flex-col justify-between gap-[48px] p-[40px] ${expanded ? "z-[9999] col-span-2 row-span-2 bg-[#47638A] text-white" : ""}`}
+      className={`w-full flex flex-col justify-between gap-[32px] lg:gap-[48px] p-[28px] lg:p-[40px] ${expanded ? "z-[9999] lg:col-span-2 lg:row-span-2 bg-[#47638A] text-white" : ""}`}
     >
-      <div className="flex flex-col gap-[24px]">
-        <div className="flex flex-col gap-[16px]">
-          <div className="flex items-center gap-[16px]">
-            <img src={lab.logo} alt="aid-lab" />
+      <div className="flex flex-col gap-[18px] lg:gap-[24px]">
+        <div className="flex flex-col gap-[12px] lg:gap-[16px]">
+          <div className="flex items-center gap-[12px] lg:gap-[16px]">
+            <img
+              className="h-[40px] lg:h-auto w-auto"
+              src={lab.logo}
+              alt={lab.title + " logo"}
+            />
             {expanded ? (
-              <h3 className="text-[32px] font-medium">{lab.title}</h3>
+              <h3 className="text-[16px] lg:text-[32px] font-medium">
+                {lab.title}
+              </h3>
             ) : (
-              <h3 className="text-[20px] font-medium">{lab.title}</h3>
+              <h3 className="text-[16px] lg:text-[20px] font-medium">
+                {lab.title}
+              </h3>
             )}
           </div>
           {expanded ? (
-            <p className="font-helvetica_now_display text-[24px] opacity-80">
+            <p className="font-helvetica_now_display text-[14px] lg:text-[24px] opacity-80">
               {lab.full}
             </p>
           ) : (
-            <p className="font-helvetica_now_display text-[18px] opacity-60">
+            <p className="font-helvetica_now_display text-[14px] lg:text-[18px] opacity-60">
               {lab.short}
             </p>
           )}
         </div>
         {expanded ? (
-          <p className="text-[24px] font-medium opacity-80">{lab.lead}</p>
+          <p className="text-[14px] lg:text-[24px] font-medium opacity-80">
+            {lab.lead}
+          </p>
         ) : (
-          <p className="text-[18px] opacity-60">{lab.lead}</p>
+          <p className="text-[14px] lg:text-[18px] opacity-60">{lab.lead}</p>
         )}
       </div>
-      <div className="flex justify-between flex-row-reverse w-full">
+      <div className="flex justify-between flex-row-reverse flex-wrap w-full">
         {expanded ? (
-          <button className="flex items-center text-[20px] gap-[0.5em]">
+          <button className="flex items-center text-[14px] lg:text-[20px] gap-[0.5em]">
             <span>CLOSE</span>
             <X className="w-[16px] h-[16px]" />
           </button>
         ) : (
-          <button className="flex items-center text-[18px] gap-[0.5em]">
+          <button className="flex items-center text-[14px] lg:text-[18px] gap-[0.5em]">
             <span>VIEW DETAILS</span>
             <ArrowRight className="w-[16px] h-[16px]" />
           </button>
         )}
         {expanded ? (
-          <button className="text-[20px] px-[2em] py-[0.5em] border border-brand-gray1">
+          <button className="text-[14px] lg:text-[20px] px-[1em] lg:px-[2em] py-[0.5em] border border-brand-gray1">
             VISIT WEBSITE
           </button>
         ) : (
