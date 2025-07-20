@@ -1,9 +1,11 @@
 import HCDLogoLarge from "../assets/HCD_logo_with_text_large.svg";
+import HCDLogoSmall from "../assets/logo.svg";
 import IIITDLogo from "../assets/IIITD_logo.svg";
 import { ChevronRight, Menu, Search, X } from "lucide-react";
 import { useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { useMediaQuery } from "../hooks/useMediaQuery";
 
 gsap.registerPlugin(useGSAP);
 
@@ -45,6 +47,7 @@ const Navbar = () => {
   const [activeGroup, setActiveGroup] = useState();
   const [firstSidebarOpen, setFirstSidebarOpen] = useState(false);
   const [secondSidebarOpen, setSecondSidebarOpen] = useState(false);
+  const isSmallScreen = useMediaQuery("(max-width: 640px)");
 
   const { contextSafe } = useGSAP(() => {});
 
@@ -141,7 +144,7 @@ const Navbar = () => {
             href="/"
           >
             <img
-              src={HCDLogoLarge}
+              src={isSmallScreen ? HCDLogoSmall : HCDLogoLarge}
               alt="HCD IIITD"
               className="max-lg:h-[54px]"
             />
