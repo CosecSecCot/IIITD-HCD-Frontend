@@ -8,9 +8,8 @@ import { ArrowRight, Search, X } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { Flip } from "gsap/Flip";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger, Flip, useGSAP);
+gsap.registerPlugin(Flip, useGSAP);
 
 const dummyLabs = [
   {
@@ -195,7 +194,7 @@ const Research = () => {
   );
 
   return (
-    <div className="w-full overflow-x-hidden font-anybody">
+    <div className="w-full font-anybody">
       <div className="texture-overlay" />
       <Navbar />
       <GridLines count={isSmallScreen ? 3 : 4} />
@@ -231,7 +230,7 @@ function Banner({ text }) {
   useGSAP(
     () => {
       gsap.fromTo(
-        ".reveal-animation, .reveal-animation-text",
+        ".reveal-animation-text",
         {
           y: "10%",
           opacity: 0,
@@ -246,13 +245,6 @@ function Banner({ text }) {
           ease: "expo.out",
         },
       );
-
-      gsap.from(".reveal-animation-opacity-only", {
-        opacity: 0,
-        stagger: 0.1,
-        duration: 0.5,
-        ease: "power2.out",
-      });
     },
     { scope: bannerRef, dependencies: [text] }, // this will rerun on tab switch
   );
@@ -332,12 +324,6 @@ function LabCard({ lab, expanded, onExpand, onCollapse }) {
           stagger: 0.1,
           duration: 0.5,
           ease: "expo.out",
-          scrollTrigger: {
-            trigger: cardRef.current,
-            start: "top 80%",
-            toggleActions: "play none none none",
-            once: true,
-          },
         },
       );
 
@@ -346,18 +332,12 @@ function LabCard({ lab, expanded, onExpand, onCollapse }) {
         stagger: 0.1,
         duration: 1.5,
         ease: "expo.out",
-        scrollTrigger: {
-          trigger: cardRef.current,
-          start: "top 80%",
-          toggleActions: "play none none none",
-          once: true,
-        },
       });
     },
     { scope: cardRef, dependencies: [expanded] }, // this will rerun when this card mounts
   );
 
-  const expanded_class = expanded ? "z-[99] xl:col-span-2 xl:row-span-2" : "";
+  const expanded_class = expanded ? "z-[99] xl:col-span-2 xl:row-span-2" : ``;
 
   return (
     <div

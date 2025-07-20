@@ -1,212 +1,314 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import Navbar from '../../components/Navbar';
-import publicationsBanner from '../../assets/banner-main-back.png';
-import ArrowRight from '../../assets/Arrow - Right.svg';
-import project1 from '../../assets/project-1.png';
-import project2 from '../../assets/project-2.png';
-import project3 from '../../assets/project-3.png';
-import project3expand from '../../assets/project-1-expand.png';
+import React, { useRef, useState } from "react";
+import Navbar from "../../components/Navbar";
+import GridLines from "../../components/GridLines";
+import project1 from "../../assets/project-1.png";
+import project2 from "../../assets/project-2.png";
+import project3 from "../../assets/project-3.png";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 
-const App = () => {
-  // Commented out backend fetching
-  /*
-  const [projects, setProjects] = useState([]);
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { Flip } from "gsap/Flip";
+import { ArrowRight, X } from "lucide-react";
 
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const res = await axios.get('http://localhost:1337/api/department-projects?populate=*');
-        const data = res.data.data.map((item) => ({
-          id: item.id,
-          title: item.heading_of_project,
-          description: item.about_the_project,
-          source: item.name,
-          imageUrl: `http://localhost:1337${item.iamge?.[0]?.formats?.thumbnail?.url || item.iamge?.[0]?.url || ''}`,
-        }));
-        setProjects(data);
-      } catch (err) {
-        console.error('Failed to fetch project data:', err);
-      }
-    };
+gsap.registerPlugin(Flip, useGSAP);
 
-    fetchProjects();
-  }, []);
-  */
-  const [expandedProjectId, setExpandedProjectId] = useState(null);
+const projects = [
+  {
+    id: 1,
+    title: "AI Empowered Attention Evaluation among Children with ADHD",
+    description:
+      "We are a collective of diverse thinkers reimagining how human-technology interactions can be seamless and meaningful.",
+    source: "TIH-Anubhuti",
+    faculty: "Dr. Jainendra Shukla",
+    duration: "September 2021 - August 2024",
+    imageUrl: project1,
+    fullDescription: `Specific Learning Disabilities (SLDs) conditions manifest as a deficit in processing language, spoken or written, that may manifest itself as a difficulty to comprehend, speak, read, write, spell, or to do mathematical calculations and includes such conditions as perceptual disabilities, dyslexia, dysgraphia, dyscalculia, dyspraxia, and developmental aphasia. The cognitive flexibility associated with SLDs can manifest itself in noteworthy talents, which include a multi-sensory lens for creative and lateral thinking, resulting in out-of-the-box solutions for problems. The untapped potential of SLDs causes a high opportunity cost for the Nation’s progress. However, children with SLDs experience repeated failures and poor performance despite their continuous efforts and practice in learning. At the same time, worldwide, the condition will SLDs has been exacerbated due to the COVID-19 pandemic when education delivery shifted online. Thus, strengthening online education delivery will be important and impacting. However, research has indicated that educators might not always be aware of their students’ attentional focus, and this may be particularly true for novice teachers. The aim of this project is to develop an AI-empowered tool that will offer personalized, monitored, and evidence-based identification of attention levels among children with SLD. The project will first develop a multimodal dataset of audio-visual and physiological signals among 150 children with SLD to understand the attention and engagement of children with SLD during digital learning. It will further perform a systematic comparison of physiological, audio-visual, and eye-dilation signals for the attention monitoring of children with SLD to identify the valid indicators of attention. Based on these, the project will develop an AI-empowered system for real-time continuous monitoring of attention among children with SLD. Finally, the project will deploy and evaluate the efficacy of the developed AI-empowered system among 50 children with SLD and 25 typically developing children in naturalistic settings. Once validated the findings of this project can improve and monitor the attention of children with SLDs and can play a significant role in their inclusion during digital learning.`,
+  },
+  {
+    id: 2,
+    title: "AI Empowered Attention Evaluation among Children with ADHD",
+    description:
+      "We are a collective of diverse thinkers reimagining how human-technology interactions can be seamless and meaningful.",
+    source: "TIH-Anubhuti",
+    faculty: "Dr. Jainendra Shukla",
+    duration: "September 2021 - August 2024",
+    imageUrl: project2,
+    fullDescription: `Specific Learning Disabilities (SLDs) conditions manifest as a deficit in processing language, spoken or written, that may manifest itself as a difficulty to comprehend, speak, read, write, spell, or to do mathematical calculations and includes such conditions as perceptual disabilities, dyslexia, dysgraphia, dyscalculia, dyspraxia, and developmental aphasia. The cognitive flexibility associated with SLDs can manifest itself in noteworthy talents, which include a multi-sensory lens for creative and lateral thinking, resulting in out-of-the-box solutions for problems. The untapped potential of SLDs causes a high opportunity cost for the Nation’s progress. However, children with SLDs experience repeated failures and poor performance despite their continuous efforts and practice in learning. At the same time, worldwide, the condition will SLDs has been exacerbated due to the COVID-19 pandemic when education delivery shifted online. Thus, strengthening online education delivery will be important and impacting. However, research has indicated that educators might not always be aware of their students’ attentional focus, and this may be particularly true for novice teachers. The aim of this project is to develop an AI-empowered tool that will offer personalized, monitored, and evidence-based identification of attention levels among children with SLD. The project will first develop a multimodal dataset of audio-visual and physiological signals among 150 children with SLD to understand the attention and engagement of children with SLD during digital learning. It will further perform a systematic comparison of physiological, audio-visual, and eye-dilation signals for the attention monitoring of children with SLD to identify the valid indicators of attention. Based on these, the project will develop an AI-empowered system for real-time continuous monitoring of attention among children with SLD. Finally, the project will deploy and evaluate the efficacy of the developed AI-empowered system among 50 children with SLD and 25 typically developing children in naturalistic settings. Once validated the findings of this project can improve and monitor the attention of children with SLDs and can play a significant role in their inclusion during digital learning.`,
+  },
+  {
+    id: 3,
+    title: "AI Empowered Attention Evaluation among Children with ADHD",
+    description:
+      "We are a collective of diverse thinkers reimagining how human-technology interactions can be seamless and meaningful.",
+    source: "TIH-Anubhuti",
+    faculty: "Dr. Jainendra Shukla",
+    duration: "September 2021 - August 2024",
+    imageUrl: project3,
+    fullDescription: `Specific Learning Disabilities (SLDs) conditions manifest as a deficit in processing language, spoken or written, that may manifest itself as a difficulty to comprehend, speak, read, write, spell, or to do mathematical calculations and includes such conditions as perceptual disabilities, dyslexia, dysgraphia, dyscalculia, dyspraxia, and developmental aphasia. The cognitive flexibility associated with SLDs can manifest itself in noteworthy talents, which include a multi-sensory lens for creative and lateral thinking, resulting in out-of-the-box solutions for problems. The untapped potential of SLDs causes a high opportunity cost for the Nation’s progress. However, children with SLDs experience repeated failures and poor performance despite their continuous efforts and practice in learning. At the same time, worldwide, the condition will SLDs has been exacerbated due to the COVID-19 pandemic when education delivery shifted online. Thus, strengthening online education delivery will be important and impacting. However, research has indicated that educators might not always be aware of their students’ attentional focus, and this may be particularly true for novice teachers. The aim of this project is to develop an AI-empowered tool that will offer personalized, monitored, and evidence-based identification of attention levels among children with SLD. The project will first develop a multimodal dataset of audio-visual and physiological signals among 150 children with SLD to understand the attention and engagement of children with SLD during digital learning. It will further perform a systematic comparison of physiological, audio-visual, and eye-dilation signals for the attention monitoring of children with SLD to identify the valid indicators of attention. Based on these, the project will develop an AI-empowered system for real-time continuous monitoring of attention among children with SLD. Finally, the project will deploy and evaluate the efficacy of the developed AI-empowered system among 50 children with SLD and 25 typically developing children in naturalistic settings. Once validated the findings of this project can improve and monitor the attention of children with SLDs and can play a significant role in their inclusion during digital learning.`,
+  },
+];
 
-  const [projects] = useState([
-    {
-      id: 1,
-      title: "AI Empowered Attention Evaluation among Children with ADHD",
-      description: "We are a collective of diverse thinkers reimagining how human-technology interactions can be seamless and meaningful.",
-      source: "TIH-Anubhuti",
-      faculty: "Dr. Jainendra Shukla",
-      duration: "September 2021 - August 2024",
-      imageUrl: project1,
-      imageUrlExpanded: project3expand,
-      fullDescription: `Specific Learning Disabilities (SLDs) conditions manifest as a deficit in processing language, spoken or written, that may manifest itself as a difficulty to comprehend, speak, read, write, spell, or to do mathematical calculations and includes such conditions as perceptual disabilities, dyslexia, dysgraphia, dyscalculia, dyspraxia, and developmental aphasia. The cognitive flexibility associated with SLDs can manifest itself in noteworthy talents, which include a multi-sensory lens for creative and lateral thinking, resulting in out-of-the-box solutions for problems. The untapped potential of SLDs causes a high opportunity cost for the Nation’s progress. However, children with SLDs experience repeated failures and poor performance despite their continuous efforts and practice in learning. At the same time, worldwide, the condition will SLDs has been exacerbated due to the COVID-19 pandemic when education delivery shifted online. Thus, strengthening online education delivery will be important and impacting. However, research has indicated that educators might not always be aware of their students’ attentional focus, and this may be particularly true for novice teachers. The aim of this project is to develop an AI-empowered tool that will offer personalized, monitored, and evidence-based identification of attention levels among children with SLD. The project will first develop a multimodal dataset of audio-visual and physiological signals among 150 children with SLD to understand the attention and engagement of children with SLD during digital learning. It will further perform a systematic comparison of physiological, audio-visual, and eye-dilation signals for the attention monitoring of children with SLD to identify the valid indicators of attention. Based on these, the project will develop an AI-empowered system for real-time continuous monitoring of attention among children with SLD. Finally, the project will deploy and evaluate the efficacy of the developed AI-empowered system among 50 children with SLD and 25 typically developing children in naturalistic settings. Once validated the findings of this project can improve and monitor the attention of children with SLDs and can play a significant role in their inclusion during digital learning.`
+const DepartmentProjects = () => {
+  const isSmallScreen = useMediaQuery("(max-width: 1280px)");
+  const [expandedId, setExpandedId] = useState(null);
+
+  const cardsContainerRef = useRef(null);
+  const flipStateRef = useRef(null); // store flip state between render & GSAP callback
+
+  // Create context-safe callback helpers
+  // (We pass a config object to useGSAP below to access contextSafe)
+  const { contextSafe } = useGSAP(
+    () => {
+      // Nothing to do on mount; animation handled in dependency update below
     },
-    {
-      id: 2,
-      title: "AI Empowered Attention Evaluation among Children with ADHD",
-      description: "We are a collective of diverse thinkers reimagining how human-technology interactions can be seamless and meaningful.",
-      source: "TIH-Anubhuti",
-      faculty: "Dr. Jainendra Shukla",
-      duration: "September 2021 - August 2024",
-      imageUrl: project2,
-      // imageUrlExpanded: project3expand,
-      fullDescription: `Specific Learning Disabilities (SLDs) conditions manifest as a deficit in processing language, spoken or written, that may manifest itself as a difficulty to comprehend, speak, read, write, spell, or to do mathematical calculations and includes such conditions as perceptual disabilities, dyslexia, dysgraphia, dyscalculia, dyspraxia, and developmental aphasia. The cognitive flexibility associated with SLDs can manifest itself in noteworthy talents, which include a multi-sensory lens for creative and lateral thinking, resulting in out-of-the-box solutions for problems. The untapped potential of SLDs causes a high opportunity cost for the Nation’s progress. However, children with SLDs experience repeated failures and poor performance despite their continuous efforts and practice in learning. At the same time, worldwide, the condition will SLDs has been exacerbated due to the COVID-19 pandemic when education delivery shifted online. Thus, strengthening online education delivery will be important and impacting. However, research has indicated that educators might not always be aware of their students’ attentional focus, and this may be particularly true for novice teachers. The aim of this project is to develop an AI-empowered tool that will offer personalized, monitored, and evidence-based identification of attention levels among children with SLD. The project will first develop a multimodal dataset of audio-visual and physiological signals among 150 children with SLD to understand the attention and engagement of children with SLD during digital learning. It will further perform a systematic comparison of physiological, audio-visual, and eye-dilation signals for the attention monitoring of children with SLD to identify the valid indicators of attention. Based on these, the project will develop an AI-empowered system for real-time continuous monitoring of attention among children with SLD. Finally, the project will deploy and evaluate the efficacy of the developed AI-empowered system among 50 children with SLD and 25 typically developing children in naturalistic settings. Once validated the findings of this project can improve and monitor the attention of children with SLDs and can play a significant role in their inclusion during digital learning.`
-    },
-    {
-      id: 3,
-      title: "AI Empowered Attention Evaluation among Children with ADHD",
-      description: "We are a collective of diverse thinkers reimagining how human-technology interactions can be seamless and meaningful.",
-      source: "TIH-Anubhuti",
-      faculty: "Dr. Jainendra Shukla",
-      duration: "September 2021 - August 2024",
-      imageUrl: project3,
-      // imageUrlExpanded: project3expand,
-      fullDescription: `Specific Learning Disabilities (SLDs) conditions manifest as a deficit in processing language, spoken or written, that may manifest itself as a difficulty to comprehend, speak, read, write, spell, or to do mathematical calculations and includes such conditions as perceptual disabilities, dyslexia, dysgraphia, dyscalculia, dyspraxia, and developmental aphasia. The cognitive flexibility associated with SLDs can manifest itself in noteworthy talents, which include a multi-sensory lens for creative and lateral thinking, resulting in out-of-the-box solutions for problems. The untapped potential of SLDs causes a high opportunity cost for the Nation’s progress. However, children with SLDs experience repeated failures and poor performance despite their continuous efforts and practice in learning. At the same time, worldwide, the condition will SLDs has been exacerbated due to the COVID-19 pandemic when education delivery shifted online. Thus, strengthening online education delivery will be important and impacting. However, research has indicated that educators might not always be aware of their students’ attentional focus, and this may be particularly true for novice teachers. The aim of this project is to develop an AI-empowered tool that will offer personalized, monitored, and evidence-based identification of attention levels among children with SLD. The project will first develop a multimodal dataset of audio-visual and physiological signals among 150 children with SLD to understand the attention and engagement of children with SLD during digital learning. It will further perform a systematic comparison of physiological, audio-visual, and eye-dilation signals for the attention monitoring of children with SLD to identify the valid indicators of attention. Based on these, the project will develop an AI-empowered system for real-time continuous monitoring of attention among children with SLD. Finally, the project will deploy and evaluate the efficacy of the developed AI-empowered system among 50 children with SLD and 25 typically developing children in naturalistic settings. Once validated the findings of this project can improve and monitor the attention of children with SLDs and can play a significant role in their inclusion during digital learning.`
-    },
-  ]);
+    { scope: cardsContainerRef, dependencies: [] },
+  );
 
-  const totalColumns = 3;
-  const totalRows = Math.ceil(projects.length / totalColumns);
+  const handleExpand = contextSafe((id) => {
+    // Capture BEFORE state (all cards)
+    const cards = gsap.utils.toArray("[data-project-card]");
+    flipStateRef.current = Flip.getState(cards);
+
+    // Trigger React layout change
+    setExpandedId(id);
+  });
+
+  const handleCollapse = contextSafe(() => {
+    const cards = gsap.utils.toArray("[data-project-card]");
+    flipStateRef.current = Flip.getState(cards);
+    setExpandedId(null);
+  });
+
+  // Animate layout change whenever expandedId changes
+  useGSAP(
+    () => {
+      if (!flipStateRef.current) return;
+
+      Flip.from(flipStateRef.current, {
+        duration: 0.3,
+        ease: "power4.out",
+        absolute: true,
+      });
+
+      // clear stored state so stale references aren't reused
+      flipStateRef.current = null;
+    },
+    { scope: cardsContainerRef, dependencies: [expandedId] },
+  );
 
   return (
-    <div className="relative min-h-screen font-myfont bg-white">
+    <div className="w-full font-anybody">
+      <div className="texture-overlay" />
       <Navbar />
-      <div className="relative w-full">
-        <img src={publicationsBanner} alt="Publications Banner" className="w-full object-cover"/>
-        
-        <div className="absolute top-[40%] left-3/4 z-10">
-          <span className="text-white font-anybody text-[1vw] font-normal" style={{letterSpacing:1}}><span className="opacity-60">
-            RESEARCH</span> <span className="opacity-60">/</span> <span style={{color:'#FFF'}}>PROJECTS</span>
-          </span>
-        </div>
-        <h1
-          className="absolute bottom-10 left-[36%] transform -translate-x-1/2 text-[6vw] lg:text-[4vw] leading-normal font-normal font-anybody text-white"
-          style={{ fontStyle: 'normal' }}
+      <GridLines count={isSmallScreen ? 3 : 4} />
+      <Banner text={"DEPARTMENT PROJECTS"} />
+      <main className="w-[75vw] mx-[12.5vw] mt-[30px]">
+        <section
+          ref={cardsContainerRef}
+          className="grid grid-cols-1 xl:grid-cols-3 divide-y divide-black/10 mt-[30px] auto-rows-auto gap-y-px xl:gap-x-px"
         >
-          DEPARTMENT PROJECTS
-        </h1>
-      </div>
-
-      <div className="fixed inset-0 pointer-events-none z-5">
-        <div className="max-w-screen-xl mx-auto h-full relative">
-          <div className="absolute top-0 bottom-0 left-0 w-[0.25px] bg-neutral-500/30" />
-          <div className="absolute top-0 bottom-0 right-0 w-[0.25px] bg-neutral-500/30" />
-          <div className="absolute top-0 bottom-0 left-1/3 w-[0.25px] bg-neutral-500/30 lg:block hidden" />
-          <div className="absolute top-0 bottom-0 left-2/3 w-[0.25px] bg-neutral-500/30 lg:block hidden" />
-          <div className="absolute top-0 bottom-0 left-1/2 w-[0.25px] bg-neutral-500/30 sm:block lg:hidden hidden" />
-        </div>
-      </div>
-
-      <div className="relative max-w-screen-xl mx-auto pt-12 pb-12">
-        <div className="relative border border-neutral-500/30">
-          <div className="absolute inset-0 pointer-events-none z-10">
-            <div className="absolute top-0 bottom-0 left-1/3 w-[0.25px] bg-neutral-500/30 lg:block hidden" />
-            <div className="absolute top-0 bottom-0 left-2/3 w-[0.25px] bg-neutral-500/30 lg:block hidden" />
-            <div className="absolute top-0 bottom-0 left-1/2 w-[0.25px] bg-neutral-500/30 sm:block lg:hidden hidden" />
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-            {projects.map((project, index) => {
-              const col = index % totalColumns;
-              const row = Math.floor(index / totalColumns);
-              const isLastRow = row === totalRows - 1;
-              const isExpanded = expandedProjectId === project.id;
-
-              if (isExpanded) {
-                return (
-                  <div key={project.id} className="col-span-3 bg-[#096964] text-white p-10 transition-all duration-300 ease-in-out">
-                    <div className="flex flex-col lg:flex-row gap-8">
-                      <img
-                        src={project.imageUrlExpanded || project.imageUrl}
-                        alt={project.title}
-                        className="w-full lg:w-1/3 h-auto object-cover"
-                      />
-                      <div className="flex flex-col flex-grow pt-4">
-                        <h3 className="text-2xl lg:text-3xl font-bold mb-4 font-anybody">
-                          {project.title}
-                        </h3>
-                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-6">
-                          <div>
-                            <span className="text-sm uppercase font-anybody font-normal leading-normal opacity-60 text-white">
-                              Faculty Name
-                            </span>
-                            <div className="text-base font-anybody font-medium leading-normal text-white">
-                              {project.faculty || 'N/A'}
-                            </div>
-                          </div>
-                          <div>
-                            <span className="text-sm uppercase font-anybody font-normal leading-normal opacity-60 text-white">
-                              Project Funding
-                            </span>
-                            <div className="text-base font-anybody font-medium leading-normal text-white">
-                              {project.source}
-                            </div>
-                          </div>
-                          <div>
-                            <span className="text-sm uppercase font-anybody font-normal leading-normal opacity-60 text-white">
-                              Duration
-                            </span>
-                            <div className="text-base font-anybody font-medium leading-normal text-white">
-                              {project.duration || 'N/A'}
-                            </div>
-                          </div>
-                        </div>
-                        <p
-                          className="text-sm leading-[20px] opacity-70 whitespace-pre-line"
-                          style={{ fontFamily: 'Helvetica Now Display, sans-serif', color: '#FFF', fontWeight: '400' }}
-                        >
-                          {project.fullDescription}
-                        </p>
-                        <button
-                          onClick={() => setExpandedProjectId(null)}
-                          className="mt-8 self-end underline text-sm font-anybody"
-                        >
-                          CLOSE ✕
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                );
-              }
-
-              return (
-                <div
-                  key={project.id}
-                  className={`relative flex flex-col transition duration-300 ease-in-out hover:bg-[#096964] hover:text-white bg-white ${!isLastRow ? 'border-b border-neutral-500/30' : ''}`}
-                >
-                  <div className="p-9 flex flex-col justify-between h-full transition-colors duration-300 ease-in-out">
-                    <img src={project.imageUrl} alt={project.title} className="w-full h-44 object-cover mb-4" />
-                    <div className="flex flex-col justify-between grow">
-                      <div>
-                        <h3 className="font-semibold text-2xl lg:text-2xl leading-tight transition-colors duration-300 ease-in-out font-anybody">{project.title}</h3>
-                        <p className="text-sm mt-2 leading-snug transition-colors duration-300 ease-in-out" style={{ fontFamily: 'Helvetica Now Display, sans-serif', fontStyle: "normal" }}>{project.description}</p>
-                        <p className="font-medium text-sm mt-4 transition-colors duration-300 ease-in-out font-anybody">{project.source}</p>
-                      </div>
-                      <div className="mt-6 text-right">
-                        <button
-                          onClick={() => setExpandedProjectId(project.id)}
-                          className="group font-semibold text-sm hover:underline inline-flex items-center gap-1 transition-colors duration-300 ease-in-out font-anybody"
-                        >
-                          <span className="transition-colors duration-300 ease-in-out group-hover:text-white">VIEW DETAILS</span>
-                          <img src={ArrowRight} alt="" className="inline w-4 h-4 ml-1 transition-all duration-300 ease-in-out group-hover:invert group-hover:brightness-200" />
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </div>
+          {projects.map((project) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              expanded={project.id === expandedId}
+              onExpand={() => handleExpand(project.id)}
+              onCollapse={handleCollapse}
+            />
+          ))}
+        </section>
+      </main>
     </div>
   );
 };
+export default DepartmentProjects;
 
-export default App;
+function Banner({ text }) {
+  const bannerRef = useRef();
+  useGSAP(
+    () => {
+      gsap.fromTo(
+        ".reveal-animation-text",
+        {
+          y: "10%",
+          opacity: 0,
+          clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
+        },
+        {
+          y: 0,
+          opacity: 1,
+          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+          stagger: 0.1,
+          duration: 1.5,
+          ease: "expo.out",
+        },
+      );
+    },
+    { scope: bannerRef, dependencies: [text] }, // this will rerun on tab switch
+  );
+
+  return (
+    <section
+      ref={bannerRef}
+      role="banner"
+      className="relative min-h-[45vh] bg-brand-accent2"
+    >
+      <p className="absolute top-[84px] lg:top-[146px] xl:top-[176px] mt-[2em] right-[12.5vw] text-[12px] lg:text-[20px] text-white">
+        <span className="opacity-50">RESEARCH /</span>
+        <span> PROJECTS</span>
+      </p>
+      <h1 className="reveal-animation-text absolute bottom-4 left-[12.5vw] max-w-[75vw] text-[28px] lg:text-[72px] text-white">
+        {text}
+      </h1>
+      <img
+        src="/main-banner-back.png"
+        alt="banner"
+        className="w-full min-h-[45vh] object-cover"
+      />
+    </section>
+  );
+}
+
+function ProjectCard({ project, expanded, onExpand, onCollapse }) {
+  const cardRef = useRef();
+  const isSmallScreen = useMediaQuery("(max-width: 1024px)");
+
+  useGSAP(
+    () => {
+      gsap.set(".reveal-animation, .reveal-animation-text", {
+        clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+      });
+
+      gsap.from(".reveal-animation, .reveal-animation-text", {
+        y: "10%",
+        opacity: 0,
+        clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
+        stagger: 0.1,
+        duration: 0.5,
+        ease: "expo.out",
+      });
+
+      gsap.from(".reveal-animation-opacity-only", {
+        opacity: 0,
+        stagger: 0.1,
+        duration: 1.5,
+        ease: "expo.out",
+      });
+    },
+    { scope: cardRef, dependencies: [expanded] }, // this will rerun when this card mounts
+  );
+
+  const expandedClass = expanded
+    ? "z-[99] xl:col-span-3 xl:row-span-2 bg-brand-accent2 text-white"
+    : "";
+  return (
+    <div
+      data-project-card
+      ref={cardRef}
+      className={`w-full flex gap-[28px] lg:gap-[40px] p-[28px] lg:p-[40px] ${expandedClass}`}
+      style={{
+        flexDirection: expanded && !isSmallScreen ? "row" : "column",
+      }}
+    >
+      {expanded ? (
+        <>
+          <div className="reveal-animation-opacity-only w-full lg:max-w-[25%]">
+            <img
+              className="w-full h-full object-cover"
+              src={project.imageUrl}
+              alt=""
+            />
+          </div>
+          <div className="w-full flex flex-col justify-between gap-[32px] lg:gap-[48px]">
+            <div className="flex flex-col gap-[12px] lg:gap-[16px]">
+              <div className="flex flex-col gap-[16px] lg:gap-[24px]">
+                <h3 className="reveal-animation-text text-[16px] lg:text-[32px] font-medium">
+                  {project.title}
+                </h3>
+                <div className="reveal-animation-text flex gap-[12px] lg:gap-[32px] flex-wrap">
+                  <div>
+                    <h4 className="text-[14px] lg:text-[16px] opacity-80">
+                      Faculty Name
+                    </h4>
+                    <p className="text-[16px] lg:text-[18px] font-medium">
+                      {project.faculty}
+                    </p>
+                  </div>
+                  <div>
+                    <h4 className="text-[14px] lg:text-[16px] opacity-80">
+                      Project Funding
+                    </h4>
+                    <p className="text-[16px] lg:text-[18px] font-medium">
+                      {project.source}
+                    </p>
+                  </div>
+                  <div>
+                    <h4 className="text-[14px] lg:text-[16px] opacity-80">
+                      Duration
+                    </h4>
+                    <p className="text-[16px] lg:text-[18px] font-medium">
+                      {project.duration}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <p className="reveal-animation-text font-helvetica_now_display text-[14px] lg:text-[16px] opacity-80">
+                {project.fullDescription}
+              </p>
+            </div>
+            <div className="flex justify-end w-full">
+              <button
+                type="button"
+                onClick={onCollapse}
+                className="reveal-animation-opacity-only flex items-center text-[14px] lg:text-[20px] gap-[0.5em]"
+                aria-label={`Close ${project.title} details`}
+              >
+                <span>CLOSE</span>
+                <X className="w-[16px] h-[16px]" />
+              </button>
+            </div>
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="reveal-animation-opacity-only w-full">
+            <img
+              className="w-full h-full object-cover"
+              src={project.imageUrl}
+              alt=""
+            />
+          </div>
+          <div className="w-full flex flex-col justify-between gap-[32px] lg:gap-[48px]">
+            <div className="flex flex-col gap-[18px] lg:gap-[24px]">
+              <div className="flex flex-col gap-[12px] lg:gap-[16px]">
+                <div className="flex flex-col gap-[12px] lg:gap-[16px]">
+                  <h3 className="reveal-animation-text text-[16px] lg:text-[20px] font-medium">
+                    {project.title}
+                  </h3>
+                </div>
+                <p className="reveal-animation-text font-helvetica_now_display text-[14px] lg:text-[18px] opacity-60">
+                  {project.description}
+                </p>
+              </div>
+              <p className="reveal-animation-text text-[14px] lg:text-[18px] opacity-60">
+                {project.source}
+              </p>
+            </div>
+            <div className="flex justify-end w-full">
+              <button
+                type="button"
+                onClick={onExpand}
+                className="reveal-animation-opacity-only flex items-center text-[14px] lg:text-[18px] gap-[0.5em]"
+                aria-label={`View ${project.title} details`}
+              >
+                <span>VIEW DETAILS</span>
+                <ArrowRight className="w-[16px] h-[16px]" />
+              </button>
+            </div>
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
