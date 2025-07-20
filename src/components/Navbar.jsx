@@ -177,7 +177,7 @@ const Navbar = () => {
       </header>
       <div
         id="nav-bg"
-        className={`${firstSidebarOpen ? "" : "hidden"} absolute z-[9998] top-0 left-0 h-[100vh] w-full bg-black/20 backdrop-blur-sm`}
+        className={`${firstSidebarOpen ? "" : "hidden"} fixed z-[9998] top-0 left-0 h-[100vh] w-full bg-black/20 backdrop-blur-sm`}
         onClick={closeSidebar}
       />
       <div
