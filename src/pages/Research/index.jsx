@@ -8,6 +8,7 @@ import { ArrowRight, Search, X } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { Flip } from "gsap/Flip";
+import Footer from "../../components/Footer";
 
 gsap.registerPlugin(Flip, useGSAP);
 
@@ -184,7 +185,7 @@ const Research = () => {
       Flip.from(flipStateRef.current, {
         duration: 0.3,
         ease: "power4.out",
-        absolute: true,
+        absolute: false,
       });
 
       // clear stored state so stale references aren't reused
@@ -220,6 +221,7 @@ const Research = () => {
             ))}
         </section>
       </main>
+      <Footer />
     </div>
   );
 };

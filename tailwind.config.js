@@ -12,8 +12,11 @@ export default {
       },
       colors: {
         brand: {
-          accent1: "#69C2BD", // Teal Light
-          accent2: "#096964", // Primary Branding Green
+          accent1: "#69C2BD",
+          accent2: {
+            DEFAULT: "#096964",
+            130: "#064a46",
+          },
           gray1: "#939598", // Light Gray
           gray2: "#818285", // Medium Gray
           gray3: "#6D6E71", // Darker Gray
