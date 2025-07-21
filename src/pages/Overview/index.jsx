@@ -39,7 +39,7 @@ const OverviewPage = () => {
           Human Centred Design
         </p>
         <h1 className="text-[52px] font-light reveal-text">Overview</h1>
-        <div className="w-[50vw] h-[0.5em] bg-brand-accent2-130" />
+        <div className="w-[50vw] h-[0.5em] bg-brand-accent2" />
         <p className="text-[18px] mt-[40px] reveal-text mr-[48px]">
           Admission to this program will be through two channels – approximately
           half of the seats will be through the Joint Admission Counselling
