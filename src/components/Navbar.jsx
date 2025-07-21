@@ -194,14 +194,16 @@ const Navbar = ({ type }) => {
       >
         <div
           id="nav-sidebar-first"
-          className="relative flex flex-col justify-center w-[30vw] bg-[#096964] text-white"
+          className="relative flex flex-col justify-between w-[30vw] bg-[#096964] text-white"
         >
-          <button
-            onClick={closeSidebar}
-            className="absolute top-[65px] right-[70px] flex items-center gap-[2px] border border-white rounded-full p-[1em] hover:bg-white hover:text-[#096964] transition-all ease-out duration-150"
-          >
-            <X size={40} />
-          </button>
+          <div className="flex justify-end px-[70px] py-[60px]">
+            <button
+              onClick={closeSidebar}
+              className="flex items-center gap-[2px] border border-white rounded-full p-[1em] hover:bg-white hover:text-[#096964] transition-all ease-out duration-150"
+            >
+              <X size={40} />
+            </button>
+          </div>
           <div>
             {navigationMap.map((linkGroup, idx) => {
               return (
@@ -244,6 +246,9 @@ const Navbar = ({ type }) => {
               );
             })}
           </div>
+          <div className="px-[70px] py-[60px] opacity-40">
+            <img src="/hcd-logo-large-plain.svg" alt="" />
+          </div>
         </div>
         <div
           id="nav-sidebar-second"
@@ -252,7 +257,7 @@ const Navbar = ({ type }) => {
           {activeGroup &&
             activeGroup.children &&
             activeGroup.children.map((child, idx) => (
-              <div className="relative px-[70px] py-[20px] group">
+              <div className="relative px-[70px] py-[20px] group hover:pl-[80px] transition-all duration-[300ms]">
                 <a
                   id="nav-link-secondary"
                   key={idx}
