@@ -182,9 +182,8 @@ function ControlPanel({ setSearch, activeTab, setActiveTab }) {
 function ControlPanelTabButton({ text, active, onClick }) {
   return (
     <button
-      className={`flex gap-[12px] lg:gap-[24px] items-center justify-center py-[0.5em] border border-black/30 ${
-        active ? "bg-brand-accent2 text-white" : ""
-      }`}
+      className={`flex gap-[12px] lg:gap-[24px] items-center justify-center py-[0.5em] border border-black/30 ${active ? "bg-brand-accent2 text-white" : ""
+        }`}
       onClick={onClick}
     >
       <Search className="w-[12px] lg:w-[16px] aspect-square h-auto" />
@@ -236,7 +235,7 @@ function CourseCard({ course }) {
         <h3 className="reveal-animation-text text-[18px] lg:text-[24px] leading-tight">
           {course.title}
         </h3>
-        <div className="reveal-animation-text text-[14px] lg:text-[18px] text-brand-gray4">
+        <div className="reveal-animation-text mt-[1em] text-[14px] lg:text-[18px] text-brand-gray4">
           <div className="flex justify-between">
             <p>
               <span className="text-brand-accent2">Acronym: </span>

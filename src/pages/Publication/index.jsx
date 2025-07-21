@@ -78,24 +78,43 @@ function Banner({ text }) {
   useGSAP(
     () => {
       gsap.fromTo(
-        '.reveal-animation-text',
-        { y: '10%', opacity: 0, clipPath: 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)' },
-        { y: 0, opacity: 1, clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', stagger: 0.1, duration: 1.5, ease: 'expo.out' }
+        ".reveal-animation-text",
+        {
+          y: "10%",
+          opacity: 0,
+          clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
+        },
+        {
+          y: 0,
+          opacity: 1,
+          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+          stagger: 0.1,
+          duration: 1.5,
+          ease: "expo.out",
+        },
       );
     },
-    { scope: bannerRef, dependencies: [text] }
+    { scope: bannerRef, dependencies: [text] }, // this will rerun on tab switch
   );
 
   return (
-    <section ref={bannerRef} className="relative min-h-[45vh] bg-brand-accent2">
-      <div className="texture-overlay absolute inset-0" />
-      <img src={publicationsBanner} alt="Publications Banner" className="w-full h-full object-cover absolute inset-0" />
-      <p className="absolute top-[84px] right-[12.5vw] text-[12px] lg:text-[20px] text-white">
-        <span className="opacity-50">RESEARCH /</span> <span>PUBLICATIONS</span>
+    <section
+      ref={bannerRef}
+      role="banner"
+      className="relative min-h-[45vh] bg-brand-accent2"
+    >
+      <p className="absolute top-[84px] lg:top-[146px] xl:top-[176px] mt-[2em] right-[12.5vw] text-[12px] lg:text-[20px] text-white">
+        <span className="opacity-50">RESEARCH /</span>
+        <span> PUBLICATIONS</span>
       </p>
       <h1 className="reveal-animation-text absolute bottom-4 left-[12.5vw] text-[28px] lg:text-[72px] text-white">
         {text}
       </h1>
+      <img
+        src="/main-banner-back.png"
+        alt="banner"
+        className="w-full min-h-[45vh] object-cover"
+      />
     </section>
   );
 }
@@ -162,7 +181,7 @@ const PublicationPage = () => {
   const [expandedId, setExpandedId] = useState(null);
   const containerRef = useRef(null);
   const flipStateRef = useRef(null);
-  const { contextSafe } = useGSAP(() => {}, { scope: containerRef, dependencies: [] });
+  const { contextSafe } = useGSAP(() => { }, { scope: containerRef, dependencies: [] });
 
   const handleExpand = contextSafe(id => {
     const cards = gsap.utils.toArray('[data-publication-card]');
@@ -189,18 +208,19 @@ const PublicationPage = () => {
   return (
     <div className="w-full font-anybody">
       <Navbar />
+      <div className="texture-overlay" />
       <GridLines count={isSmallScreen ? 3 : 4} />
       <Banner text="PUBLICATIONS" />
       <main className="w-[75vw] mx-[12.5vw] mt-[30px]">
-        <div className="flex flex-col lg:flex-row gap-4 mb-6">
+        <div className="flex flex-col lg:flex-row pl-[1px] gap-[1px] mb-6">
           <div className="flex-1">
-            <Dropdown label="ALL PUBLICATIONS" options={['ALL PUBLICATIONS','2025 PUBLICATIONS','2024 PUBLICATIONS']} selected={selectedPub} setSelected={setSelectedPub} />
+            <Dropdown label="ALL PUBLICATIONS" options={['ALL PUBLICATIONS', '2025 PUBLICATIONS', '2024 PUBLICATIONS']} selected={selectedPub} setSelected={setSelectedPub} />
           </div>
           <div className="flex-1">
-            <Dropdown label="GENRE" options={['GENRE','Journal','Conference','Book','Other']} selected={selectedGenre} setSelected={setSelectedGenre} />
+            <Dropdown label="GENRE" options={['GENRE', 'Journal', 'Conference', 'Book', 'Other']} selected={selectedGenre} setSelected={setSelectedGenre} />
           </div>
           <div className="flex-1">
-            <Dropdown label="RESEARCH AREA" options={['RESEARCH AREA','AI','HMI','CI','MIDAS','ETiDM','Other']} selected={selectedRes} setSelected={setSelectedRes} />
+            <Dropdown label="RESEARCH AREA" options={['RESEARCH AREA', 'AI', 'HMI', 'CI', 'MIDAS', 'ETiDM', 'Other']} selected={selectedRes} setSelected={setSelectedRes} />
           </div>
         </div>
         <section ref={containerRef} className="grid grid-cols-1 xl:grid-cols-3 divide-y divide-black/10 mt-[30px] auto-rows-auto gap-y-px xl:gap-x-px">

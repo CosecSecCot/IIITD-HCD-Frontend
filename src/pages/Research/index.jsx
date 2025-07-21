@@ -25,6 +25,7 @@ const dummyLabs = [
     website: "#",
     foreground: "#FFFFFF",
     background: "#47638A",
+    backgroundDim: "#47638A80",
   },
   {
     id: 2,
@@ -38,6 +39,7 @@ const dummyLabs = [
     website: "#",
     foreground: "#000000",
     background: "#A4DAC3",
+    backgroundDim: "#A4DAC380",
   },
   {
     id: 3,
@@ -51,6 +53,7 @@ const dummyLabs = [
     website: "#",
     foreground: "#000000",
     background: "#89C4ED",
+    backgroundDim: "#89C4ED80",
   },
   {
     id: 4,
@@ -64,6 +67,7 @@ const dummyLabs = [
     website: "#",
     foreground: "#000000",
     background: "#F18800",
+    backgroundDim: "#F1880080",
   },
   {
     id: 5,
@@ -77,6 +81,7 @@ const dummyLabs = [
     website: "#",
     foreground: "#FFFFFF",
     background: "#111827",
+    backgroundDim: "#11182780",
   },
   {
     id: 6,
@@ -90,6 +95,7 @@ const dummyLabs = [
     website: "#",
     foreground: "#FFFFFF",
     background: "#430055",
+    backgroundDim: "#43005580",
   },
   {
     id: 7,
@@ -103,6 +109,7 @@ const dummyLabs = [
     website: "#",
     foreground: "#FFFFFF",
     background: "#D833C2",
+    backgroundDim: "#D833C280",
   },
   {
     id: 8,
@@ -116,6 +123,7 @@ const dummyLabs = [
     website: "#",
     foreground: "#000000",
     background: "#F8C381",
+    backgroundDim: "#F8C38180",
   },
   {
     id: 9,
@@ -129,6 +137,7 @@ const dummyLabs = [
     website: "#",
     foreground: "#FFFFFF",
     background: "#898A93",
+    backgroundDim: "#898A9380",
   },
   {
     id: 10,
@@ -142,6 +151,7 @@ const dummyLabs = [
     website: "#",
     foreground: "#000000",
     background: "#D1BED5",
+    backgroundDim: "#D1BED580",
   },
 ];
 
@@ -183,7 +193,7 @@ const Research = () => {
       if (!flipStateRef.current) return;
 
       Flip.from(flipStateRef.current, {
-        duration: 0.3,
+        duration: 0.5,
         ease: "power4.out",
         absolute: false,
       });
@@ -296,9 +306,8 @@ function ControlPanel({ activeTab, setActiveTab }) {
 function ControlPanelTabButton({ text, active, onClick }) {
   return (
     <button
-      className={`flex gap-[12px] lg:gap-[24px] items-center justify-center py-[0.5em] border border-black/30 ${
-        active ? "bg-brand-accent2 text-white" : ""
-      }`}
+      className={`flex gap-[12px] lg:gap-[24px] items-center justify-center py-[0.5em] border border-black/30 ${active ? "bg-brand-accent2 text-white" : ""
+        }`}
       onClick={onClick}
     >
       <Search className="w-[12px] lg:w-[16px] aspect-square h-auto" />
@@ -309,6 +318,7 @@ function ControlPanelTabButton({ text, active, onClick }) {
 
 function LabCard({ lab, expanded, onExpand, onCollapse }) {
   const cardRef = useRef();
+  const [hover, setHover] = useState(false);
 
   useGSAP(
     () => {
@@ -348,13 +358,19 @@ function LabCard({ lab, expanded, onExpand, onCollapse }) {
       style={
         expanded
           ? {
-              backgroundColor: lab.background,
-              color: lab.foreground,
-            }
+            backgroundColor: lab.background,
+            color: lab.foreground,
+          }
           : {
-              backgroundColor: "white",
-            }
+            backgroundColor: hover ? lab.backgroundDim : "white",
+          }
       }
+      onMouseEnter={() => {
+        setHover(true);
+      }}
+      onMouseLeave={() => {
+        setHover(false);
+      }}
       className={`w-full flex flex-col justify-between gap-[32px] lg:gap-[48px] p-[28px] lg:p-[40px] ${expanded_class}`}
     >
       {expanded ? (

@@ -87,7 +87,7 @@ const DepartmentProjects = () => {
       if (!flipStateRef.current) return;
 
       Flip.from(flipStateRef.current, {
-        duration: 0.3,
+        duration: 0.5,
         ease: "power4.out",
         absolute: false,
       });
@@ -174,6 +174,7 @@ function Banner({ text }) {
 
 function ProjectCard({ project, expanded, onExpand, onCollapse }) {
   const cardRef = useRef();
+  const [hover, setHover] = useState(false);
   const isSmallScreen = useMediaQuery("(max-width: 1024px)");
 
   useGSAP(
@@ -203,11 +204,17 @@ function ProjectCard({ project, expanded, onExpand, onCollapse }) {
 
   const expandedClass = expanded
     ? "z-[99] xl:col-span-3 xl:row-span-2 bg-brand-accent2 text-white"
-    : "";
+    : "hover:bg-brand-accent2/10";
   return (
     <div
       data-project-card
       ref={cardRef}
+      onMouseEnter={() => {
+        setHover(true);
+      }}
+      onMouseLeave={() => {
+        setHover(false);
+      }}
       className={`w-full flex gap-[28px] lg:gap-[40px] p-[28px] lg:p-[40px] ${expandedClass}`}
       style={{
         flexDirection: expanded && !isSmallScreen ? "row" : "column",
