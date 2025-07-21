@@ -5,6 +5,9 @@ import CourseListPage from "./CourseListPage";
 import StudyPhDPage from "./StudyPhDPage";
 import StudyBTechPage from "./StudyBTechPage";
 import Publication from "./Publication";
+import OverviewPage from "./Overview";
+import PlacementPage from "./Placements";
+import CollaborationsPage from "./Collaborations";
 
 /**
  * @typedef {Object} routerType
@@ -31,7 +34,7 @@ const pagesData = [
     title: "Department Projects",
   },
   {
-    path: "/course_list",
+    path: "/about/courses",
     element: <CourseListPage />,
     title: "Course List",
   },
@@ -50,6 +53,21 @@ const pagesData = [
     element: <Publication />,
     title: "Publications",
   },
+  {
+    path: "/about/overview",
+    element: <OverviewPage />,
+    title: "Overview",
+  },
+  {
+    path: "/about/placement",
+    element: <PlacementPage />,
+    title: "Placement",
+  },
+  {
+    path: "/about/collaborations",
+    element: <CollaborationsPage />,
+    title: "Collaborations", 
+  }
 ];
 
 export default pagesData;

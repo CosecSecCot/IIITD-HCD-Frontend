@@ -1,13 +1,58 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Navbar from '../../components/Navbar';
+import GridLines from '../../components/GridLines';
+import Footer from '../../components/Footer';
 import publicationsBanner from '../../assets/banner-main-back.png';
-import ArrowRight from '../../assets/Arrow - Right.svg';
+import { ArrowRight, X } from 'lucide-react';
+import { useMediaQuery } from '../../hooks/useMediaQuery';
+import gsap from 'gsap';
+import { Flip } from 'gsap/Flip';
+import { useGSAP } from '@gsap/react';
 import prof1 from '../../assets/project-3.png';
 import prof2 from '../../assets/project-3.png';
 import prof3 from '../../assets/project-3.png';
 import prof4 from '../../assets/project-3.png';
 import prof5 from '../../assets/project-3.png';
 import prof6 from '../../assets/project-3.png';
+
+gsap.registerPlugin(Flip);
+
+function Dropdown({ label, options, selected, setSelected }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="relative w-full">
+      <button
+        type="button"
+        className="w-full px-6 py-4 border border-black/30 bg-white text-black flex items-center justify-between text-[12px] lg:text-[18px] uppercase font-semibold hover:bg-neutral-100"
+        onClick={() => setOpen(o => !o)}
+      >
+        {selected || label}
+        <svg
+          className={`w-4 h-4 ml-2 transition-transform ${open ? 'rotate-180' : ''}`}
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={2}
+          viewBox="0 0 24 24"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      {open && (
+        <ul className="absolute left-0 mt-1 w-full bg-white border border-black/30 shadow-lg z-20">
+          {options.map(opt => (
+            <li
+              key={opt}
+              className={`px-6 py-3 hover:bg-brand-accent2 hover:text-white cursor-pointer text-[12px] lg:text-[18px] font-semibold ${selected === opt ? 'bg-black/10' : ''}`}
+              onClick={() => { setSelected(opt); setOpen(false); }}
+            >
+              {opt}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
 
 const publications = [
   // 2025
@@ -28,177 +73,156 @@ const publications = [
 
 const years = [...new Set(publications.map(pub => pub.year))].sort((a, b) => b - a);
 
-// Dropdown component
-const Dropdown = ({ label, options, selected, setSelected }) => {
-  const [open, setOpen] = useState(false);
+function Banner({ text }) {
+  const bannerRef = useRef();
+  useGSAP(
+    () => {
+      gsap.fromTo(
+        '.reveal-animation-text',
+        { y: '10%', opacity: 0, clipPath: 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)' },
+        { y: 0, opacity: 1, clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', stagger: 0.1, duration: 1.5, ease: 'expo.out' }
+      );
+    },
+    { scope: bannerRef, dependencies: [text] }
+  );
+
   return (
-    <div className="relative w-full h-full"> {/* Fills grid cell just like a card */}
-      <button
-        className="w-full h-16 px-6 py-4 border border-neutral-300 bg-white text-black flex items-center justify-between font-semibold text-base tracking-wide uppercase hover:bg-neutral-100 focus:outline-none"
-        onClick={() => setOpen(o => !o)}
-        type="button"
-      >
-        {selected || label}
-        <svg className={`w-4 h-4 ml-2 transition-transform ${open ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
-      </button>
-      {open && (
-        <ul className="absolute left-0 mt-1 w-full bg-white border border-neutral-300 shadow-lg z-20">
-          {options.map(option => (
-            <li
-              key={option}
-              className={`px-6 py-3 hover:bg-[#096964] hover:text-white cursor-pointer ${selected===option?'bg-neutral-100':''}`}
-              onClick={() => {
-                setSelected(option);
-                setOpen(false);
-              }}
-            >
-              {option}
-            </li>
-          ))}
-        </ul>
+    <section ref={bannerRef} className="relative min-h-[45vh] bg-brand-accent2">
+      <div className="texture-overlay absolute inset-0" />
+      <img src={publicationsBanner} alt="Publications Banner" className="w-full h-full object-cover absolute inset-0" />
+      <p className="absolute top-[84px] right-[12.5vw] text-[12px] lg:text-[20px] text-white">
+        <span className="opacity-50">RESEARCH /</span> <span>PUBLICATIONS</span>
+      </p>
+      <h1 className="reveal-animation-text absolute bottom-4 left-[12.5vw] text-[28px] lg:text-[72px] text-white">
+        {text}
+      </h1>
+    </section>
+  );
+}
+
+function PublicationCard({ pub, expanded, onExpand, onCollapse }) {
+  const cardRef = useRef();
+  useGSAP(
+    () => {
+      gsap.fromTo(
+        '.reveal-animation, .reveal-animation-text',
+        { y: '10%', opacity: 0, clipPath: 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)' },
+        { y: 0, opacity: 1, clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', stagger: 0.1, duration: 0.5, ease: 'expo.out' }
+      );
+    },
+    { scope: cardRef, dependencies: [expanded] }
+  );
+
+  return (
+    <div
+      data-publication-card
+      ref={cardRef}
+      className={`w-full p-[28px] lg:p-[40px] transition duration-300 ${expanded ? 'col-span-3 bg-[#096964] text-white' : 'bg-white hover:bg-[#096964] hover:text-white cursor-pointer'}`}
+      style={expanded ? { gridColumn: 'span 3' } : {}}
+      onClick={!expanded ? onExpand : undefined}
+    >
+      {expanded ? (
+        <div className="flex flex-col lg:flex-row gap-8">
+          <img src={pub.avatar} alt={pub.name} className="w-full lg:w-1/3 object-cover rounded-lg" />
+          <div className="flex-1 flex flex-col justify-between">
+            <div>
+              <h3 className="text-[24px] lg:text-[32px] font-medium mb-4 reveal-animation-text">{pub.details.title}</h3>
+              <div className="text-[20px] font-medium mb-2 reveal-animation-text">{pub.name}</div>
+              <p className="text-[16px] opacity-80 mb-2 reveal-animation-text">{pub.desc}</p>
+              <p className="text-[16px] opacity-70 mb-4 reveal-animation-text">{pub.details.abstract}</p>
+            </div>
+            <div className="flex justify-between items-center">
+              <a href={pub.details.link} className="underline font-medium reveal-animation-opacity-only" target="_blank" rel="noopener noreferrer">
+                {pub.details.link}
+              </a>
+              <button type="button" onClick={onCollapse} className="underline text-[14px] flex items-center gap-2 reveal-animation-opacity-only">
+                <span>CLOSE</span> <X className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className="flex items-center">
+          <img src={pub.avatar} alt={pub.name} className="w-[80px] h-[100px] object-cover rounded-md mr-5 reveal-animation-opacity-only" />
+          <div className="flex-1 flex flex-col justify-center">
+            <div className="font-medium text-[16px] mb-1 reveal-animation-text">{pub.name}</div>
+            <p className="text-[14px] opacity-60 mb-2 reveal-animation-text">{pub.desc}</p>
+            <button type="button" onClick={onExpand} className="inline-flex items-center font-semibold text-[14px] gap-2 reveal-animation-opacity-only">
+              VIEW DETAILS <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
       )}
     </div>
   );
-};
+}
 
 const PublicationPage = () => {
-    /*
-    const [publications, setPublications] = useState([]);
-
-    useEffect(() => {
-    const fetchPublications = async () => {
-        try {
-        const res = await axios.get('http://localhost:1337/api/publications?populate=*');
-        // Map data as per your backend structure:
-        const data = res.data.data.map(item => ({
-            id: item.id,
-            year: item.year, // Adjust if different
-            name: item.author_name, // Adjust property as per backend
-            avatar: item.avatar_url, // Adjust property as per backend
-            desc: item.description, // Adjust property as per backend
-            details: {
-            title: item.title,
-            abstract: item.abstract,
-            link: item.link,
-            },
-        }));
-        setPublications(data);
-        } catch (err) {
-        console.error('Failed to fetch publication data:', err);
-        }
-    };
-
-    fetchPublications();
-    }, []);
-*/
+  const isSmallScreen = useMediaQuery('(max-width:1280px)');
   const [expandedId, setExpandedId] = useState(null);
+  const containerRef = useRef(null);
+  const flipStateRef = useRef(null);
+  const { contextSafe } = useGSAP(() => {}, { scope: containerRef, dependencies: [] });
 
-  const [selectedPublication, setSelectedPublication] = useState('ALL PUBLICATIONS');
+  const handleExpand = contextSafe(id => {
+    const cards = gsap.utils.toArray('[data-publication-card]');
+    flipStateRef.current = Flip.getState(cards);
+    setExpandedId(id);
+  });
+  const handleCollapse = contextSafe(() => {
+    const cards = gsap.utils.toArray('[data-publication-card]');
+    flipStateRef.current = Flip.getState(cards);
+    setExpandedId(null);
+  });
+
+  useGSAP(() => {
+    if (!flipStateRef.current) return;
+    Flip.from(flipStateRef.current, { duration: 0.3, ease: 'power4.out', absolute: false });
+    flipStateRef.current = null;
+  }, { scope: containerRef, dependencies: [expandedId] });
+
+  // Filter state
+  const [selectedPub, setSelectedPub] = useState('ALL PUBLICATIONS');
   const [selectedGenre, setSelectedGenre] = useState('GENRE');
-  const [selectedResearch, setSelectedResearch] = useState('RESEARCH AREA');
-
-  const publicationOptions = ['ALL PUBLICATIONS', '2025 PUBLICATIONS', '2024 PUBLICATIONS'];
-  const genreOptions = ['GENRE', 'Journal', 'Conference', 'Book', 'Other'];
-  const researchOptions = ['RESEARCH AREA', 'AI', 'HMI', 'CI', 'MIDAS', 'ETiDM', 'Other'];
+  const [selectedRes, setSelectedRes] = useState('RESEARCH AREA');
 
   return (
-    <div className="relative min-h-screen font-myfont bg-white">
+    <div className="w-full font-anybody">
       <Navbar />
-      <div className="relative w-full">
-        <img src={publicationsBanner} alt="Publications Banner" className="w-full object-cover"/>
-        <div className="absolute top-[40%] left-3/4 z-10">
-          <span className="text-white font-anybody text-[1vw] font-normal" style={{letterSpacing:1}}>
-            <span className="opacity-60">RESEARCH</span> <span className="opacity-60">/</span> <span style={{color:'#FFF'}}>PUBLICATIONS</span>
-          </span>
-        </div>
-        <h1 className="absolute bottom-10 left-[22%] transform -translate-x-1/2 text-[6vw] lg:text-[4vw] leading-normal font-normal font-anybody text-white">
-          PUBLICATIONS
-        </h1>
-      </div>
-      <div className="fixed inset-0 pointer-events-none z-5">
-        <div className="max-w-screen-xl mx-auto h-full relative">
-          <div className="absolute top-0 bottom-0 left-0 w-[0.25px] bg-neutral-500/30" />
-          <div className="absolute top-0 bottom-0 right-0 w-[0.25px] bg-neutral-500/30" />
-          <div className="absolute top-0 bottom-0 left-1/3 w-[0.25px] bg-neutral-500/30 lg:block hidden" />
-          <div className="absolute top-0 bottom-0 left-2/3 w-[0.25px] bg-neutral-500/30 lg:block hidden" />
-          <div className="absolute top-0 bottom-0 left-1/2 w-[0.25px] bg-neutral-500/30 sm:block lg:hidden hidden" />
-        </div>
-      </div>
-      {/* DROPDOWNS ABOVE YEARS */}
-      <div className="relative max-w-screen-xl mx-auto flex flex-col pt-12 pb-12">
-        <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 mb-6 w-full z-10 px-2 lg:px-0">
+      <GridLines count={isSmallScreen ? 3 : 4} />
+      <Banner text="PUBLICATIONS" />
+      <main className="w-[75vw] mx-[12.5vw] mt-[30px]">
+        <div className="flex flex-col lg:flex-row gap-4 mb-6">
           <div className="flex-1">
-            <Dropdown label="ALL PUBLICATIONS" options={publicationOptions} selected={selectedPublication} setSelected={setSelectedPublication} />
+            <Dropdown label="ALL PUBLICATIONS" options={['ALL PUBLICATIONS','2025 PUBLICATIONS','2024 PUBLICATIONS']} selected={selectedPub} setSelected={setSelectedPub} />
           </div>
           <div className="flex-1">
-            <Dropdown label="GENRE" options={genreOptions} selected={selectedGenre} setSelected={setSelectedGenre} />
+            <Dropdown label="GENRE" options={['GENRE','Journal','Conference','Book','Other']} selected={selectedGenre} setSelected={setSelectedGenre} />
           </div>
           <div className="flex-1">
-            <Dropdown label="RESEARCH AREA" options={researchOptions} selected={selectedResearch} setSelected={setSelectedResearch} />
+            <Dropdown label="RESEARCH AREA" options={['RESEARCH AREA','AI','HMI','CI','MIDAS','ETiDM','Other']} selected={selectedRes} setSelected={setSelectedRes} />
           </div>
         </div>
-        <div className="relative border border-neutral-500/30">
+        <section ref={containerRef} className="grid grid-cols-1 xl:grid-cols-3 divide-y divide-black/10 mt-[30px] auto-rows-auto gap-y-px xl:gap-x-px">
           {years.map(year => (
-            <div key={year} className="mb-8">
-              <div className="text-2xl font-bold my-4 ml-4 text-[#096964]">{year}</div>
+            <div key={year} className="col-span-3 bg-white">
+              <div className="text-[20px] lg:text-[32px] font-bold text-[#096964] py-4 px-4">{year}</div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-                {publications.filter(pub => pub.year === year).map(pub => {
-                  const isExpanded = expandedId === pub.id;
-                  if (isExpanded) {
-                    return (
-                      <div key={pub.id} className="col-span-3 bg-[#096964] text-white p-10 transition-all duration-300 ease-in-out">
-                        <div className="flex flex-col lg:flex-row gap-8">
-                          <img
-                            src={pub.avatar}
-                            alt={pub.name}
-                            className="w-full lg:w-1/3 h-auto object-cover rounded-lg"
-                          />
-                          <div className="flex flex-col flex-grow pt-4">
-                            <h3 className="text-2xl lg:text-3xl font-bold mb-4 font-anybody">
-                              {pub.details.title}
-                            </h3>
-                            <div className="text-lg font-anybody font-medium mb-2">{pub.name}</div>
-                            <div className="text-base opacity-80 mb-2">{pub.desc}</div>
-                            <div className="mb-4 text-base opacity-70">{pub.details.abstract}</div>
-                            <a href={pub.details.link} className="underline text-white font-anybody mb-6" target="_blank" rel="noopener noreferrer">
-                              {pub.details.link}
-                            </a>
-                            <button
-                              onClick={() => setExpandedId(null)}
-                              className="mt-8 self-end underline text-sm font-anybody"
-                            >
-                              CLOSE ✕
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  }
-                  return (
-                    <div
-                      key={pub.id}
-                      className="flex flex-row items-center border border-neutral-300 bg-white h-40 px-4 py-3 transition duration-300 ease-in-out hover:bg-[#096964] hover:text-white"
-                      style={{margin:0, borderRightWidth: '0.5px', borderBottomWidth: '0.5px', borderLeftWidth: '0.5px', borderTopWidth: '0.5px'}}
-                    >
-                      <img src={pub.avatar} alt={pub.name} className="w-20 h-24 object-cover rounded-md mr-5" />
-                      <div className="flex-1 flex flex-col justify-center">
-                        <div className="font-bold text-base lg:text-lg font-anybody">{pub.name}</div>
-                        <div className="text-sm mt-1 mb-2 font-normal" style={{ fontFamily: 'Helvetica Now Display, sans-serif' }}>{pub.desc}</div>
-                        <button
-                          onClick={() => setExpandedId(pub.id)}
-                          className="group font-semibold text-sm inline-flex items-center gap-1 font-anybody mt-2"
-                        >
-                          VIEW ALL <img src={ArrowRight} alt="" className="inline w-4 h-4 ml-1 group-hover:invert group-hover:brightness-200" />
-                        </button>
-                      </div>
-                    </div>
-                  );
-                })}
+                {publications.filter(pub => pub.year === year).map(pub => (
+                  <PublicationCard
+                    key={pub.id}
+                    pub={pub}
+                    expanded={expandedId === pub.id}
+                    onExpand={() => handleExpand(pub.id)}
+                    onCollapse={handleCollapse}
+                  />
+                ))}
               </div>
             </div>
           ))}
-        </div>
-      </div>
+        </section>
+      </main>
+      <Footer />
     </div>
   );
 };
