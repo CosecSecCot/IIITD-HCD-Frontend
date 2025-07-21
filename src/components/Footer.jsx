@@ -76,7 +76,7 @@ const Footer = () => {
               >
                 Contact Us
               </h2>
-              <div class="flex gap-3 mt-2">
+              <div className="flex gap-3 mt-2">
                 <a href="mailto:hcd@iiitd.ac.in" aria-label="Email">
                   <MailIcon size={26} />
                 </a>

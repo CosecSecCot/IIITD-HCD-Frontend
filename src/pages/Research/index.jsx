@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 import LabLogo from "../../assets/research-lab-logo.svg";
 import GridLines from "../../components/GridLines";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
@@ -8,7 +9,6 @@ import { ArrowRight, Search, X } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { Flip } from "gsap/Flip";
-import Footer from "../../components/Footer";
 
 gsap.registerPlugin(Flip, useGSAP);
 
