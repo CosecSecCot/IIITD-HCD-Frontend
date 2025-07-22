@@ -306,8 +306,9 @@ function ControlPanel({ activeTab, setActiveTab }) {
 function ControlPanelTabButton({ text, active, onClick }) {
   return (
     <button
-      className={`flex gap-[12px] lg:gap-[24px] items-center justify-center py-[0.5em] border border-black/30 ${active ? "bg-brand-accent2 text-white" : ""
-        }`}
+      className={`flex gap-[12px] lg:gap-[24px] items-center justify-center py-[0.5em] border border-black/30 ${
+        active ? "bg-brand-accent2 text-white" : ""
+      }`}
       onClick={onClick}
     >
       <Search className="w-[12px] lg:w-[16px] aspect-square h-auto" />
@@ -319,6 +320,7 @@ function ControlPanelTabButton({ text, active, onClick }) {
 function LabCard({ lab, expanded, onExpand, onCollapse }) {
   const cardRef = useRef();
   const [hover, setHover] = useState(false);
+  const isSmallScreen = useMediaQuery("(max-width: 1280px)");
 
   useGSAP(
     () => {
@@ -358,12 +360,13 @@ function LabCard({ lab, expanded, onExpand, onCollapse }) {
       style={
         expanded
           ? {
-            backgroundColor: lab.background,
-            color: lab.foreground,
-          }
+              backgroundColor: lab.background,
+              color: lab.foreground,
+            }
           : {
-            backgroundColor: hover ? lab.backgroundDim : "white",
-          }
+              backgroundColor:
+                hover && !isSmallScreen ? lab.backgroundDim : "white",
+            }
       }
       onMouseEnter={() => {
         setHover(true);

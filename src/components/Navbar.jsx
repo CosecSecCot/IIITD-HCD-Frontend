@@ -14,7 +14,6 @@ const navigationMap = [
     title: "about",
     url: "/about",
     children: [
-      { title: "updates", url: "/about/updates" },
       { title: "overview", url: "/about/overview" },
       { title: "collaborations", url: "/about/collaborations" },
       { title: "courses & electives", url: "/about/courses" },
@@ -25,12 +24,21 @@ const navigationMap = [
   {
     title: "Research",
     url: "/research",
+    children: [
+      { title: "Labs", url: "/research/labs" },
+      { title: "Projects", url: "/research/projects" },
+      { title: "Publications", url: "/research/publications" },
+    ],
   },
   {
-    title: "Publications",
-    url: "/publications",
+    title: "Study",
+    url: "/study",
+    children: [
+      { title: "B.Tech", url: "/study/btech" },
+      { title: "PhD", url: "/study/phd" },
+    ],
   },
-  { title: "our work", url: "/departmentprojects" },
+  { title: "our work", url: "/ourwork" },
   {
     title: "people",
     url: "/people",

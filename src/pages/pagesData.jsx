@@ -19,39 +19,29 @@ import CollaborationsPage from "./Collaborations";
 /** @type {routerType[]} */
 const pagesData = [
   {
-    path: "/research",
-    element: <ResearchPage />,
-    title: "Research",
-  },
-  {
     path: "/",
     element: <HomePage />,
     title: "HCD",
   },
   {
-    path: "/departmentprojects",
+    path: "/research/labs",
+    element: <ResearchPage />,
+    title: "Research",
+  },
+  {
+    path: "/research/projects",
     element: <Departmentprojects />,
     title: "Department Projects",
+  },
+  {
+    path: "/research/publications",
+    element: <Publication />,
+    title: "Publications",
   },
   {
     path: "/about/courses",
     element: <CourseListPage />,
     title: "Course List",
-  },
-  {
-    path: "/study_phd",
-    element: <StudyPhDPage />,
-    title: "Study PhD",
-  },
-  {
-    path: "/study_btech",
-    element: <StudyBTechPage />,
-    title: "Study BTech",
-  },
-  {
-    path: "/publications",
-    element: <Publication />,
-    title: "Publications",
   },
   {
     path: "/about/overview",
@@ -66,8 +56,18 @@ const pagesData = [
   {
     path: "/about/collaborations",
     element: <CollaborationsPage />,
-    title: "Collaborations", 
-  }
+    title: "Collaborations",
+  },
+  {
+    path: "/study/phd",
+    element: <StudyPhDPage />,
+    title: "Study PhD",
+  },
+  {
+    path: "/study/btech",
+    element: <StudyBTechPage />,
+    title: "Study BTech",
+  },
 ];
 
 export default pagesData;
