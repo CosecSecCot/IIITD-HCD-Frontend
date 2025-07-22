@@ -41,7 +41,7 @@ const CollaborationsPage = () => {
       <div className="texture-overlay" />
 
       <main ref={containerRef} className="w-[50vw] pt-[216px] ml-[12.5vw] pr-16">
-        <p className="uppercase text-sm text-[#096964] opacity-50 reveal-text">
+        <p className="text-[1.3em] mt-[1em] uppercase text-sm text-[#096964] opacity-50 reveal-text">
           Human Centred Design
         </p>
         <h1 className="text-[52px] font-light reveal-text">
@@ -53,14 +53,14 @@ const CollaborationsPage = () => {
           Admission to this program will be through two channels – approximately half of the seats will be through the Joint Admission Counselling (JAC) of Delhi.
         </p>
 
-        <div className="mt-[16px] px-[3em] py-[2em] bg-brand-accent2-130/5 border border-y-brand-accent2-130 border-l-brand-accent2-130 reveal-text">
-          <h3 className="text-[28px] font-medium mb-4">
+        <div className="mt-[2em] px-[3em] py-[2em] bg-brand-accent2-130/5 border border-brand-accent2-130 reveal-text">
+          <h3 className="text-[28px] font-medium mb-4 text-brand-accent2-130">
             Reach out for Collaboration
           </h3>
-          <p className="text-[18px] mt-[16px] reveal-text mr-[48px]">
+          <p className="text-[1.2em] mt-[16px] reveal-text mr-[48px] text-brand-gray4">
             Admission to this program will be through two channels – approximately half of the seats will be through the Joint Admission Counselling (JAC) of Delhi.
           </p>
-          <button className="mt-8 w-full md:w-64 lg:w-[480px] uppercase bg-[#096964] text-white font-medium py-3 px-6 hover:opacity-90 transition reveal-text">
+          <button className="text-[1.3em] mt-8 w-full md:w-64 lg:w-[22.5vw] uppercase bg-[#096964] text-white font-medium py-3 px-6 hover:opacity-90 transition reveal-text">
             UCEED Portal →
           </button>
         </div>
@@ -68,7 +68,7 @@ const CollaborationsPage = () => {
         <h2 className="text-[24px] font-medium mt-[60px] text-brand-accent2-130 reveal-text">
           Current Collaborations
         </h2>
-        <div className="mt-[30px] grid grid-cols-5 gap-6 reveal-text">
+        <div className="mt-[2em] grid grid-cols-5 gap-8 reveal-text pr-8">
           {collaborationLogos.map((logo, idx) => (
             <div key={idx} className="flex items-center justify-center">
               <img src={logo} alt={`Collaboration ${idx + 1}`} className="max-h-[95px]" />
