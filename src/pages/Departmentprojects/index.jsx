@@ -1,9 +1,6 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Navbar from "../../components/Navbar";
 import GridLines from "../../components/GridLines";
-import project1 from "../../assets/project-1.png";
-import project2 from "../../assets/project-2.png";
-import project3 from "../../assets/project-3.png";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 
 import gsap from "gsap";
@@ -11,51 +8,36 @@ import { useGSAP } from "@gsap/react";
 import { Flip } from "gsap/Flip";
 import { ArrowRight, X } from "lucide-react";
 import Footer from "../../components/Footer";
+import axios from "axios";
 
 gsap.registerPlugin(Flip, useGSAP);
 
-const projects = [
-  {
-    id: 1,
-    title: "AI Empowered Attention Evaluation among Children with ADHD",
-    description:
-      "We are a collective of diverse thinkers reimagining how human-technology interactions can be seamless and meaningful.",
-    source: "TIH-Anubhuti",
-    faculty: "Dr. Jainendra Shukla",
-    duration: "September 2021 - August 2024",
-    imageUrl: project1,
-    fullDescription: `Specific Learning Disabilities (SLDs) conditions manifest as a deficit in processing language, spoken or written, that may manifest itself as a difficulty to comprehend, speak, read, write, spell, or to do mathematical calculations and includes such conditions as perceptual disabilities, dyslexia, dysgraphia, dyscalculia, dyspraxia, and developmental aphasia. The cognitive flexibility associated with SLDs can manifest itself in noteworthy talents, which include a multi-sensory lens for creative and lateral thinking, resulting in out-of-the-box solutions for problems. The untapped potential of SLDs causes a high opportunity cost for the Nation’s progress. However, children with SLDs experience repeated failures and poor performance despite their continuous efforts and practice in learning. At the same time, worldwide, the condition will SLDs has been exacerbated due to the COVID-19 pandemic when education delivery shifted online. Thus, strengthening online education delivery will be important and impacting. However, research has indicated that educators might not always be aware of their students’ attentional focus, and this may be particularly true for novice teachers. The aim of this project is to develop an AI-empowered tool that will offer personalized, monitored, and evidence-based identification of attention levels among children with SLD. The project will first develop a multimodal dataset of audio-visual and physiological signals among 150 children with SLD to understand the attention and engagement of children with SLD during digital learning. It will further perform a systematic comparison of physiological, audio-visual, and eye-dilation signals for the attention monitoring of children with SLD to identify the valid indicators of attention. Based on these, the project will develop an AI-empowered system for real-time continuous monitoring of attention among children with SLD. Finally, the project will deploy and evaluate the efficacy of the developed AI-empowered system among 50 children with SLD and 25 typically developing children in naturalistic settings. Once validated the findings of this project can improve and monitor the attention of children with SLDs and can play a significant role in their inclusion during digital learning.`,
-  },
-  {
-    id: 2,
-    title: "AI Empowered Attention Evaluation among Children with ADHD",
-    description:
-      "We are a collective of diverse thinkers reimagining how human-technology interactions can be seamless and meaningful.",
-    source: "TIH-Anubhuti",
-    faculty: "Dr. Jainendra Shukla",
-    duration: "September 2021 - August 2024",
-    imageUrl: project2,
-    fullDescription: `Specific Learning Disabilities (SLDs) conditions manifest as a deficit in processing language, spoken or written, that may manifest itself as a difficulty to comprehend, speak, read, write, spell, or to do mathematical calculations and includes such conditions as perceptual disabilities, dyslexia, dysgraphia, dyscalculia, dyspraxia, and developmental aphasia. The cognitive flexibility associated with SLDs can manifest itself in noteworthy talents, which include a multi-sensory lens for creative and lateral thinking, resulting in out-of-the-box solutions for problems. The untapped potential of SLDs causes a high opportunity cost for the Nation’s progress. However, children with SLDs experience repeated failures and poor performance despite their continuous efforts and practice in learning. At the same time, worldwide, the condition will SLDs has been exacerbated due to the COVID-19 pandemic when education delivery shifted online. Thus, strengthening online education delivery will be important and impacting. However, research has indicated that educators might not always be aware of their students’ attentional focus, and this may be particularly true for novice teachers. The aim of this project is to develop an AI-empowered tool that will offer personalized, monitored, and evidence-based identification of attention levels among children with SLD. The project will first develop a multimodal dataset of audio-visual and physiological signals among 150 children with SLD to understand the attention and engagement of children with SLD during digital learning. It will further perform a systematic comparison of physiological, audio-visual, and eye-dilation signals for the attention monitoring of children with SLD to identify the valid indicators of attention. Based on these, the project will develop an AI-empowered system for real-time continuous monitoring of attention among children with SLD. Finally, the project will deploy and evaluate the efficacy of the developed AI-empowered system among 50 children with SLD and 25 typically developing children in naturalistic settings. Once validated the findings of this project can improve and monitor the attention of children with SLDs and can play a significant role in their inclusion during digital learning.`,
-  },
-  {
-    id: 3,
-    title: "AI Empowered Attention Evaluation among Children with ADHD",
-    description:
-      "We are a collective of diverse thinkers reimagining how human-technology interactions can be seamless and meaningful.",
-    source: "TIH-Anubhuti",
-    faculty: "Dr. Jainendra Shukla",
-    duration: "September 2021 - August 2024",
-    imageUrl: project3,
-    fullDescription: `Specific Learning Disabilities (SLDs) conditions manifest as a deficit in processing language, spoken or written, that may manifest itself as a difficulty to comprehend, speak, read, write, spell, or to do mathematical calculations and includes such conditions as perceptual disabilities, dyslexia, dysgraphia, dyscalculia, dyspraxia, and developmental aphasia. The cognitive flexibility associated with SLDs can manifest itself in noteworthy talents, which include a multi-sensory lens for creative and lateral thinking, resulting in out-of-the-box solutions for problems. The untapped potential of SLDs causes a high opportunity cost for the Nation’s progress. However, children with SLDs experience repeated failures and poor performance despite their continuous efforts and practice in learning. At the same time, worldwide, the condition will SLDs has been exacerbated due to the COVID-19 pandemic when education delivery shifted online. Thus, strengthening online education delivery will be important and impacting. However, research has indicated that educators might not always be aware of their students’ attentional focus, and this may be particularly true for novice teachers. The aim of this project is to develop an AI-empowered tool that will offer personalized, monitored, and evidence-based identification of attention levels among children with SLD. The project will first develop a multimodal dataset of audio-visual and physiological signals among 150 children with SLD to understand the attention and engagement of children with SLD during digital learning. It will further perform a systematic comparison of physiological, audio-visual, and eye-dilation signals for the attention monitoring of children with SLD to identify the valid indicators of attention. Based on these, the project will develop an AI-empowered system for real-time continuous monitoring of attention among children with SLD. Finally, the project will deploy and evaluate the efficacy of the developed AI-empowered system among 50 children with SLD and 25 typically developing children in naturalistic settings. Once validated the findings of this project can improve and monitor the attention of children with SLDs and can play a significant role in their inclusion during digital learning.`,
-  },
-];
-
 const DepartmentProjects = () => {
   const isSmallScreen = useMediaQuery("(max-width: 1280px)");
+  const [projects, setProjects] = useState([]);
   const [expandedId, setExpandedId] = useState(null);
 
   const cardsContainerRef = useRef(null);
   const flipStateRef = useRef(null); // store flip state between render & GSAP callback
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:1337/api/department-projects?populate=*")
+      .then((res) => {
+        const normalized = res.data.data.map((item) => ({
+          id: item.id,
+          title: item.title,
+          description: item.shortDescription,
+          source: item.fundedBy,
+          faculty: item.faculties[0]?.Name,
+          duration: item.duration,
+          imageUrl: "http://localhost:1337" + item.image[0]?.url,
+          fullDescription: item.fullDescription,
+        }));
+        setProjects(normalized);
+      })
+      .catch(console.error);
+  }, []);
 
   // Create context-safe callback helpers
   // (We pass a config object to useGSAP below to access contextSafe)
