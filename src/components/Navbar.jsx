@@ -16,6 +16,7 @@ const navigationMap = [
     children: [
       { title: "overview", url: "/about/overview" },
       { title: "collaborations", url: "/about/collaborations" },
+      { title: "News & Events", url: "/about/newsEvents" },
       { title: "courses & electives", url: "/about/courses" },
       { title: "placement", url: "/about/placement" },
       { title: "brochure", url: "/about/brochure" },
