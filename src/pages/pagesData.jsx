@@ -10,6 +10,7 @@ import PlacementPage from "./Placements";
 import CollaborationsPage from "./Collaborations";
 import NewsEventsPage from "./NewsEventsPage";
 import OurWork from "./OurWork";
+import ConnectPage from "./ConnectPage";
 
 /**
  * @typedef {Object} routerType
@@ -80,6 +81,11 @@ const pagesData = [
     element: <OurWork />,
     title: "Our Work",
   },
+  {
+    path: "/connect",
+    element: <ConnectPage />,
+    title: "Connect",
+  }
 ];
 
 export default pagesData;
