@@ -9,6 +9,7 @@ import OverviewPage from "./Overview";
 import PlacementPage from "./Placements";
 import CollaborationsPage from "./Collaborations";
 import NewsEventsPage from "./NewsEventsPage";
+import OurWork from "./OurWork";
 
 /**
  * @typedef {Object} routerType
@@ -73,7 +74,12 @@ const pagesData = [
     path: "/about/newsEvents",
     element: <NewsEventsPage />,
     title: "News & Events",
-  }
+  },
+  {
+    path: "/OurWork",
+    element: <OurWork />,
+    title: "Our Work",
+  },
 ];
 
 export default pagesData;
