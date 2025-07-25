@@ -42,14 +42,19 @@ const pagesData = [
     title: "Publications",
   },
   {
-    path: "/about/courses",
-    element: <CourseListPage />,
-    title: "Course List",
-  },
-  {
     path: "/about/overview",
     element: <OverviewPage />,
     title: "Overview",
+  },
+  {
+    path: "/about/collaborations",
+    element: <CollaborationsPage />,
+    title: "Collaborations",
+  },
+  {
+    path: "/about/newsEvents",
+    element: <NewsEventsPage />,
+    title: "News & Events",
   },
   {
     path: "/about/placement",
@@ -57,9 +62,9 @@ const pagesData = [
     title: "Placement",
   },
   {
-    path: "/about/collaborations",
-    element: <CollaborationsPage />,
-    title: "Collaborations",
+    path: "/study/courses",
+    element: <CourseListPage />,
+    title: "Course List",
   },
   {
     path: "/study/phd",
@@ -72,12 +77,7 @@ const pagesData = [
     title: "Study BTech",
   },
   {
-    path: "/about/newsEvents",
-    element: <NewsEventsPage />,
-    title: "News & Events",
-  },
-  {
-    path: "/OurWork",
+    path: "/our-work",
     element: <OurWork />,
     title: "Our Work",
   },
@@ -85,7 +85,7 @@ const pagesData = [
     path: "/connect",
     element: <ConnectPage />,
     title: "Connect",
-  }
+  },
 ];
 
 export default pagesData;

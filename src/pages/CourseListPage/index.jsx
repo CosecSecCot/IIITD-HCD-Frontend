@@ -182,8 +182,9 @@ function ControlPanel({ setSearch, activeTab, setActiveTab }) {
 function ControlPanelTabButton({ text, active, onClick }) {
   return (
     <button
-      className={`flex gap-[12px] lg:gap-[24px] items-center justify-center py-[0.5em] border border-black/30 ${active ? "bg-brand-accent2 text-white" : ""
-        }`}
+      className={`flex gap-[12px] lg:gap-[24px] items-center justify-center py-[0.5em] border border-black/30 ${
+        active ? "bg-brand-accent2 text-white" : ""
+      }`}
       onClick={onClick}
     >
       <Search className="w-[12px] lg:w-[16px] aspect-square h-auto" />
