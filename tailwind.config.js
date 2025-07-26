@@ -20,7 +20,11 @@ export default {
           gray1: "#939598", // Light Gray
           gray2: "#818285", // Medium Gray
           gray3: "#6D6E71", // Darker Gray
-          gray4: "#58585A", // Dark Gray
+          gray4: "#58585A", // Dark Gray\
+          blue: "#093B69",
+          green: "#336909",
+          red: "#69090B",
+          voilet: "#4C1073",
         },
       },
     },

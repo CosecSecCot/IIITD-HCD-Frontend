@@ -20,7 +20,7 @@ const WorkAndProjects = () => {
             <h1 className="text-6xl font-semibold font-helvetica_now_display">
               Our Work
             </h1>
-            <p className="text-lg mt-6 max-w-xl text-white/80 font-anybody ml-auto">
+            <p className="text-lg mt-6 max-w-xl text-white/80 font-anybody">
               The program will prepare students to work in the IT industry as well as
               digital media industry like gaming, animation.
             </p>
@@ -47,7 +47,7 @@ const WorkAndProjects = () => {
       <div className="bg-white text-black relative z-10">
         <div className="max-w-6xl mx-auto px-4 py-20">
           {/* View Portfolios Section */}
-          <div className="border border-[#D0E3DB] bg-[#EDF8F5] p-8 md:p-10 mb-20">
+          <div className="border border-[#D0E3DB] bg-[#EDF8F5] p-8 md:p-10 mb-20 w-[75vw] ml-[-4.2vw]">
             <h2 className="text-3xl font-semibold mb-4">View Student Portfolio’s</h2>
             <p className="text-sl text-gray-700 mb-6">
               The program will prepare students to work in the IT industry as well as digital media industry like gaming, animation, virtual/augmented reality, etc. The program will also allow students, who want to pursue higher studies, to take up higher studies in CS/IT or in Design.

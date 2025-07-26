@@ -12,6 +12,7 @@ import NewsEventsPage from "./NewsEventsPage";
 import OurWork from "./OurWork";
 import ConnectPage from "./ConnectPage";
 import Portfoliostyle1 from "./Portfoliostyle1";
+import Portfoliostyle2 from "./Portfoliostyle2";
 
 /**
  * @typedef {Object} routerType
@@ -78,7 +79,7 @@ const pagesData = [
     title: "Study BTech",
   },
   {
-    path: "/our-work",
+    path: "/ourwork",
     element: <OurWork />,
     title: "Our Work",
   },
@@ -90,6 +91,11 @@ const pagesData = [
   {
     path: "/portfolio1",
     element: <Portfoliostyle1 />,
+    title: "Portfolio",
+  },
+  {
+    path: "/portfolio2",
+    element: <Portfoliostyle2 />,
     title: "Portfolio",
   },
 ];
