@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from '../../components/Navbar';
 import sagarImage from '../../assets/sagar.svg';
 import linkedinIcon from '../../assets/linkedin.svg';
-
+ // <-- Imported green line SVG
 
 const SagarGupta = () => {
   return (
@@ -22,7 +22,7 @@ const SagarGupta = () => {
         </div>
 
         {/* Main card */}
-        <div className="border border-gray-300 rounded-sm p-8 flex justify-between items-center bg-[#F9FDFD] flex-wrap gap-8">
+        <div className="border border-[#005C5C] rounded-sm p-8 flex justify-between items-center bg-[#F9FDFD] flex-wrap gap-8">
 
           {/* Left Info Section */}
           <div className="flex flex-col gap-8 flex-1 min-w-[250px]">
@@ -83,7 +83,7 @@ const SagarGupta = () => {
         {/* Skills & Softwares Section */}
         <div className="mt-8">
           <h2 className="text-lg font-semibold mb-4 text-[#005C5C]">Skills & Softwares</h2>
-          <div className="border border-gray-300 rounded-sm p-6 bg-[#F9FDFD]">
+          <div className="border border-[#005C5C] rounded-sm p-6 bg-[#F9FDFD]">
             <div className="flex flex-wrap gap-6">
               <span className="bg-[#005C5C] text-white px-4 py-2 text-sm font-medium">FIGMA</span>
               <span className="bg-[#005C5C] text-white px-4 py-2 text-sm font-medium">ADOBE ILLUSTRATOR</span>
