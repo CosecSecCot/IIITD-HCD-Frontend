@@ -2,9 +2,9 @@ import React from 'react';
 import Navbar from '../../components/Navbar';
 import sagarImage from '../../assets/sagar.svg';
 import linkedinIcon from '../../assets/linkedin.svg';
- // <-- Imported green line SVG
 
-const SagarGupta = () => {
+
+const Portfolio1 = () => {
   return (
     <div className="font-sans bg-white text-[#003B3F]">
       <Navbar type="solid"/>
@@ -367,4 +367,4 @@ const SagarGupta = () => {
   );
 };
 
-export default SagarGupta;
+export default Portfolio1;

@@ -1,205 +1,368 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import Navbar from '../../components/Navbar';
-import GridLines from '../../components/GridLines';
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
-import sagarImage from '../../assets/sagar.svg';
+import sagarImage from '../../assets/sagarred.svg';
+import linkedinIcon from '../../assets/linkedin.svg';
+
 
 const Portfolio3 = () => {
-  const containerRef = useRef(null);
-
-  useGSAP(
-    () => {
-      gsap.fromTo(
-        containerRef.current.querySelectorAll('.reveal-text'),
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, stagger: 0.1, duration: 0.8, ease: 'power4.out' }
-      );
-    },
-    { scope: containerRef, dependencies: [] }
-  );
-
   return (
-    <div className="font-anybody bg-white text-brand-red">
-      <Navbar type="solidred" />
-      <GridLines count={4} color="rgba(0,0,0,0.03)" />
-      <main ref={containerRef} className="pt-[210px] px-[12.5vw] pb-10">
+    <div className="font-sans bg-white text-[#69090B]">
+      <Navbar type="solidred"/>
 
-        <div className="flex justify-between items-center mb-4 text-sm text-brand-red reveal-text">
-          <div className="flex items-center cursor-pointer hover:underline">
+      {/* Content container */}
+      <div className="pt-[210px] px-[12.5vw] pb-10">
+        {/* Go Back and Breadcrumb */}
+        <div className="flex justify-between items-center mb-6 text-base text-[#69090B]">
+          <div className="flex items-center cursor-pointer hover:underline text-[16px]">
             <span className="mr-2">←</span> Go Back
           </div>
-          <p className="text-xs text-gray-500">
-            OUR WORK / PORTFOLIOS / <span className="text-black font-medium">Aishwary Panwar</span>
+          <p className="text-sm text-gray-500">
+            OUR WORK / PORTFOLIOS / <span className="text-black font-semibold">SAGAR GUPTA</span>
           </p>
         </div>
 
-        <div className="bg-brand-accent2-130/5 border border-brand-red p-6 flex justify-between items-start flex-wrap gap-6 reveal-text">
-          <div className="flex flex-col gap-4 min-w-[280px] flex-1">
-            <div className="flex flex-wrap gap-10">
+        {/* Main card */}
+        <div className="border border-[#69090B] rounded-sm p-8 flex justify-between items-center bg-[#69090b0b] flex-wrap gap-8">
+
+          {/* Left Info Section */}
+          <div className="flex flex-col gap-8 flex-1 min-w-[250px]">
+            {/* Top Row: Name, Year, Course */}
+            <div className="flex flex-wrap gap-20">
               <div>
-                <p className="text-xs uppercase text-brand-red opacity-70">Name</p>
-                <p className="text-[15px]">Aishwary Singh Panwar</p>
+                <p className="text-[#69090B80] uppercase text-sm tracking-wide">Name</p>
+                <p className="text-[18px] font-regular text-[#69090B]">Sagar Gupta</p>
               </div>
               <div>
-                <p className="text-xs uppercase text-brand-red opacity-70">Graduating Year</p>
-                <p className="text-[14px] text-brand-red">2027</p>
+                <p className="text-[#69090B80] uppercase text-sm tracking-wide">Graduating Year</p>
+                <p className="text-[17px] text-[#69090B] font-regular">2027</p>
               </div>
               <div>
-                <p className="text-xs uppercase text-brand-red opacity-70">Course</p>
-                <p className="text-[14px] text-brand-red">CS & Design</p>
-              </div>
-            </div>
-            <div className="flex flex-wrap gap-6">
-              <div>
-                <p className="text-xs uppercase text-brand-red opacity-70">Email</p>
-                <p className="text-[14px] text-brand-red">aishwary23055@iiitd.ac.in</p>
-              </div>
-              <div>
-                <p className="text-xs uppercase text-brand-red opacity-70">Phone</p>
-                <p className="text-[14px] text-brand-red">+91 9811059076</p>
+                <p className="text-[#69090B80] uppercase text-sm tracking-wide">Course</p>
+                <p className="text-[17px] text-[#69090B] font-regular">CS & Design</p>
               </div>
             </div>
+
+            {/* Second Row: Email | Phone */}
+            <div className="flex flex-wrap gap-20">
+              <div>
+                <p className="text-[#69090B80] uppercase text-sm tracking-wide">Email</p>
+                <p className="text-[17px] text-[#69090B] font-regular">sagar23458@iiitd.ac.in</p>
+              </div>
+              <div>
+                <p className="text-[#69090B80] uppercase text-sm tracking-wide">Phone</p>
+                <p className="text-[17px] text-[#69090B] font-regular">+91 9310121033</p>
+              </div>
+            </div>
+
+            {/* LinkedIn Button */}
             <a
               href="https://linkedin.com"
               target="_blank"
               rel="noreferrer"
-              className="mt-2 inline-flex items-center bg-brand-red text-white px-4 py-2 rounded text-sm w-[30vw] hover:bg-brand-red/80 transition-colors duration-200 reveal-text"
+              className="inline-flex items-center bg-[#69090B] text-white px-6 py-3 rounded text-base w-[250px] font-semibold justify-center"
             >
+              <img
+                src={linkedinIcon}
+                alt="LinkedIn"
+                className="w-5 h-5 mr-3"
+              />
               LINKEDIN
             </a>
           </div>
-          <div className="min-w-[120px] max-w-[140px] reveal-text">
+
+          {/* Right Section (Image) */}
+          <div className="w-[200px] h-[200px] shrink-0">
             <img
               src={sagarImage}
-              alt="Aishwary Panwar"
-              className="w-[200px] h-auto border border-brand-red"
+              alt="Sagar Gupta"
+              className="w-full h-full object-cover border"
             />
           </div>
         </div>
 
-        <div className="border border-brand-red rounded-sm p-6 mt-6 reveal-text">
-          <h2 className="text-lg font-semibold mb-4">Skills &amp; Softwares</h2>
-          <div className="flex flex-wrap gap-2">
-            {[
-              'FIGMA',
-              'ADOBE ILLUSTRATOR',
-              'ADOBE PHOTOSHOP',
-              'UNITY 3D',
-              'UNREAL ENGINE',
-              'FUSION 360',
-              'Python',
-              'C++',
-              'Java',
-            ].map(skill => (
-              <span
-                key={skill}
-                className="bg-brand-red text-white px-5 py-3 text-xs uppercase rounded reveal-text"
-              >
-                {skill}
-              </span>
-            ))}
+        {/* Skills & Softwares Section */}
+        <div className="mt-8">
+          <h2 className="text-lg font-semibold mb-4 text-[#69090B]">Skills & Softwares</h2>
+          <div className="border border-[#69090B] rounded-sm p-6 bg-[#69090b0b]">
+            <div className="flex flex-wrap gap-6">
+              <span className="bg-[#69090B] text-white px-4 py-2 text-sm font-medium">FIGMA</span>
+              <span className="bg-[#69090B] text-white px-4 py-2 text-sm font-medium">ADOBE ILLUSTRATOR</span>
+              <span className="bg-[#69090B] text-white px-4 py-2 text-sm font-medium">ADOBE PHOTOSHOP</span>
+              <span className="bg-[#69090B] text-white px-4 py-2 text-sm font-medium">UNITY 3D</span>
+              <span className="bg-[#69090B] text-white px-4 py-2 text-sm font-medium">UNREAL ENGINE</span>
+              <span className="bg-[#69090B] text-white px-4 py-2 text-sm font-medium">FUSION 360</span>
+              <span className="bg-[#69090B] text-white px-4 py-2 text-sm font-medium">Python</span>
+              <span className="bg-[#69090B] text-white px-4 py-2 text-sm font-medium">C++</span>
+              <span className="bg-[#69090B] text-white px-4 py-2 text-sm font-medium">Java</span>
+            </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-          <div className="border border-brand-red rounded-sm p-6 reveal-text">
-            <h3 className="text-lg font-semibold mb-4">Education</h3>
+        {/* Education and Awards Section */}
+        <div className="mt-12 flex">
+          {/* Education Section */}
+          <div className="w-1/2 pr-12">
+            <h2 className="text-lg font-semibold mb-4 text-[#69090B]">Education</h2>
+            {/* Undergraduate */}
             <div className="mb-6">
-              <p className="uppercase text-xs text-brand-red opacity-70">Undergraduate</p>
-              <p className="font-medium">Indraprastha Institute of Information Technology, Delhi</p>
-              <p className="text-sm text-brand-red mt-1">2023–2027</p>
-              <p className="text-sm font-semibold mt-1">CGPA: 8.85</p>
+              <div className="flex justify-between items-start mb-2">
+                <div className="flex-1">
+                  <p className="text-[#69090B80] uppercase text-xs tracking-wide mb-1">UNDERGRADUATE</p>
+                  <p className="text-[#69090B] font-medium text-base">Indraprastha Institute of <br /> Information Technology, Delhi</p>
+                </div>
+                <div className="flex items-start">
+                  <div className="w-[280px] h-px bg-[#69090B] mx-4 mt-8"></div>
+                    <div className="text-right mt-4">
+                      <p className="text-[#69090B] uppercase text-xs tracking-wide ">CGPA</p>
+                      <p className="text-[#69090B] font-medium text-base mb-3">8.65</p>
+                    </div>
+                  </div>
+                </div>
+              <p className="text-[#69090B] text-sm">2023-2027</p>
             </div>
+
+            {/* High School */}
             <div>
-              <p className="uppercase text-xs text-brand-red opacity-70">High School</p>
-              <p className="font-medium">The Mother's International School, Delhi</p>
-              <p className="text-sm text-brand-red mt-1">2023</p>
-              <p className="text-sm font-semibold mt-1">Percentage: 92.8%</p>
+              <div className="flex justify-between items-start mb-2">
+                <div className="flex-1">
+                  <p className="text-[#69090B80] uppercase text-xs tracking-wide mb-1">HIGH SCHOOL</p>
+                  <p className="text-[#69090B] font-medium text-base">The Mother's International<br /> School, Delhi</p>
+                </div>
+                <div className="flex items-start">
+                  <div className="w-[220px] h-px bg-[#69090B] mx-4 mt-8"></div>
+                  <div className="text-right mt-4">
+                    <p className="text-[#69090B] uppercase text-xs tracking-wide ">PERCENTAGE</p>
+                    <p className="text-[#69090B] font-medium text-base mb-5">92.8%</p>
+                  </div>
+                </div>
+              </div>
+              <p className="text-[#69090B] text-sm">2023-2027</p>
             </div>
           </div>
-          <div className="border border-brand-red rounded-sm p-6 reveal-text">
-            <h3 className="text-lg font-semibold mb-4">Awards &amp; Achievements</h3>
-            <div className="mb-6">
-              <p className="font-medium">IIIT Delhi</p>
-              <p className="text-sm">Dean’s List Communication Award in Design</p>
-              <p className="text-xs text-brand-red mt-1">August 2024</p>
-            </div>
-            <div>
-              <p className="font-medium">IIIT Delhi</p>
-              <p className="text-sm">Dean’s List Communication Award in Design</p>
-              <p className="text-xs text-brand-red mt-1">August 2024</p>
+
+          {/* Awards & Achievements Section - Shifted to the right */}
+          <div className="w-1/2 flex justify-end">
+            <div className="w-full max-w-[400px]">
+              <h2 className="text-lg font-semibold mb-4 text-[#69090B]">Awards & Achievements</h2>
+              {/* First Award */}
+              <div className="mb-6">
+                <p className="text-[#69090B80] uppercase text-xs tracking-wide mb-1">IIIT DELHI</p>
+                <p className="text-[#69090B] font-semibold text-base">Dean's List Communication Award in Design</p>
+                <p className="text-[#69090B] text-sm">August 2024</p>
+              </div>
+
+              {/* Second Award */}
+              <div>
+                <p className="text-[#69090B80] uppercase text-xs tracking-wide mb-1">IIIT DELHI</p>
+                <p className="text-[#69090B] font-semibold text-base">Dean's List Communication Award in Design</p>
+                <p className="text-[#69090B] text-sm">August 2024</p>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="border border-brand-red rounded-sm p-6 mt-6 reveal-text">
-          <h3 className="text-lg font-semibold mb-4">Experience</h3>
-          {[1, 2].map((_, idx) => (
-            <div key={idx} className={`pb-6 ${idx === 1 ? '' : 'border-b border-brand-red mb-6'}`}>
-              <div className="flex justify-between items-center mb-2">
-                <p className="font-semibold">HEALTHKART</p>
-                <p className="text-xs text-brand-red">May, 2025 – July, 2025</p>
+        {/* Line above Experience */}
+        <div className="border-t border-[#69090B] mt-12"></div>
+
+        {/* Experience Section */}
+        <div className="mt-8">
+          <h2 className="text-lg font-semibold mb-4 text-[#69090B]">Experience</h2>
+          
+          {/* First Experience */}
+          <div className="mb-8">
+            <div className="mb-2">
+              <p className="text-[#69090B] uppercase text-xs tracking-wide mb-1">HEALTHKART</p>
+              <div className="flex justify-between items-center">
+                <p className="text-[#69090B] font-semibold text-[17px]">User Experience Design Intern</p>
+                <div className="flex items-center">
+                  <div className="w-[700px] h-px bg-[#69090B] mx-4"></div>
+                  <p className="text-[#69090B] text-[17px]">May, 2025 - July, 2025</p>
+                </div>
               </div>
-              <p className="font-medium mb-2">User Experience Design Intern</p>
-              <ul className="list-disc list-inside text-sm space-y-1">
-                <li>Post Purchase UX Research: conducting post-purchase research and creating a design framework for scalable and multidisciplinary use</li>
-                <li>MuscleBlaze UX Design Feature Prototype: analysed the current design system and designed hi-fi prototypes of new features</li>
-              </ul>
             </div>
-          ))}
+            <div className="ml-0 mt-3 w-2/3">
+              <div className="flex items-start mb-2">
+                <span className="text-gray-400 mr-3 mt-1">•</span>
+                <p className="text-gray-600 text-[17px] leading-relaxed">
+                  <span className="font-medium">Post Purchase UX Research:</span> Conducting post-purchase research and creating a design framework for scalable and multi disciplinary use
+                </p>
+              </div>
+              <div className="flex items-start">
+                <span className="text-gray-400 mr-3 mt-1">•</span>
+                <p className="text-gray-600 text-[17px] leading-relaxed">
+                  <span className="font-medium">Modularize UX Design Feature Prototype:</span> Analysed the current design system and designed hi-fi prototypes of new features
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Second Experience */}
+          <div className="mb-8">
+            <div className="mb-2">
+              <p className="text-[#69090B] uppercase text-xs tracking-wide mb-1">HEALTHKART</p>
+              <div className="flex justify-between items-center">
+                <p className="text-[#69090B] font-semibold text-[17px]">User Experience Design Intern</p>
+                <div className="flex items-center">
+                  <div className="w-[700px] h-px bg-[#69090B] mx-4"></div>
+                  <p className="text-[#69090B] text-[17px]">May, 2025 - July, 2025</p>
+                </div>
+              </div>
+            </div>
+            <div className="ml-0 mt-3 w-2/3">
+              <div className="flex items-start mb-2">
+                <span className="text-gray-400 mr-3 mt-1">•</span>
+                <p className="text-gray-600 text-[17px] leading-relaxed">
+                  <span className="font-medium">Post Purchase UX Research:</span> Conducting post-purchase research and creating a design framework for scalable and multi disciplinary use
+                </p>
+              </div>
+              <div className="flex items-start">
+                <span className="text-gray-400 mr-3 mt-1">•</span>
+                <p className="text-gray-600 text-[17px] leading-relaxed">
+                  <span className="font-medium">Modularize UX Design Feature Prototype:</span> Analysed the current design system and designed hi-fi prototypes of new features
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Line at the end of Experience */}
+          <div className="border-t border-[#69090B] mt-6"></div>
         </div>
 
-        <div className="mt-6 reveal-text">
-          <h3 className="text-lg font-semibold mb-4">Projects</h3>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-8 reveal-text">
-            <div className="col-span-1 border border-brand-red rounded-sm p-6 reveal-text">
-              <p className="text-xs text-brand-red uppercase mb-1">HEALTHKART</p>
-              <h4 className="font-medium mb-3">Post Purchase E-Commerce UX Research</h4>
-              <ul className="list-disc list-inside text-sm space-y-1 mb-4">
-                <li>Leading in-depth UX research on the post-purchase journey to identify user needs, emotional pain points, and behavior patterns.</li>
-                <li>Designed a 13-phase experience framework to optimize loyalty, habit formation, and retention.</li>
-              </ul>
-              <div className="flex flex-wrap gap-2 mb-3">
-                {['FIGMA','ILLUSTRATOR','FIGJAM','RESEARCH'].map(tag=>(
-                  <span key={tag} className="bg-brand-red text-white px-2 py-1 text-xs uppercase rounded reveal-text">{tag}</span>
-                ))}
+        {/* Projects Section */}
+        <div className="mt-8">
+          <h2 className="text-lg font-semibold mb-4 text-[#69090B]">Projects</h2>
+          
+          {/* Project Card */}
+          <div className="flex gap-8">
+            {/* Left Content - 1/3 width */}
+            <div className="w-1/3">
+              <div className="mb-4">
+                <p className="text-[#69090B] uppercase text-xs tracking-wide mb-1">HEALTHKART</p>
+                <h3 className="text-[#69090B] font-semibold text-[17px] mb-3">Post Purchase E-Commerce UX Research</h3>
+                
+                {/* Project Description */}
+                <div className="mb-4">
+                  <div className="flex items-start mb-2">
+                    <span className="text-gray-400 mr-3 mt-1">•</span>
+                    <p className="text-gray-600 text-[17px] leading-relaxed">
+                      Leading in-depth UX research on the post-purchase journey to identify user needs, emotional pain points, and behavior patterns.
+                    </p>
+                  </div>
+                  <div className="flex items-start mb-4">
+                    <span className="text-gray-400 mr-3 mt-1">•</span>
+                    <p className="text-gray-600 text-[17px] leading-relaxed">
+                      Designed a 13-phase experience framework to optimize loyalty, habit formation, and retention.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Tech Stack */}
+                <div className="mb-4">
+                  <p className="text-[#69090B] uppercase text-xs tracking-wide mb-2">TECH STACK</p>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="bg-[#69090B] text-white px-3 py-1 text-xs font-medium">FIGMA</span>
+                    <span className="bg-[#69090B] text-white px-3 py-1 text-xs font-medium">ILLUSTRATOR</span>
+                  </div>
+                  <div className="flex flex-wrap gap-2 mt-2">
+                    <span className="bg-[#69090B] text-white px-3 py-1 text-xs font-medium">FIGJAM</span>
+                    <span className="bg-[#69090B] text-white px-3 py-1 text-xs font-medium">RESEARCH</span>
+                  </div>
+                </div>
+
+                {/* Duration */}
+                <div className="mb-6">
+                  <p className="text-[#69090B] text-[17px]">
+                    <span className="font-medium">Duration:</span> May, 25 - Jul, 25
+                  </p>
+                </div>
+
+                {/* View Project Details Button */}
+                <button className="border border-[#69090B] text-[#69090B] px-6 py-2 text-[17px] font-medium hover:bg-[#69090B] hover:text-white transition-colors w-full bg-[#69090b0b]">
+                  View Project Details →
+                </button>
               </div>
-              <p className="text-sm font-semibold mb-4">Duration: May, 25 – Jul, 25</p>
-              <button className="text-sm font-medium uppercase border border-brand-red px-4 py-2 hover:bg-brand-red hover:text-white transition reveal-text">View Project Details →</button>
             </div>
-            <div className="col-span-2 grid grid-cols-2 gap-4">
-              <div className="bg-gray-200 aspect-square reveal-text"></div>
-              <div className="bg-gray-200 aspect-square reveal-text"></div>
-              <div className="bg-gray-200 aspect-square reveal-text"></div>
-              <div className="bg-gray-200 aspect-square reveal-text"></div>
+
+            {/* Right Images - 2/3 width */}
+            <div className="w-2/3 flex gap-4">
+              {/* First Image Placeholder - Tall - Increased height */}
+              <div className="w-[48%] h-[450px] bg-gray-300 rounded"></div>
+              {/* Right Column */}
+              <div className="w-[48%] flex flex-col gap-4">
+                {/* Second Image Placeholder - Increased height */}
+                <div className="w-full h-[220px] bg-gray-300 rounded"></div>
+                {/* Third Image Placeholder - Increased height */}
+                <div className="w-full h-[220px] bg-gray-300 rounded"></div>
+              </div>
             </div>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 reveal-text">
-            <div className="col-span-2 grid grid-cols-2 gap-4">
-              <div className="bg-gray-200 aspect-square reveal-text"></div>
-              <div className="bg-gray-200 aspect-square reveal-text"></div>
-              <div className="bg-gray-200 aspect-square reveal-text"></div>
-              <div className="bg-gray-200 aspect-square reveal-text"></div>
-            </div>
-            <div className="col-span-1 border border-brand-red rounded-sm p-6 reveal-text">
-              <p className="text-xs text-brand-red uppercase mb-1">HEALTHKART</p>
-              <h4 className="font-medium mb-3">Post Purchase E-Commerce UX Research</h4>
-              <ul className="list-disc list-inside text-sm space-y-1 mb-4">
-                <li>Leading in-depth UX research on the post-purchase journey to identify user needs, emotional pain points, and behavior patterns.</li>
-                <li>Designed a 13-phase experience framework to optimize loyalty, habit formation, and retention.</li>
-              </ul>
-              <div className="flex flex-wrap gap-2 mb-3">
-                {['FIGMA','ILLUSTRATOR','FIGJAM','RESEARCH'].map(tag=>(
-                  <span key={tag} className="bg-brand-red text-white px-2 py-1 text-xs uppercase rounded reveal-text">{tag}</span>
-                ))}
+
+          {/* Second Project Card - Reversed Layout */}
+          <div className="flex gap-8 mt-12">
+            {/* Left Images - 2/3 width */}
+            <div className="w-2/3 flex gap-4">
+              {/* First Image Placeholder - Tall */}
+              <div className="w-[48%] h-[450px] bg-gray-300 rounded"></div>
+              {/* Right Column */}
+              <div className="w-[48%] flex flex-col gap-4">
+                {/* Second Image Placeholder */}
+                <div className="w-full h-[220px] bg-gray-300 rounded"></div>
+                {/* Third Image Placeholder */}
+                <div className="w-full h-[220px] bg-gray-300 rounded"></div>
               </div>
-              <p className="text-sm font-semibold mb-4">Duration: May, 25 – Jul, 25</p>
-              <button className="text-sm font-medium uppercase border border-brand-red px-4 py-2 hover:bg-brand-red hover:text-white transition reveal-text">View Project Details →</button>
+            </div>
+
+            {/* Right Content - 1/3 width - Right aligned text */}
+            <div className="w-1/3">
+              <div className="mb-4 text-right">
+                <p className="text-[#69090B] uppercase text-xs tracking-wide mb-1">HEALTHKART</p>
+                <h3 className="text-[#69090B] font-semibold text-[17px] mb-3">Post Purchase E-Commerce UX Research</h3>
+                
+                {/* Project Description */}
+                <div className="mb-4">
+                  <div className="flex items-start mb-2">
+                    <span className="text-gray-400 mr-3 mt-1">•</span>
+                    <p className="text-gray-600 text-[17px] leading-relaxed text-right">
+                      Leading in-depth UX research on the post-purchase journey to identify user needs, emotional pain points, and behavior patterns.
+                    </p>
+                  </div>
+                  <div className="flex items-start mb-4">
+                    <span className="text-gray-400 mr-3 mt-1">•</span>
+                    <p className="text-gray-600 text-[17px] leading-relaxed text-right">
+                      Designed a 13-phase experience framework to optimize loyalty, habit formation, and retention.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Tech Stack */}
+                <div className="mb-4">
+                  <p className="text-[#69090B] uppercase text-xs tracking-wide mb-2">TECH STACK</p>
+                  <div className="flex flex-wrap gap-2 justify-end">
+                    <span className="bg-[#69090B] text-white px-3 py-1 text-xs font-medium">FIGMA</span>
+                    <span className="bg-[#69090B] text-white px-3 py-1 text-xs font-medium">ILLUSTRATOR</span>
+                  </div>
+                  <div className="flex flex-wrap gap-2 mt-2 justify-end">
+                    <span className="bg-[#69090B] text-white px-3 py-1 text-xs font-medium">FIGJAM</span>
+                    <span className="bg-[#69090B] text-white px-3 py-1 text-xs font-medium">RESEARCH</span>
+                  </div>
+                </div>
+
+                {/* Duration */}
+                <div className="mb-6">
+                  <p className="text-[#69090B] text-[17px]">
+                    <span className="font-medium">Duration:</span> May, 25 - Jul, 25
+                  </p>
+                </div>
+
+                {/* View Project Details Button */}
+                <button className="border border-[#69090B] text-[#69090B] px-6 py-2 text-[17px] font-medium hover:bg-[#69090B] hover:text-white transition-colors w-full bg-[#69090b0b]">
+                  View Project Details →
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 };
