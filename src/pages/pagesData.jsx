@@ -13,6 +13,9 @@ import OurWork from "./OurWork";
 import ConnectPage from "./ConnectPage";
 import Portfoliostyle1 from "./Portfoliostyle1";
 import Portfoliostyle2 from "./Portfoliostyle2";
+import Portfoliostyle3 from "./Portfoliostyle3";
+import Portfoliostyle4 from "./Portfoliostyle4";
+import Portfoliostyle5 from "./Portfoliostyle5";
 
 /**
  * @typedef {Object} routerType
@@ -96,6 +99,21 @@ const pagesData = [
   {
     path: "/portfolio2",
     element: <Portfoliostyle2 />,
+    title: "Portfolio",
+  },
+  {
+    path: "/portfolio3",
+    element: <Portfoliostyle3 />,
+    title: "Portfolio",
+  },
+  {
+    path: "/portfolio4",
+    element: <Portfoliostyle4 />,
+    title: "Portfolio",
+  },
+  {
+    path: "/portfolio5",
+    element: <Portfoliostyle5 />,
     title: "Portfolio",
   },
 ];

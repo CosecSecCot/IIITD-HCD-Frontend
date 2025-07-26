@@ -148,7 +148,7 @@ const Navbar = ({ type }) => {
     <div id="navigation-menu" className="font-anybody">
       <header className="absolute z-[999] top-0 w-full">
         <nav
-          className={`relative text-white flex justify-between items-center xl:py-[30px] py-[15px] ${type == "solid" ? "bg-brand-accent2-130" : "bg-black/30 backdrop-blur-sm"}`}
+          className={`relative text-white flex justify-between items-center xl:py-[30px] py-[15px] ${type == "solid" ? "bg-brand-accent2-130" : type==="solidblue" ? "bg-brand-blue" : type === "solidgreen" ? "bg-brand-green" : type === "solidvoilet" ? "bg-brand-voilet" : type === "solidred" ? "bg-brand-red" : "bg-black/30 backdrop-blur-sm"}`}
         >
           <a
             className="relative left-[12.5vw] xl:left-[calc(12.5vw-96px)]"
