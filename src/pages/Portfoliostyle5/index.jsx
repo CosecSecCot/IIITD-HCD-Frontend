@@ -73,7 +73,7 @@ const Portfolio5 = () => {
                 ].map(skill => (
                   <span
                     key={skill}
-                    className="bg-brand-voilet text-white px-3 py-1 text-xs uppercase rounded"
+                    className="bg-brand-voilet text-white px-4 py- text-[1em] uppercase rounded"
                   >
                     {skill}
                   </span>
