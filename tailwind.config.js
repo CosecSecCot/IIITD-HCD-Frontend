@@ -14,13 +14,19 @@ export default {
         brand: {
           accent1: "#69C2BD",
           accent2: {
+            70: "#539693",  // 30% Lighter
+            80: "#3a8783",
+            90: "#227874",
             DEFAULT: "#096964",
-            130: "#064a46",
+            110: "#085f5a",
+            120: "#075450",
+            130: "#064a46",  // 30% Darker
           },
-          gray1: "#939598", // Light Gray
-          gray2: "#818285", // Medium Gray
-          gray3: "#6D6E71", // Darker Gray
-          gray4: "#58585A", // Dark Gray\
+          gray1: "#939598",
+          gray2: "#818285",
+          gray3: "#6D6E71",
+          gray4: "#58585A",
+
           blue: "#093B69",
           green: "#336909",
           red: "#69090B",

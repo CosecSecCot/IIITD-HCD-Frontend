@@ -1,10 +1,11 @@
 import axios from "axios";
-import React, { useEffect, useRef, useState } from "react";
-import Navbar from "../../components/Navbar";
-import { useMediaQuery } from "../../hooks/useMediaQuery";
-import Footer from "../../components/Footer";
-import GridLines from "../../components/GridLines";
-import { ArrowLeft, ArrowRight, Search } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import Navbar from "../../../components/Navbar";
+import GridLines from "../../../components/GridLines";
+import Banner from "../components/Banner";
+import Footer from "../../../components/Footer";
+import { useMediaQuery } from "../../../hooks/useMediaQuery";
+import { ArrowRight, Search } from "lucide-react";
 
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -24,7 +25,7 @@ const CourseDirectory = () => {
         const data = response.data.data; // Adjust if response structure differs
         const formatted = data.map((course, index) => {
           const [name, link] = course["Course Name"].split(
-            "#http://127.0.0.1:5000/",
+            "#http://127.0.0.1:5000/"
           );
           const cluster = course["Cluster"];
           return {
@@ -78,72 +79,6 @@ const CourseDirectory = () => {
   );
 };
 export default CourseDirectory;
-
-function Banner({ title, subtitle, sideText }) {
-  const bannerRef = useRef();
-  useGSAP(
-    () => {
-      gsap.fromTo(
-        ".reveal-animation-text",
-        {
-          y: "10%",
-          opacity: 0,
-          clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
-        },
-        {
-          y: 0,
-          opacity: 1,
-          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-          stagger: 0.1,
-          duration: 1.5,
-          ease: "expo.out",
-        },
-      );
-
-      gsap.from(".reveal-animation-opacity-only", {
-        opacity: 0,
-        stagger: 0.1,
-        duration: 1.5,
-        ease: "expo.out",
-      });
-    },
-    { scope: bannerRef }, // this will rerun on tab switch
-  );
-
-  return (
-    <section
-      ref={bannerRef}
-      role="banner"
-      className="relative min-h-[40vh] lg:min-h-[70vh]"
-    >
-      <div className="absolute z-10 top-[50%]  w-[75vw] mx-[12.5vw] flex justify-between items-center">
-        <div className="flex-shrink-0">
-          <a
-            href=""
-            className="reveal-animation-opacity-only flex gap-[0.5em] text-[12px] lg:text-[20px] text-brand-accent2-130"
-          >
-            <ArrowLeft className="w-[14px] lg:w-[24px] h-auto" />
-            <span>Go Back</span>
-          </a>
-          <div className="reveal-animation-text mt-[24px] lg:mt-[40px] leading-tight">
-            <p className="text-[16px] lg:text-[26px] text-brand-accent2-130">
-              {subtitle}
-            </p>
-            <h1 className="font-light text-[28px] lg:text-[48px]">{title}</h1>
-          </div>
-        </div>
-        <blockquote className="reveal-animation-opacity-only max-xl:hidden italic font-light text-right flex-shrink w-1/3">
-          "{sideText}"
-        </blockquote>
-      </div>
-      <img
-        src="/banner-2.svg"
-        alt="banner"
-        className="absolute inset-0 w-full h-full object-cover"
-      />
-    </section>
-  );
-}
 
 function ControlPanel({ setSearch, activeTab, setActiveTab }) {
   return (
@@ -212,7 +147,7 @@ function CourseCard({ course }) {
           stagger: 0.1,
           duration: 0.5,
           ease: "expo.out",
-        },
+        }
       );
 
       gsap.from(".reveal-animation-opacity-only", {
@@ -222,7 +157,7 @@ function CourseCard({ course }) {
         ease: "expo.out",
       });
     },
-    { scope: cardRef }, // this will rerun when this card mounts
+    { scope: cardRef } // this will rerun when this card mounts
   );
   return (
     <div
