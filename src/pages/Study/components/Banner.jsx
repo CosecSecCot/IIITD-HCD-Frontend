@@ -74,7 +74,7 @@ export default function Banner({ title, subtitle, sideText }) {
       <img
         src="/banner-2.svg"
         alt="banner"
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
       />
     </section>
   );
