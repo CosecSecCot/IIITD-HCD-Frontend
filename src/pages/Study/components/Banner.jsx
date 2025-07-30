@@ -1,5 +1,6 @@
-import { ArrowLeft } from "lucide-react";
+import TextReveal from "../../../components/TextReveal";
 import { useRef } from "react";
+import { ArrowLeft } from "lucide-react";
 
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -18,23 +19,6 @@ export default function Banner({ title, subtitle, sideText }) {
   const bannerRef = useRef();
   useGSAP(
     () => {
-      gsap.fromTo(
-        ".reveal-animation-text",
-        {
-          y: "10%",
-          opacity: 0,
-          clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
-        },
-        {
-          y: 0,
-          opacity: 1,
-          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-          stagger: 0.1,
-          duration: 1.5,
-          ease: "expo.out",
-        }
-      );
-
       gsap.from(".reveal-animation-opacity-only", {
         opacity: 0,
         stagger: 0.1,
@@ -42,7 +26,7 @@ export default function Banner({ title, subtitle, sideText }) {
         ease: "expo.out",
       });
     },
-    { scope: bannerRef } // this will rerun on tab switch
+    { scope: bannerRef }, // this will rerun on tab switch
   );
 
   return (
@@ -60,16 +44,20 @@ export default function Banner({ title, subtitle, sideText }) {
             <ArrowLeft className="w-[14px] lg:w-[24px] h-auto" />
             <span>Go Back</span>
           </a>
-          <div className="reveal-animation-text mt-[24px] lg:mt-[40px] leading-tight">
-            <p className="text-[16px] lg:text-[26px] text-brand-accent2-130">
-              {subtitle}
-            </p>
-            <h1 className="font-light text-[28px] lg:text-[48px]">{title}</h1>
-          </div>
+          <TextReveal>
+            <div className="mt-[24px] lg:mt-[40px] leading-tight">
+              <p className="text-[16px] lg:text-[26px] text-brand-accent2-130">
+                {subtitle}
+              </p>
+              <h1 className="font-light text-[28px] lg:text-[48px]">{title}</h1>
+            </div>
+          </TextReveal>
         </div>
-        <blockquote className="reveal-animation-opacity-only max-xl:hidden italic font-light text-right flex-shrink w-1/3">
-          "{sideText}"
-        </blockquote>
+        <TextReveal>
+          <blockquote className="max-xl:hidden italic font-light text-right flex-shrink w-1/3">
+            "{sideText}"
+          </blockquote>
+        </TextReveal>
       </div>
       <img
         src="/banner-2.svg"

@@ -5,6 +5,7 @@ import Footer from "../../../components/Footer";
 import Heading from "../components/Heading";
 import ViewCoursesCard from "../components/ViewCourseCard";
 import { useMediaQuery } from "../../../hooks/useMediaQuery";
+import TextReveal from "../../../components/TextReveal";
 
 const programmeItems = [
   {
@@ -51,19 +52,24 @@ const StudyBTech = () => {
           Study <span className="text-brand-accent2 font-semibold">CSD</span>{" "}
           @IIITD
         </Heading>
-        <p className="ml-[12.5vw] xl:ml-[37.5vw] mt-[32px] lg:mt-[80px] w-[75vw] xl:w-[50vw] text-[16px] lg:text-[24px] font-light">
-          The program will prepare students to work in the IT industry as well
-          as digital media industry like gaming, animation, virtual/augmented
-          reality, etc. The program will also allow students, who want to pursue
-          higher studies, to take up higher studies in CS/IT or in Design.
-          <br />
-          <br />
-          <br />
-          The program will prepare students to work in the IT industry as well
-          as digital media industry like gaming, animation, virtual/augmented
-          reality, etc. The program will also allow students, who want to pursue
-          higher studies, to take up higher studies in CS/IT or in Design.
-        </p>
+        <TextReveal start={80}>
+          <p className="ml-[12.5vw] xl:ml-[37.5vw] mt-[32px] lg:mt-[80px] w-[75vw] xl:w-[50vw] text-[16px] lg:text-[24px] font-light">
+            The program will prepare students to work in the IT industry as well
+            as digital media industry like gaming, animation, virtual/augmented
+            reality, etc. The program will also allow students, who want to
+            pursue higher studies, to take up higher studies in CS/IT or in
+            Design.
+          </p>
+        </TextReveal>
+        <TextReveal start={80}>
+          <p className="ml-[12.5vw] xl:ml-[37.5vw] mt-[32px] lg:mt-[80px] w-[75vw] xl:w-[50vw] text-[16px] lg:text-[24px] font-light">
+            The program will prepare students to work in the IT industry as well
+            as digital media industry like gaming, animation, virtual/augmented
+            reality, etc. The program will also allow students, who want to
+            pursue higher studies, to take up higher studies in CS/IT or in
+            Design.
+          </p>
+        </TextReveal>
       </section>
 
       <section className="mt-[64px] lg:mt-[100px]">
@@ -71,16 +77,18 @@ const StudyBTech = () => {
           <span className="text-brand-accent2 font-semibold">Admissions</span>{" "}
           Process
         </Heading>
-        <p className="ml-[12.5vw] xl:ml-[37.5vw] mt-[32px] lg:mt-[80px] w-[75vw] xl:w-[50vw] text-[16px] lg:text-[24px] font-light">
-          Admission to this program will be through two channels – approximately
-          half of the seats will be through the Joint Admission Counselling
-          (JAC) of Delhi, which takes students through JEE (Main), and
-          approximately half the seats will be filled through UCEED conducted by
-          IIT Bombay. More information about the admission to all the B.Tech.
-          programs at IIIT-Delhi will be made available on the admissions pages
-          from time to time. More details regarding admissions are available
-          here.
-        </p>
+        <TextReveal start={80}>
+          <p className="ml-[12.5vw] xl:ml-[37.5vw] mt-[32px] lg:mt-[80px] w-[75vw] xl:w-[50vw] text-[16px] lg:text-[24px] font-light">
+            Admission to this program will be through two channels –
+            approximately half of the seats will be through the Joint Admission
+            Counselling (JAC) of Delhi, which takes students through JEE (Main),
+            and approximately half the seats will be filled through UCEED
+            conducted by IIT Bombay. More information about the admission to all
+            the B.Tech. programs at IIIT-Delhi will be made available on the
+            admissions pages from time to time. More details regarding
+            admissions are available here.
+          </p>
+        </TextReveal>
       </section>
 
       <section className="mt-[64px] lg:mt-[100px]">
@@ -121,12 +129,16 @@ export default StudyBTech;
 function ProgrammeCard({ text, number }) {
   return (
     <div className="flex flex-col justify-between gap-[1em] py-[28px] px-[18px] lg:py-[40px] lg:px-[30px] bg-brand-gray1/5 border border-brand-accent2-130 backdrop-blur-lg">
-      <p className="text-[16px] lg:text-[20px] font-light break-words">
-        {text}
-      </p>
-      <p className="text-[96px] leading-none text-brand-accent2-130 font-extralight opacity-40 self-end">
-        {number}
-      </p>
+      <TextReveal start={80}>
+        <p className="text-[16px] lg:text-[20px] font-light break-words">
+          {text}
+        </p>
+      </TextReveal>
+      <TextReveal start={80}>
+        <p className="text-[96px] leading-none text-brand-accent2-130 font-extralight opacity-40 self-end">
+          {number}
+        </p>
+      </TextReveal>
     </div>
   );
 }

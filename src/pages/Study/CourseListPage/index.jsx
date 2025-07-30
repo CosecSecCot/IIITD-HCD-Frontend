@@ -4,6 +4,7 @@ import Navbar from "../../../components/Navbar";
 import GridLines from "../../../components/GridLines";
 import Banner from "../components/Banner";
 import Footer from "../../../components/Footer";
+import TextReveal from "../../../components/TextReveal";
 import { useMediaQuery } from "../../../hooks/useMediaQuery";
 import { ArrowRight, Search } from "lucide-react";
 
@@ -25,7 +26,7 @@ const CourseDirectory = () => {
         const data = response.data.data; // Adjust if response structure differs
         const formatted = data.map((course, index) => {
           const [name, link] = course["Course Name"].split(
-            "#http://127.0.0.1:5000/"
+            "#http://127.0.0.1:5000/",
           );
           const cluster = course["Cluster"];
           return {
@@ -133,23 +134,6 @@ function CourseCard({ course }) {
 
   useGSAP(
     () => {
-      gsap.fromTo(
-        ".reveal-animation, .reveal-animation-text",
-        {
-          y: "10%",
-          opacity: 0,
-          clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
-        },
-        {
-          y: 0,
-          opacity: 1,
-          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-          stagger: 0.1,
-          duration: 0.5,
-          ease: "expo.out",
-        }
-      );
-
       gsap.from(".reveal-animation-opacity-only", {
         opacity: 0,
         stagger: 0.1,
@@ -157,7 +141,7 @@ function CourseCard({ course }) {
         ease: "expo.out",
       });
     },
-    { scope: cardRef } // this will rerun when this card mounts
+    { scope: cardRef }, // this will rerun when this card mounts
   );
   return (
     <div
@@ -165,28 +149,38 @@ function CourseCard({ course }) {
       className="w-full flex flex-col justify-between gap-[32px] lg:gap-[48px] p-[28px] lg:p-[40px] border border-brand-accent2/25 bg-brand-accent2/[0.02] backdrop-blur-md hover:backdrop-blur-2xl hover:bg-brand-accent2/5"
     >
       <div>
-        <p className="reveal-animation-text text-[12px] lg:text-[16px] text-brand-accent2">
-          {course.credits}
-        </p>
-        <h3 className="reveal-animation-text text-[18px] lg:text-[24px] leading-tight">
-          {course.title}
-        </h3>
-        <div className="reveal-animation-text mt-[1em] text-[14px] lg:text-[18px] text-brand-gray4">
+        <TextReveal>
+          <p className="text-[12px] lg:text-[16px] text-brand-accent2">
+            {course.credits}
+          </p>
+        </TextReveal>
+        <TextReveal>
+          <h3 className="text-[18px] lg:text-[24px] leading-tight">
+            {course.title}
+          </h3>
+        </TextReveal>
+        <div className="mt-[1em] text-[14px] lg:text-[18px] text-brand-gray4">
           <div className="flex justify-between">
-            <p>
-              <span className="text-brand-accent2">Acronym: </span>
-              {course.acronym}
-            </p>
-            <p>
-              <span className="text-brand-accent2 text-right">Code: </span>
-              {course.code}
-            </p>
+            <TextReveal>
+              <p>
+                <span className="text-brand-accent2">Acronym: </span>
+                {course.acronym}
+              </p>
+            </TextReveal>
+            <TextReveal>
+              <p>
+                <span className="text-brand-accent2 text-right">Code: </span>
+                {course.code}
+              </p>
+            </TextReveal>
           </div>
           <div className="flex justify-between">
-            <p>
-              <span className="text-brand-accent2">Prerequisites: </span>
-              {course.prerequisites}
-            </p>
+            <TextReveal>
+              <p>
+                <span className="text-brand-accent2">Prerequisites: </span>
+                {course.prerequisites}
+              </p>
+            </TextReveal>
           </div>
         </div>
       </div>
