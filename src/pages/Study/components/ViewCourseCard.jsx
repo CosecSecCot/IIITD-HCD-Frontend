@@ -1,36 +1,17 @@
 import TextReveal from "../../../components/TextReveal";
-import { useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import gradientRing from "../../../assets/gradient-ring.svg";
 
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import OpacityReveal from "../../../components/OpacityReveal";
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 export default function ViewCoursesCard() {
-  const containerRef = useRef();
-  useGSAP(
-    () => {
-      gsap.from(".reveal-animation-opacity-only", {
-        opacity: 0,
-        stagger: 0.1,
-        scrollTrigger: {
-          trigger: ".reveal-animation-opacity-only",
-          start: "top 80%",
-        },
-        duration: 1.5,
-        ease: "expo.out",
-      });
-    },
-    { scope: containerRef }, // this will rerun on tab switch
-  );
   return (
-    <div
-      ref={containerRef}
-      className="relative font-light border border-brand-accent2 bg-brand-accent2/5 backdrop-blur-lg hover:backdrop-blur-2xl"
-    >
-      <div className="reveal-animation-opacity-only absolute w-full h-full pointer-events-none">
+    <div className="relative font-light border border-brand-accent2 bg-brand-accent2/5 backdrop-blur-lg hover:backdrop-blur-2xl">
+      <div className="absolute w-full h-full pointer-events-none">
         <img
           src={gradientRing}
           alt=""
@@ -59,14 +40,16 @@ export default function ViewCoursesCard() {
             </p>
           </TextReveal>
         </div>
-        <button
-          type="button"
-          className="reveal-animation-opacity-only flex items-center text-[14px] lg:text-[18px] gap-[0.5em]"
-          aria-label="View course details"
-        >
-          <span>VIEW DETAILS</span>
-          <ArrowRight className="w-[16px] h-[16px]" />
-        </button>
+        <OpacityReveal delay={0.2}>
+          <button
+            type="button"
+            className="flex items-center text-[14px] lg:text-[18px] gap-[0.5em]"
+            aria-label="View course details"
+          >
+            <span>VIEW DETAILS</span>
+            <ArrowRight className="w-[16px] h-[16px]" />
+          </button>
+        </OpacityReveal>
       </div>
     </div>
   );
