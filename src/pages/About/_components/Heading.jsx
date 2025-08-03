@@ -1,3 +1,14 @@
+/**
+ * Page heading component for /about pages.
+ *
+ * @component
+ * @param {Object} props - Component props
+ * @param {string} props.title
+ * @param {string} props.subtitle
+ * @param {string} props.description
+ *
+ * @returns {JSX.Element}
+ */
 const Heading = ({ title, subtitle, description }) => {
   return (
     <section

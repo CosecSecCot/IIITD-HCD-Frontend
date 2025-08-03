@@ -1,4 +1,3 @@
-import React, { useRef } from "react";
 import Navbar from "../../../components/Navbar";
 import GridLines from "../../../components/GridLines";
 import Footer from "../../../components/Footer";
@@ -17,17 +16,13 @@ const collaborators = [..._collab, ..._collab, ..._collab];
 
 const CollaborationsPage = () => {
   const isSmallScreen = useMediaQuery("(max-width: 1280px)");
-  const containerRef = useRef(null);
 
   return (
     <div className="relative w-full font-anybody">
       <Navbar type="solid" />
       <GridLines count={isSmallScreen ? 3 : 4} />
       <div className="texture-overlay" />
-      <main
-        ref={containerRef}
-        className="w-[75vw] xl:w-[50vw] pt-[216px] ml-[12.5vw]"
-      >
+      <main className="w-[75vw] xl:w-[50vw] pt-[216px] ml-[12.5vw]">
         <Heading
           title="Collaborations"
           subtitle="Human Centred Design"
