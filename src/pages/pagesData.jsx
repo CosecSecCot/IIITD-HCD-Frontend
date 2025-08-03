@@ -5,7 +5,7 @@ import CourseListPage from "./Study/CourseListPage";
 import StudyPhDPage from "./Study/StudyPhDPage";
 import StudyBTechPage from "./Study/StudyBTechPage";
 import Publication from "./Publication";
-import OverviewPage from "./Overview";
+import OverviewPage from "./About/Overview";
 import PlacementPage from "./Placements";
 import CollaborationsPage from "./Collaborations";
 import NewsEventsPage from "./NewsEventsPage";

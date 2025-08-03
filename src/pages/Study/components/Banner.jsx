@@ -33,7 +33,7 @@ export default function Banner({ title, subtitle, sideText }) {
     <section
       ref={bannerRef}
       role="banner"
-      className="relative z-20 min-h-[40vh] lg:min-h-[70vh]"
+      className="relative z-20 min-h-[50vh] lg:min-h-[70vh]"
     >
       <div className="absolute z-10 top-[50%]  w-[75vw] mx-[12.5vw] flex justify-between items-center">
         <div className="flex-shrink-0">
@@ -45,7 +45,7 @@ export default function Banner({ title, subtitle, sideText }) {
             <span>Go Back</span>
           </a>
           <TextReveal>
-            <div className="mt-[24px] lg:mt-[40px] leading-tight">
+            <div className="mt-[24px] lg:mt-[40px] leading-tight w-[75vw] xl:w-[25vw]">
               <p className="text-[16px] lg:text-[26px] text-brand-accent2-130">
                 {subtitle}
               </p>

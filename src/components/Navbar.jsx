@@ -74,7 +74,7 @@ const Navbar = ({ type }) => {
           opacity: 1,
           ease: "expo.out",
           duration: "0.5",
-        }
+        },
       )
       .to(
         "#nav-container",
@@ -82,7 +82,7 @@ const Navbar = ({ type }) => {
           x: isMobileNavbarActive ? "0%" : "50%",
           ease: "expo.out",
         },
-        "-=0.5"
+        "-=0.5",
       )
       .fromTo(
         "#nav-link-primary",
@@ -99,7 +99,7 @@ const Navbar = ({ type }) => {
           ease: "power3.out",
           stagger: 0.1,
         },
-        "-=0.5"
+        "-=0.5",
       );
   });
 
@@ -125,7 +125,7 @@ const Navbar = ({ type }) => {
           ease: "expo.out",
           duration: "0.5",
         },
-        "-=0.5"
+        "-=0.5",
       )
       .then(() => {
         if (secondSidebarOpen) {
@@ -153,14 +153,14 @@ const Navbar = ({ type }) => {
             type == "solid"
               ? "bg-brand-accent2-130"
               : type === "solidblue"
-              ? "bg-brand-blue"
-              : type === "solidgreen"
-              ? "bg-brand-green"
-              : type === "solidvoilet"
-              ? "bg-brand-voilet"
-              : type === "solidred"
-              ? "bg-brand-red"
-              : "bg-black/30 backdrop-blur-sm"
+                ? "bg-brand-blue"
+                : type === "solidgreen"
+                  ? "bg-brand-green"
+                  : type === "solidvoilet"
+                    ? "bg-brand-voilet"
+                    : type === "solidred"
+                      ? "bg-brand-red"
+                      : "bg-black/30 backdrop-blur-sm"
           }`}
         >
           <a
@@ -205,9 +205,7 @@ const Navbar = ({ type }) => {
       {isMobileNavbarActive ? (
         <div
           id="nav-container"
-          className={`${
-            true ? "" : "hidden"
-          } flex fixed z-[9999] inset-0 w-[200vw] h-[100vh]`}
+          className="flex fixed z-[9999] inset-0 w-[200vw] h-[100vh]"
           style={{
             transform: "translate(50%, 0)",
           }}
@@ -216,7 +214,7 @@ const Navbar = ({ type }) => {
             id="nav-sidebar-first"
             className="relative flex flex-col justify-center w-full h-full bg-brand-accent2 text-white"
           >
-            <div className="absolute top-0 right-0 px-[70px] py-[60px]">
+            <div className="absolute top-0 right-0 pr-[70px] pt-[60px]">
               <button
                 onClick={closeSidebar}
                 className="flex items-center gap-[2px] border border-white rounded-full p-[1em]"
@@ -258,14 +256,14 @@ const Navbar = ({ type }) => {
             id="nav-sidebar-second"
             className="relative flex flex-col justify-center min-h-[50%] w-full bg-[#033836] text-white"
           >
-            <div className="absolute top-0 right-0 px-[70px] py-[60px]">
+            <div className="absolute top-0 right-0 pr-[70px] pt-[60px]">
               <button
                 onClick={() => {
                   contextSafe(() =>
                     gsap.to("#nav-container", {
                       x: 0,
                       ease: "expo.out",
-                    })
+                    }),
                   )();
                 }}
                 className="flex items-center gap-[2px] border border-white rounded-full p-[1em]"
@@ -324,7 +322,7 @@ const Navbar = ({ type }) => {
                           gsap.to("#nav-container", {
                             x: "50%",
                             ease: "expo.out",
-                          })
+                          }),
                         )();
                         setActiveGroup(null);
                       }

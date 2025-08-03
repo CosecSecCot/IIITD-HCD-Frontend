@@ -1,12 +1,7 @@
 import TextReveal from "../../../components/TextReveal";
+import OpacityReveal from "../../../components/OpacityReveal";
 import { ArrowRight } from "lucide-react";
 import gradientRing from "../../../assets/gradient-ring.svg";
-
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import OpacityReveal from "../../../components/OpacityReveal";
-gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 export default function ViewCoursesCard() {
   return (
