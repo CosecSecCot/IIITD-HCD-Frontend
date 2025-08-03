@@ -6,7 +6,7 @@ const Sidebar = () => {
       <img
         src={panel}
         alt="Right Panel"
-        className="absolute inset-0 object-cover"
+        className="w-full h-full object-cover"
       />
     </aside>
   );
