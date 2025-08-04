@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import Navbar from "../../../components/Navbar";
 import GridLines from "../../../components/GridLines";
-import Banner from "../components/Banner";
+import Banner from "../_components/Banner";
 import Footer from "../../../components/Footer";
 import TextReveal from "../../../components/TextReveal";
 import { useMediaQuery } from "../../../hooks/useMediaQuery";

@@ -1,9 +1,9 @@
 import Navbar from "../../../components/Navbar";
 import GridLines from "../../../components/GridLines";
-import Banner from "../components/Banner";
 import Footer from "../../../components/Footer";
-import Heading from "../components/Heading";
-import ViewCoursesCard from "../components/ViewCourseCard";
+import Banner from "../_components/Banner";
+import Heading from "../_components/Heading";
+import ViewCoursesCard from "../_components/ViewCourseCard";
 import { useMediaQuery } from "../../../hooks/useMediaQuery";
 import TextReveal from "../../../components/TextReveal";
 
