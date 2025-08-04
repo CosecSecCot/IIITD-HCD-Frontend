@@ -3,14 +3,14 @@ import OverviewPage from "./About/Overview";
 import CollaborationsPage from "./About/Collaborations";
 import NewsEventsPage from "./About/News&Events";
 import PlacementPage from "./About/Placements";
-import ResearchPage from "./Research";
-import Departmentprojects from "./Departmentprojects";
-import Publication from "./Publication";
+import ResearchLabsPage from "./Research/Labs";
+import DepartmentprojectsPage from "./Research/Departmentprojects";
+import PublicationPage from "./Research/Publication";
 import CourseListPage from "./Study/CourseListPage";
 import StudyPhDPage from "./Study/StudyPhDPage";
 import StudyBTechPage from "./Study/StudyBTechPage";
-import OurWork from "./OurWork";
-import ConnectPage from "./ConnectPage";
+import OurWorkPage from "./OurWork";
+import ConnectPage from "./Connect";
 import Portfoliostyle1 from "./Portfoliostyle1";
 import Portfoliostyle2 from "./Portfoliostyle2";
 import Portfoliostyle3 from "./Portfoliostyle3";
@@ -33,17 +33,17 @@ const pagesData = [
   },
   {
     path: "/research/labs",
-    element: <ResearchPage />,
+    element: <ResearchLabsPage />,
     title: "Research",
   },
   {
     path: "/research/projects",
-    element: <Departmentprojects />,
+    element: <DepartmentprojectsPage />,
     title: "Department Projects",
   },
   {
     path: "/research/publications",
-    element: <Publication />,
+    element: <PublicationPage />,
     title: "Publications",
   },
   {
@@ -83,7 +83,7 @@ const pagesData = [
   },
   {
     path: "/ourwork",
-    element: <OurWork />,
+    element: <OurWorkPage />,
     title: "Our Work",
   },
   {

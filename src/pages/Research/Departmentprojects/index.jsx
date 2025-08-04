@@ -1,15 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
-import Navbar from "../../components/Navbar";
-import GridLines from "../../components/GridLines";
-import { useMediaQuery } from "../../hooks/useMediaQuery";
+import Navbar from "../../../components/Navbar";
+import Footer from "../../../components/Footer";
+import GridLines from "../../../components/GridLines";
+import { useMediaQuery } from "../../../hooks/useMediaQuery";
+import { ArrowRight, X } from "lucide-react";
+import axios from "axios";
 
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { Flip } from "gsap/Flip";
-import { ArrowRight, X } from "lucide-react";
-import Footer from "../../components/Footer";
-import axios from "axios";
-
 gsap.registerPlugin(Flip, useGSAP);
 
 const DepartmentProjects = () => {

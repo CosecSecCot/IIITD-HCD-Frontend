@@ -6,7 +6,6 @@ import Sidebar from "../_components/Sidebar";
 import { useMediaQuery } from "../../../hooks/useMediaQuery";
 import mainEventImage from "../../../assets/main-event.jpg";
 import TextReveal from "../../../components/TextReveal";
-import { Telescope } from "lucide-react";
 import OpacityReveal from "../../../components/OpacityReveal";
 
 const newsData = [
