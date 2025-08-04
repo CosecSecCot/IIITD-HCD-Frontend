@@ -1,3 +1,5 @@
+import TextReveal from "../../../components/TextReveal";
+
 /**
  * Page heading component for /about pages.
  *
@@ -23,9 +25,11 @@ const Heading = ({ title, subtitle, description }) => {
         {title}
       </h1>
       <div className="w-[75vw] xl:w-[50vw] h-[0.5em] bg-brand-accent2" />
-      <p className="font-light text-[14px] lg:text-[18px] mt-[40px]">
-        {description}
-      </p>
+      <TextReveal>
+        <p className="font-light text-[14px] lg:text-[18px] mt-[40px]">
+          {description}
+        </p>
+      </TextReveal>
     </section>
   );
 };

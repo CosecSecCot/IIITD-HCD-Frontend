@@ -15,11 +15,18 @@ gsap.registerPlugin(ScrollTrigger, SplitText, useGSAP);
  * @param {React.ReactElement} props.children - The single React element (usually a text wrapper like `<p>` or `<h2>`) to which the animation is applied.
  * @param {string?} props.className - Optional additional class names to append to the child element.
  * @param {number?} props.start - Optional ScrollTrigger `start` offset (percentage from top of viewport). Default is `100`.
- * @param {number?} props.delay - Optional delay to start the animation. Default is `100`.
+ * @param {number?} props.delay - Optional delay to start the animation in milliseconds. Default is `100`.
+ * @param {number?} props.duration - Optional duration of the animation in seconds. Default is `0.6`.
  *
  * @returns {JSX.Element} The same child element enhanced with line-based animation on scroll.
  */
-const TextReveal = ({ children, start = 100, delay = 0, className = "" }) => {
+const TextReveal = ({
+  children,
+  start = 100,
+  delay = 0,
+  duration = 0.6,
+  className = "",
+}) => {
   const elementRef = useRef();
 
   useGSAP(() => {
@@ -29,7 +36,7 @@ const TextReveal = ({ children, start = 100, delay = 0, className = "" }) => {
       autoSplit: true,
       onSplit: (self) => {
         return gsap.from(self.lines, {
-          duration: 0.6,
+          duration: duration,
           y: "100%",
           opacity: 0,
           scrollTrigger: {
