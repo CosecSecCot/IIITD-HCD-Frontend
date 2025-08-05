@@ -1,101 +1,322 @@
-import React from 'react';
-import Navbar from '../../components/Navbar';
-import GridLines from '../../components/GridLines';
-import Footer from '../../components/Footer';
+import { useRef } from "react";
+import Footer from "../../components/Footer";
+import GridLines from "../../components/GridLines";
+import Navbar from "../../components/Navbar";
+import TextReveal from "../../components/TextReveal";
+import OpacityReveal from "../../components/OpacityReveal";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
+import work1 from "../../assets/work1.png";
+import work2 from "../../assets/work2.png";
+import work3 from "../../assets/work3.png";
+import { ArrowRight } from "lucide-react";
 
-const WorkAndProjects = () => {
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(useGSAP);
+
+const projects = [
+  {
+    domain: "CIPD LAB",
+    title: "Intelligent Product Development Research",
+    description:
+      "The program will prepare students to work in the IT industry as well as digital media industry like gaming, animation.",
+    img: work1,
+  },
+  {
+    domain: "CIPD LAB",
+    title: "Intelligent Product Development Research",
+    description:
+      "The program will prepare students to work in the IT industry as well as digital media industry like gaming, animation.",
+    img: work2,
+  },
+  {
+    domain: "CIPD LAB",
+    title: "Intelligent Product Development Research",
+    description:
+      "The program will prepare students to work in the IT industry as well as digital media industry like gaming, animation.",
+    img: work3,
+  },
+  {
+    domain: "CIPD LAB",
+    title: "Intelligent Product Development Research",
+    description:
+      "The program will prepare students to work in the IT industry as well as digital media industry like gaming, animation.",
+    img: work1,
+  },
+];
+
+const OurWorkPage = () => {
+  const isSmallScreen = useMediaQuery("(max-width: 1280px)");
+  const containerRef = useRef();
+  useGSAP(
+    () => {
+      const config = {
+        carouselPanelSwitchThreshold: 0.25,
+      };
+
+      const stickySection = document.querySelector("#sticky-section");
+      const slider = document.querySelector("#slider");
+      const slidesContainer = document.querySelector("#slides");
+      const slides = document.querySelectorAll(".slide");
+
+      const stickyHeight = window.innerHeight * projects.length;
+      const totalMove = slidesContainer.offsetWidth - slider.offsetWidth;
+      const slideWidth = slider.offsetWidth;
+
+      const clipPathStart = "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)";
+      const clipPathEnd = "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)";
+
+      gsap.set(".slide-title", {
+        yPercent: 100,
+        opacity: 0,
+        clipPath: clipPathStart,
+      });
+
+      let currentVisibleIndex = null;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const currentIndex = Array.from(slides).indexOf(entry.target);
+            const titles = Array.from(slides).map((slide) =>
+              slide.querySelectorAll(".slide-title"),
+            );
+
+            if (
+              entry.intersectionRatio >= config.carouselPanelSwitchThreshold
+            ) {
+              currentVisibleIndex = currentIndex;
+              titles.forEach((title, idx) => {
+                gsap.to(title, {
+                  yPercent: idx === currentIndex ? 0 : 100,
+                  clipPath: idx === currentIndex ? clipPathEnd : clipPathStart,
+                  opacity: idx === currentIndex ? 1 : 0,
+                  duration: 0.5,
+                  stagger: 0.1,
+                  ease: "power2.out",
+                  overwrite: true,
+                });
+              });
+            } else if (
+              entry.intersectionRatio < config.carouselPanelSwitchThreshold &&
+              currentVisibleIndex === currentIndex
+            ) {
+              const previousIndex = currentIndex - 1;
+              currentVisibleIndex = previousIndex >= 0 ? previousIndex : null;
+
+              titles.forEach((title, idx) => {
+                gsap.to(title, {
+                  yPercent: idx === previousIndex ? 0 : 100,
+                  clipPath: idx === currentIndex ? clipPathEnd : clipPathStart,
+                  opacity: idx === currentIndex ? 1 : 0,
+                  duration: 0.5,
+                  stagger: 0.1,
+                  ease: "power2.out",
+                  overwrite: true,
+                });
+              });
+            }
+          });
+        },
+        {
+          root: slider,
+          threshold: [0, 0.25],
+        },
+      );
+
+      slides.forEach((slide) => observer.observe(slide));
+
+      ScrollTrigger.create({
+        trigger: stickySection,
+        start: "top top",
+        end: `+=${stickyHeight}px`,
+        scrub: 1,
+        pin: true,
+        pinSpacing: true,
+        onUpdate: (self) => {
+          const progress = self.progress;
+          const mainMove = progress * totalMove;
+          gsap.set(slidesContainer, {
+            x: -mainMove,
+          });
+
+          const currentSlide = Math.floor(mainMove / slideWidth);
+          const sliderProgress = (mainMove % slideWidth) / slideWidth;
+
+          console.log(currentSlide, sliderProgress);
+
+          slides.forEach((slide, idx) => {
+            if (idx === currentSlide || idx === currentSlide + 1) {
+              const image = slide.querySelector("img");
+              if (image) {
+                const relativeProgress =
+                  idx === currentSlide ? sliderProgress : sliderProgress - 1;
+                const parallaxAmount = relativeProgress * 25;
+                gsap.set(image, {
+                  xPercent: parallaxAmount,
+                });
+              }
+            }
+          });
+        },
+        snap: {
+          snapTo: 1 / (projects.length - 1),
+          duration: { min: 0.2, max: 0.5 },
+          ease: "power2.out",
+        },
+      });
+    },
+    {
+      scope: containerRef,
+      dependencies: [],
+    },
+  );
+
   return (
-    <div className="relative w-full font-sans overflow-x-hidden bg-white">
-      {/* Navbar once for entire page */}
-      <Navbar />
-
-      {/* Grid lines and texture overlay */}
-      <GridLines count={4} color="rgba(255,255,255,0.05)" />
+    <div className="w-full font-anybody">
       <div className="texture-overlay" />
-
-      {/* Our Work Section */}
-      <div className="bg-[#006666] text-white pt-20 px-6 pb-16 relative z-10">
-        <div className="mt-32 mb-10 mx-[170px] flex justify-end">
-          <div className="border-r-8 border-white pr-6 text-right">
-            <h1 className="text-6xl font-semibold font-helvetica_now_display">
+      <Navbar />
+      <GridLines count={isSmallScreen ? 3 : 4} />
+      <div className="bg-brand-accent2 w-full h-[84px] lg:h-[146px] xl:h-[176px]" />
+      <section
+        ref={containerRef}
+        id="sticky-section"
+        className="relative bg-brand-accent2 w-[100vw] h-[100vh] p-[1em] md:p-[2em]"
+      >
+        <div className="absolute z-10 w-[calc(50vw-1em)] xl:w-[calc(37.5vw-2em)] top-[1em] md:top-[2em] right-[1em] md:right-[2em] p-[2em] text-right text-white bg-black/20 backdrop-blur-md">
+          <TextReveal>
+            <h1 className="font-medium text-[32px] lg:text-[64px] leading-none">
               Our Work
             </h1>
-            <p className="text-lg mt-6 max-w-xl text-white/80 font-anybody">
-              The program will prepare students to work in the IT industry as well as
-              digital media industry like gaming, animation.
+          </TextReveal>
+          <TextReveal delay={0.2}>
+            <p className="font-light text-[12px] lg:text-[18px]">
+              The program will prepare students to work in the IT industry as
+              well as digital media industry like gaming, animation.
             </p>
+          </TextReveal>
+        </div>
+        <div id="slider" className="relative w-full h-full overflow-hidden">
+          <div
+            id="slides"
+            className="relative h-full flex will-change-transform"
+            style={{
+              width: `${projects.length * 100}%`,
+              transform: "translateX(0)",
+            }}
+          >
+            {projects.map((project, idx) => (
+              <MainProjectCard key={idx} project={project} />
+            ))}
           </div>
         </div>
-
-        <div className="h-52 mx-[170px] mb-6 border-2 border-dashed border-white/40 rounded-lg flex items-center justify-center text-white/70 text-lg italic font-anybody">
-          Cards section coming soon...
-        </div>
-
-        <div className="mt-6 max-w-xl font-anybody mx-[170px] text-left">
-          <p className="text-base uppercase tracking-wide text-white/70">CIPD Lab</p>
-          <h2 className="text-2xl font-semibold">
-            Intelligent Product Development Research
-          </h2>
-          <p className="text-lg text-white/80 mt-3">
-            The program will prepare students to work in the IT industry as well as
-            digital media industry like gaming, animation.
-          </p>
-        </div>
-      </div>
-
-      {/* Student Projects Section */}
-      <div className="bg-white text-black relative z-10">
-        <div className="max-w-6xl mx-auto px-4 py-20">
-          {/* View Portfolios Section */}
-          <div className="border border-[#D0E3DB] bg-[#EDF8F5] p-8 md:p-10 mb-20 w-[75vw] ml-[-4.2vw]">
-            <h2 className="text-3xl font-semibold mb-4">View Student Portfolio’s</h2>
-            <p className="text-sl text-gray-700 mb-6">
-              The program will prepare students to work in the IT industry as well as digital media industry like gaming, animation, virtual/augmented reality, etc. The program will also allow students, who want to pursue higher studies, to take up higher studies in CS/IT or in Design.
+      </section>
+      <section className="my-[40px] mx-[12.5vw] space-y-[40px]">
+        <section className="relative font-light p-[40px] border border-brand-accent2 bg-brand-accent2/5 backdrop-blur-lg hover:backdrop-blur-2xl">
+          <TextReveal>
+            <h2 className="font-medium text-[20px] lg:text-[28px] text-brand-accent2-130">
+              View Student Portfolio’s
+            </h2>
+          </TextReveal>
+          <TextReveal delay={0.2}>
+            <p className="mt-[0.5em] text-[16px] lg:text-[18px]">
+              The program will prepare students to work in the IT industry as
+              well as digital media industry like gaming, animation,
+              virtual/augmented reality, etc. The program will also allow
+              students, who want to pursue higher studies, to take up higher
+              studies in CS/IT or in Design.
             </p>
-            <button className="bg-[#025C4C] text-white px-7 py-3 rounded hover:bg-[#014D3F] text-lg">
-              View Portfolios →
+          </TextReveal>
+          <OpacityReveal delay={0.4}>
+            <button className="font-normal w-full xl:w-[25vw] mt-[2em] flex justify-center items-center gap-[24px] py-[0.75em] text-[12px] xl:text-[18px] bg-brand-accent2-130/5 border border-brand-accent2-130 text-brand-accent2-130">
+              <span>View Portfolios</span>
+              <ArrowRight className="w-[12px] lg:w-[18px] h-auto" />
             </button>
-          </div>
-
-          {/* Highlighted Projects Section */}
-          <div className="mb-16">
-            <h2 className="text-3xl font-semibold mb-4">Highlighted Projects</h2>
-            <p className="text-lg text-gray-700 mb-8 max-w-6xl">
-              The program will prepare students to work in the IT industry as well as digital media industry like gaming, animation, virtual/augmented reality, etc. The program will also allow students.
+          </OpacityReveal>
+        </section>
+        <section>
+          <TextReveal>
+            <h2 className="text-[20px] lg:text-[28px]">Highlighted Projects</h2>
+          </TextReveal>
+          <TextReveal delay={0.2}>
+            <p className="font-light text-[16px] lg:text-[18px]">
+              The program will prepare students to work in the IT industry as
+              well as digital media industry like gaming, animation,
+              virtual/augmented reality, etc. The program will also allow
+              students.
             </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[1, 2, 3].map((item) => (
-                <div
-                  key={item}
-                  className="p-0 flex flex-col justify-between"
-                >
-                  <div className="bg-gray-300 w-full h-52 mb-5" /> {/* Image Placeholder */}
-
-                  <div className="mb-4">
-                    <p className="text-lg text-gray-600">Sagar Gupta</p>
-                    <h3 className="text-xl text-[#025C4C] font-semibold mb-2">
-                      Project Title #01
-                    </h3>
-                    <p className="text-sm text-gray-700">
-                      The program will prepare students to work in the IT industry as well as digital media industry like gaming, animation, virtual/augmented reality, etc. The program will also allow students.
-                    </p>
-                  </div>
-
-                  <button className="w-full border border-[#025C4C] text-lg py-2.5 rounded hover:bg-[#025C4C] hover:text-white transition">
-                    View Project →
-                  </button>
-                </div>
-              ))}
-            </div>
+          </TextReveal>
+          <div className="mt-[1em] grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-y-[2em]">
+            {projects.map((project, idx) => (
+              <SmallProjectCard key={idx} project={project} />
+            ))}
           </div>
-        </div>
-      </div>
-
-      {/* Optional footer */}
-      <Footer />
+        </section>
+      </section>
+      <Footer type="second" />
     </div>
   );
 };
+export default OurWorkPage;
 
-export default WorkAndProjects;
+function MainProjectCard({ project }) {
+  return (
+    <div className="slide relative w-full h-full">
+      <div className="absolute w-full h-full overflow-hidden">
+        <img
+          src={project.img}
+          alt={project.title}
+          className="relative w-full h-full object-cover will-change-transform scale-[1.35]"
+          style={{
+            transform: "translateX(0)",
+          }}
+        />
+      </div>
+      <div className="relative w-full h-full flex flex-col justify-end p-[1em] lg:p-[2em] text-white bg-gradient-to-b from-black/60 via-black/0 to-black/90">
+        <p className="slide-title text-[16px] lg:text-[18px] text-white/60">
+          {project.domain}
+        </p>
+        <h2 className="slide-title text-[18px] lg:text-[24px]">
+          {project.title}
+        </h2>
+        <p className="slide-title font-light text-[14px] lg:text-[16px]">
+          {project.description}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function SmallProjectCard({ project }) {
+  return (
+    <div className="md:mr-[2em] space-y-[1em]">
+      <OpacityReveal>
+        <div className="w-full h-auto aspect-video bg-brand-gray1/20" />
+      </OpacityReveal>
+      <div className="space-y-[0.25em]">
+        <TextReveal delay={0.2}>
+          <p className="text-[16px] lg:text-[20px] text-black/60">
+            Sagar Gupta
+          </p>
+        </TextReveal>
+        <TextReveal>
+          <h3 className="font-medium text-[18px] lg:text-[24px] text-brand-accent2 leading-tight">
+            {project.title}
+          </h3>
+        </TextReveal>
+        <TextReveal delay={0.4}>
+          <p className="font-light text-[14px] lg:text-[18px]">
+            {project.description}
+          </p>
+        </TextReveal>
+      </div>
+      <OpacityReveal>
+        <button className="font-normal w-full flex justify-center items-center gap-[24px] py-[0.75em] text-[12px] xl:text-[18px] bg-brand-accent2-130/5 border border-brand-accent2-130 text-brand-accent2-130">
+          <span>View Project</span>
+          <ArrowRight className="w-[12px] lg:w-[18px] h-auto" />
+        </button>
+      </OpacityReveal>
+    </div>
+  );
+}
