@@ -15,7 +15,7 @@ gsap.registerPlugin(useGSAP);
 const CourseDirectory = () => {
   const isSmallScreen = useMediaQuery("(max-width: 1280px)");
   const [search, setSearch] = useState("");
-  const [activeTab, setActiveTab] = useState("DES");
+  const [activeTab, setActiveTab] = useState("All");
 
   const [courses, setCourses] = useState([]);
 
@@ -23,21 +23,17 @@ const CourseDirectory = () => {
     axios
       .get("/courses.json")
       .then((response) => {
-        const data = response.data.data; // Adjust if response structure differs
+        const data = response.data.data;
         const formatted = data.map((course, index) => {
-          const [name, link] = course["Course Name"].split(
-            "#http://127.0.0.1:5000/",
-          );
-          const cluster = course["Cluster"];
           return {
             id: index + 1,
             credits: `${course["Credits"]} Credit course`,
-            title: name,
-            cluster: cluster == "HCD" || cluster == "CSD" ? "DES" : cluster,
+            title: course["Course Name"],
             acronym: course["Course Acronym"],
             code: course["Course Code"],
             prerequisites: course["Prerequisites"],
-            url: "https://techtree.iiitd.edu.in/" + link,
+            mandatory: course["Mandatory"],
+            url: course["Link"],
           };
         });
         setCourses(formatted);
@@ -68,7 +64,18 @@ const CourseDirectory = () => {
         />
         <section className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 mt-[30px]">
           {courses
-            .filter((course) => course.cluster === activeTab)
+            .filter((course) => {
+              switch (activeTab) {
+                case "All":
+                  return true;
+                case "Core":
+                  return course.mandatory;
+                case "Elective":
+                  return !course.mandatory;
+                default:
+                  return false;
+              }
+            })
             .filter((course) => course.title.toLowerCase().includes(search))
             .map((course) => (
               <CourseCard key={course.id} course={course} />
@@ -97,19 +104,19 @@ function ControlPanel({ setSearch, activeTab, setActiveTab }) {
         />
       </div>
       <ControlPanelTabButton
-        text="DES Courses"
-        active={activeTab === "DES"}
-        onClick={() => setActiveTab("DES")}
+        text="All Courses"
+        active={activeTab === "All"}
+        onClick={() => setActiveTab("All")}
       />
       <ControlPanelTabButton
-        text="CSE Courses"
-        active={activeTab === "CSE"}
-        onClick={() => setActiveTab("CSE")}
+        text="Core Courses"
+        active={activeTab === "Core"}
+        onClick={() => setActiveTab("Core")}
       />
       <ControlPanelTabButton
-        text="SSH Courses"
-        active={activeTab === "SSH"}
-        onClick={() => setActiveTab("SSH")}
+        text="Elective Courses"
+        active={activeTab === "Elective"}
+        onClick={() => setActiveTab("Elective")}
       />
     </div>
   );

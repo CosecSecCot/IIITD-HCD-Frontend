@@ -1,7 +1,7 @@
 {"data": [
     {
         "Serial Number": "123",
-        "Course Name": "Design Drawing & Visualization#http://127.0.0.1:5000/viewDescription/filename?=DES101",
+        "Course Name": "Design Drawing & Visualization",
         "Course Code": "DES101",
         "Course Acronym": "DDV",
         "Prerequisites": "None",
@@ -10,13 +10,13 @@
         "Semester": "Winter",
         "Professor": "Indrani De Parker, Vibha Narula Gupta",
         "Credits": "4",
-        "Cluster": "DES",
+        "Mandatory": true,
         "OptionalDept": "None",
-        "Link": "http://127.0.0.1:5000/viewDescription/filename?=DES101"
+        "Link": "https://techtree.iiitd.ac.in/viewDescription/filename?=DES101"
     },
     {
         "Serial Number": "124",
-        "Course Name": "Introduction to HCI#http://127.0.0.1:5000/viewDescription/filename?=DES102",
+        "Course Name": "Introduction to HCI",
         "Course Code": "DES102",
         "Course Acronym": "IHCI",
         "Prerequisites": "None",
@@ -25,13 +25,13 @@
         "Semester": "Winter",
         "Professor": "Grace Eden, Rajiv Ratn Shah",
         "Credits": "4",
-        "Cluster": "DES",
+        "Mandatory": true,
         "OptionalDept": "None",
-        "Link": "http://127.0.0.1:5000/viewDescription/filename?=DES102"
+        "Link": "https://techtree.iiitd.ac.in/viewDescription/filename?=DES102"
     },
     {
         "Serial Number": "125",
-        "Course Name": "Prototyping Interactive Systems#http://127.0.0.1:5000/viewDescription/filename?=DES130",
+        "Course Name": "Prototyping Interactive Systems",
         "Course Code": "DES130",
         "Course Acronym": "PIS",
         "Prerequisites": "None",
@@ -40,13 +40,13 @@
         "Semester": "Monsoon",
         "Professor": "Aman Parnami",
         "Credits": "4",
-        "Cluster": "DES",
+        "Mandatory": true,
         "OptionalDept": "None",
-        "Link": "http://127.0.0.1:5000/viewDescription/filename?=DES130"
+        "Link": "https://techtree.iiitd.ac.in/viewDescription/filename?=DES130"
     },
     {
         "Serial Number": "126",
-        "Course Name": "Design Processes and Perspectives#http://127.0.0.1:5000/viewDescription/filename?=DES201",
+        "Course Name": "Design Processes and Perspectives",
         "Course Code": "DES201",
         "Course Acronym": "DPP",
         "Prerequisites": "Completion of DESIGN DRAWING & VISUALISATION (DDV) Course Parallel Course VISUAL DESIGN & COMMUNICATION",
@@ -55,13 +55,13 @@
         "Semester": "Monsoon",
         "Professor": "Anmol Srivastava",
         "Credits": "4",
-        "Cluster": "DES",
+        "Mandatory": true,
         "OptionalDept": "None",
-        "Link": "http://127.0.0.1:5000/viewDescription/filename?=DES201"
+        "Link": "https://techtree.iiitd.ac.in/viewDescription/filename?=DES201"
     },
     {
         "Serial Number": "127",
-        "Course Name": "Visual Design & Communication#http://127.0.0.1:5000/viewDescription/filename?=DES202",
+        "Course Name": "Visual Design & Communication",
         "Course Code": "DES202",
         "Course Acronym": "VDC",
         "Prerequisites": "DES101",
@@ -70,13 +70,13 @@
         "Semester": "Monsoon",
         "Professor": "Indrani De Parker, Vibha Narula Gupta",
         "Credits": "4",
-        "Cluster": "DES",
+        "Mandatory": true,
         "OptionalDept": "None",
-        "Link": "http://127.0.0.1:5000/viewDescription/filename?=DES202"
+        "Link": "https://techtree.iiitd.ac.in/viewDescription/filename?=DES202"
     },
     {
         "Serial Number": "128",
-        "Course Name": "Human Computer Interaction #http://127.0.0.1:5000/viewDescription/filename?=DES204",
+        "Course Name": "Human Computer Interaction ",
         "Course Code": "DES204",
         "Course Acronym": "HCI",
         "Prerequisites": "None",
@@ -85,13 +85,12 @@
         "Semester": "Winter",
         "Professor": "Grace Eden",
         "Credits": "4",
-        "Cluster": "DES",
         "OptionalDept": "None",
-        "Link": "http://127.0.0.1:5000/viewDescription/filename?=DES204"
+        "Link": "https://techtree.iiitd.ac.in/viewDescription/filename?=DES204"
     },
     {
         "Serial Number": "129",
-        "Course Name": "Design of Interactive Systems#http://127.0.0.1:5000/viewDescription/filename?=DES205",
+        "Course Name": "Design of Interactive Systems",
         "Course Code": "DES205/DES519",
         "Course Acronym": "DIS",
         "Prerequisites": "None",
@@ -100,13 +99,13 @@
         "Semester": "Monsoon",
         "Professor": "Rajiv Ratn Shah",
         "Credits": "4",
-        "Cluster": "DES",
+        "Mandatory": true,
         "OptionalDept": "None",
-        "Link": "http://127.0.0.1:5000/viewDescription/filename?=DES205"
+        "Link": "https://techtree.iiitd.ac.in/viewDescription/filename?=DES205"
     },
     {
         "Serial Number": "130",
-        "Course Name": "Introduction to Animation and Graphics#http://127.0.0.1:5000/viewDescription/filename?=DES302",
+        "Course Name": "Introduction to Animation and Graphics",
         "Course Code": "DES302",
         "Course Acronym": "IAG",
         "Prerequisites": "None",
@@ -115,13 +114,12 @@
         "Semester": "Monsoon",
         "Professor": "Anoop Ratn",
         "Credits": "4",
-        "Cluster": "DES",
         "OptionalDept": "None",
-        "Link": "http://127.0.0.1:5000/viewDescription/filename?=DES302"
+        "Link": "https://techtree.iiitd.ac.in/viewDescription/filename?=DES302"
     },
     {
         "Serial Number": "131",
-        "Course Name": "Film Making and Radio Podcasting#http://127.0.0.1:5000/viewDescription/filename?=DES303",
+        "Course Name": "Film Making and Radio Podcasting",
         "Course Code": "DES303",
         "Course Acronym": "FMRP",
         "Prerequisites": "None",
@@ -130,13 +128,12 @@
         "Semester": "Monsoon",
         "Professor": "Manohar Khushlani",
         "Credits": "4",
-        "Cluster": "DES",
         "OptionalDept": "None",
-        "Link": "http://127.0.0.1:5000/viewDescription/filename?=DES303"
+        "Link": "https://techtree.iiitd.ac.in/viewDescription/filename?=DES303"
     },
     {
         "Serial Number": "132",
-        "Course Name": "Fundamentals of Audio for Engineers#http://127.0.0.1:5000/viewDescription/filename?=DES501",
+        "Course Name": "Fundamentals of Audio for Engineers",
         "Course Code": "DES501",
         "Course Acronym": "FAE",
         "Prerequisites": "Basic knowledge of Class 12 Maths & Physics",
@@ -145,13 +142,12 @@
         "Semester": "Monsoon",
         "Professor": "Angshu Das",
         "Credits": "4",
-        "Cluster": "DES",
         "OptionalDept": "None",
-        "Link": "http://127.0.0.1:5000/viewDescription/filename?=DES501"
+        "Link": "https://techtree.iiitd.ac.in/viewDescription/filename?=DES501"
     },
     {
         "Serial Number": "133",
-        "Course Name": "Introduction to 2D Animation#http://127.0.0.1:5000/viewDescription/filename?=DES502",
+        "Course Name": "Introduction to 2D Animation",
         "Course Code": "DES502",
         "Course Acronym": "I2D",
         "Prerequisites": "None",
@@ -160,13 +156,12 @@
         "Semester": "Winter",
         "Professor": "Anoop Ratn",
         "Credits": "4",
-        "Cluster": "DES",
         "OptionalDept": "None",
-        "Link": "http://127.0.0.1:5000/viewDescription/filename?=DES502"
+        "Link": "https://techtree.iiitd.ac.in/viewDescription/filename?=DES502"
     },
     {
         "Serial Number": "134",
-        "Course Name": "Introduction to 3D Character Animation#http://127.0.0.1:5000/viewDescription/filename?=DES503",
+        "Course Name": "Introduction to 3D Character Animation",
         "Course Code": "DES503",
         "Course Acronym": "I3DA",
         "Prerequisites": "DES302 or DES516",
@@ -175,13 +170,12 @@
         "Semester": "Winter",
         "Professor": "Anoop Ratn",
         "Credits": "4",
-        "Cluster": "DES",
         "OptionalDept": "None",
-        "Link": "http://127.0.0.1:5000/viewDescription/filename?=DES503"
+        "Link": "https://techtree.iiitd.ac.in/viewDescription/filename?=DES503"
     },
     {
         "Serial Number": "135",
-        "Course Name": "Narratives in Visual Communication#http://127.0.0.1:5000/viewDescription/filename?=DES504",
+        "Course Name": "Narratives in Visual Communication",
         "Course Code": "DES504",
         "Course Acronym": "NVC",
         "Prerequisites": "None",
@@ -190,13 +184,12 @@
         "Semester": "Winter",
         "Professor": "Indrani De Parker",
         "Credits": "4",
-        "Cluster": "DES",
         "OptionalDept": "None",
-        "Link": "http://127.0.0.1:5000/viewDescription/filename?=DES504"
+        "Link": "https://techtree.iiitd.ac.in/viewDescription/filename?=DES504"
     },
     {
         "Serial Number": "136",
-        "Course Name": "Advanced topics in Human Centered Computing (ATHCC)#http://127.0.0.1:5000/viewDescription/filename?=DES506",
+        "Course Name": "Advanced topics in Human Centered Computing (ATHCC)",
         "Course Code": "DES506",
         "Course Acronym": "ATHCC",
         "Prerequisites": "DES204",
@@ -205,13 +198,12 @@
         "Semester": "Winter",
         "Professor": "Pushpendra Singh",
         "Credits": "4",
-        "Cluster": "DES",
         "OptionalDept": "None",
-        "Link": "http://127.0.0.1:5000/viewDescription/filename?=DES506"
+        "Link": "https://techtree.iiitd.ac.in/viewDescription/filename?=DES506"
     },
     {
         "Serial Number": "138",
-        "Course Name": "Design Futures#http://127.0.0.1:5000/viewDescription/filename?=DES509",
+        "Course Name": "Design Futures",
         "Course Code": "DES509",
         "Course Acronym": "DF",
         "Prerequisites": "DES519",
@@ -220,13 +212,12 @@
         "Semester": "Monsoon",
         "Professor": "Grace Eden",
         "Credits": "4",
-        "Cluster": "DES",
         "OptionalDept": "None",
-        "Link": "http://127.0.0.1:5000/viewDescription/filename?=DES509"
+        "Link": "https://techtree.iiitd.ac.in/viewDescription/filename?=DES509"
     },
     {
         "Serial Number": "139",
-        "Course Name": "Game Design and Development#http://127.0.0.1:5000/viewDescription/filename?=DES512",
+        "Course Name": "Game Design and Development",
         "Course Code": "DES512",
         "Course Acronym": "GDD",
         "Prerequisites": "None",
@@ -235,13 +226,12 @@
         "Semester": "Winter",
         "Professor": "Aman Samuel",
         "Credits": "4",
-        "Cluster": "DES",
         "OptionalDept": "None",
-        "Link": "http://127.0.0.1:5000/viewDescription/filename?=DES512"
+        "Link": "https://techtree.iiitd.ac.in/viewDescription/filename?=DES512"
     },
     {
         "Serial Number": "140",
-        "Course Name": "Wearable Applications, Research, Devices, Interactions#http://127.0.0.1:5000/viewDescription/filename?=DES513",
+        "Course Name": "Wearable Applications, Research, Devices, Interactions",
         "Course Code": "DES513",
         "Course Acronym": "WARDI",
         "Prerequisites": "None",
@@ -250,13 +240,12 @@
         "Semester": "Monsoon",
         "Professor": "Aman Parnami",
         "Credits": "4",
-        "Cluster": "DES",
         "OptionalDept": "None",
-        "Link": "http://127.0.0.1:5000/viewDescription/filename?=DES513"
+        "Link": "https://techtree.iiitd.ac.in/viewDescription/filename?=DES513"
     },
     {
         "Serial Number": "141",
-        "Course Name": "Digital Audio & Video Production Workflow#http://127.0.0.1:5000/viewDescription/filename?=DES514",
+        "Course Name": "Digital Audio & Video Production Workflow",
         "Course Code": "DES514",
         "Course Acronym": "DAVP",
         "Prerequisites": "None",
@@ -265,13 +254,12 @@
         "Semester": "Monsoon",
         "Professor": "Aman Samuel",
         "Credits": "4",
-        "Cluster": "DES",
         "OptionalDept": "None",
-        "Link": "http://127.0.0.1:5000/viewDescription/filename?=DES514"
+        "Link": "https://techtree.iiitd.ac.in/viewDescription/filename?=DES514"
     },
     {
         "Serial Number": "142",
-        "Course Name": "Information Systems in Public Health#http://127.0.0.1:5000/viewDescription/filename?=DES515",
+        "Course Name": "Information Systems in Public Health",
         "Course Code": "DES515",
         "Course Acronym": "ISPR",
         "Prerequisites": "None",
@@ -280,13 +268,12 @@
         "Semester": "Monsoon",
         "Professor": "Information not available",
         "Credits": "4",
-        "Cluster": "DES",
         "OptionalDept": "None",
-        "Link": "http://127.0.0.1:5000/viewDescription/filename?=DES515"
+        "Link": "https://techtree.iiitd.ac.in/viewDescription/filename?=DES515"
     },
     {
         "Serial Number": "143",
-        "Course Name": "Introduction to 3D Production Design for Animation and Games#http://127.0.0.1:5000/viewDescription/filename?=DES516",
+        "Course Name": "Introduction to 3D Production Design for Animation and Games",
         "Course Code": "DES516",
         "Course Acronym": "I3DD",
         "Prerequisites": "None",
@@ -295,13 +282,12 @@
         "Semester": "Monsoon",
         "Professor": "Anoop Ratn",
         "Credits": "4",
-        "Cluster": "DES",
         "OptionalDept": "None",
-        "Link": "http://127.0.0.1:5000/viewDescription/filename?=DES516"
+        "Link": "https://techtree.iiitd.ac.in/viewDescription/filename?=DES516"
     },
     {
         "Serial Number": "144",
-        "Course Name": "Introduction to 3D Animation#http://127.0.0.1:5000/viewDescription/filename?=DES516s",
+        "Course Name": "Introduction to 3D Animation",
         "Course Code": "DES516s",
         "Course Acronym": "I3D",
         "Prerequisites": "None",
@@ -310,13 +296,12 @@
         "Semester": "Winter",
         "Professor": "Anoop Ratn",
         "Credits": "2",
-        "Cluster": "DES",
         "OptionalDept": "None",
-        "Link": "http://127.0.0.1:5000/viewDescription/filename?=DES516s"
+        "Link": "https://techtree.iiitd.ac.in/viewDescription/filename?=DES516s"
     },
     {
         "Serial Number": "145",
-        "Course Name": "Introduction to Motion Graphics#http://127.0.0.1:5000/viewDescription/filename?=DES518",
+        "Course Name": "Introduction to Motion Graphics",
         "Course Code": "DES518",
         "Course Acronym": "IMG",
         "Prerequisites": "None",
@@ -325,13 +310,12 @@
         "Semester": "Monsoon",
         "Professor": "Anoop Ratn",
         "Credits": "4",
-        "Cluster": "DES",
         "OptionalDept": "None",
-        "Link": "http://127.0.0.1:5000/viewDescription/filename?=DES518"
+        "Link": "https://techtree.iiitd.ac.in/viewDescription/filename?=DES518"
     },
     {
         "Serial Number": "146",
-        "Course Name": "Human Centred AI#http://127.0.0.1:5000/viewDescription/filename?=DES520",
+        "Course Name": "Human Centred AI",
         "Course Code": "DES520",
         "Course Acronym": "HCAI",
         "Prerequisites": "DES204, CSE643 or CSE343/CSE543/ECE563 or CSE440",
@@ -340,13 +324,12 @@
         "Semester": "Monsoon",
         "Professor": "Grace Eden",
         "Credits": "4",
-        "Cluster": "DES",
         "OptionalDept": "None",
-        "Link": "http://127.0.0.1:5000/viewDescription/filename?=DES520"
+        "Link": "https://techtree.iiitd.ac.in/viewDescription/filename?=DES520"
     },
     {
         "Serial Number": "147",
-        "Course Name": "Fundamentals of Video for Engineers#http://127.0.0.1:5000/viewDescription/filename?=DES521",
+        "Course Name": "Fundamentals of Video for Engineers",
         "Course Code": "DES521",
         "Course Acronym": "FVE",
         "Prerequisites": "None",
@@ -355,13 +338,12 @@
         "Semester": "Winter",
         "Professor": "Angshu Das",
         "Credits": "4",
-        "Cluster": "DES",
         "OptionalDept": "None",
-        "Link": "http://127.0.0.1:5000/viewDescription/filename?=DES521"
+        "Link": "https://techtree.iiitd.ac.in/viewDescription/filename?=DES521"
     },
     {
         "Serial Number": "148",
-        "Course Name": "Inclusive Design, Universal Design & Accessibility#http://127.0.0.1:5000/viewDescription/filename?=DES522",
+        "Course Name": "Inclusive Design, Universal Design & Accessibility",
         "Course Code": "DES522",
         "Course Acronym": "IDUDA",
         "Prerequisites": "DES201",
@@ -370,13 +352,12 @@
         "Semester": "Monsoon",
         "Professor": "Richa Gupta",
         "Credits": "4",
-        "Cluster": "DES",
         "OptionalDept": "None",
-        "Link": "http://127.0.0.1:5000/viewDescription/filename?=DES522"
+        "Link": "https://techtree.iiitd.ac.in/viewDescription/filename?=DES522"
     },
     {
         "Serial Number": "326",
-        "Course Name": "Prototyping Interactive Systems#http://127.0.0.1:5000/viewDescription/filename?=DES206",
+        "Course Name": "Prototyping Interactive Systems",
         "Course Code": "DES206",
         "Course Acronym": "PIS",
         "Prerequisites": "None",
@@ -385,13 +366,13 @@
         "Semester": "Winter",
         "Professor": "Richa Gupta",
         "Credits": "4",
-        "Cluster": "CSD",
         "OptionalDept": "None",
-        "Link": "http://127.0.0.1:5000/viewDescription/filename?=DES206"
+        "Mandatory": true,
+        "Link": "https://techtree.iiitd.ac.in/viewDescription/filename?=DES206"
     },
     {
         "Serial Number": "333",
-        "Course Name": "3D Animation filmmaking#http://127.0.0.1:5000/viewDescription/filename?=DES305",
+        "Course Name": "3D Animation filmmaking",
         "Course Code": "DES305",
         "Course Acronym": "3DAF",
         "Prerequisites": "None",
@@ -400,13 +381,12 @@
         "Semester": "Monsoon",
         "Professor": "Anoop Ratn",
         "Credits": "4",
-        "Cluster": "DES",
         "OptionalDept": "None",
-        "Link": "http://127.0.0.1:5000/viewDescription/filename?=DES305"
+        "Link": "https://techtree.iiitd.ac.in/viewDescription/filename?=DES305"
     },
     {
         "Serial Number": "343",
-        "Course Name": "Ergonomics/Human factors for Design#http://127.0.0.1:5000/viewDescription/filename?=DES524",
+        "Course Name": "Ergonomics/Human factors for Design",
         "Course Code": "DES524",
         "Course Acronym": "EFD",
         "Prerequisites": "None",
@@ -415,13 +395,12 @@
         "Semester": "Monsoon",
         "Professor": "Sonal Keshwani",
         "Credits": "4",
-        "Cluster": "DES",
         "OptionalDept": "None",
-        "Link": "http://127.0.0.1:5000/viewDescription/filename?=DES524"
+        "Link": "https://techtree.iiitd.ac.in/viewDescription/filename?=DES524"
     },
     {
         "Serial Number": "351",
-        "Course Name": "Cognition and Information Processing in Design#http://127.0.0.1:5000/viewDescription/filename?=DES523",
+        "Course Name": "Cognition and Information Processing in Design",
         "Course Code": "DES523",
         "Course Acronym": "CIPD",
         "Prerequisites": "None",
@@ -430,13 +409,12 @@
         "Semester": "Winter",
         "Professor": "Dhurjati Majumdar",
         "Credits": "4",
-        "Cluster": "DES",
         "OptionalDept": "None",
-        "Link": "http://127.0.0.1:5000/viewDescription/filename?=DES523"
+        "Link": "https://techtree.iiitd.ac.in/viewDescription/filename?=DES523"
     },
     {
         "Serial Number": "362",
-        "Course Name": "Motion Design and Graphics#http://127.0.0.1:5000/viewDescription/filename?=DES526",
+        "Course Name": "Motion Design and Graphics",
         "Course Code": "DES526/DES307",
         "Course Acronym": "MDG",
         "Prerequisites": "None",
@@ -445,13 +423,12 @@
         "Semester": "Monsoon",
         "Professor": "Anoop Ratn",
         "Credits": "4",
-        "Cluster": "DES",
         "OptionalDept": "None",
-        "Link": "http://127.0.0.1:5000/viewDescription/filename?=DES526"
+        "Link": "https://techtree.iiitd.ac.in/viewDescription/filename?=DES526"
     },
     {
         "Serial Number": "363",
-        "Course Name": "User Experience Design of XR#http://127.0.0.1:5000/viewDescription/filename?=DES527",
+        "Course Name": "User Experience Design of XR",
         "Course Code": "DES527",
         "Course Acronym": "UDXR",
         "Prerequisites": "DES102; CSE101",
@@ -460,13 +437,12 @@
         "Semester": "Monsoon",
         "Professor": "Anmol Srivastava",
         "Credits": "4",
-        "Cluster": "DES",
         "OptionalDept": "None",
-        "Link": "http://127.0.0.1:5000/viewDescription/filename?=DES527"
+        "Link": "https://techtree.iiitd.ac.in/viewDescription/filename?=DES527"
     },
     {
         "Serial Number": "368",
-        "Course Name": "The Business of Artificial Intelligence#http://127.0.0.1:5000/viewDescription/filename?=DES530",
+        "Course Name": "The Business of Artificial Intelligence",
         "Course Code": "DES530",
         "Course Acronym": "BAI",
         "Prerequisites": "None",
@@ -475,13 +451,12 @@
         "Semester": "Monsoon",
         "Professor": "Vinish Kathuria",
         "Credits": "4",
-        "Cluster": "DES",
         "OptionalDept": "None",
-        "Link": "http://127.0.0.1:5000/viewDescription/filename?=DES530"
+        "Link": "https://techtree.iiitd.ac.in/viewDescription/filename?=DES530"
     },
     {
         "Serial Number": "369",
-        "Course Name": "Design for Artificial Intelligence driven Products#http://127.0.0.1:5000/viewDescription/filename?=DES529",
+        "Course Name": "Design for Artificial Intelligence driven Products",
         "Course Code": "DES529",
         "Course Acronym": "DAIDP",
         "Prerequisites": "None",
@@ -490,13 +465,12 @@
         "Semester": "Winter",
         "Professor": "Vinish Kathuria",
         "Credits": "4",
-        "Cluster": "DES",
         "OptionalDept": "None",
-        "Link": "http://127.0.0.1:5000/viewDescription/filename?=DES529"
+        "Link": "https://techtree.iiitd.ac.in/viewDescription/filename?=DES529"
     },
     {
         "Serial Number": "389",
-        "Course Name": "3D Creation for Extended Reality (XR)#http://127.0.0.1:5000/viewDescription/filename?=DES532A",
+        "Course Name": "3D Creation for Extended Reality (XR)",
         "Course Code": "DES532A",
         "Course Acronym": "3CER",
         "Prerequisites": "None",
@@ -505,13 +479,12 @@
         "Semester": "Winter",
         "Professor": "Kalpana Shankhwar",
         "Credits": "2",
-        "Cluster": "HCD",
         "OptionalDept": "None",
-        "Link": "http://127.0.0.1:5000/viewDescription/filename?=DES532A"
+        "Link": "https://techtree.iiitd.ac.in/viewDescription/filename?=DES532A"
     },
     {
         "Serial Number": "391",
-        "Course Name": "Interaction Design Perspectives Methods#http://127.0.0.1:5000/viewDescription/filename?=DES533",
+        "Course Name": "Interaction Design Perspectives Methods",
         "Course Code": "DES533",
         "Course Acronym": "IDPM",
         "Prerequisites": "None",
@@ -520,13 +493,12 @@
         "Semester": "Winter",
         "Professor": "Sonal Keshwani (V)\n",
         "Credits": "4",
-        "Cluster": "HCD",
         "OptionalDept": "None",
-        "Link": "http://127.0.0.1:5000/viewDescription/filename?=DES533"
+        "Link": "https://techtree.iiitd.ac.in/viewDescription/filename?=DES533"
     },
     {
         "Serial Number": "392",
-        "Course Name": "Tangible User Interfaces\n#http://127.0.0.1:5000/viewDescription/filename?=DES531",
+        "Course Name": "Tangible User Interfaces\n",
         "Course Code": "DES531",
         "Course Acronym": "TUI",
         "Prerequisites": "PIS (DES206), DPP (DES201) ",
@@ -535,13 +507,12 @@
         "Semester": "Winter",
         "Professor": "Anmol Srivastava",
         "Credits": "4",
-        "Cluster": "HCD",
         "OptionalDept": "None",
-        "Link": "http://127.0.0.1:5000/viewDescription/filename?=DES531"
+        "Link": "https://techtree.iiitd.ac.in/viewDescription/filename?=DES531"
     },
     {
         "Serial Number": "405",
-        "Course Name": "Extended Reality in Industry#http://127.0.0.1:5000/viewDescription/filename?=DES534",
+        "Course Name": "Extended Reality in Industry",
         "Course Code": "DES534",
         "Course Acronym": "ERI",
         "Prerequisites": "None",
@@ -550,13 +521,12 @@
         "Semester": "Monsoon",
         "Professor": "Kalpana Shankhwar",
         "Credits": "4",
-        "Cluster": "DES",
         "OptionalDept": "None",
-        "Link": "http://127.0.0.1:5000/viewDescription/filename?=DES534"
+        "Link": "https://techtree.iiitd.ac.in/viewDescription/filename?=DES534"
     },
     {
         "Serial Number": "412",
-        "Course Name": "Ubiquitous Computing#http://127.0.0.1:5000/viewDescription/filename?=DES535",
+        "Course Name": "Ubiquitous Computing",
         "Course Code": "DES535",
         "Course Acronym": "UC",
         "Prerequisites": "None",
@@ -565,13 +535,12 @@
         "Semester": "Winter",
         "Professor": "Pragma Kar",
         "Credits": "4",
-        "Cluster": "HCD",
         "OptionalDept": "None",
-        "Link": "http://127.0.0.1:5000/viewDescription/filename?=DES535"
+        "Link": "https://techtree.iiitd.ac.in/viewDescription/filename?=DES535"
     },
     {
         "Serial Number": "425",
-        "Course Name": "Design Research#http://127.0.0.1:5000/viewDescription/filename?=DES536",
+        "Course Name": "Design Research",
         "Course Code": "DES536",
         "Course Acronym": "",
         "Prerequisites": "",
@@ -580,13 +549,12 @@
         "Semester": "Winter",
         "Professor": "Anmol Srivastava",
         "Credits": "2",
-        "Cluster": "HCD",
         "OptionalDept": "None",
-        "Link": "http://127.0.0.1:5000/viewDescription/filename?=DES536"
+        "Link": "https://techtree.iiitd.ac.in/viewDescription/filename?=DES536"
     },
     {
         "Serial Number": "429",
-        "Course Name": "User Experience Design and UI Design#http://127.0.0.1:5000/viewDescription/filename?=DES537A",
+        "Course Name": "User Experience Design and UI Design",
         "Course Code": " DES537A",
         "Course Acronym": "",
         "Prerequisites": "",
@@ -595,8 +563,7 @@
         "Semester": "Summer",
         "Professor": "Anmol Srivastava",
         "Credits": "2",
-        "Cluster": "HCD",
         "OptionalDept": "None",
-        "Link": "http://127.0.0.1:5000/viewDescription/filename?=DES537A"
+        "Link": "https://techtree.iiitd.ac.in/viewDescription/filename?=DES537A"
     }
 ]}
