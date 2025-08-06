@@ -112,12 +112,12 @@ function ContactHeading({ title, subtitle, description }) {
     <div className="w-full flex justify-between">
       <div className="w-[12.5vw] lg:w-[calc(12.5vw-2em)] bg-brand-accent2" />
       <div className="w-[75vw] lg:w-[50vw] px-[1em]">
-        <TextReveal delay={0.1}>
+        <TextReveal delay={0.2}>
           <p className="uppercase text-[20px] lg:text-[28px] leading-tight font-semibold text-brand-accent2">
             {subtitle}
           </p>
         </TextReveal>
-        <TextReveal delay={0.2}>
+        <TextReveal>
           <h1 className="text-[40px] lg:text-[64px] leading-tight">{title}</h1>
         </TextReveal>
         <TextReveal delay={0.4}>
@@ -132,13 +132,13 @@ function ContactHeading({ title, subtitle, description }) {
 function ContactCard({ title, subtitle, linkText, linkHref, icon }) {
   return (
     <div className="pr-[1em]">
-      <TextReveal delay={0.5}>
+      <TextReveal>
         <h3 className="text-[18px] lg:text-[24px] font-semibold">{title}</h3>
       </TextReveal>
-      <TextReveal delay={0.7}>
+      <TextReveal delay={0.2}>
         <p className="text-[16px] lg:text-[20px]">{subtitle}</p>
       </TextReveal>
-      <OpacityReveal delay={0.9}>
+      <OpacityReveal delay={0.4}>
         <a
           href={linkHref}
           className="mt-[1em] flex items-center gap-[0.5em] text-[18px] lg:text-[24px] font-medium underline hover:text-brand-accent2"
