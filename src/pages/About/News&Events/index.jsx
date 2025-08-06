@@ -76,7 +76,7 @@ const NewsAndEventsPage = () => {
         </section>
       </main>
       <Sidebar />
-      <Footer type="second" />
+      <Footer />
     </div>
   );
 };

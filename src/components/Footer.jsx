@@ -9,7 +9,7 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="relative z-[99] bg-gradient-to-r from-brand-accent2 to-brand-accent2-130 py-[80px] text-white font-anybody">
+    <footer className="relative z-[99] bg-gradient-to-r from-brand-accent2-80 to-brand-accent2 py-[80px] text-white font-[350] font-anybody">
       <div className="w-[75vw] mx-[12.5vw]">
         <div className="grid grid-cols-1 xl:grid-cols-3">
           <section className="flex flex-col gap-[80px]">
@@ -97,7 +97,7 @@ const Footer = () => {
           </section>
         </div>
         <section className="flex justify-between items-center flex-shrink-0 gap-x-[4em] gap-y-[1em] mt-[48px] text-[16px] xl:text-[20px] opacity-60">
-          <span>&copy; 2024 IIITD</span>
+          <span>Copyright &copy; 2024 IIITD</span>
           <span className="text-right">Last Updated 12/05/2024</span>
         </section>
       </div>
