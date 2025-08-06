@@ -2,7 +2,6 @@ import React, { useRef, useState } from "react";
 import Navbar from "../../../components/Navbar";
 import GridLines from "../../../components/GridLines";
 import Footer from "../../../components/Footer";
-import publicationsBanner from "../../../assets/banner-main-back.png";
 import { ArrowRight, X } from "lucide-react";
 import { useMediaQuery } from "../../../hooks/useMediaQuery";
 import gsap from "gsap";
@@ -418,7 +417,7 @@ const PublicationPage = () => {
       <div className="texture-overlay" />
       <GridLines count={isSmallScreen ? 3 : 4} />
       <Banner text="PUBLICATIONS" />
-      <main className="w-[75vw] mx-[12.5vw] mt-[30px]">
+      <main className="w-[75vw] mx-[12.5vw] mt-[30px] mb-[10vh]">
         <div className="flex flex-col lg:flex-row pl-[1px] gap-[1px] mb-6">
           <div className="flex-1">
             <Dropdown

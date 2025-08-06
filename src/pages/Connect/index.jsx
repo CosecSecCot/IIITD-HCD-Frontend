@@ -21,7 +21,7 @@ const ConnectPage = () => {
       <GridLines count={isSmallScreen ? 3 : 4} />
       <div className="texture-overlay" />
       <div className="background-element" />
-      <main ref={containerRef} className="pt-[32vh]">
+      <main ref={containerRef} className="pt-[32vh] mb-[10vh]">
         <ContactHeading
           title={
             <span>

@@ -85,7 +85,7 @@ const DepartmentProjects = () => {
       <Navbar />
       <GridLines count={isSmallScreen ? 3 : 4} />
       <Banner text={"DEPARTMENT PROJECTS"} />
-      <main className="w-[75vw] mx-[12.5vw] mt-[30px]">
+      <main className="w-[75vw] mx-[12.5vw] mt-[30px] mb-[10vh]">
         <section
           ref={cardsContainerRef}
           className="grid grid-cols-1 xl:grid-cols-3 divide-y divide-black/10 mt-[30px] auto-rows-auto gap-y-px xl:gap-x-px"

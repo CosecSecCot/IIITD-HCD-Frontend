@@ -254,7 +254,7 @@ const OurWorkPage = () => {
           </div>
         </section>
       </section>
-      <Footer type="second" />
+      <Footer />
     </div>
   );
 };

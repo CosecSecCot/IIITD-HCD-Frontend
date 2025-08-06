@@ -47,79 +47,81 @@ const StudyBTech = () => {
         }
       />
 
-      <section className="mt-[64px] lg:mt-[100px]">
-        <Heading align="left">
-          Study <span className="text-brand-accent2 font-semibold">CSD</span>{" "}
-          @IIITD
-        </Heading>
-        <TextReveal start={80}>
-          <p className="ml-[12.5vw] xl:ml-[37.5vw] mt-[32px] lg:mt-[80px] w-[75vw] xl:w-[50vw] text-[16px] lg:text-[24px] font-light">
-            The program will prepare students to work in the IT industry as well
-            as digital media industry like gaming, animation, virtual/augmented
-            reality, etc. The program will also allow students, who want to
-            pursue higher studies, to take up higher studies in CS/IT or in
-            Design.
-          </p>
-        </TextReveal>
-        <TextReveal start={80}>
-          <p className="ml-[12.5vw] xl:ml-[37.5vw] mt-[32px] lg:mt-[80px] w-[75vw] xl:w-[50vw] text-[16px] lg:text-[24px] font-light">
-            The program will prepare students to work in the IT industry as well
-            as digital media industry like gaming, animation, virtual/augmented
-            reality, etc. The program will also allow students, who want to
-            pursue higher studies, to take up higher studies in CS/IT or in
-            Design.
-          </p>
-        </TextReveal>
-      </section>
+      <main className="mt-[64px] lg:mt-[100px] mb-[10vh]">
+        <section>
+          <Heading align="left">
+            Study <span className="text-brand-accent2 font-semibold">CSD</span>{" "}
+            @IIITD
+          </Heading>
+          <TextReveal start={80}>
+            <p className="ml-[12.5vw] xl:ml-[37.5vw] mt-[32px] lg:mt-[80px] w-[75vw] xl:w-[50vw] text-[16px] lg:text-[24px] font-light">
+              The program will prepare students to work in the IT industry as
+              well as digital media industry like gaming, animation,
+              virtual/augmented reality, etc. The program will also allow
+              students, who want to pursue higher studies, to take up higher
+              studies in CS/IT or in Design.
+            </p>
+          </TextReveal>
+          <TextReveal start={80}>
+            <p className="ml-[12.5vw] xl:ml-[37.5vw] mt-[32px] lg:mt-[80px] w-[75vw] xl:w-[50vw] text-[16px] lg:text-[24px] font-light">
+              The program will prepare students to work in the IT industry as
+              well as digital media industry like gaming, animation,
+              virtual/augmented reality, etc. The program will also allow
+              students, who want to pursue higher studies, to take up higher
+              studies in CS/IT or in Design.
+            </p>
+          </TextReveal>
+        </section>
 
-      <section className="mt-[64px] lg:mt-[100px]">
-        <Heading align="right">
-          <span className="text-brand-accent2 font-semibold">Admissions</span>{" "}
-          Process
-        </Heading>
-        <TextReveal start={80}>
-          <p className="ml-[12.5vw] xl:ml-[37.5vw] mt-[32px] lg:mt-[80px] w-[75vw] xl:w-[50vw] text-[16px] lg:text-[24px] font-light">
-            Admission to this program will be through two channels –
-            approximately half of the seats will be through the Joint Admission
-            Counselling (JAC) of Delhi, which takes students through JEE (Main),
-            and approximately half the seats will be filled through UCEED
-            conducted by IIT Bombay. More information about the admission to all
-            the B.Tech. programs at IIIT-Delhi will be made available on the
-            admissions pages from time to time. More details regarding
-            admissions are available here.
-          </p>
-        </TextReveal>
-      </section>
+        <section className="mt-[64px] lg:mt-[100px]">
+          <Heading align="right">
+            <span className="text-brand-accent2 font-semibold">Admissions</span>{" "}
+            Process
+          </Heading>
+          <TextReveal start={80}>
+            <p className="ml-[12.5vw] xl:ml-[37.5vw] mt-[32px] lg:mt-[80px] w-[75vw] xl:w-[50vw] text-[16px] lg:text-[24px] font-light">
+              Admission to this program will be through two channels –
+              approximately half of the seats will be through the Joint
+              Admission Counselling (JAC) of Delhi, which takes students through
+              JEE (Main), and approximately half the seats will be filled
+              through UCEED conducted by IIT Bombay. More information about the
+              admission to all the B.Tech. programs at IIIT-Delhi will be made
+              available on the admissions pages from time to time. More details
+              regarding admissions are available here.
+            </p>
+          </TextReveal>
+        </section>
 
-      <section className="mt-[64px] lg:mt-[100px]">
-        <Heading align="middle">
-          <span className="text-brand-accent2 font-semibold">Programme</span>{" "}
-          Structure
-        </Heading>
-        <div className="mt-[32px] lg:mt-[80px]">
-          <div
-            className={`ml-[12.5vw] w-[75vw] grid gap-[1em]`}
-            style={{
-              gridTemplateColumns: isSmallScreen
-                ? "repeat(1, minmax(0, 1fr))"
-                : `repeat(${programmeItems.length}, minmax(0, 1fr))`,
-            }}
-          >
-            {programmeItems.map((item) => (
-              <ProgrammeCard
-                key={item.number}
-                text={item.text}
-                number={item.number}
-              />
-            ))}
+        <section className="mt-[64px] lg:mt-[100px]">
+          <Heading align="middle">
+            <span className="text-brand-accent2 font-semibold">Programme</span>{" "}
+            Structure
+          </Heading>
+          <div className="mt-[32px] lg:mt-[80px]">
+            <div
+              className={`ml-[12.5vw] w-[75vw] grid gap-[1em]`}
+              style={{
+                gridTemplateColumns: isSmallScreen
+                  ? "repeat(1, minmax(0, 1fr))"
+                  : `repeat(${programmeItems.length}, minmax(0, 1fr))`,
+              }}
+            >
+              {programmeItems.map((item) => (
+                <ProgrammeCard
+                  key={item.number}
+                  text={item.text}
+                  number={item.number}
+                />
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="w-[75vw] ml-[12.5vw] mt-[64px] lg:mt-[128px] grid grid-cols-1 lg:grid-cols-2 gap-[1em]">
-        <ViewCoursesCard />
-        <ViewCoursesCard />
-      </section>
+        <section className="w-[75vw] ml-[12.5vw] mt-[64px] lg:mt-[128px] grid grid-cols-1 lg:grid-cols-2 gap-[1em]">
+          <ViewCoursesCard />
+          <ViewCoursesCard />
+        </section>
+      </main>
       <Footer />
     </div>
   );

@@ -7,15 +7,9 @@ import {
   TwitterIcon,
 } from "lucide-react";
 
-const Footer = ({ type }) => {
+const Footer = () => {
   return (
-    <footer
-      className={`relative z-[99] ${
-        type === "second"
-          ? "bg-gradient-to-r from-brand-accent2 to-brand-accent2-130"
-          : "bg-brand-accent2 mt-[10vh]"
-      } py-[80px] text-white font-anybody`}
-    >
+    <footer className="relative z-[99] bg-gradient-to-r from-brand-accent2 to-brand-accent2-130 py-[80px] text-white font-anybody">
       <div className="w-[75vw] mx-[12.5vw]">
         <div className="grid grid-cols-1 xl:grid-cols-3">
           <section className="flex flex-col gap-[80px]">

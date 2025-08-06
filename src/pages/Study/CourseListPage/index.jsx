@@ -56,7 +56,7 @@ const CourseDirectory = () => {
           "Design tomorrow's information technology products, services and systems which combine emerging technologies"
         }
       />
-      <main className="w-[75vw] mx-[12.5vw] mt-[30px]">
+      <main className="w-[75vw] mx-[12.5vw] mt-[30px] mb-[10vh]">
         <ControlPanel
           setSearch={setSearch}
           activeTab={activeTab}

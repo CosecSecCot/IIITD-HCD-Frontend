@@ -213,7 +213,7 @@ const Research = () => {
       <Banner
         text={activeTab === "research" ? "RESEARCH LABS" : "TEACHING LABS"}
       />
-      <main className="w-[75vw] mx-[12.5vw] mt-[30px]">
+      <main className="w-[75vw] mx-[12.5vw] mt-[30px] mb-[10vh]">
         <ControlPanel activeTab={activeTab} setActiveTab={setActiveTab} />
         <section
           ref={cardsContainerRef}
