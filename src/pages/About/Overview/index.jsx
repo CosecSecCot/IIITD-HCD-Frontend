@@ -84,7 +84,7 @@ const OverviewPage = () => {
         </section>
       </main>
       <Sidebar />
-      <Footer type="second" />
+      <Footer />
     </div>
   );
 };
