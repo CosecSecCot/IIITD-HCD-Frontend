@@ -25,13 +25,13 @@ const DepartmentProjects = () => {
       .then((res) => {
         const normalized = res.data.data.map((item) => ({
           id: item.id,
-          title: item.title,
-          description: item.shortDescription,
-          source: item.fundedBy,
-          faculty: item.faculties[0]?.Name,
+          title: item.Title,
+          description: item.LongDescription,
+          source: item.FundedBy.DisplayText,
+          faculty: item.Faculties[0]?.Name,
           duration: item.duration,
-          imageUrl: "http://localhost:1337" + item.image[0]?.url,
-          fullDescription: item.fullDescription,
+          imageUrl: "http://localhost:1337" + item.Images[0]?.url,
+          fullDescription: item.LongDescription,
         }));
         setProjects(normalized);
       })
@@ -277,7 +277,7 @@ function ProjectCard({ project, expanded, onExpand, onCollapse }) {
                     {project.title}
                   </h3>
                 </div>
-                <p className="reveal-animation-text font-helvetica_now_display text-[14px] lg:text-[18px] opacity-60">
+                <p className="reveal-animation-text font-helvetica_now_display text-[14px] lg:text-[18px] opacity-60 line-clamp-3">
                   {project.description}
                 </p>
               </div>
