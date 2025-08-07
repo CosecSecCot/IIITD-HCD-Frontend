@@ -44,6 +44,14 @@ const PublicationPage = () => {
     [years],
   );
 
+  const facultyOptions = useMemo(
+    () => [
+      "ALL FACULTIES",
+      ...Array.from(new Set(publications.flatMap((pub) => pub.faculties))),
+    ],
+    [publications],
+  );
+
   const resOptions = useMemo(
     () => [
       "RESEARCH AREA",
@@ -55,7 +63,7 @@ const PublicationPage = () => {
   // Filter state
   const [search, setSearch] = useState("");
   const [selectedPub, setSelectedPub] = useState("ALL PUBLICATIONS");
-  const [selectedGenre, setSelectedGenre] = useState("GENRE");
+  const [selectedFaculty, setSelectedFaculty] = useState("ALL FACULTIES");
   const [selectedRes, setSelectedRes] = useState("RESEARCH AREA");
 
   const filtered = useMemo(() => {
@@ -69,9 +77,14 @@ const PublicationPage = () => {
           : pub.year === parseInt(selectedPub),
       )
       .filter((pub) =>
+        selectedFaculty === "ALL FACULTIES"
+          ? true
+          : pub.faculties.includes(selectedFaculty),
+      )
+      .filter((pub) =>
         selectedRes === "RESEARCH AREA" ? true : pub.tags.includes(selectedRes),
       );
-  }, [publications, search, selectedPub, selectedRes]);
+  }, [publications, search, selectedFaculty, selectedPub, selectedRes]);
 
   return (
     <div className="w-full font-anybody">
@@ -97,10 +110,10 @@ const PublicationPage = () => {
             setSelected={setSelectedPub}
           />
           <Dropdown
-            label="GENRE"
-            options={["GENRE", "Journal", "Conference", "Book", "Other"]}
-            selected={selectedGenre}
-            setSelected={setSelectedGenre}
+            label="ALL FACULTIES"
+            options={facultyOptions}
+            selected={selectedFaculty}
+            setSelected={setSelectedFaculty}
           />
           <Dropdown
             label="RESEARCH AREA"
