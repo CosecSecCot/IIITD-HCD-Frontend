@@ -182,9 +182,9 @@ const OurWorkPage = () => {
       <section
         ref={containerRef}
         id="sticky-section"
-        className="relative bg-brand-accent2 w-[100vw] h-[100vh] p-[1em] md:p-[2em]"
+        className="relative bg-brand-accent2 w-[100vw] h-[100vh]"
       >
-        <div className="absolute z-10 w-[calc(50vw-1em)] xl:w-[calc(37.5vw-2em)] top-[1em] md:top-[2em] right-[1em] md:right-[2em] p-[2em] text-right text-white bg-black/20 backdrop-blur-md">
+        <div className="absolute z-10 w-[50vw] xl:w-[37.5vw] top-0 right-0 p-[2em] text-right text-white bg-black/20 backdrop-blur-md">
           <TextReveal>
             <h1 className="font-medium text-[32px] lg:text-[64px] leading-none">
               Our Work
@@ -229,7 +229,7 @@ const OurWorkPage = () => {
             </p>
           </TextReveal>
           <OpacityReveal delay={0.4}>
-            <button className="font-normal w-full xl:w-[25vw] mt-[2em] flex justify-center items-center gap-[24px] py-[0.75em] text-[12px] xl:text-[18px] bg-brand-accent2-130/5 border border-brand-accent2-130 text-brand-accent2-130">
+            <button className="font-normal w-full xl:w-[25vw] mt-[2em] flex justify-center items-center gap-[24px] py-[0.75em] text-[12px] xl:text-[18px] bg-brand-accent2 hover:bg-brand-accent2-130/5 border border-brand-accent2-130 text-white hover:text-brand-accent2-130 transition-all duration-300">
               <span>View Portfolios</span>
               <ArrowRight className="w-[12px] lg:w-[18px] h-auto" />
             </button>
@@ -273,7 +273,7 @@ function MainProjectCard({ project }) {
           }}
         />
       </div>
-      <div className="relative w-full h-full flex flex-col justify-end p-[1em] lg:p-[2em] text-white bg-gradient-to-b from-black/60 via-black/0 to-black/90">
+      <div className="relative w-full h-full flex flex-col justify-end p-[2em] lg:p-[4em] text-white bg-gradient-to-b from-black/60 via-black/0 to-black/90">
         <p className="slide-title text-[16px] lg:text-[18px] text-white/60">
           {project.domain}
         </p>
@@ -312,7 +312,7 @@ function SmallProjectCard({ project }) {
         </TextReveal>
       </div>
       <OpacityReveal>
-        <button className="font-normal w-full flex justify-center items-center gap-[24px] py-[0.75em] text-[12px] xl:text-[18px] bg-brand-accent2-130/5 border border-brand-accent2-130 text-brand-accent2-130">
+        <button className="font-normal w-full flex justify-center items-center gap-[24px] py-[0.75em] text-[12px] xl:text-[18px] bg-brand-accent2-130/5 hover:bg-brand-accent2 border border-brand-accent2-130 text-brand-accent2-130 hover:text-white transition-all duration-300">
           <span>View Project</span>
           <ArrowRight className="w-[12px] lg:w-[18px] h-auto" />
         </button>

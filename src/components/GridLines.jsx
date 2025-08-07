@@ -11,7 +11,7 @@ const GridLines = ({ count }) => {
     lines.push(
       <div
         key={i}
-        className="fixed z-[999] border border-black/10 top-0 h-[100vh] pointer-events-none"
+        className="fixed z-[999] border border-black border-opacity-0 top-0 h-[100vh] pointer-events-none"
         style={{ left: `${position}vw` }}
       />,
     );

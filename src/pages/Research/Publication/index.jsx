@@ -37,7 +37,7 @@ const PublicationPage = () => {
     setYears(
       [...new Set(publications.map((pub) => pub.year))].sort((a, b) => b - a),
     );
-  }, [publications, years]);
+  }, [publications]);
 
   const pubOptions = useMemo(
     () => ["ALL PUBLICATIONS", ...years.map((y) => `${y} PUBLICATIONS`)],
@@ -201,7 +201,7 @@ function Dropdown({ label, options, selected, setSelected }) {
     <div className="relative w-full">
       <button
         type="button"
-        className="relative w-full px-[2em] py-[1em] border border-brand-gray1 flex items-center justify-center text-[12px] lg:text-[18px] uppercase"
+        className="relative w-full px-[2em] py-[0.5em] border border-brand-gray1 flex items-center justify-center text-[12px] lg:text-[18px] uppercase"
         onClick={() => setOpen((o) => !o)}
       >
         {selected || label}
@@ -215,7 +215,7 @@ function Dropdown({ label, options, selected, setSelected }) {
           {options.map((opt) => (
             <li
               key={opt}
-              className={`px-[2em] py-[1em] hover:bg-brand-gray1/30 cursor-pointer text-[12px] lg:text-[18px] uppercase ${selected === opt ? "bg-brand-gray1/50" : ""}`}
+              className={`px-[2em] py-[0.5em] hover:bg-brand-gray1/30 cursor-pointer text-[12px] lg:text-[18px] uppercase ${selected === opt ? "bg-brand-gray1/50" : ""}`}
               onClick={() => {
                 setSelected(opt);
                 setOpen(false);
