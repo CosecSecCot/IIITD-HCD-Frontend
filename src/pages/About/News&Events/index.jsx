@@ -2,7 +2,6 @@ import Navbar from "../../../components/Navbar";
 import GridLines from "../../../components/GridLines";
 import Footer from "../../../components/Footer";
 import Heading from "../_components/Heading";
-import Sidebar from "../_components/Sidebar";
 import { useMediaQuery } from "../../../hooks/useMediaQuery";
 import mainEventImage from "../../../assets/main-event.jpg";
 import TextReveal from "../../../components/TextReveal";
@@ -33,17 +32,19 @@ const NewsAndEventsPage = () => {
       <Navbar type="solid" />
       <GridLines count={isSmallScreen ? 3 : 4} />
       <div className="texture-overlay" />
-      <main className="w-[75vw] xl:w-[50vw] pt-[216px] ml-[12.5vw]">
+
+      {/* Widened and centered layout */}
+      <main className="w-[75vw] xl:w-[75vw] pt-[216px] ml-[12.5vw]">
         <Heading
           title="News & Events"
           subtitle="Human Centred Design"
-          description="
-        Admission to this program will be through two channels – approximately
-        half of the seats will be through the Joint Admission Counselling (JAC)
-        of Delhi.
-          "
+          description="Admission to this program will be through two channels – approximately
+          half of the seats will be through the Joint Admission Counselling (JAC)
+          of Delhi."
         />
-        <section className="xl:mr-[48px] mt-[40px]">
+
+        {/* Main Event Section */}
+        <section className="mt-[40px]">
           <div className="relative flex flex-col justify-end aspect-square md:aspect-video rounded-lg overflow-hidden">
             <div className="relative z-20 p-[40px] text-white">
               <TextReveal>
@@ -58,7 +59,7 @@ const NewsAndEventsPage = () => {
               </TextReveal>
               <TextReveal delay={0.4}>
                 <p className="font-light text-[16px] lg:text-[18px] opacity-80 mt-[0.5em]">
-                  Admission to this program will be through two channels –
+                  Admission to this program will be through two channels – 
                   approximately half of the.
                 </p>
               </TextReveal>
@@ -71,15 +72,18 @@ const NewsAndEventsPage = () => {
             />
           </div>
         </section>
+
+        {/* News List */}
         <section className="my-[40px] space-y-[40px]">
           <NewsSection heading="Genre Definition" content={newsData} />
         </section>
       </main>
-      <Sidebar />
+
       <Footer />
     </div>
   );
 };
+
 export default NewsAndEventsPage;
 
 /**
@@ -92,7 +96,7 @@ export default NewsAndEventsPage;
  */
 function NewsSection({ heading, content }) {
   return (
-    <section className="xl:mr-[48px]">
+    <section>
       <TextReveal>
         <h2 className="text-[18px] lg:text-[24px] text-brand-accent2-130">
           {heading}

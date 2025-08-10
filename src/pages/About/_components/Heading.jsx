@@ -16,7 +16,7 @@ const Heading = ({ title, subtitle, description }) => {
     <section
       role="heading"
       aria-describedby="page-heading"
-      className="xl:mr-[48px]"
+      className="xl:mr-0"
     >
       <p className="text-[18px] lg:text-[24px] text-brand-accent2-130">
         {subtitle}
@@ -24,7 +24,7 @@ const Heading = ({ title, subtitle, description }) => {
       <h1 id="page-heading" className="font-light text-[38px] lg:text-[52px]">
         {title}
       </h1>
-      <div className="w-[75vw] xl:w-[50vw] h-[0.5em] bg-brand-accent2" />
+      <div className="w-full h-[8px] bg-brand-accent2" />
       <TextReveal>
         <p className="font-light text-[14px] lg:text-[18px] mt-[40px]">
           {description}

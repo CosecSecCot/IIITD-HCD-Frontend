@@ -3,7 +3,6 @@ import GridLines from "../../../components/GridLines";
 import Footer from "../../../components/Footer";
 import Heading from "../_components/Heading";
 import TextReveal from "../../../components/TextReveal";
-import Sidebar from "../_components/Sidebar";
 import { useMediaQuery } from "../../../hooks/useMediaQuery";
 
 const PlacementsPage = () => {
@@ -14,17 +13,19 @@ const PlacementsPage = () => {
       <Navbar type="solid" />
       <GridLines count={isSmallScreen ? 3 : 4} />
       <div className="texture-overlay" />
-      <main className="w-[75vw] xl:w-[50vw] pt-[216px] ml-[12.5vw]">
+
+      {/* Wider centered layout */}
+      <main className="w-[75vw] xl:w-[75vw] pt-[216px] ml-[12.5vw]">
         <Heading
           title="Placements"
           subtitle="Human Centred Design"
-          description="
-        Admission to this program will be through two channels – approximately
-        half of the seats will be through the Joint Admission Counselling (JAC)
-        of Delhi.
-          "
+          description="Admission to this program will be through two channels – approximately
+          half of the seats will be through the Joint Admission Counselling (JAC)
+          of Delhi."
         />
-        <section className="my-[40px] xl:mr-[48px] space-y-[1em]">
+
+        {/* Placement details */}
+        <section className="my-[40px] space-y-[1em]">
           <TextReveal>
             <p className="font-light text-[14px] lg:text-[18px] mt-[40px]">
               Our Graduates are a combination of rigorous thinking, hard work
@@ -47,9 +48,10 @@ const PlacementsPage = () => {
           </TextReveal>
         </section>
       </main>
-      <Sidebar />
+
       <Footer />
     </div>
   );
 };
+
 export default PlacementsPage;

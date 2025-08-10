@@ -4,7 +4,6 @@ import Footer from "../../../components/Footer";
 import TextReveal from "../../../components/TextReveal";
 import OpacityReveal from "../../../components/OpacityReveal";
 import Heading from "../_components/Heading";
-import Sidebar from "../_components/Sidebar";
 import { useMediaQuery } from "../../../hooks/useMediaQuery";
 import gradientRing from "../../../assets/gradient-ring.svg";
 import { ArrowRight } from "lucide-react";
@@ -24,7 +23,7 @@ const OverviewPage = () => {
       <Navbar type="solid" />
       <GridLines count={isSmallScreen ? 3 : 4} />
       <div className="texture-overlay" />
-      <main className="w-[75vw] xl:w-[50vw] pt-[216px] ml-[12.5vw]">
+      <main className="w-[80vw] xl:w-[80vw] pt-[216px] mx-auto">
         <Heading
           title="Overview"
           subtitle="Human Centred Design"
@@ -34,22 +33,23 @@ const OverviewPage = () => {
         of Delhi.
           "
         />
-        <section className="grid grid-cols-2 lg:grid-cols-4 mt-[16px] px-[2em] py-[1em] bg-brand-accent2-130/5 border border-y-brand-accent2-130 border-l-brand-accent2-130 max-xl:border-r-brand-accent2-130">
+        <section className="w-full box-border grid grid-cols-2 lg:grid-cols-4 mt-[16px] px-4 lg:px-[2em] py-[1em] bg-brand-accent2-130/5 border border-y-brand-accent2-130 border-l-brand-accent2-130 xl:border-r-brand-accent2-130">
           {stats.map((stat, idx) => (
-            <div key={idx} className="leading-tight">
-              <TextReveal delay={0.3}>
-                <p className="text-[14px] lg:text-[20px] uppercase opacity-60">
-                  {stat.label}
-                </p>
-              </TextReveal>
-              <TextReveal delay={0.3}>
-                <h2 className="text-[37px] lg:text-[54px] font-medium text-brand-accent2-130">
-                  {stat.value}
-                </h2>
-              </TextReveal>
-            </div>
-          ))}
-        </section>
+    <div key={idx} className="leading-tight">
+      <TextReveal delay={0.3}>
+        <p className="text-[14px] lg:text-[20px] uppercase opacity-60">
+          {stat.label}
+        </p>
+      </TextReveal>
+      <TextReveal delay={0.3}>
+        <h2 className="text-[37px] lg:text-[54px] font-medium text-brand-accent2-130">
+          {stat.value}
+        </h2>
+      </TextReveal>
+    </div>
+  ))}
+</section>
+
         <section className="mt-[60px] space-y-[32px]">
           <TextReveal>
             <h2 className="text-[16px] lg:text-[24px] font-medium text-brand-accent2-130">
@@ -64,7 +64,7 @@ const OverviewPage = () => {
             </p>
           </TextReveal>
           <OpacityReveal delay={0.1}>
-            <button className="w-[75vw] xl:w-[25vw] flex justify-center items-center gap-[24px] py-[0.75em] text-[9px] lg:text-[14px] xl:text-[18px] bg-brand-accent2-130/5 border border-brand-accent2-130 text-brand-accent2-130">
+            <button className="w-full lg:w-[25vw] flex justify-center items-center gap-[24px] py-[0.75em] text-[9px] lg:text-[14px] xl:text-[18px] bg-brand-accent2-130/5 border border-brand-accent2-130 text-brand-accent2-130">
               <span>UCEED PORTAL</span>
               <ArrowRight className="w-[18px] h-auto" />
             </button>
@@ -79,11 +79,10 @@ const OverviewPage = () => {
             </p>
           </TextReveal>
         </section>
-        <section className="my-[80px] w-[75vw] xl:w-[25vw]">
+        <section className="my-[80px] w-full lg:w-[25vw]">
           <ViewCoursesCard />
         </section>
       </main>
-      <Sidebar />
       <Footer />
     </div>
   );
