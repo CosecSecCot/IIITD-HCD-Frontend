@@ -162,23 +162,16 @@ const Research = () => {
   const [expandedId, setExpandedId] = useState(null);
 
   const cardsContainerRef = useRef(null);
-  const flipStateRef = useRef(null); // store flip state between render & GSAP callback
+  const flipStateRef = useRef(null);
 
-  // Create context-safe callback helpers
-  // (We pass a config object to useGSAP below to access contextSafe)
   const { contextSafe } = useGSAP(
-    () => {
-      // Nothing to do on mount; animation handled in dependency update below
-    },
-    { scope: cardsContainerRef, dependencies: [] },
+    () => {},
+    { scope: cardsContainerRef, dependencies: [] }
   );
 
   const handleExpand = contextSafe((id) => {
-    // Capture BEFORE state (all cards)
     const cards = gsap.utils.toArray("[data-lab-card]");
     flipStateRef.current = Flip.getState(cards);
-
-    // Trigger React layout change
     setExpandedId(id);
   });
 
@@ -188,21 +181,17 @@ const Research = () => {
     setExpandedId(null);
   });
 
-  // Animate layout change whenever expandedId changes
   useGSAP(
     () => {
       if (!flipStateRef.current) return;
-
       Flip.from(flipStateRef.current, {
         duration: 0.5,
         ease: "power4.out",
         absolute: false,
       });
-
-      // clear stored state so stale references aren't reused
       flipStateRef.current = null;
     },
-    { scope: cardsContainerRef, dependencies: [expandedId] },
+    { scope: cardsContainerRef, dependencies: [expandedId] }
   );
 
   return (
@@ -293,7 +282,7 @@ function LabCard({ lab, expanded, onExpand, onCollapse }) {
           stagger: 0.1,
           duration: 0.5,
           ease: "expo.out",
-        },
+        }
       );
 
       gsap.from(".reveal-animation-opacity-only", {
@@ -303,7 +292,7 @@ function LabCard({ lab, expanded, onExpand, onCollapse }) {
         ease: "expo.out",
       });
     },
-    { scope: cardRef, dependencies: [expanded] }, // this will rerun when this card mounts
+    { scope: cardRef, dependencies: [expanded] }
   );
 
   const expanded_class = expanded ? "z-[99] xl:col-span-2 xl:row-span-2" : ``;
@@ -314,22 +303,18 @@ function LabCard({ lab, expanded, onExpand, onCollapse }) {
       ref={cardRef}
       style={
         expanded
-          ? {
-              backgroundColor: lab.background,
-              color: lab.foreground,
-            }
+          ? { backgroundColor: lab.background, color: lab.foreground }
           : {
               backgroundColor:
                 hover && !isSmallScreen ? lab.backgroundDim : "white",
             }
       }
-      onMouseEnter={() => {
-        setHover(true);
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      onClick={() => {
+        if (!expanded) onExpand();
       }}
-      onMouseLeave={() => {
-        setHover(false);
-      }}
-      className={`w-full flex flex-col justify-between gap-[32px] lg:gap-[48px] p-[28px] lg:p-[40px] ${expanded_class}`}
+      className={`cursor-pointer w-full flex flex-col justify-between gap-[32px] lg:gap-[48px] p-[28px] lg:p-[40px] ${expanded_class}`}
     >
       {expanded ? (
         <>
@@ -339,8 +324,6 @@ function LabCard({ lab, expanded, onExpand, onCollapse }) {
                 <img
                   className="reveal-animation-opacity-only h-[40px] lg:h-auto w-auto"
                   style={{
-                    // WARNING: for now we are assuming that foreground color will be black and white
-                    // if you want to change it to custom color, modify the svg or make two images and change img src
                     filter:
                       lab.foreground === "#FFFFFF" ? "invert(100%)" : "none",
                   }}
@@ -362,19 +345,20 @@ function LabCard({ lab, expanded, onExpand, onCollapse }) {
           <div className="flex justify-between flex-row-reverse flex-wrap w-full">
             <button
               type="button"
-              onClick={onCollapse}
+              onClick={(e) => {
+                e.stopPropagation();
+                onCollapse();
+              }}
               className="reveal-animation-opacity-only flex items-center text-[14px] lg:text-[20px] gap-[0.5em]"
-              aria-label={`Close ${lab.title} details`}
             >
               <span>CLOSE</span>
               <X className="w-[16px] h-[16px]" />
             </button>
             <a
               href={lab.website}
+              onClick={(e) => e.stopPropagation()}
               className="reveal-animation-opacity-only text-[14px] lg:text-[20px] px-[1em] lg:px-[2em] py-[0.5em] border inline-flex gap-[16px] items-center justify-center"
-              style={{
-                borderColor: lab.foreground,
-              }}
+              style={{ borderColor: lab.foreground }}
             >
               <span>VISIT WEBSITE</span>
               <Search className="max-lg:hidden w-[12px] lg:w-[16px] aspect-square h-auto" />
@@ -402,17 +386,6 @@ function LabCard({ lab, expanded, onExpand, onCollapse }) {
             <p className="reveal-animation-text text-[14px] lg:text-[18px] opacity-60">
               {lab.lead}
             </p>
-          </div>
-          <div className="flex justify-between flex-row-reverse flex-wrap w-full">
-            <button
-              type="button"
-              onClick={onExpand}
-              className="reveal-animation-opacity-only flex items-center text-[14px] lg:text-[18px] gap-[0.5em]"
-              aria-label={`View ${lab.title} details`}
-            >
-              <span>VIEW DETAILS</span>
-              <ArrowRight className="w-[16px] h-[16px]" />
-            </button>
           </div>
         </>
       )}
