@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import type { Metadata } from "next";
 
@@ -28,10 +29,11 @@ export default function RootLayout({
 }>) {
   return (
     <>
-      <div className="font-anybody">
+      <div className="relative z-10 bg-white font-anybody pb-8">
         <Navbar type="solid" />
         {children}
       </div>
+      <Footer />
     </>
   );
 }

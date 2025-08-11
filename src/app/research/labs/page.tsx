@@ -3,6 +3,7 @@ import Banner from "@/features/pages/research/components/Banner";
 import LabsSection, {
   Lab,
 } from "@/features/pages/research/labs/components/LabsSection";
+import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
 
 const dummyLabs: Lab[] = [
   {
@@ -160,7 +161,7 @@ export default async function Page(pageProps: {
         breadcrumbs={["research", "labs"]}
       />
       <main>
-        <article className="mx-auto px-8 w-[75vw] xl:w-[1280px]">
+        <article className="mx-auto px-8 xl:w-[1280px]">
           <div
             className="grid grid-cols-2 xl:grid-cols-3 grid-rows-1 text-[12px] lg:text-[18px] my-8"
             role="tablist"
@@ -207,7 +208,7 @@ function Button({
       }`}
     >
       <Search className="w-[12px] lg:w-[16px] aspect-square h-auto" />
-      <span>{text}</span>
+      <LetterSwapForward label={text} staggerDuration={0.005} />
     </a>
   );
 }

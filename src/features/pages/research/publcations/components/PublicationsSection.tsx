@@ -1,6 +1,7 @@
 "use client";
 
 import Dropdown from "@/components/Dropdown";
+import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
 import { ArrowRight } from "lucide-react";
 import { useMemo, useState } from "react";
 
@@ -183,7 +184,7 @@ function PublicationCard({
           rel="noopener noreferrer"
           className="reveal-animation-opacity-only flex items-center text-[14px] lg:text-[18px] gap-[0.5em]"
         >
-          <span>VIEW DETAILS</span>
+          <LetterSwapForward label="VIEW DETAILS" staggerDuration={0.005} />
           <ArrowRight className="w-[16px] h-[16px]" />
         </a>
       </div>

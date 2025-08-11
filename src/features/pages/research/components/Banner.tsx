@@ -39,7 +39,7 @@ export default function Banner({
           );
         })}
       </p>
-      <h1 className="reveal-animation-clip uppercase absolute bottom-4 left-[12.5vw] xl:left-[calc(50vw-640px)] ml-8  text-[28px] lg:text-[72px] text-white">
+      <h1 className="reveal-animation-clip uppercase absolute bottom-4 left-8 xl:left-[calc(50vw-640px)] xl:ml-8 text-[28px] lg:text-[72px] text-white">
         {text}
       </h1>
       <Image

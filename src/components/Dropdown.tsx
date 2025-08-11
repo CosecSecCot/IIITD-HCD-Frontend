@@ -1,5 +1,6 @@
 "use client";
 
+import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 
@@ -22,7 +23,7 @@ export default function Dropdown({
         className="relative w-full px-[2em] py-[0.5em] border border-brand-gray1 flex items-center justify-center text-[12px] lg:text-[18px] uppercase cursor-pointer"
         onClick={() => setOpen((o) => !o)}
       >
-        {selected || label}
+        <LetterSwapForward label={selected || label} staggerDuration={0.005} />
 
         <ChevronDown
           className={`absolute top-[calc(50%-9px)] lg:top-[calc(50%-12px)] right-[1em] w-[18px] h-[18px] lg:w-[24px] lg:h-[24px] ml-2 transition-transform ${open ? "rotate-180" : ""}`}

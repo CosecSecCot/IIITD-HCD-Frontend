@@ -39,7 +39,7 @@ export default async function Page() {
   return (
     <div>
       <Banner text="Publications" breadcrumbs={["research", "publications"]} />
-      <main className="w-[75vw] xl:w-[1280px] px-8 mx-auto mt-[30px] mb-[10vh]">
+      <main className="mx-auto xl:w-[1280px] px-8 mt-8">
         <PublicationsSection publications={normalized} />
       </main>
     </div>

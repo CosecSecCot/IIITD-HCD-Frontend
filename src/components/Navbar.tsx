@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Image from "next/image";
+import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
 
 gsap.registerPlugin(useGSAP);
 
@@ -224,6 +225,7 @@ export default function Navbar({
       {mounted && isMobileNavbarActive ? (
         <div
           id="nav-container"
+          role="menu"
           className="flex fixed z-[9999] inset-0 w-[200vw] h-[100vh]"
           style={{
             transform: "translate(50%, 0)",
@@ -308,6 +310,7 @@ export default function Navbar({
       ) : (
         <div
           id="nav-container"
+          role="menu"
           className={`${
             firstSidebarOpen ? "" : "hidden"
           } fixed z-[9999] top-0 right-0 h-[100vh] flex justify-end`}
@@ -327,10 +330,10 @@ export default function Navbar({
                 <X size={40} />
               </button>
             </div>
-            <div>
+            <ul>
               {navigationMap.map((linkGroup, idx) => {
                 return (
-                  <div
+                  <li
                     key={idx}
                     onClick={() => {
                       if (linkGroup.children) {
@@ -353,7 +356,7 @@ export default function Navbar({
                     <a
                       id="nav-link-primary"
                       href={linkGroup.url}
-                      className="relative z-10 uppercase text-[32px] leading-tight font-medium hover:underline"
+                      className="relative z-10 uppercase text-[32px] leading-tight font-medium"
                     >
                       {linkGroup.title}
                     </a>
@@ -375,10 +378,10 @@ export default function Navbar({
                           : "bg-[#033836]/75"
                       } transition-all ease-[cubic-bezier(.06,.92,.35,1)] duration-1000`}
                     />
-                  </div>
+                  </li>
                 );
               })}
-            </div>
+            </ul>
             <div className="px-[70px] py-[60px] opacity-40">
               <Image
                 src="/logo-with-text-large-solid.svg"

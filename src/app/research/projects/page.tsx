@@ -52,7 +52,7 @@ export default async function Page() {
         breadcrumbs={["research", "projects"]}
       />
       <main>
-        <article className="mx-auto w-[75vw] xl:w-[1280px] px-8 my-8">
+        <article className="mx-auto xl:w-[1280px] px-8 my-8">
           <ProjectSection projects={normalized} />
         </article>
       </main>
