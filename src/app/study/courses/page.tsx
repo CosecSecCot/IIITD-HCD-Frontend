@@ -3,6 +3,8 @@ import CoursesSection, {
   Course,
 } from "@/features/pages/study/courses/components/CoursesSection";
 
+export const dynamic = "force-dynamic";
+
 export default async function Page(pageProps: {
   searchParams: Promise<{ filter?: string }>;
 }) {
@@ -12,7 +14,7 @@ export default async function Page(pageProps: {
   );
   const data = await res?.json();
 
-  if (!data || data.error || data.data.length == 0) {
+  if (!data || !data.data || data.data.length == 0) {
     return (
       <div>
         <div>No Courses Found!</div>
