@@ -3,6 +3,8 @@ import ProjectSection, {
   ResearchProject,
 } from "@/features/pages/research/projects/components/ProjectSection";
 
+export const dynamic = "force-dynamic";
+
 export default async function Page() {
   const res = await fetch(
     "http://localhost:1337/api/department-projects?populate=*",

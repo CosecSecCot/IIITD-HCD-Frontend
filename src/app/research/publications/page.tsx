@@ -3,6 +3,8 @@ import PublicationsSection, {
   ResearchPublication,
 } from "@/features/pages/research/publcations/components/PublicationsSection";
 
+export const dynamic = "force-dynamic";
+
 export default async function Page() {
   const res = await fetch(
     "http://localhost:1337/api/publications?populate=*",

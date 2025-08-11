@@ -5,6 +5,8 @@ import LabsSection, {
 } from "@/features/pages/research/labs/components/LabsSection";
 import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
 
+export const dynamic = "force-dynamic";
+
 const dummyLabs: Lab[] = [
   {
     id: 1,
