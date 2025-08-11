@@ -7,7 +7,6 @@ import { useEffect, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Image from "next/image";
-import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
 
 gsap.registerPlugin(useGSAP);
 
