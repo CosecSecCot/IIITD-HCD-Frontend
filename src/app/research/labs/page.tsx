@@ -160,7 +160,7 @@ export default async function Page(pageProps: {
         breadcrumbs={["research", "labs"]}
       />
       <main>
-        <article className="mx-[12.5vw]">
+        <article className="mx-auto px-8 w-[75vw] xl:w-[1280px]">
           <div
             className="grid grid-cols-2 xl:grid-cols-3 grid-rows-1 text-[12px] lg:text-[18px] my-8"
             role="tablist"

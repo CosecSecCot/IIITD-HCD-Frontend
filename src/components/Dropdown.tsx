@@ -7,19 +7,19 @@ export default function Dropdown({
   label,
   options,
   selected,
-  onClick,
+  onClickAction,
 }: {
   label: string;
   options: string[];
   selected: string;
-  onClick: (option: string) => void;
+  onClickAction: (option: string) => void;
 }) {
   const [open, setOpen] = useState(false);
   return (
     <div className="relative w-full">
       <button
         type="button"
-        className="relative w-full px-[2em] py-[0.5em] border border-brand-gray1 flex items-center justify-center text-[12px] lg:text-[18px] uppercase"
+        className="relative w-full px-[2em] py-[0.5em] border border-brand-gray1 flex items-center justify-center text-[12px] lg:text-[18px] uppercase cursor-pointer"
         onClick={() => setOpen((o) => !o)}
       >
         {selected || label}
@@ -29,13 +29,13 @@ export default function Dropdown({
         />
       </button>
       {open && (
-        <ul className="absolute z-[9995] left-0 w-full bg-white border border-black/30">
+        <ul className="absolute z-[9995] left-0 w-full bg-white border border-black/30 shadow-md">
           {options.map((opt) => (
             <li
               key={opt}
               className={`px-[2em] py-[0.5em] hover:bg-brand-gray1/30 cursor-pointer text-[12px] lg:text-[18px] uppercase ${selected === opt ? "bg-brand-gray1/50" : ""}`}
               onClick={() => {
-                onClick(opt);
+                onClickAction(opt);
                 setOpen(false);
               }}
             >

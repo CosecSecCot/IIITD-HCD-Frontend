@@ -166,7 +166,7 @@ function ProjectCard({
               <button
                 type="button"
                 onClick={onCollapse}
-                className="reveal-animation-opacity-only flex items-center text-[14px] lg:text-[20px] gap-[0.5em]"
+                className="reveal-animation-opacity-only flex items-center text-[14px] lg:text-[20px] gap-[0.5em] cursor-pointer"
                 aria-label={`Close ${project.title} details`}
               >
                 <span>CLOSE</span>
@@ -206,7 +206,7 @@ function ProjectCard({
               <button
                 type="button"
                 onClick={onExpand}
-                className="reveal-animation-opacity-only flex items-center text-[14px] lg:text-[18px] gap-[0.5em]"
+                className="reveal-animation-opacity-only flex items-center text-[14px] lg:text-[18px] gap-[0.5em] cursor-pointer"
                 aria-label={`View ${project.title} details`}
               >
                 <span>VIEW DETAILS</span>
