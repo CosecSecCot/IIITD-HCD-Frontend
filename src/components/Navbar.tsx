@@ -160,12 +160,14 @@ export default function Navbar({
 
   return (
     <div id="navigation-menu" className="sticky top-0 z-[9999] font-anybody">
-      <header className="absolute z-[999] top-0 w-full">
+      <header
+        className={`${type == "solid" ? "" : "absolute z-[999] top-0"} w-full`}
+      >
         <div
           className={`relative text-white flex justify-between items-center xl:py-7 py-3 ${
             type == "solid"
-              ? "bg-brand-accent2-130/90 backdrop-blur-sm"
-              : "bg-black/30 backdrop-blur-sm"
+              ? "bg-brand-accent2-130"
+              : "bg-brand-accent2-130/90 backdrop-blur-sm"
           }`}
         >
           <Link

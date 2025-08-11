@@ -3,9 +3,8 @@ import Navbar from "@/components/Navbar";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Research - HCD IIIT Delhi",
-  description:
-    "Explore IIITD's research and teaching labs, projects and publications in human-centered design department.",
+  title: "Study - HCD IIIT Delhi",
+  description: "Study at IIIT Delhi's Human Centered Design Department.",
   openGraph: {
     type: "website",
     url: "",
@@ -29,8 +28,8 @@ export default function RootLayout({
 }>) {
   return (
     <>
-      <div className="relative z-10 bg-white font-anybody pb-[78px] shadow-xl">
-        <Navbar />
+      <div className="relative z-10 background-element bg-white font-anybody pb-8 shadow-xl">
+        <Navbar type="solid" />
         {children}
       </div>
       <Footer />

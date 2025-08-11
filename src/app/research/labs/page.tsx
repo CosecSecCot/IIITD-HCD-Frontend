@@ -4,6 +4,7 @@ import LabsSection, {
   Lab,
 } from "@/features/pages/research/labs/components/LabsSection";
 import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
+import Link from "next/link";
 
 export const dynamic = "force-dynamic";
 
@@ -203,14 +204,15 @@ function Button({
   active: boolean;
 }) {
   return (
-    <a
+    <Link
       href={href}
       className={`flex gap-[12px] lg:gap-[24px] items-center justify-center py-[0.5em] border border-black/30 ${
         active ? "bg-brand-accent2 text-white" : ""
       }`}
+      scroll={false}
     >
       <Search className="w-[12px] lg:w-[16px] aspect-square h-auto" />
       <LetterSwapForward label={text} staggerDuration={0.005} />
-    </a>
+    </Link>
   );
 }

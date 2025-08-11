@@ -38,7 +38,8 @@
 
 .background-element {
     background-image: url('/background-element.svg');
-    background-repeat: repeat;
+    background-repeat: repeat-y;
+    background-size: cover;
 }
 
 .reveal-animation-clip {
