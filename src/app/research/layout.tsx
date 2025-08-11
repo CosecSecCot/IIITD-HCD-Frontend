@@ -29,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <>
-      <div className="relative z-10 bg-white font-anybody pb-8">
+      <div className="relative z-10 bg-white font-anybody pb-[78px] shadow-xl">
         <Navbar type="solid" />
         {children}
       </div>

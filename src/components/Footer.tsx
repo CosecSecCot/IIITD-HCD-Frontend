@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="sticky z-0 bottom-0 left-0 w-full py-10 xl:py-20 bg-gradient-to-r from-[#21928C] to-brand-accent2 text-white font-anybody">
+    <footer className="sticky z-0 bottom-0 left-0 w-full py-8 xl:py-20 bg-gradient-to-r from-[#21928C] to-brand-accent2 text-white font-anybody">
       <div className="xl:w-[1280px] px-8 mx-auto">
         <div className="grid grid-cols-1 xl:grid-cols-3">
           <section className="flex flex-col gap-[40px] xl:gap-[80px]">
@@ -29,7 +29,7 @@ export default function Footer() {
               </button>
             </div>
           </section>
-          <section className="max-xl:mt-8 xl:col-span-2 flex justify-start xl:justify-end gap-y-8 gap-x-16 xl:gap-x-24 flex-wrap">
+          <section className="max-xl:mt-8 xl:col-span-2 flex justify-start xl:justify-end gap-y-8 gap-x-16 xl:gap-x-24 flex-wrap max-lg:leading-tight">
             <nav aria-labelledby="useful-links-heading">
               <h2
                 id="useful-links-heading"
@@ -129,7 +129,7 @@ export default function Footer() {
 
 function CustomLinkText({ label }: { label: string }) {
   return (
-    <CenterUnderline underlineHeightRatio={0.075}>
+    <CenterUnderline underlineHeightRatio={0.075} underlinePaddingRatio={-0.25}>
       {label}
       {/* <LetterSwapForward
         label={label}
