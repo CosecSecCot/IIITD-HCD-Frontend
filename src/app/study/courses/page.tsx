@@ -45,7 +45,7 @@ export default async function Page(pageProps: {
           "Design tomorrow's information technology products, services and systems which combine emerging technologies"
         }
       />
-      <main className="w-[75vw] mx-[12.5vw] min-h-screen mt-[30px] mb-[10vh]">
+      <main className="xl:w-[1280px] mx-auto px-8 min-h-screen mt-[30px] mb-[10vh]">
         <CoursesSection courses={courses} filter={searchParams.filter} />
       </main>
     </>
