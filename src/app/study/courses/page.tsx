@@ -17,7 +17,21 @@ export default async function Page(pageProps: {
   if (!data || !data.data || data.data.length == 0) {
     return (
       <div>
-        <div>No Courses Found!</div>
+        <Banner
+          title={"Course Directory"}
+          subtitle={"B.Tech & PhD Options"}
+          sideText={
+            "Design tomorrow's information technology products, services and systems which combine emerging technologies"
+          }
+        />
+        <main className="mx-auto min-h-[60vh] xl:w-[1280px] px-8 py-[20vh] text-center">
+          <h2 className="text-[20px] lg:text-[28px] text-brand-accent2 font-semibold">
+            Hmm...
+          </h2>
+          <p className="text-[16px] lg:text-[20px] italic font-light">
+            Looks like no courses were found.
+          </p>
+        </main>
       </div>
     );
   }

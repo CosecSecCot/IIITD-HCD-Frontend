@@ -18,7 +18,14 @@ export default async function Page() {
           text="Publications"
           breadcrumbs={["research", "publications"]}
         />
-        <div>No Publications Found!</div>
+        <main className="mx-auto min-h-[50vh] xl:w-[1280px] px-8 py-[20vh] text-center">
+          <h2 className="text-[20px] lg:text-[28px] text-brand-accent2 font-semibold">
+            Hmm...
+          </h2>
+          <p className="text-[16px] lg:text-[20px] italic font-light">
+            Looks like no publications were found.
+          </p>
+        </main>
       </div>
     );
   }

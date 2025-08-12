@@ -18,7 +18,14 @@ export default async function Page() {
           text="Department Projects"
           breadcrumbs={["research", "projects"]}
         />
-        <div>No Projects Found!</div>
+        <main className="mx-auto min-h-[50vh] xl:w-[1280px] px-8 py-[20vh] text-center">
+          <h2 className="text-[20px] lg:text-[28px] text-brand-accent2 font-semibold">
+            Hmm...
+          </h2>
+          <p className="text-[16px] lg:text-[20px] italic font-light">
+            Looks like no projects were found.
+          </p>
+        </main>
       </div>
     );
   }

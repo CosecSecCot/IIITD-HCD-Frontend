@@ -26,10 +26,10 @@ export default function Banner({
   return (
     <section
       role="banner"
-      className="relative z-20 w-full min-h-[30vh] lg:min-h-[60vh] flex justify-center shadow-2xl shadow-white"
+      className="relative z-20 w-full min-h-[30vh] lg:min-h-[40vh] xl:min-h-[60vh] flex justify-start xl:justify-center shadow-2xl shadow-white"
     >
-      <div className="relative z-10 xl:w-[1280px] mx-auto p-8 flex justify-between items-center">
-        <div className="flex-shrink-0">
+      <div className="relative z-10 xl:w-[1280px] p-8 flex justify-between items-center">
+        <div className="xl:w-1/3">
           <Link
             href=""
             className="reveal-animation-opacity-only flex gap-[0.5em] text-[12px] lg:text-[20px] text-brand-accent2-130"
@@ -38,7 +38,7 @@ export default function Banner({
             <ArrowLeft className="w-[14px] lg:w-[24px] h-auto" />
             <CenterUnderline>Go Back</CenterUnderline>
           </Link>
-          <div className="mt-[24px] lg:mt-[40px] leading-tight w-[75vw] xl:w-[25vw]">
+          <div className="mt-[24px] lg:mt-[40px] leading-tight">
             <p className="text-[16px] lg:text-[26px] text-brand-accent2-130">
               {subtitle}
             </p>

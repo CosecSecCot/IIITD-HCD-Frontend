@@ -27,32 +27,42 @@ const navigationMap: NavigationItem[] = [
       { title: "collaborations", url: "/about/collaborations" },
       { title: "News & Events", url: "/about/newsEvents" },
       { title: "placement", url: "/about/placement" },
-      { title: "brochure", url: "/about/brochure" },
+      { title: "", url: "" },
+      { title: "", url: "" },
     ],
   },
   {
     title: "Research",
     children: [
+      { title: "", url: "" },
       { title: "Labs", url: "/research/labs" },
       { title: "Projects", url: "/research/projects" },
       { title: "Publications", url: "/research/publications" },
+      { title: "", url: "" },
+      { title: "", url: "" },
     ],
   },
   {
     title: "Study",
     children: [
+      { title: "", url: "" },
+      { title: "", url: "" },
       { title: "Courses", url: "/study/courses" },
       { title: "B.Tech", url: "/study/btech" },
       { title: "PhD", url: "/study/phd" },
+      { title: "", url: "" },
     ],
   },
   { title: "our work", url: "/ourwork" },
   {
     title: "people",
     children: [
+      { title: "", url: "" },
+      { title: "", url: "" },
       { title: "faculty", url: "/people/faculty" },
       { title: "students", url: "/people/students" },
       { title: "alumni", url: "/people/alumni" },
+      { title: "", url: "" },
     ],
   },
   { title: "connect", url: "/connect" },
@@ -321,9 +331,9 @@ export default function Navbar({
         >
           <div
             id="nav-sidebar-first"
-            className="relative flex flex-col justify-between w-[30vw] bg-[#096964] text-white"
+            className="relative flex flex-col justify-center w-[30vw] bg-[#096964] text-white"
           >
-            <div className="flex justify-end px-[70px] py-[60px]">
+            <div className="absolute top-0 right-0 flex justify-end px-[70px] py-[60px]">
               <button
                 onClick={closeSidebar}
                 className="flex items-center gap-[2px] border border-white rounded-full p-[1em] hover:bg-white hover:text-[#096964] transition-all ease-out duration-150"
@@ -383,7 +393,7 @@ export default function Navbar({
                 );
               })}
             </ul>
-            <div className="px-[70px] py-[60px] opacity-40">
+            <div className="absolute bottom-0 px-[70px] py-[60px] opacity-40">
               <Image
                 src="/logo-with-text-large-solid.svg"
                 alt="IIITD HCD Department Logo"
@@ -398,21 +408,29 @@ export default function Navbar({
           >
             {activeGroup &&
               activeGroup.children &&
-              activeGroup.children.map((child, idx) => (
-                <a
-                  key={idx}
-                  href={child.url}
-                  className="relative px-[70px] py-[20px] group hover:pl-[80px] transition-all duration-[300ms]"
-                >
-                  <span
-                    id="nav-link-secondary"
-                    className="relative z-10 uppercase text-[32px] leading-tight font-medium"
-                  >
-                    {child.title}
-                  </span>
-                  <div className="absolute top-0 left-0 h-0 w-full group-hover:h-full bg-[#096964]/75 transition-all ease-[cubic-bezier(.06,.92,.35,1)] duration-1000" />
-                </a>
-              ))}
+              activeGroup.children.map((child, idx) => {
+                if (child.url === "" && child.title === "") {
+                  return (
+                    <div key={idx} className="h-[calc(80px)]" aria-hidden></div>
+                  );
+                } else {
+                  return (
+                    <a
+                      key={idx}
+                      href={child.url}
+                      className="relative px-[70px] py-[20px] group hover:pl-[80px] transition-all duration-[300ms]"
+                    >
+                      <span
+                        id="nav-link-secondary"
+                        className="relative z-10 uppercase text-[32px] leading-tight font-medium"
+                      >
+                        {child.title}
+                      </span>
+                      <div className="absolute top-0 left-0 h-0 w-full group-hover:h-full bg-[#096964]/75 transition-all ease-[cubic-bezier(.06,.92,.35,1)] duration-1000" />
+                    </a>
+                  );
+                }
+              })}
           </div>
         </div>
       )}

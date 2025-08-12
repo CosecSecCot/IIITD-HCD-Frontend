@@ -13,7 +13,7 @@ export default function Banner({
 }) {
   return (
     <section role="banner" className="relative min-h-[45vh] bg-brand-accent2">
-      <p className="reveal-animation-clip absolute top-[84px] lg:top-[146px] xl:top-[176px] mt-[2em] mr-8 right-[12.5vw] xl:right-[calc(50vw-640px)] text-[12px] lg:text-[20px] text-white">
+      <p className="reveal-animation-clip absolute top-[84px] lg:top-[146px] xl:top-[176px] mt-[2em] mr-8 right-0 xl:right-[calc(50vw-640px)] text-[12px] lg:text-[20px] text-white">
         {breadcrumbs.map((breadcrumb, index) => {
           if (index < breadcrumbs.length - 1) {
             return (

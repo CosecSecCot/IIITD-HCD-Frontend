@@ -19,9 +19,11 @@ export default function Home() {
               pixelSize={128}
               delay={300}
               fadeDuration={0}
-              pixelClassName="bg-brand-accent2"
+              pixelClassName="bg-black mix-blend-difference"
             />
           </div>
+
+          <p className="text-2xl mx-auto">HELLO</p>
         </section>
         <section className="h-[100vh]"></section>
       </main>
