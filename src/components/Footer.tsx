@@ -15,6 +15,7 @@ export default function Footer() {
               alt="Human Centred Design Department"
               width={452}
               height={149}
+              priority
             />
             <div className="w-full">
               <p className="text-[16px] lg:text-[20px]">

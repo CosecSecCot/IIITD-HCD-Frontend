@@ -185,17 +185,20 @@ export default function Navbar({
             href="/"
           >
             <Image
-              src={
-                mounted
-                  ? isSmallScreen
-                    ? "/logo.svg"
-                    : "/logo-with-text-large.svg"
-                  : "/logo.svg"
-              }
+              src={"/logo-with-text-large.svg"}
               alt="IIITD HCD Department Logo"
-              className="max-lg:h-[54px] w-auto h-[104px]"
+              className="w-auto h-[104px] max-lg:hidden "
               width={352}
               height={116}
+              priority
+            />
+            <Image
+              src={"/logo.svg"}
+              alt="IIITD HCD Department Logo"
+              className="w-auto h-[54px] lg:hidden"
+              width={352}
+              height={116}
+              priority
             />
           </Link>
           <div className="relative right-[12.5vw] xl:right-[calc(12.5vw-82px)] flex items-center gap-28">
@@ -222,6 +225,7 @@ export default function Navbar({
               className="max-xl:hidden"
               width={82}
               height={41}
+              priority
             />
           </div>
         </div>
@@ -399,6 +403,7 @@ export default function Navbar({
                 alt="IIITD HCD Department Logo"
                 width={352}
                 height={116}
+                priority
               />
             </div>
           </div>
