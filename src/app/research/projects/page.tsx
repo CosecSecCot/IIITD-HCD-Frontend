@@ -51,8 +51,6 @@ export default async function Page() {
     }),
   );
 
-  console.log(normalized);
-
   return (
     <div>
       <Banner

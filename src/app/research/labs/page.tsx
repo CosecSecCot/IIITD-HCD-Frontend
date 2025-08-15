@@ -53,8 +53,6 @@ export default async function Page(pageProps: {
     }),
   );
 
-  console.log(normalized);
-
   const searchParams = await pageProps.searchParams;
   return (
     <>

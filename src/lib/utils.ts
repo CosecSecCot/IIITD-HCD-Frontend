@@ -37,7 +37,3 @@ export function getContrastingTextColor(hex: string): string {
   // Return black or white
   return luminance > 0.179 ? "#000000" : "#FFFFFF";
 }
-
-// Example:
-console.log(getContrastingTextColor("#abc")); // "#000000" or "#ffffff"
-console.log(getContrastingTextColor("#aabbcc")); // "#000000" or "#ffffff"
