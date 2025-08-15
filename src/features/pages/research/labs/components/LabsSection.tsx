@@ -2,10 +2,12 @@
 
 import { useRef, useState } from "react";
 import Image from "next/image";
-import { Search, X } from "lucide-react";
+import { Globe, X } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { Flip } from "gsap/Flip";
+import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
+import Link from "next/link";
 
 gsap.registerPlugin(Flip, useGSAP);
 
@@ -164,16 +166,29 @@ function LabCard({
               <span>CLOSE</span>
               <X className="w-[16px] h-[16px]" />
             </button>
-            <a
+            <Link
               href={lab.website}
-              className="reveal-animation-opacity-only text-[14px] lg:text-[20px] px-[1em] lg:px-[2em] py-[0.5em] border inline-flex gap-[16px] items-center justify-center"
+              target="_blank"
+              className="reveal-animation-opacity-only text-[14px] lg:text-[20px] px-[1em] lg:px-[2em] py-[0.5em] border inline-flex gap-[16px] items-center justify-center transition-all duration-200"
               style={{
                 borderColor: lab.foreground,
               }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = lab.foreground;
+                e.currentTarget.style.color = lab.background;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "transparent";
+                e.currentTarget.style.color = lab.foreground;
+              }}
             >
-              <span>VISIT WEBSITE</span>
-              <Search className="max-lg:hidden w-[12px] lg:w-[16px] aspect-square h-auto" />
-            </a>
+              <LetterSwapForward
+                label="VISIT WEBSITE"
+                staggerDuration={0.005}
+                className="w-max"
+              />
+              <Globe className="max-lg:hidden w-[12px] lg:w-[16px] aspect-square h-auto" />
+            </Link>
           </div>
         </>
       ) : (
