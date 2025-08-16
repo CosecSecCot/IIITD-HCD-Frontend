@@ -1,12 +1,18 @@
 import type { Metadata } from "next";
-import { Anybody } from "next/font/google";
+import { Anybody, Tiny5 } from "next/font/google";
 import "./globals.css";
 import ReactLenis from "lenis/react";
 import AnimationInitializer from "@/features/animation/AnimationInitializer";
 
-const geistSans = Anybody({
+const anybody = Anybody({
   variable: "--font-anybody",
   subsets: ["latin"],
+});
+
+const tiny5 = Tiny5({
+  variable: "--font-pixel",
+  subsets: ["latin"],
+  weight: ["400"],
 });
 
 export const metadata: Metadata = {
@@ -22,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} antialiased`}>
+      <body className={`${anybody.variable} ${tiny5.variable} antialiased`}>
         <ReactLenis root />
         <AnimationInitializer />
         <div className="texture-overlay" />

@@ -4,6 +4,7 @@
 @theme {
     /* Fonts */
     --font-anybody: var(--font-anybody);
+    --font-pixel: var(--font-pixel);
     --font-helvetica_now_display: var(--font-helvetica);
 
     /* Brand Colors */
