@@ -1,0 +1,51 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+    /* Fonts */
+    --font-anybody: var(--font-anybody);
+    --font-pixel: var(--font-pixel);
+    --font-helvetica_now_display: var(--font-helvetica);
+
+    /* Brand Colors */
+    --color-brand-accent1: #69C2BD;
+    --color-brand-accent2: #096964;
+    --color-brand-accent2-130: #064a46;
+
+    --color-brand-gray1: #939598;
+    --color-brand-gray2: #818285;
+    --color-brand-gray3: #6D6E71;
+    --color-brand-gray4: #58585A;
+
+    --color-brand-blue: #093B69;
+    --color-brand-green: #336909;
+    --color-brand-red: #69090B;
+    --color-brand-voilet: #4C1073;
+}
+
+.texture-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('/texture_overlay.svg');
+    background-repeat: repeat;
+    background-size: auto;
+    pointer-events: none;
+    z-index: 99999;
+    opacity: 0.4;
+}
+
+.background-element {
+    background-image: url('/background-element.svg');
+    background-repeat: repeat-y;
+    background-size: cover;
+}
+
+.reveal-animation-clip {
+    opacity: 0;
+    transform: translateY(0);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    will-change: transform, opacity, clip-path;
+}
