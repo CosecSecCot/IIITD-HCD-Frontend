@@ -24,7 +24,7 @@ const navigationMap: NavigationItem[] = [
     title: "about",
     children: [
       { title: "overview", url: "/about/overview" },
-      { title: "News & Events", url: "/about/newsEvents" },
+      { title: "News & Events", url: "/about/news-events" },
       { title: "collaborations", url: "/about/collaborations" },
       { title: "placements", url: "/about/placements" },
       { title: "", url: "" },
@@ -53,7 +53,7 @@ const navigationMap: NavigationItem[] = [
       { title: "", url: "" },
     ],
   },
-  { title: "our work", url: "/ourwork" },
+  { title: "our work", url: "/our-work" },
   {
     title: "people",
     children: [
