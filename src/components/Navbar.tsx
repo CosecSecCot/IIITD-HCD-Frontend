@@ -26,7 +26,7 @@ const navigationMap: NavigationItem[] = [
       { title: "overview", url: "/about/overview" },
       { title: "collaborations", url: "/about/collaborations" },
       { title: "News & Events", url: "/about/newsEvents" },
-      { title: "placement", url: "/about/placement" },
+      { title: "placements", url: "/about/placements" },
       { title: "", url: "" },
       { title: "", url: "" },
     ],
@@ -97,7 +97,7 @@ export default function Navbar({
           opacity: 1,
           ease: "expo.out",
           duration: "0.5",
-        },
+        }
       )
       .to(
         "#nav-container",
@@ -105,7 +105,7 @@ export default function Navbar({
           x: isMobileNavbarActive ? "0%" : "50%",
           ease: "expo.out",
         },
-        "-=0.5",
+        "-=0.5"
       )
       .fromTo(
         "#nav-link-primary",
@@ -122,7 +122,7 @@ export default function Navbar({
           ease: "power3.out",
           stagger: 0.1,
         },
-        "-=0.5",
+        "-=0.5"
       );
   });
 
@@ -148,7 +148,7 @@ export default function Navbar({
           ease: "expo.out",
           duration: "0.5",
         },
-        "-=0.5",
+        "-=0.5"
       )
       .then(() => {
         if (secondSidebarOpen) {
@@ -299,7 +299,7 @@ export default function Navbar({
                     gsap.to("#nav-container", {
                       x: 0,
                       ease: "expo.out",
-                    }),
+                    })
                   )();
                 }}
                 className="flex items-center gap-[2px] border border-white rounded-full p-[1em]"
@@ -359,7 +359,7 @@ export default function Navbar({
                           gsap.to("#nav-container", {
                             x: "50%",
                             ease: "expo.out",
-                          }),
+                          })
                         )();
                         setActiveGroup(null);
                       }
