@@ -1,8 +1,7 @@
 import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
-import Breadcrumbs from "@/features/pages/about/components/Breadcrumbs";
+import Banner from "@/features/pages/about/components/Banner";
 import ViewCoursesCard from "@/features/pages/study/components/ViewCoursesCard";
 import { ArrowRight } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 
 const stats = [
@@ -16,32 +15,12 @@ export default function Page() {
   return (
     <main>
       <article className="mx-auto mt-12 px-8 xl:w-[1280px] font-light">
-        <Breadcrumbs data={["about", "overview"]} />
-        <section
-          role="banner"
-          className="relative mt-2 lg:mt-5 w-full h-auto lg:aspect-video rounded-xl lg:rounded-[30px] overflow-hidden"
-        >
-          <div className="relative z-20 w-full h-full px-5 py-6 lg:px-10 lg:py-12 flex flex-col justify-end gap-3 text-white">
-            <div className="lg:w-[70%]">
-              <h1 className="font-semibold text-[28px] lg:text-[48px] leading-none shadow-2xl">
-                Overview of the Human Centred Design Department
-              </h1>
-              <p className="mt-[0.5em] font-normal text-[14px] lg:text-[20px] leading-tight">
-                The program will prepare students to work in the IT industry as
-                well as digital media industry like gaming,
-              </p>
-            </div>
-            <div>View More Options</div>
-          </div>
-          <div className="absolute inset-0 z-10 w-full h-full bg-gradient-to-b from-black/0 to-black/50" />
-          <Image
-            src="/rnd-building.png"
-            alt="banner"
-            className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-            width={1920}
-            height={603}
-          />
-        </section>
+        <Banner
+          title="Overview of the Human Centred Design Department"
+          subtitle="The program will prepare students to work in the IT industry as well as digital media industry like gaming"
+          imageSrc={"/rnd-building.png"}
+          breadcrumbs={["about", "overview"]}
+        />
 
         <section className="mt-5 lg:mt-12">
           <p className="text-[14px] lg:text-[20px]">
