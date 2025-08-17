@@ -80,6 +80,22 @@ export default function Home() {
                       />
                     </div>
                   </div>
+                  <div className="w-max box-border flex justify-around px-5 lg:px-16 py-3 lg:py-6 gap-8 lg:gap-16 bg-brand-accent2-130/[.02] border lg:border-2 border-brand-accent2/50 backdrop-blur-lg">
+                    {[
+                      { label: "ALUMNI", value: "2000+" },
+                      { label: "STUDENTS", value: "2000+" },
+                      { label: "FACULTY", value: "200+" },
+                    ].map((stat, idx) => (
+                      <div key={idx} className="leading-tight">
+                        <p className="font-normal text-[10px] lg:text-[20px] uppercase opacity-60">
+                          {stat.label}
+                        </p>
+                        <h2 className="text-[24px] lg:text-[54px] font-medium text-brand-accent2 leading-tight">
+                          {stat.value}
+                        </h2>
+                      </div>
+                    ))}
+                  </div>
                   <Link
                     href=""
                     className="font-normal w-max flex justify-center items-center gap-[1em] px-[1.5em] py-[1em] text-[12px] lg:text-[24px] bg-brand-accent2 text-white"
