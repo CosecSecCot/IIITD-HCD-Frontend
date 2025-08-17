@@ -5,10 +5,62 @@ import PageReveal from "@/features/animation/PageReveal";
 import GooeySvgFilter from "@/components/fancy/filter/gooey-svg-filter";
 import Heading from "@/features/pages/study/components/Heading";
 import ProgrammeCard from "@/features/pages/study/components/ProgrammeCard";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://hcd.iiitd.ac.in"),
+  title: "Human Centred Design • IIIT Delhi",
+  description:
+    "Explore the Department of Human Centred Design at IIIT Delhi — research labs, projects, faculty, programmes and publications driving inclusive, user-centered innovation.",
+  keywords: [
+    "human centred design",
+    "HCD",
+    "IIIT Delhi",
+    "human-computer interaction",
+    "design research",
+    "ux",
+    "accessibility",
+    "design education",
+    "research labs",
+  ],
+  authors: [{ name: "IIIT Delhi — Human Centred Design" }],
+  creator: "IIIT Delhi HCD",
+  publisher: "IIIT Delhi",
+  alternates: {
+    canonical: "/",
+  },
+
+  openGraph: {
+    title: "Human Centred Design • IIIT Delhi",
+    description:
+      "Explore the Department of Human Centred Design at IIIT Delhi — research labs, projects, faculty, programmes and publications.",
+    url: "https://hcd.iiitd.ac.in/",
+    siteName: "HCD IIITD",
+    // type: "website",
+    locale: "en-IN",
+    // images: [
+    //   {
+    //     url: "https://hcd.iiitd.ac.in/og-image.png", // replace with your OG image
+    //     width: 1200,
+    //     height: 630,
+    //     alt: "HCD IIITD — Human Centred Design",
+    //   },
+    // ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Human Centred Design • IIIT Delhi",
+    description:
+      "Research labs, projects and programmes from the Department of Human Centred Design, IIIT Delhi.",
+    // images: ["https://hcd.iiitd.ac.in/og-image.png"],
+    creator: "@IIITDelhi",
+  },
+};
 
 const programmeItems = [
   {
@@ -431,33 +483,3 @@ export default function Home() {
     </>
   );
 }
-
-// <GooeySvgFilter id="gooey-filter-pixel-trail" strength={5} />
-// <div
-//   className="absolute inset-0"
-//   style={{ filter: "url(#gooey-filter-pixel-trail)" }}
-// >
-//   <PixelTrailReveal pixelSize={64} delay={1000} fadeDuration={0}>
-//     <div className="w-full h-full">
-//       <div className="font-light py-12 xl:px-[calc(50vw-608px)] w-full h-full px-8 flex max-lg:flex-col justify-between bg-brand-accent2">
-//         <div className="lg:w-1/2">
-//           <p className="text-[16px] lg:text-[32px] text-brand-accent1">
-//             Human Centred Design
-//           </p>
-//           <h1 className="text-[36px] lg:text-[86px] text-white leading-tight">
-//             Where{" "}
-//             <span className="font-normal text-brand-accent1">
-//               Creativity
-//             </span>{" "}
-//             Meets Innovation.
-//           </h1>
-//           <blockquote className="mt-[1em] text-[14px] lg:text-[26px] text-white italic leading-tight">
-//             We are a collective of diverse thinkers reimagining
-//             how human-technology interactions.
-//           </blockquote>
-//         </div>
-//         <div></div>
-//       </div>
-//     </div>
-//   </PixelTrailReveal>
-// </div>
