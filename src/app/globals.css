@@ -49,3 +49,7 @@
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     will-change: transform, opacity, clip-path;
 }
+
+::selection {
+    background: color-mix(in oklab, var(--color-brand-accent1) 30%, transparent);
+}

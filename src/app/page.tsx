@@ -2,11 +2,12 @@ import PixelTrailReveal from "@/components/fancy/background/pixel-trail-reveal";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import PageReveal from "@/features/animation/PageReveal";
-import GravitySection from "@/features/pages/home/components/GravitySection";
 import GooeySvgFilter from "@/components/fancy/filter/gooey-svg-filter";
 import Heading from "@/features/pages/study/components/Heading";
 import ProgrammeCard from "@/features/pages/study/components/ProgrammeCard";
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 const programmeItems = [
   {
@@ -34,72 +35,71 @@ const programmeItems = [
 export default function Home() {
   return (
     <>
-      <PageReveal />
       <div className="background-element relative z-10 bg-white font-anybody pb-[78px] shadow-xl">
         <Navbar type="solid" />
         <main className="">
-          <article>
+          <article className="space-y-12 lg:space-y-32">
             <section className="relative w-full h-full overflow-hidden">
-              <div className="font-light my-12 mx-auto xl:w-[1280px] px-8 flex max-lg:flex-col justify-between">
-                <div className="lg:w-1/2">
-                  <p className="text-[16px] lg:text-[32px] text-brand-accent2">
+              <div className="font-light mt-[48px] lg:mt-[90px] mx-auto xl:w-[75vw] px-8 flex max-lg:flex-col justify-between gap-5 lg:gap-8">
+                <div className="flex-1">
+                  <p className="text-[16px] lg:text-[36px] text-brand-accent2">
                     Human Centred Design
                   </p>
-                  <h1 className="text-[36px] lg:text-[86px] leading-tight">
-                    Where Creativity{" "}
+                  <h1 className="text-[36px] lg:text-[96px] leading-none lg:leading-tight">
+                    Where{" "}
                     <span className="font-normal text-brand-accent2">
-                      Meets
+                      Creativity
                     </span>{" "}
-                    Innovation.
+                    Meets Innovation.
                   </h1>
-                  <blockquote className="mt-[1em] text-[14px] lg:text-[26px] italic leading-tight">
+                  <blockquote className="mt-[1em] text-[14px] lg:text-[28px] italic leading-tight">
                     We are a collective of diverse thinkers reimagining how
                     human-technology interactions.
                   </blockquote>
                 </div>
-                <div></div>
-              </div>
-              <GooeySvgFilter id="gooey-filter-pixel-trail" strength={5} />
-              <div
-                className="absolute inset-0"
-                style={{ filter: "url(#gooey-filter-pixel-trail)" }}
-              >
-                <PixelTrailReveal pixelSize={128} delay={1000} fadeDuration={0}>
-                  <div className="w-full h-full font-pixel">
-                    <div className="font-light py-12 xl:px-[calc(50vw-608px)] w-full h-full px-8 flex max-lg:flex-col justify-between bg-brand-accent2">
-                      <div className="lg:w-1/2">
-                        <p className="text-[16px] lg:text-[32px] text-brand-accent1">
-                          Human Centred Design
-                        </p>
-                        <h1 className="text-[36px] lg:text-[86px] text-white leading-tight">
-                          Where Creativity{" "}
-                          <span className="font-normal text-brand-accent1">
-                            Meets
-                          </span>{" "}
-                          Innovation.
-                        </h1>
-                        <blockquote className="mt-[1em] text-[14px] lg:text-[26px] text-white italic leading-tight">
-                          We are a collective of diverse thinkers reimagining
-                          how human-technology interactions.
-                        </blockquote>
-                      </div>
-                      <div></div>
+                <div className="flex-1 flex flex-col lg:items-end gap-2 lg:gap-5">
+                  <div className="flex gap-2 lg:gap-5 w-full">
+                    <div className="relative flex-1 aspect-square border-2 border-brand-accent2">
+                      <div className="absolute inset-0 z-10 w-full h-full bg-brand-accent2/50 mix-blend-overlay" />
+                      <Image
+                        src="/rnd-building.png"
+                        alt="R&D Building IIITD"
+                        width={376}
+                        height={383}
+                        className="absolute inset-0 w-full h-full object-cover grayscale"
+                      />
+                    </div>
+                    <div className="relative flex-1 aspect-square border-2 border-brand-accent2">
+                      <div className="absolute inset-0 z-10 w-full h-full bg-brand-accent2/50 mix-blend-overlay" />
+                      <Image
+                        src="/rnd-building.png"
+                        alt="R&D Building IIITD"
+                        width={376}
+                        height={383}
+                        className="absolute inset-0 w-full h-full object-cover grayscale"
+                      />
                     </div>
                   </div>
-                </PixelTrailReveal>
+                  <Link
+                    href=""
+                    className="font-normal w-max flex justify-center items-center gap-[1em] px-[1.5em] py-[1em] text-[12px] lg:text-[24px] bg-brand-accent2 text-white"
+                  >
+                    <span>View Study Options</span>
+                    <ArrowRight className="w-[12px] lg:w-[18px] h-auto" />
+                  </Link>
+                </div>
               </div>
             </section>
 
             <section className="relative w-full h-full overflow-hidden">
-              <GravitySection />
-              <div className="relative z-10 mt-12 mx-auto xl:w-[1280px] px-8 space-y-4 lg:space-y-[72px]">
-                <h2 className="text-[28px] lg:text-[80px] leading-tight">
+              <div className="relative z-10 mx-auto xl:w-[75vw] px-8 space-y-4 lg:space-y-[72px]">
+                <h2 className="text-[28px] lg:text-[94px] leading-tight">
                   The Department of <br />
                   <span className="text-brand-accent2">
                     Human Centred Design
                   </span>
                 </h2>
-                <p className="lg:ml-auto lg:w-2/3 font-light lg:text-right text-[14px] lg:text-[30px] leading-tight">
+                <p className="lg:ml-auto lg:w-2/3 font-light lg:text-right text-[14px] lg:text-[34px] leading-tight">
                   We are a collective of diverse thinkers reimagining how{" "}
                   <span className="font-normal text-brand-accent2">
                     human-technology interactions
@@ -107,7 +107,7 @@ export default function Home() {
                   can be seamless and meaningful. We are a collective of diverse
                   thinkers reimagining how human-technology interactions.
                 </p>
-                <div className="flex justify-between px-5 lg:px-20 py-3 lg:py-6 bg-brand-accent2-130/5 border border-brand-accent2 max-xl:border-r-brand-accent2 backdrop-blur-lg">
+                <div className="flex justify-between px-5 lg:px-20 py-3 lg:py-6 bg-brand-accent2-130/[.02] border lg:border-2 border-brand-accent2 max-xl:border-r-brand-accent2 backdrop-blur-lg">
                   {[
                     { label: "ALUMNI", value: "2000+" },
                     { label: "STUDENTS", value: "2000+" },
@@ -118,7 +118,7 @@ export default function Home() {
                       <p className="text-[10px] lg:text-[30px] uppercase opacity-60">
                         {stat.label}
                       </p>
-                      <h2 className="text-[24px] lg:text-[80px] font-medium text-brand-accent2">
+                      <h2 className="text-[24px] lg:text-[90px] font-medium text-brand-accent2">
                         {stat.value}
                       </h2>
                     </div>
@@ -134,7 +134,7 @@ export default function Home() {
                     diverse thinkers reimagining how human-technology
                     interactions.
                   </p>
-                  <p className="max-lg:hidden w-1/2 text-right text-[58px] leading-tight">
+                  <p className="max-lg:hidden w-1/2 text-right text-[64px] leading-tight">
                     Welcome to a new era of HCD, powered{" "}
                     <span className="font-light italic text-brand-accent2">
                       by you.
@@ -145,7 +145,7 @@ export default function Home() {
             </section>
 
             <section className="relative w-full h-full overflow-hidden">
-              <div className="mt-12 flex max-lg:flex-col max-lg:px-8 justify-between items-center gap-[2em]">
+              <div className="flex max-lg:flex-col max-lg:px-8 justify-between items-center gap-4 lg:gap-[60px]">
                 <div className="relative w-full lg:w-[60%] aspect-video flex-shrink-0">
                   <div className="absolute z-10 inset-0 bg-brand-accent2/50 mix-blend-overlay" />
                   <Image
@@ -153,27 +153,11 @@ export default function Home() {
                     alt="Faculty at IIITD HCD"
                     width={1186}
                     height={682}
-                    className="absolute inset-0 border-4 border-brand-accent2 grayscale"
+                    priority
+                    className="absolute inset-0 w-full h-full border-2 lg:border-4 border-brand-accent2 grayscale"
                   />
-                  <div className="absolute inset-0 z-20">
-                    <PixelTrailReveal
-                      pixelSize={96}
-                      delay={300}
-                      fadeDuration={500}
-                    >
-                      <div className="relative w-full h-full">
-                        <Image
-                          src="/faculty.png"
-                          alt="Faculty at IIITD HCD"
-                          width={1186}
-                          height={682}
-                          className="absolute inset-0 border-4 border-brand-accent2 blur-[1px]"
-                        />
-                      </div>
-                    </PixelTrailReveal>
-                  </div>
                 </div>
-                <div className="lg:pr-[calc(50vw-608px)] lg:text-right">
+                <div className="lg:pr-[12.5vw] lg:text-right">
                   <h1 className="text-[24px] lg:text-[44px] text-brand-accent2 leading-tight">
                     HCD Faculty
                   </h1>
@@ -182,18 +166,25 @@ export default function Home() {
                     innovative solutions for challenges that arise with each
                     advancement.
                   </p>
+                  <Link
+                    href=""
+                    className="mt-[1em] font-normal flex justify-center items-center gap-[1em] px-[1em] py-[1em] text-[12px] lg:text-[20px] bg-brand-accent2 text-white"
+                  >
+                    <span>View Faculty</span>
+                    <ArrowRight className="w-[12px] lg:w-[18px] h-auto" />
+                  </Link>
                 </div>
               </div>
             </section>
 
             <section className="relative w-full h-full overflow-hidden">
-              <div className="mt-12">
+              <div className="">
                 <Heading align="middle">
                   <span className="text-brand-accent2 font-normal">
                     Mission &amp; Vision
                   </span>
                 </Heading>
-                <p className="max-lg:hidden font-light mt-[1em] mx-auto xl:w-[1280px] px-8 text-center text-[24px]">
+                <p className="max-lg:hidden font-light mt-[1em] mx-auto xl:w-[75vw] px-8 text-center text-[24px]">
                   India has already established itself as the software hub of
                   the world due to the large number of engineers that it
                   produces. There is now an increasing and persistent demand of
@@ -221,3 +212,33 @@ export default function Home() {
     </>
   );
 }
+
+// <GooeySvgFilter id="gooey-filter-pixel-trail" strength={5} />
+// <div
+//   className="absolute inset-0"
+//   style={{ filter: "url(#gooey-filter-pixel-trail)" }}
+// >
+//   <PixelTrailReveal pixelSize={64} delay={1000} fadeDuration={0}>
+//     <div className="w-full h-full">
+//       <div className="font-light py-12 xl:px-[calc(50vw-608px)] w-full h-full px-8 flex max-lg:flex-col justify-between bg-brand-accent2">
+//         <div className="lg:w-1/2">
+//           <p className="text-[16px] lg:text-[32px] text-brand-accent1">
+//             Human Centred Design
+//           </p>
+//           <h1 className="text-[36px] lg:text-[86px] text-white leading-tight">
+//             Where{" "}
+//             <span className="font-normal text-brand-accent1">
+//               Creativity
+//             </span>{" "}
+//             Meets Innovation.
+//           </h1>
+//           <blockquote className="mt-[1em] text-[14px] lg:text-[26px] text-white italic leading-tight">
+//             We are a collective of diverse thinkers reimagining
+//             how human-technology interactions.
+//           </blockquote>
+//         </div>
+//         <div></div>
+//       </div>
+//     </div>
+//   </PixelTrailReveal>
+// </div>

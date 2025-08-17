@@ -3,7 +3,7 @@ import { Anybody, Tiny5 } from "next/font/google";
 import "./globals.css";
 import ReactLenis from "lenis/react";
 import AnimationInitializer from "@/features/animation/AnimationInitializer";
-import Script from "next/script"; // 1. Import the Script component
+import Script from "next/script";
 
 const anybody = Anybody({
   variable: "--font-anybody",
