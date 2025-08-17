@@ -24,7 +24,7 @@ export default function PageReveal() {
     function animate(
       digit: Element | null,
       duration: number,
-      delay: number = 1,
+      delay: number = 0
     ) {
       if (!digit) return;
 
@@ -42,15 +42,15 @@ export default function PageReveal() {
       });
     }
 
-    animate(digit3, 4);
-    animate(digit2, 4.5);
-    animate(digit1, 1, 4);
+    animate(digit3, 3);
+    animate(digit2, 3.5);
+    animate(digit1, 1, 2);
 
     gsap.to(".progress-bar", {
       width: "30%",
       duration: 2,
       ease: "power4.inOut",
-      delay: 5,
+      delay: 3,
     });
 
     gsap.to(".progress-bar", {
@@ -58,7 +58,7 @@ export default function PageReveal() {
       opacity: 0,
       duration: 2,
       ease: "power3.out",
-      delay: 6.5,
+      delay: 4.5,
     });
 
     gsap.to(".page-reveal-hero-imgs > img", {
@@ -66,21 +66,21 @@ export default function PageReveal() {
       duration: 1,
       ease: "power4.inOut",
       stagger: 0.25,
-      delay: 7,
+      delay: 5,
     });
 
     gsap.to(".page-reveal-hero", {
       scale: 1.25,
       duration: 3,
       ease: "power3.inOut",
-      delay: 7,
+      delay: 5,
     });
 
     gsap.to(".page-reveal-hero", {
       clipPath: "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)",
       duration: 1,
       ease: "power4.inOut",
-      delay: 8.75,
+      delay: 6.75,
       onComplete: () => setAnimationComplete(true),
     });
   });
