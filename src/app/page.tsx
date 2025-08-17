@@ -107,7 +107,7 @@ export default function Home() {
                   can be seamless and meaningful. We are a collective of diverse
                   thinkers reimagining how human-technology interactions.
                 </p>
-                <div className="flex justify-between px-5 lg:px-20 py-3 lg:py-6 bg-brand-accent2-130/[.02] border lg:border-2 border-brand-accent2 max-xl:border-r-brand-accent2 backdrop-blur-lg">
+                <div className="flex justify-between px-5 lg:px-20 py-3 lg:py-6 bg-brand-accent2-130/[.02] border lg:border-2 border-brand-accent2 backdrop-blur-lg">
                   {[
                     { label: "ALUMNI", value: "2000+" },
                     { label: "STUDENTS", value: "2000+" },
