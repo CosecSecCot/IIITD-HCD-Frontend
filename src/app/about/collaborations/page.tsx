@@ -32,7 +32,7 @@ export default function Page() {
         </p>
 
         <section className="mt-5 lg:mt-12">
-          <div className="relative p-[40px] border border-brand-accent2 bg-brand-accent2/5 backdrop-blur-lg hover:backdrop-blur-2xl transition-all duration-300">
+          <div className="relative p-6 lg:p-[40px] border border-brand-accent2 bg-brand-accent2/5 backdrop-blur-lg hover:backdrop-blur-2xl transition-all duration-300">
             <h2 className="font-medium text-[18px] lg:text-[28px] text-brand-accent2">
               Reach out for Collaboration
             </h2>
@@ -56,10 +56,10 @@ export default function Page() {
         </section>
 
         <section className="my-5 lg:my-12">
-          <h2 className="text-[30px] lg:text-[24px] font-medium text-brand-accent2">
+          <h2 className="text-[18px] lg:text-[24px] font-medium text-brand-accent2">
             Current Collaboration
           </h2>
-          <p className="text-[14px] lg:text-[20px]">
+          <p className="mt-2 text-[14px] lg:text-[20px]">
             Admission to this program will be through two channels –
             approximately half of the seats will be through the Joint Admission
             Counselling (JAC) of Delhi.

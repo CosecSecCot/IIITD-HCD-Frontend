@@ -39,7 +39,7 @@ export default function Page() {
           <h2 className="font-medium text-[18px] lg:text-[24px] text-brand-accent2">
             News
           </h2>
-          <div className="mt-8 space-y-8">
+          <div className="mt-4 lg:mt-8 space-y-8">
             {newsData.map((news, idx) => {
               return <NewsCard key={idx} content={news} />;
             })}
@@ -50,7 +50,7 @@ export default function Page() {
           <h2 className="font-medium text-[18px] lg:text-[24px] text-brand-accent2">
             Events
           </h2>
-          <div className="mt-8 space-y-8">
+          <div className="mt-4 lg:mt-8 space-y-8">
             {newsData.map((news, idx) => {
               return <NewsCard key={idx} content={news} />;
             })}
@@ -71,16 +71,16 @@ function NewsCard({
   };
 }) {
   return (
-    <div className="flex flex-col md:flex-row md:items-center gap-[1em]">
-      <div className="w-full md:w-1/3 h-auto aspect-video md:aspect-[4/3] flex-shrink-0 bg-neutral-300 rounded-lg overflow-hidden" />
-      <div>
-        <p className="text-[16px] lg:text-[18px] text-brand-accent2/80">
+    <div className="flex flex-col md:flex-row md:items-center md:gap-8">
+      <div className="w-full md:w-1/3 h-auto aspect-video md:aspect-[4/3] flex-shrink-0 bg-neutral-300 rounded-xl overflow-hidden" />
+      <div className="mt-3">
+        <p className="text-[14px] lg:text-[18px] text-brand-accent2/80">
           {content.date}
         </p>
-        <h3 className="font-medium text-[18px] lg:text-[20px] text-brand-accent2">
+        <h3 className="font-medium text-[20px] lg:text-[20px] text-brand-accent2 leading-tight">
           {content.title}
         </h3>
-        <p className="font-light text-[16px] lg:text-[18px] opacity-60 mt-[0.5em]">
+        <p className="font-light text-[14px] lg:text-[18px] opacity-60 mt-2">
           {content.description}
         </p>
       </div>

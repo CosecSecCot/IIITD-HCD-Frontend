@@ -46,7 +46,7 @@ export default function Banner({
       </p>
       <section
         role="banner"
-        className="relative mt-2 lg:mt-5 w-full h-auto lg:aspect-video rounded-xl lg:rounded-[30px] overflow-hidden"
+        className="relative mt-2 lg:mt-5 w-full h-auto lg:aspect-video bg-neutral-300 rounded-xl lg:rounded-[30px] overflow-hidden"
       >
         <div className="relative z-20 w-full h-full px-5 py-6 lg:px-10 lg:py-12 flex flex-col justify-end gap-3 text-white">
           <div className="lg:w-[70%]">
