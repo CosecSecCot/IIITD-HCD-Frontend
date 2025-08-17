@@ -1,32 +1,50 @@
 import Banner from "@/features/pages/about/components/Banner";
+import NewsCard, {
+  News,
+} from "@/features/pages/about/news-events/components/NewsCard";
 
-const newsData = [
-  {
-    date: "January 2024",
-    title: "1Pixel Design Conference '24 at IIIT-Delhi Shaping the Future",
-    description:
-      "Admission to this program will be through two channels - approximately half of the. Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus quis ullam cumque enim molestiae sapiente! Ipsa a voluptatem eligendi repudiandae voluptates maxime, quam quisquam possimus maiores veniam reprehenderit minus voluptatum.",
-    image: "",
-  },
-  {
-    date: "January 2024",
-    title: "1Pixel Design Conference '24 at IIIT-Delhi Shaping the Future",
-    description:
-      "Admission to this program will be through two channels - approximately half of the.",
-    image: "",
-  },
-];
+export const dynamic = "force-dynamic";
 
-export default function Page() {
+export default async function Page() {
+  const res = await fetch(
+    "http://localhost:1337/api/student-projects?populate=*"
+  ).catch((reason) => console.log("[ERROR]", reason));
+  const data = await res?.json();
+
+  if (!data || data.error || data.data.length == 0) {
+    return (
+      <main className="mx-auto min-h-[80vh] xl:w-[1280px] px-8 py-[20vh] text-center">
+        <h2 className="text-[20px] lg:text-[28px] text-brand-accent2 font-semibold">
+          Hmm...
+        </h2>
+        <p className="text-[16px] lg:text-[20px] italic font-light">
+          Looks like no news or events were found.
+        </p>
+      </main>
+    );
+  }
+
+  const normalized: News[] = data.data.map(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (item: any): News => ({
+      id: item.id,
+      date: new Date(item.publishedAt),
+      title: item.Title,
+      description: item.Description,
+      img: "http://localhost:1337" + item.CoverImage.url,
+    })
+  );
   return (
     <main>
       <article className="mx-auto mt-12 px-8 xl:w-[1280px] font-light">
-        <Banner
-          title="1Pixel Design Conference '24 at IIIT-Delhi Shaping the Future"
-          subtitle="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis quae suscipit qui modi ut nulla iste labore et amet sequi."
-          imageSrc={"/1pixel.png"}
-          breadcrumbs={["about", "news & Events"]}
-        />
+        {normalized.length > 0 && (
+          <Banner
+            title={normalized[0].title}
+            subtitle={normalized[0].description}
+            imageSrc={normalized[0].img}
+            breadcrumbs={["about", "news & Events"]}
+          />
+        )}
         <p className="mt-5 lg:mt-12 text-[14px] lg:text-[20px]">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae
           reiciendis eaque, quas pariatur consequatur repellendus odit esse
@@ -40,7 +58,7 @@ export default function Page() {
             News
           </h2>
           <div className="mt-4 lg:mt-8 space-y-8">
-            {newsData.map((news, idx) => {
+            {normalized.map((news, idx) => {
               return <NewsCard key={idx} content={news} />;
             })}
           </div>
@@ -51,39 +69,12 @@ export default function Page() {
             Events
           </h2>
           <div className="mt-4 lg:mt-8 space-y-8">
-            {newsData.map((news, idx) => {
+            {normalized.map((news, idx) => {
               return <NewsCard key={idx} content={news} />;
             })}
           </div>
         </section>
       </article>
     </main>
-  );
-}
-
-function NewsCard({
-  content,
-}: {
-  content: {
-    date: string;
-    title: string;
-    description: string;
-  };
-}) {
-  return (
-    <div className="flex flex-col md:flex-row md:items-center md:gap-8">
-      <div className="w-full md:w-1/3 h-auto aspect-video md:aspect-[4/3] flex-shrink-0 bg-neutral-300 rounded-xl overflow-hidden" />
-      <div className="mt-3">
-        <p className="text-[14px] lg:text-[18px] text-brand-accent2/80">
-          {content.date}
-        </p>
-        <h3 className="font-medium text-[20px] lg:text-[20px] text-brand-accent2 leading-tight">
-          {content.title}
-        </h3>
-        <p className="font-light text-[14px] lg:text-[18px] opacity-60 mt-2">
-          {content.description}
-        </p>
-      </div>
-    </div>
   );
 }

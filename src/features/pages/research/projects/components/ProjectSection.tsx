@@ -6,6 +6,7 @@ import { ArrowRight, X } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { Flip } from "gsap/Flip";
+import { formatDateToMonthYear } from "@/utils/formatDate";
 
 gsap.registerPlugin(Flip, useGSAP);
 
@@ -71,7 +72,7 @@ export default function ProjectSection({
       // clear stored state so stale references aren't reused
       flipStateRef.current = null;
     },
-    { scope: cardsContainerRef, dependencies: [expandedId] },
+    { scope: cardsContainerRef, dependencies: [expandedId] }
   );
 
   return (
@@ -218,12 +219,4 @@ function ProjectCard({
       )}
     </div>
   );
-}
-
-function formatDateToMonthYear(dateString: string): string {
-  const date = new Date(dateString);
-  return date.toLocaleDateString("en-US", {
-    month: "long",
-    year: "numeric",
-  });
 }
