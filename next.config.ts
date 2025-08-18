@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
-    remotePatterns: [new URL("http://localhost:1337/uploads/**")],
+    remotePatterns: [new URL(`${process.env.NEXT_PUBLIC_STRAPI_URL}/uploads/**`)],
   },
 };
 

@@ -11,7 +11,7 @@ export const dynamic = "force-dynamic";
 
 export default async function Page() {
   const res = await fetch(
-    "http://localhost:1337/api/student-projects?populate=*"
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/student-projects?populate=*`
   ).catch((reason) => console.log("[ERROR]", reason));
   const data = await res?.json();
 
@@ -42,7 +42,7 @@ export default async function Page() {
       student: item.Students ? item.Students[0]?.Name : undefined,
       title: item.Title,
       description: item.Description,
-      img: "http://localhost:1337" + item.CoverImage.url,
+      img: `${process.env.NEXT_PUBLIC_STRAPI_URL}${item.CoverImage.url}`,
     })
   );
 

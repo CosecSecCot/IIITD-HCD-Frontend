@@ -1,6 +1,13 @@
 import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
 import CenterUnderline from "@/components/fancy/text/underline-center";
-import { ArrowRight } from "lucide-react";
+import {
+  ArrowRight,
+  FacebookIcon,
+  InstagramIcon,
+  LinkedinIcon,
+  MailIcon,
+  TwitterIcon,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -40,22 +47,22 @@ export default function Footer() {
               </h2>
               <ul className="text-[18px] lg:text-[26px]">
                 <li>
-                  <Link href="/study">
+                  <Link href="/study/btech">
                     <CustomLinkText label="Study @IIITD" />
                   </Link>
                 </li>
                 <li>
-                  <Link href="/courses">
+                  <Link href="/study/courses">
                     <CustomLinkText label="Courses" />
                   </Link>
                 </li>
                 <li>
-                  <Link href="/work">
+                  <Link href="/our-work">
                     <CustomLinkText label="Our Work" />
                   </Link>
                 </li>
                 <li>
-                  <Link href="/faculty">
+                  <Link href="">
                     <CustomLinkText label="Faculty" />
                   </Link>
                 </li>
@@ -70,17 +77,17 @@ export default function Footer() {
               </h2>
               <ul className="text-[18px] lg:text-[26px]">
                 <li>
-                  <Link href="/workshops">
+                  <Link href="">
                     <CustomLinkText label="Workshops" />
                   </Link>
                 </li>
                 <li>
-                  <Link href="/placements">
+                  <Link href="/about/placements">
                     <CustomLinkText label="Placements" />
                   </Link>
                 </li>
                 <li>
-                  <Link href="/events">
+                  <Link href="/about/news-events">
                     <CustomLinkText label="Events" />
                   </Link>
                 </li>
@@ -93,22 +100,38 @@ export default function Footer() {
               >
                 CONTACT US
               </h2>
-              <div className="flex gap-3 mt-2">
-                {/* <a href="mailto:hcd@iiitd.ac.in" aria-label="Email">
+              <div className="grid grid-cols-3 gap-y-4 mt-2">
+                <Link href="mailto:hcd@iiitd.ac.in" aria-label="Email">
                   <MailIcon size={26} />
-                </a>
-                <a href="#" aria-label="LinkedIn">
+                </Link>
+                <Link
+                  href="https://in.linkedin.com/company/hcdiiitd"
+                  target="_blank"
+                  aria-label="LinkedIn"
+                >
                   <LinkedinIcon size={26} />
-                </a>
-                <a href="#" aria-label="Instagram">
+                </Link>
+                <Link
+                  href="https://www.instagram.com/hcdiiitd"
+                  target="_blank"
+                  aria-label="Instagram"
+                >
                   <InstagramIcon size={26} />
-                </a>
-                <a href="#" aria-label="Twitter">
+                </Link>
+                <Link
+                  href="https://twitter.com/hcdiiitd"
+                  target="_blank"
+                  aria-label="Twitter"
+                >
                   <TwitterIcon size={26} />
-                </a>
-                <a href="#" aria-label="Facebook">
+                </Link>
+                <Link
+                  href="https://www.facebook.com/hcdiiitd"
+                  target="_blank"
+                  aria-label="Facebook"
+                >
                   <FacebookIcon size={26} />
-                </a> */}
+                </Link>
               </div>
             </section>
           </section>

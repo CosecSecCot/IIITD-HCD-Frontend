@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     description:
       "Reach out to the Department of Human Centred Design, IIIT Delhi for collaborations, queries, and opportunities.",
     // images: ["https://hcd.iiitd.ac.in/connect/og-image.png"],
-    creator: "@IIITDelhi",
+    creator: "@hcdiiitd",
   },
 };
 

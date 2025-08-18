@@ -7,9 +7,10 @@ export const dynamic = "force-dynamic";
 
 export default async function Page() {
   const res = await fetch(
-    "http://localhost:1337/api/student-projects?populate=*"
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/news-and-events?populate=*`
   ).catch((reason) => console.log("[ERROR]", reason));
   const data = await res?.json();
+  console.log(data);
 
   if (!data || data.error || data.data.length == 0) {
     return (
@@ -31,9 +32,10 @@ export default async function Page() {
       date: new Date(item.publishedAt),
       title: item.Title,
       description: item.Description,
-      img: "http://localhost:1337" + item.CoverImage.url,
+      img: `${process.env.NEXT_PUBLIC_STRAPI_URL}${item.CoverImage.url}`,
     })
   );
+
   return (
     <main>
       <article className="mx-auto mt-12 px-8 xl:w-[1280px] font-light">

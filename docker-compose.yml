@@ -1,0 +1,7 @@
+services:
+  frontend:
+    image: cosecseccot/hcd-frontend:latest
+    container_name: hcd-frontend
+    restart: always
+    ports:
+      - "3000:3000"

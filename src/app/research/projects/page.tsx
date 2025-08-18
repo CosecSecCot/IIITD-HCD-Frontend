@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 
 export default async function Page() {
   const res = await fetch(
-    "http://localhost:1337/api/department-projects?populate=*",
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/department-projects?populate=*`
   ).catch((reason) => console.log("[ERROR]", reason));
   const data = await res?.json();
 
@@ -45,10 +45,10 @@ export default async function Page() {
       image: {
         width: item.Images[0].width,
         height: item.Images[0].height,
-        url: "http://localhost:1337" + item.Images[0].url,
+        url: `${process.env.NEXT_PUBLIC_STRAPI_URL}${item.Images[0].url}`,
       },
       fullDescription: item.LongDescription,
-    }),
+    })
   );
 
   return (

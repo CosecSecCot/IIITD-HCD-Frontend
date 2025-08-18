@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 
 export default async function Page() {
   const res = await fetch(
-    "http://localhost:1337/api/publications?populate=*",
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/publications?populate=*`
   ).catch((reason) => console.log("[ERROR]", reason));
   const data = await res?.json();
 
@@ -36,13 +36,13 @@ export default async function Page() {
       id: item.id,
       year: new Date(item.Date).getFullYear(),
       faculties: item.Faculties.map(
-        (faculty: { Name: string }) => faculty.Name,
+        (faculty: { Name: string }) => faculty.Name
       ),
       title: item.Title,
       description: item.LongDescription,
       tags: item.Tags.map((tag: { Tag: string }) => tag.Tag),
       link: item.Link,
-    }),
+    })
   );
 
   return (

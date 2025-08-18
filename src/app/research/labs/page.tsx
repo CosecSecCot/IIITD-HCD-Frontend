@@ -12,9 +12,9 @@ export const dynamic = "force-dynamic";
 export default async function Page(pageProps: {
   searchParams: Promise<{ filter?: string }>;
 }) {
-  const res = await fetch("http://localhost:1337/api/labs?populate=*").catch(
-    (reason) => console.log("[ERROR]", reason),
-  );
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/labs?populate=*`
+  ).catch((reason) => console.log("[ERROR]", reason));
   const data = await res?.json();
 
   if (!data || data.error || data.data.length == 0) {
@@ -42,7 +42,7 @@ export default async function Page(pageProps: {
       id: item.id,
       type: item.LabType,
       title: item.LabName,
-      logo: "http://localhost:1337" + item.LabLogo.url,
+      logo: `${process.env.NEXT_PUBLIC_STRAPI_URL}${item.LabLogo.url}`,
       short: item.ShortDescription,
       full: item.LongDescription,
       lead: (item.Faculty ? item.Faculty.Name + ", " : "") + item.LabLocation,
@@ -50,7 +50,7 @@ export default async function Page(pageProps: {
       foreground: getContrastingTextColor(item.AccentColor),
       background: item.AccentColor,
       backgroundDim: item.AccentColor + "80", // 50% opacity
-    }),
+    })
   );
 
   const searchParams = await pageProps.searchParams;

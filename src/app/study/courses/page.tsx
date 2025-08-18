@@ -9,9 +9,9 @@ export default async function Page(pageProps: {
   searchParams: Promise<{ filter?: string }>;
 }) {
   const searchParams = await pageProps.searchParams;
-  const res = await fetch("http://localhost:3000/courses.json").catch(
-    (reason) => console.log("[ERROR]", reason),
-  );
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_SITE_URL}/courses.json`
+  ).catch((reason) => console.log("[ERROR]", reason));
   const data = await res?.json();
 
   if (!data || !data.data || data.data.length == 0) {
@@ -49,7 +49,7 @@ export default async function Page(pageProps: {
         mandatory: course["Mandatory"],
         url: course["Link"],
       };
-    },
+    }
   );
 
   return (
