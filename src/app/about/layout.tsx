@@ -1,25 +1,5 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "About - HCD IIIT Delhi",
-  description: "About IIIT Delhi's Human Centered Design Department.",
-  openGraph: {
-    type: "website",
-    url: "",
-    title: "",
-    description: "",
-    siteName: "HCD IIITD",
-    images: [{ url: "" }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "",
-    description: "",
-    images: [{ url: "" }],
-  },
-};
 
 export default function RootLayout({
   children,

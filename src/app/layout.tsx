@@ -3,11 +3,18 @@ import "./globals.css";
 import ReactLenis from "lenis/react";
 import AnimationInitializer from "@/features/animation/AnimationInitializer";
 import Script from "next/script";
+import { Metadata } from "next";
 
 const anybody = Anybody({
   variable: "--font-anybody",
   subsets: ["latin"],
 });
+
+export const metadata: Metadata = {
+  title: "Human Centred Design • IIIT Delhi",
+  description:
+    "Explore the Department of Human Centred Design at IIIT Delhi — research labs, projects, faculty, programmes and publications driving inclusive, user-centered innovation.",
+};
 
 export default function RootLayout({
   children,
