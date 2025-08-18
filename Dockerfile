@@ -23,6 +23,11 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 
+ARG NEXT_PUBLIC_STRAPI_URL
+ARG NEXT_PUBLIC_SITE_URL
+ENV NEXT_PUBLIC_STRAPI_URL=$NEXT_PUBLIC_STRAPI_URL
+ENV NEXT_PUBLIC_SITE_URL=$NEXT_PUBLIC_SITE_URL
+
 # Copy build output and node_modules from builder
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/node_modules ./node_modules
