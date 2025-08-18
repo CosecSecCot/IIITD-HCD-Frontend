@@ -31,3 +31,6 @@ jobs:
           tags: cosecseccot/hcd-frontend:latest
           cache-from: type=registry,ref=cosecseccot/hcd-frontend:buildcache
           cache-to: type=registry,ref=cosecseccot/hcd-frontend:buildcache,mode=max
+          build-args: |
+            NEXT_PUBLIC_STRAPI_URL=${{ secrets.NEXT_PUBLIC_STRAPI_URL }}
+            NEXT_PUBLIC_SITE_URL=${{ secrets.NEXT_PUBLIC_SITE_URL }}
