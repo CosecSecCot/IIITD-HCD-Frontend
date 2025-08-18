@@ -45,7 +45,7 @@ export default function Footer() {
               >
                 USEFUL LINKS
               </h2>
-              <ul className="text-[18px] lg:text-[26px]">
+              <ul className="max-lg:mt-2 text-[16px] lg:text-[24px] space-y-1">
                 <li>
                   <Link href="/study/btech">
                     <CustomLinkText label="Study @IIITD" />
@@ -75,7 +75,7 @@ export default function Footer() {
               >
                 INITIATIVES
               </h2>
-              <ul className="text-[18px] lg:text-[26px]">
+              <ul className="max-lg:mt-2 text-[16px] lg:text-[24px] space-y-1">
                 <li>
                   <Link href="">
                     <CustomLinkText label="Workshops" />
@@ -102,35 +102,35 @@ export default function Footer() {
               </h2>
               <div className="grid grid-cols-3 gap-y-4 mt-2">
                 <Link href="mailto:hcd@iiitd.ac.in" aria-label="Email">
-                  <MailIcon size={26} />
+                  <MailIcon className="w-[20px] lg:w-[24px] h-auto aspect-square" />
                 </Link>
                 <Link
                   href="https://in.linkedin.com/company/hcdiiitd"
                   target="_blank"
                   aria-label="LinkedIn"
                 >
-                  <LinkedinIcon size={26} />
+                  <LinkedinIcon className="w-[20px] lg:w-[24px] h-auto aspect-square" />
                 </Link>
                 <Link
                   href="https://www.instagram.com/hcdiiitd"
                   target="_blank"
                   aria-label="Instagram"
                 >
-                  <InstagramIcon size={26} />
+                  <InstagramIcon className="w-[20px] lg:w-[24px] h-auto aspect-square" />
                 </Link>
                 <Link
                   href="https://twitter.com/hcdiiitd"
                   target="_blank"
                   aria-label="Twitter"
                 >
-                  <TwitterIcon size={26} />
+                  <TwitterIcon className="w-[20px] lg:w-[24px] h-auto aspect-square" />
                 </Link>
                 <Link
                   href="https://www.facebook.com/hcdiiitd"
                   target="_blank"
                   aria-label="Facebook"
                 >
-                  <FacebookIcon size={26} />
+                  <FacebookIcon className="w-[20px] lg:w-[24px] h-auto aspect-square" />
                 </Link>
               </div>
             </section>

@@ -278,7 +278,7 @@ export default function Home() {
               filter: "url(#gooey-filter-pixel-trail)",
             }}
           >
-            <PixelTrailReveal pixelSize={64} delay={1000} fadeDuration={0}>
+            <PixelTrailReveal pixelSize={128} delay={1000} fadeDuration={0}>
               <div className="relative w-full h-full space-y-12 lg:space-y-32 pb-[78px] bg-brand-accent2 text-white">
                 <section>
                   <div className="font-light pt-[48px] lg:pt-[90px] mx-auto xl:w-[75vw] px-8 flex max-lg:flex-col justify-between gap-5 lg:gap-8">
