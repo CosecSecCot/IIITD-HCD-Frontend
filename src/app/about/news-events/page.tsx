@@ -44,6 +44,10 @@ export default async function Page() {
             title={normalized[0].title}
             subtitle={normalized[0].description}
             imageSrc={normalized[0].img}
+            links={[
+              { title: "View News", href: "#news" },
+              { title: "View Events", href: "#events" },
+            ]}
             breadcrumbs={["about", "news & Events"]}
           />
         )}
@@ -55,7 +59,7 @@ export default async function Page() {
           mollitia! Natus velit ut nostrum ducimus.
         </p>
 
-        <section className="mt-5 lg:mt-12">
+        <section id="news" className="mt-5 lg:mt-12">
           <h2 className="font-medium text-[18px] lg:text-[24px] text-brand-accent2">
             News
           </h2>
@@ -66,7 +70,7 @@ export default async function Page() {
           </div>
         </section>
 
-        <section className="my-5 lg:my-12">
+        <section id="events" className="my-5 lg:my-12">
           <h2 className="font-medium text-[18px] lg:text-[24px] text-brand-accent2">
             Events
           </h2>

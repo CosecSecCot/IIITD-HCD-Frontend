@@ -16,19 +16,28 @@ export default function Page() {
     <main>
       <article className="mx-auto mt-12 px-8 xl:w-[1280px] font-light">
         <Banner
-          title="Overview of the Human Centred Design Department"
-          subtitle="The program will prepare students to work in the IT industry as well as digital media industry like gaming"
+          title="Human-Centered Design at IIIT-Delhi — Design Technology with People at the Centre"
+          subtitle="We combine rigorous computer-science training with design thinking and studio practice to build products, systems and experiences that solve real human and societal problems."
           imageSrc={"/rnd-building.png"}
           breadcrumbs={["about", "overview"]}
+          links={[
+            { title: "View Study Options", href: "/study/btech" },
+            { title: "News & Events", href: "/about/news-events" },
+          ]}
         />
 
         <section className="mt-5 lg:mt-12">
           <p className="text-[14px] lg:text-[20px]">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae
-            reiciendis eaque, quas pariatur consequatur repellendus odit esse
-            laudantium tempore velit, earum eum enim sequi ratione aperiam,
-            dolor blanditiis doloremque minima unde voluptatibus quo voluptates
-            mollitia! Natus velit ut nostrum ducimus.
+            Human-Centered Design (HCD) at IIIT-Delhi trains technically
+            rigorous designers — engineers who think like designers, and
+            designers who code. Our B.Tech. in Computer Science & Design (CSD)
+            blends algorithms and systems with design methods, prototyping and
+            user research so graduates can create usable, inclusive and scalable
+            technology. The program, faculty research, and student studio work
+            are closely integrated with CSE, ECE, Mathematics and Social
+            Sciences, enabling interdisciplinary projects spanning HCI, wearable
+            computing, AR/VR, game & media design, and intelligent interactive
+            systems.
           </p>
           <div className="w-full box-border flex justify-around mt-[16px] px-4 lg:px-[2em] py-[1em] bg-brand-accent2-130/[.02] border lg:border-2 border-brand-accent2/50 backdrop-blur-lg">
             {stats.map((stat, idx) => (
@@ -46,37 +55,87 @@ export default function Page() {
 
         <section className="mt-5 lg:mt-12">
           <h2 className="font-medium text-[18px] lg:text-[24px] text-brand-accent2">
-            Human Centred Design
+            What is Human-Centered Design?
           </h2>
           <p className="mt-2 text-[14px] lg:text-[20px]">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae,
-            animi est tempora sed voluptatem porro nam natus necessitatibus,
-            asperiores nulla repellendus ea culpa eveniet! Nesciunt tempore
-            maiores architecto expedita illo.
+            Human-Centered Design (HCD) is an approach that places people’s
+            needs, behaviours and contexts at the centre of design. It
+            emphasizes empathy, field research, iterative prototyping and
+            evaluation so that products and systems address real user pain
+            points and scale responsibly. At IIIT-Delhi HCD, this methodology
+            drives both curriculum and research: students learn to observe
+            users, build low-fi and hi-fi prototypes, run evaluations, and
+            iterate until a measurable improvement is achieved.
+          </p>
+        </section>
+
+        <section className="mt-5 lg:mt-12">
+          <h2 className="font-medium text-[18px] lg:text-[24px] text-brand-accent2">
+            B.Tech (Computer Science & Design) — Program snapshot
+          </h2>
+          <p className="mt-2 text-[14px] lg:text-[20px]">
+            The CSD program integrates core computer science with design and
+            digital media. Students complete foundational CS courses
+            (programming, data structures, algorithms, operating systems,
+            networks) alongside design studio courses (visual design,
+            interaction design, prototyping, research methods). The curriculum
+            emphasizes real projects and interdisciplinary collaborations,
+            preparing students for design-focused engineering roles and academic
+            research.
           </p>
           <Link
-            href=""
+            href="/study/btech"
             className="mt-8 w-full lg:w-[25vw] flex justify-center items-center gap-[24px] py-[0.75em] text-[14px] lg:text-[20px] bg-brand-accent2/5 border border-brand-accent2 text-brand-accent2-130 backdrop-blur-xl"
           >
             <LetterSwapForward
-              label="UCEED PORTAL"
+              label="VIEW FULL CURRICULUM"
               staggerDuration={0.005}
               className="w-max"
             />
             <ArrowRight className="w-[18px] h-auto" />
           </Link>
-          <p className="mt-8 text-[14px] lg:text-[20px]">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Exercitationem tempora mollitia veniam ad? Expedita optio, adipisci
-            modi tempora ullam blanditiis alias rem vero sed fugiat magnam autem
-            facere numquam odio est incidunt eum commodi quidem. Debitis unde
-            facilis maxime illo iure ipsum corporis reiciendis voluptatum, esse
-            maiores ipsam fuga a!
-          </p>
         </section>
 
         <section className="my-5 lg:my-12">
-          <ViewCoursesCard />
+          <h2 className="font-medium text-[18px] lg:text-[24px] text-brand-accent2">
+            Research, labs and collaborations
+          </h2>
+          <p className="mt-2 text-[14px] lg:text-[20px]">
+            HCD at IIIT-Delhi houses active research labs and design projects in
+            HCI, XR, tangible interfaces, interactive media and ubiquitous
+            computing. Labs collaborate closely with CSE and other departments
+            to publish in peer-reviewed venues and build real prototypes that
+            move from lab to impact. Notable labs include the Creative
+            Interfaces Lab (HCI & XR research), design-research groups focused
+            on interactive media, and several industry-collaboration projects.
+            Students are encouraged to join labs, co-author papers, and
+            transform coursework into publishable research and demonstrable
+            products.
+          </p>
+          <div className="flex gap-[1em] flex-wrap">
+            <Link
+              href="/research/labs"
+              className="mt-8 w-full lg:w-[25vw] flex justify-center items-center gap-[24px] px-[2em] py-[0.75em] text-[14px] lg:text-[20px] bg-brand-accent2/5 border border-brand-accent2 text-brand-accent2-130 backdrop-blur-xl"
+            >
+              <LetterSwapForward
+                label="VIEW RESEARCH LABS"
+                staggerDuration={0.005}
+                className="w-max"
+              />
+              <ArrowRight className="w-[18px] h-auto" />
+            </Link>
+            <Link
+              href="/research/publications"
+              className="mt-8 w-full lg:w-[25vw] flex justify-center items-center gap-[24px] px-[2em] py-[0.75em] text-[14px] lg:text-[20px] bg-brand-accent2/5 border border-brand-accent2 text-brand-accent2-130 backdrop-blur-xl"
+            >
+              <LetterSwapForward
+                label="VIEW PUBLICATIONS"
+                staggerDuration={0.005}
+                className="w-max"
+              />
+              <ArrowRight className="w-[18px] h-auto" />
+            </Link>
+          </div>
         </section>
       </article>
     </main>
