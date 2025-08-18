@@ -20,16 +20,13 @@ export default async function Page(pageProps: {
   if (!data || data.error || data.data.length == 0) {
     return (
       <div>
-        <Banner
-          text="Department Projects"
-          breadcrumbs={["research", "projects"]}
-        />
+        <Banner text="Research Labs" breadcrumbs={["research", "labs"]} />
         <main className="mx-auto min-h-[50vh] xl:w-[1280px] px-8 py-[20vh] text-center">
           <h2 className="text-[20px] lg:text-[28px] text-brand-accent2 font-semibold">
             Hmm...
           </h2>
           <p className="text-[16px] lg:text-[20px] italic font-light">
-            Looks like no Labs were found.
+            Looks like no labs were found.
           </p>
         </main>
       </div>
