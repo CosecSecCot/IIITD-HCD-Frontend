@@ -1,4 +1,7 @@
+import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
+import { Search } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Banner({
   title,
@@ -48,7 +51,7 @@ export default function Banner({
         role="banner"
         className="relative mt-2 lg:mt-5 w-full h-auto lg:aspect-video bg-neutral-300 rounded-xl lg:rounded-[30px] overflow-hidden"
       >
-        <div className="relative z-20 w-full h-full px-5 py-6 lg:px-10 lg:py-12 flex flex-col justify-end gap-3 text-white">
+        <div className="relative z-20 w-full h-full px-5 pt-[10vh] pb-6 lg:px-10 lg:py-12 flex flex-col justify-end gap-[1em] text-white">
           <div className="lg:w-[70%]">
             <h1 className="font-semibold text-[28px] lg:text-[48px] leading-none">
               {title}
@@ -57,9 +60,32 @@ export default function Banner({
               {subtitle}
             </p>
           </div>
-          <div>View More Options</div>
+          <div className="font-normal flex gap-x-[1em] gap-y-[0.5em] flex-wrap">
+            <Link
+              href=""
+              className="w-max flex justify-center items-center gap-4 px-[2em] py-[0.5em] text-[12px] lg:text-[18px] rounded-full bg-brand-accent2 text-white border border-brand-accent2 hover:bg-brand-accent2-130 transition-all duration-200"
+            >
+              <LetterSwapForward
+                label="View Study Options"
+                staggerDuration={0.005}
+                className="w-max"
+              />
+              <Search className="w-[12px] lg:w-[18px] aspect-square h-auto" />
+            </Link>
+            <Link
+              href=""
+              className="w-max flex justify-center items-center gap-4 px-[2em] py-[0.5em] text-[12px] lg:text-[18px] rounded-full text-white border border-white backdrop-blur-lg hover:backdrop-blur-2xl transition-all duration-200"
+            >
+              <LetterSwapForward
+                label="View Study Options"
+                staggerDuration={0.005}
+                className="w-max"
+              />
+              <Search className="w-[12px] lg:w-[18px] aspect-square h-auto" />
+            </Link>
+          </div>
         </div>
-        <div className="absolute inset-0 z-10 w-full h-full bg-gradient-to-b from-black/0 to-black/50" />
+        <div className="absolute inset-0 z-10 w-full h-full bg-gradient-to-b from-black/10 lg:from-black/0 to-black/60 lg:to-black/50" />
         <Image
           src={imageSrc}
           alt="banner"
