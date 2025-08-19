@@ -8,7 +8,10 @@ import { useMemo, useState } from "react";
 export type ResearchPublication = {
   id: number;
   year: number;
-  faculties: string[];
+  // faculties: string[];
+  authors: string[];
+  lab?: string;
+  category: string;
   title: string;
   description: string;
   tags: string[];
@@ -21,7 +24,7 @@ export default function PublicationsSection({
   publications: ResearchPublication[];
 }) {
   const years = [...new Set(publications.map((pub) => pub.year))].sort(
-    (a, b) => b - a,
+    (a, b) => b - a
   );
 
   const [search, setSearch] = useState("");
@@ -32,15 +35,15 @@ export default function PublicationsSection({
 
   const publicationOptions = useMemo(
     () => ["ALL PUBLICATIONS", ...years.map((y) => `${y} PUBLICATIONS`)],
-    [years],
+    [years]
   );
 
   const categoryOptions = useMemo(
     () => [
       "ALL CATEGORIES",
-      ...Array.from(new Set(publications.flatMap((pub) => pub.faculties))),
+      ...Array.from(new Set(publications.map((pub) => pub.category))),
     ],
-    [publications],
+    [publications]
   );
 
   const researchAreaOptions = useMemo(
@@ -48,28 +51,28 @@ export default function PublicationsSection({
       "ALL RESEARCH AREAS",
       ...Array.from(new Set(publications.flatMap((pub) => pub.tags))),
     ],
-    [publications],
+    [publications]
   );
 
   const filtered = useMemo(() => {
     return publications
       .filter((pub) =>
-        pub.title.toLowerCase().includes(search.trim().toLowerCase()),
+        pub.title.toLowerCase().includes(search.trim().toLowerCase())
       )
       .filter((pub) =>
         selectedPublication === "ALL PUBLICATIONS"
           ? true
-          : pub.year === parseInt(selectedPublication),
+          : pub.year === parseInt(selectedPublication)
       )
       .filter((pub) =>
         selectedCategory === "ALL CATEGORIES"
           ? true
-          : pub.faculties.includes(selectedCategory),
+          : pub.category === selectedCategory
       )
       .filter((pub) =>
         selectedResearchArea === "ALL RESEARCH AREAS"
           ? true
-          : pub.tags.includes(selectedResearchArea),
+          : pub.tags.includes(selectedResearchArea)
       );
   }, [
     publications,
@@ -87,7 +90,7 @@ export default function PublicationsSection({
           <div className="mt-[0.25em] mb-[1em] text-[16px]">
             <input
               type="text"
-              placeholder="Enter Course Name or Code..."
+              placeholder="Start entering publication title..."
               className="w-full px-[1.75em] py-[0.5em] border border-black/30"
               onChange={(e) => setSearch(e.target.value.toLowerCase())}
             />
@@ -144,14 +147,19 @@ function PublicationCard({
 
   return (
     <div className="relative z-[9990] px-[2em] py-[1.5em] lg:px-[4em] lg:py-[2.5em] border border-black/20 backdrop-blur-sm">
-      <span className="uppercase text-[14px] lg:text-[18px] text-brand-accent2">
-        {publication.faculties[0]}
-      </span>
+      {publication.lab && (
+        <span className="uppercase text-[14px] lg:text-[18px] text-brand-accent2">
+          {publication.lab}
+        </span>
+      )}
       <h3 className="reveal-animation-text text-[16px] lg:text-[20px] font-medium">
         {publication.title}
       </h3>
+      <p className="font-helvetica_now_display text-[14px] lg:text-[18px] opacity-80">
+        {publication.authors.join(", ")}
+      </p>
       <p
-        className={`font-helvetica_now_display mt-[6px] lg:mt-[8px] text-[14px] lg:text-[18px] leading-tight opacity-60 transition-all duration-300 ${
+        className={`font-helvetica_now_display mt-[8px] lg:mt-[12px] text-[14px] lg:text-[18px] leading-tight opacity-60 transition-all duration-300 ${
           expanded ? "" : "line-clamp-2"
         }`}
       >

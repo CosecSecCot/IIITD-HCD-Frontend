@@ -35,11 +35,14 @@ export default async function Page() {
     (item: any): ResearchPublication => ({
       id: item.id,
       year: new Date(item.Date).getFullYear(),
-      faculties: item.Faculties.map(
-        (faculty: { Name: string }) => faculty.Name
-      ),
+      // faculties: item.Faculties.map(
+      //   (faculty: { Name: string }) => faculty.Name
+      // ),
       title: item.Title,
       description: item.LongDescription,
+      authors: item.Authors.map((author: { Name: string }) => author.Name),
+      category: item.Type,
+      lab: item.Lab?.LabName,
       tags: item.Tags.map((tag: { Tag: string }) => tag.Tag),
       link: item.Link,
     })
