@@ -56,10 +56,6 @@ export default async function Page() {
           title={normalized[0].title}
           subtitle={normalized[0].description}
           imageSrc={normalized[0].img}
-          links={[
-            { title: "View News", href: "#news" },
-            { title: "View Events", href: "#events" },
-          ]}
           breadcrumbs={["about", "news & Events"]}
         />
         <p className="mt-5 lg:mt-12 text-[14px] lg:text-[20px]">

@@ -18,13 +18,9 @@ export default function Page() {
     <main>
       <article className="mx-auto mt-12 px-8 xl:w-[1280px] font-light">
         <Banner
-          title="Lorem ipsum dolor sit amet consectetur adipisicing."
-          subtitle="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis quae suscipit qui modi ut nulla iste labore et amet sequi."
+          title="Where Design Meets Opportunity: Placements at IIIT-Delhi HCD"
+          subtitle="Our graduates step into leading roles across technology, design, research, and innovation—driving impact in top companies, startups, and academic institutions worldwide."
           imageSrc={"/1pixel.png"}
-          links={[
-            { title: "Lorem Ipsum", href: "#" },
-            { title: "Lorem Ipsum", href: "#" },
-          ]}
           breadcrumbs={["about", "placements"]}
         />
         <p className="mt-5 lg:mt-12 text-[14px] lg:text-[20px]">

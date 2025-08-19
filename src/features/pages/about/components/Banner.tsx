@@ -13,7 +13,7 @@ export default function Banner({
   title: string;
   subtitle: string;
   imageSrc: string;
-  links: { title: string; href: string }[];
+  links?: { title: string; href: string }[];
   breadcrumbs: string[];
 }) {
   return (
@@ -62,30 +62,36 @@ export default function Banner({
               {subtitle}
             </p>
           </div>
-          <div className="font-normal flex gap-x-[1em] gap-y-[0.5em] flex-wrap">
-            <Link
-              href={links[0].href}
-              className="w-max flex justify-center items-center gap-4 px-[2em] py-[0.5em] text-[12px] lg:text-[18px] rounded-full bg-brand-accent2 text-white border border-brand-accent2 hover:bg-brand-accent2-130 transition-all duration-200"
-            >
-              <LetterSwapForward
-                label={links[0].title}
-                staggerDuration={0.005}
-                className="w-max"
-              />
-              <Search className="w-[12px] lg:w-[18px] aspect-square h-auto" />
-            </Link>
-            <Link
-              href={links[1].href}
-              className="w-max flex justify-center items-center gap-4 px-[2em] py-[0.5em] text-[12px] lg:text-[18px] rounded-full text-white border border-white backdrop-blur-lg hover:backdrop-blur-2xl transition-all duration-200"
-            >
-              <LetterSwapForward
-                label={links[1].title}
-                staggerDuration={0.005}
-                className="w-max"
-              />
-              <Search className="w-[12px] lg:w-[18px] aspect-square h-auto" />
-            </Link>
-          </div>
+          {links && (
+            <div className="font-normal flex gap-x-[1em] gap-y-[0.5em] flex-wrap">
+              {links.length > 0 && (
+                <Link
+                  href={links[0].href}
+                  className="w-max flex justify-center items-center gap-4 px-[2em] py-[0.5em] text-[12px] lg:text-[18px] rounded-full bg-brand-accent2 text-white border border-brand-accent2 hover:bg-brand-accent2-130 transition-all duration-200"
+                >
+                  <LetterSwapForward
+                    label={links[0].title}
+                    staggerDuration={0.005}
+                    className="w-max"
+                  />
+                  <Search className="w-[12px] lg:w-[18px] aspect-square h-auto" />
+                </Link>
+              )}
+              {links.length > 1 && (
+                <Link
+                  href={links[1].href}
+                  className="w-max flex justify-center items-center gap-4 px-[2em] py-[0.5em] text-[12px] lg:text-[18px] rounded-full text-white border border-white backdrop-blur-lg hover:backdrop-blur-2xl transition-all duration-200"
+                >
+                  <LetterSwapForward
+                    label={links[1].title}
+                    staggerDuration={0.005}
+                    className="w-max"
+                  />
+                  <Search className="w-[12px] lg:w-[18px] aspect-square h-auto" />
+                </Link>
+              )}
+            </div>
+          )}
         </div>
         <div className="absolute inset-0 z-10 w-full h-full bg-gradient-to-b from-black/50 lg:from-black/0 to-black/50 lg:to-black/50" />
         <Image
