@@ -3,20 +3,14 @@ import Banner from "@/features/pages/about/components/Banner";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import qs from "qs";
 
-const _collab = [
-  "/collab/img-1.png",
-  "/collab/img-2.png",
-  "/collab/img-3.png",
-  "/collab/img-4.png",
-  "/collab/img-5.png",
-];
-const collaborators = [..._collab, ..._collab, ..._collab];
+export const dynamic = "force-dynamic";
 
-export default function Page() {
+export default async function Page() {
   return (
     <main>
-      <article className="mx-auto mt-12 px-8 xl:w-[1280px] font-light">
+      <article className="mx-auto my-12 px-8 xl:w-[1280px] font-light">
         <Banner
           title="Collaborating Across Borders to Shape the Future of Human-Centered Design"
           subtitle="We partner with leading universities, research institutes, and industry labs worldwide to advance human-centered innovation in computing, design, and technology."
@@ -106,32 +100,65 @@ export default function Page() {
               <ArrowRight className="w-[12px] lg:w-[18px] h-auto" />
             </Link>
           </div>
-        </section>
-
-        <section id="partners" className="my-5 lg:my-12">
-          <h2 className="text-[18px] lg:text-[24px] font-medium text-brand-accent2">
-            Our Global Collaborations
-          </h2>
-          <p className="mt-2 text-[14px] lg:text-[20px]">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
-            error corrupti quod dolorum unde veniam qui modi debitis incidunt
-            reprehenderit dolore est, velit ipsam hic vitae earum deserunt
-            doloribus nulla.
-          </p>
-          <div className="w-full grid grid-cols-2 lg:grid-cols-5 gap-[2em] p-[2em]">
-            {collaborators.map((collaborator, idx) => (
-              <Image
-                key={idx}
-                src={collaborator}
-                alt=""
-                className="w-[25vw] lg:w-[5vw] h-auto aspect-square object-contain"
-                width={1000}
-                height={1000}
-              />
-            ))}
-          </div>
+          <CollabroatorsSection />
         </section>
       </article>
     </main>
+  );
+}
+
+async function CollabroatorsSection() {
+  const query = qs.stringify(
+    {
+      populate: "Collaborators",
+    },
+    {
+      encodeValuesOnly: true,
+    }
+  );
+
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/collaborations-page?${query}`
+  ).catch((reason) => console.log("[ERROR]", reason));
+  const data = await res?.json();
+
+  if (
+    !data ||
+    data.error ||
+    data.data.length == 0 ||
+    !data.data.Collaborators
+  ) {
+    return;
+  }
+
+  const collaborators: string[] = data.data.Collaborators.map(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (item: any): string => `${process.env.NEXT_PUBLIC_STRAPI_URL}${item.url}`
+  );
+
+  return (
+    <section id="partners" className="mt-5 lg:mt-12">
+      <h2 className="text-[18px] lg:text-[24px] font-medium text-brand-accent2">
+        Our Global Collaborations
+      </h2>
+      <p className="mt-2 text-[14px] lg:text-[20px]">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate error
+        corrupti quod dolorum unde veniam qui modi debitis incidunt
+        reprehenderit dolore est, velit ipsam hic vitae earum deserunt doloribus
+        nulla.
+      </p>
+      <div className="w-full grid grid-cols-2 lg:grid-cols-5 gap-[2em] p-[2em]">
+        {collaborators.map((collaborator, idx) => (
+          <Image
+            key={idx}
+            src={collaborator}
+            alt=""
+            className="w-[25vw] lg:w-[5vw] h-auto aspect-square object-contain"
+            width={1000}
+            height={1000}
+          />
+        ))}
+      </div>
+    </section>
   );
 }
