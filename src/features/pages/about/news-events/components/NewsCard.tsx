@@ -1,15 +1,16 @@
 import { formatDateToMonthYear } from "@/utils/formatDate";
 import Image from "next/image";
 
-export type News = {
+export type NewsEvent = {
   id: number;
+  type: "News" | "Event";
   date: Date;
   title: string;
   description: string;
   img: string;
 };
 
-export default function NewsCard({ content }: { content: News }) {
+export default function NewsCard({ content }: { content: NewsEvent }) {
   return (
     <div className="flex flex-col md:flex-row md:items-center md:gap-8">
       <div className="relative w-full md:w-1/3 h-auto aspect-video md:aspect-[4/3] flex-shrink-0 bg-neutral-300 rounded-xl overflow-hidden">

@@ -1,6 +1,6 @@
 import Banner from "@/features/pages/about/components/Banner";
 import NewsCard, {
-  News,
+  NewsEvent,
 } from "@/features/pages/about/news-events/components/NewsCard";
 
 export const dynamic = "force-dynamic";
@@ -25,10 +25,11 @@ export default async function Page() {
     );
   }
 
-  const normalized: News[] = data.data.map(
+  const normalized: NewsEvent[] = data.data.map(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (item: any): News => ({
+    (item: any): NewsEvent => ({
       id: item.id,
+      type: item.Type,
       date: new Date(item.publishedAt),
       title: item.Title,
       description: item.Description,
@@ -36,21 +37,31 @@ export default async function Page() {
     })
   );
 
+  const news = normalized
+    .filter((news) => news.type == "News")
+    .map((news, idx) => {
+      return <NewsCard key={idx} content={news} />;
+    });
+
+  const events = normalized
+    .filter((event) => event.type == "Event")
+    .map((event, idx) => {
+      return <NewsCard key={idx} content={event} />;
+    });
+
   return (
     <main>
-      <article className="mx-auto mt-12 px-8 xl:w-[1280px] font-light">
-        {normalized.length > 0 && (
-          <Banner
-            title={normalized[0].title}
-            subtitle={normalized[0].description}
-            imageSrc={normalized[0].img}
-            links={[
-              { title: "View News", href: "#news" },
-              { title: "View Events", href: "#events" },
-            ]}
-            breadcrumbs={["about", "news & Events"]}
-          />
-        )}
+      <article className="mx-auto my-12 px-8 xl:w-[1280px] font-light">
+        <Banner
+          title={normalized[0].title}
+          subtitle={normalized[0].description}
+          imageSrc={normalized[0].img}
+          links={[
+            { title: "View News", href: "#news" },
+            { title: "View Events", href: "#events" },
+          ]}
+          breadcrumbs={["about", "news & Events"]}
+        />
         <p className="mt-5 lg:mt-12 text-[14px] lg:text-[20px]">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae
           reiciendis eaque, quas pariatur consequatur repellendus odit esse
@@ -59,27 +70,23 @@ export default async function Page() {
           mollitia! Natus velit ut nostrum ducimus.
         </p>
 
-        <section id="news" className="mt-5 lg:mt-12">
-          <h2 className="font-medium text-[18px] lg:text-[24px] text-brand-accent2">
-            News
-          </h2>
-          <div className="mt-4 lg:mt-8 space-y-8">
-            {normalized.map((news, idx) => {
-              return <NewsCard key={idx} content={news} />;
-            })}
-          </div>
-        </section>
+        {news.length > 0 && (
+          <section id="news" className="mt-5 lg:mt-12">
+            <h2 className="font-medium text-[18px] lg:text-[24px] text-brand-accent2">
+              News
+            </h2>
+            <div className="mt-4 lg:mt-8 space-y-8">{news}</div>
+          </section>
+        )}
 
-        <section id="events" className="my-5 lg:my-12">
-          <h2 className="font-medium text-[18px] lg:text-[24px] text-brand-accent2">
-            Events
-          </h2>
-          <div className="mt-4 lg:mt-8 space-y-8">
-            {normalized.map((news, idx) => {
-              return <NewsCard key={idx} content={news} />;
-            })}
-          </div>
-        </section>
+        {events.length > 0 && (
+          <section id="events" className="mt-5 lg:mt-12">
+            <h2 className="font-medium text-[18px] lg:text-[24px] text-brand-accent2">
+              Events
+            </h2>
+            <div className="mt-4 lg:mt-8 space-y-8">{events}</div>
+          </section>
+        )}
       </article>
     </main>
   );
