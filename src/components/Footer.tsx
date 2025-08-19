@@ -24,7 +24,7 @@ export default function Footer() {
               height={149}
               priority
             />
-            <div className="w-full">
+            {/* <div className="w-full">
               <p className="text-[16px] lg:text-[20px]">
                 Add your Portfolio to the IIITD Database.
               </p>
@@ -35,7 +35,7 @@ export default function Footer() {
                 />
                 <ArrowRight className="absolute right-[1em] w-[18px] xl:w-[24px] h-auto" />
               </button>
-            </div>
+            </div> */}
           </section>
           <section className="max-xl:mt-8 xl:col-span-2 flex justify-start xl:justify-end gap-y-8 gap-x-16 xl:gap-x-24 flex-wrap max-lg:leading-tight">
             <nav aria-labelledby="useful-links-heading">

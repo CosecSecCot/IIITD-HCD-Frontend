@@ -59,9 +59,9 @@ const navigationMap: NavigationItem[] = [
     children: [
       { title: "", url: "" },
       { title: "", url: "" },
+      { title: "", url: "" },
       { title: "faculty", url: "/people/faculty" },
-      { title: "students", url: "/people/students" },
-      { title: "alumni", url: "/people/alumni" },
+      { title: "phd", url: "/people/phd" },
       { title: "", url: "" },
     ],
   },

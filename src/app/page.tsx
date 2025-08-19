@@ -336,7 +336,7 @@ export default function Home() {
                         ))}
                       </div>
                       <Link
-                        href=""
+                        href="/study/btech"
                         className="font-normal w-max flex justify-center items-center gap-[1em] px-[1.5em] py-[1em] text-[12px] lg:text-[24px] bg-brand-accent1 text-black"
                       >
                         <LetterSwapForward
@@ -426,7 +426,7 @@ export default function Home() {
                         arise with each advancement.
                       </p>
                       <Link
-                        href=""
+                        href="/people/faculty"
                         className="mt-[1em] font-normal flex justify-center items-center gap-[1em] px-[1em] py-[1em] text-[12px] lg:text-[20px] bg-brand-accent1 text-black"
                       >
                         <LetterSwapForward
