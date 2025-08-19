@@ -46,6 +46,15 @@ export default function PageReveal() {
     animate(digit2, 3.5);
     animate(digit1, 1, 2);
 
+    gsap.to(".page-reveal-hero-main-img", {
+      y: 0,
+      opacity: 1,
+      clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+      stagger: 0.1,
+      duration: 0.6,
+      ease: "circ.out",
+    });
+
     gsap.to(".progress-bar", {
       width: "30%",
       duration: 2,
@@ -101,7 +110,11 @@ export default function PageReveal() {
           width={452}
           height={149}
           priority
-          className="reveal-animation-clip px-8"
+          className="page-reveal-hero-main-img px-8"
+          style={{
+            clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
+            opacity: 0,
+          }}
         />
       </div>
       <div className="pre-loader w-[200%] h-full p-[1em] lg:p-[2em] fixed top-0 right-0 flex justify-end items-end gap-[0.5em] overflow-hidden">
