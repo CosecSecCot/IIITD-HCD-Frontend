@@ -65,7 +65,7 @@ export default function LabsSection({ labs }: { labs: Lab[] }) {
       // clear stored state so stale references aren't reused
       flipStateRef.current = null;
     },
-    { scope: cardsContainerRef, dependencies: [expandedId] },
+    { scope: cardsContainerRef, dependencies: [expandedId] }
   );
 
   return (
@@ -132,7 +132,7 @@ function LabCard({
             <div className="flex flex-col gap-[12px] lg:gap-[16px]">
               <div className="flex items-center gap-[12px] lg:gap-[16px]">
                 <Image
-                  className="reveal-animation-opacity-only h-[40px] lg:h-auto w-auto"
+                  className="reveal-animation-opacity-only h-[40px] lg:h-[60px] w-auto"
                   style={{
                     // WARNING: for now we are assuming that foreground color will be black and white
                     // if you want to change it to custom color, modify the svg or make two images and change img src
@@ -166,29 +166,33 @@ function LabCard({
               <span>CLOSE</span>
               <X className="w-[16px] h-[16px]" />
             </button>
-            <Link
-              href={lab.website}
-              target="_blank"
-              className="reveal-animation-opacity-only text-[14px] lg:text-[20px] px-[1em] lg:px-[2em] py-[0.5em] border inline-flex gap-[16px] items-center justify-center transition-all duration-200"
-              style={{
-                borderColor: lab.foreground,
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = lab.foreground;
-                e.currentTarget.style.color = lab.background;
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "transparent";
-                e.currentTarget.style.color = lab.foreground;
-              }}
-            >
-              <LetterSwapForward
-                label="VISIT WEBSITE"
-                staggerDuration={0.005}
-                className="w-max"
-              />
-              <Globe className="max-lg:hidden w-[12px] lg:w-[16px] aspect-square h-auto" />
-            </Link>
+            {lab.website === "" ? (
+              <div aria-hidden />
+            ) : (
+              <Link
+                href={lab.website}
+                target="_blank"
+                className="reveal-animation-opacity-only text-[14px] lg:text-[20px] px-[1em] lg:px-[2em] py-[0.5em] border inline-flex gap-[16px] items-center justify-center transition-all duration-200"
+                style={{
+                  borderColor: lab.foreground,
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = lab.foreground;
+                  e.currentTarget.style.color = lab.background;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = "transparent";
+                  e.currentTarget.style.color = lab.foreground;
+                }}
+              >
+                <LetterSwapForward
+                  label="VISIT WEBSITE"
+                  staggerDuration={0.005}
+                  className="w-max"
+                />
+                <Globe className="max-lg:hidden w-[12px] lg:w-[16px] aspect-square h-auto" />
+              </Link>
+            )}
           </div>
         </>
       ) : (
@@ -197,7 +201,7 @@ function LabCard({
             <div className="flex flex-col gap-[12px] lg:gap-[16px]">
               <div className="flex items-center gap-[12px] lg:gap-[16px]">
                 <Image
-                  className="reveal-animation-opacity-only h-[40px] lg:h-auto w-auto"
+                  className="reveal-animation-opacity-only h-[40px] lg:h-[60px] w-auto"
                   src={lab.logo}
                   alt={`${lab.title} logo`}
                   width={86}
