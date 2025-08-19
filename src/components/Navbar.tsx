@@ -76,7 +76,6 @@ export default function Navbar({
   const [activeGroup, setActiveGroup] = useState<NavigationItem | null>();
   const [firstSidebarOpen, setFirstSidebarOpen] = useState(false);
   const [secondSidebarOpen, setSecondSidebarOpen] = useState(false);
-  const isSmallScreen = useMediaQuery("(max-width: 640px)");
   const isMobileNavbarActive = useMediaQuery("(max-width: 1280px)");
 
   const [mounted, setMounted] = useState(false);
