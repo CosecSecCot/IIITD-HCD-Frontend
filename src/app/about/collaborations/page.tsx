@@ -147,13 +147,13 @@ async function CollabroatorsSection() {
         reprehenderit dolore est, velit ipsam hic vitae earum deserunt doloribus
         nulla.
       </p>
-      <div className="w-full grid grid-cols-2 lg:grid-cols-5 gap-[2em] p-[2em]">
+      <div className="w-full grid grid-cols-2 lg:grid-cols-3 gap-[2em] p-[2em]">
         {collaborators.map((collaborator, idx) => (
           <Image
             key={idx}
             src={collaborator}
             alt=""
-            className="w-[25vw] lg:w-[5vw] h-auto aspect-square object-contain"
+            className="mx-auto w-1/2 h-auto aspect-square object-contain"
             width={1000}
             height={1000}
           />

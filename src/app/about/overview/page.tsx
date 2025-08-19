@@ -85,7 +85,7 @@ export default function Page() {
           </p>
           <Link
             href="/study/btech"
-            className="mt-8 w-full lg:w-[25vw] flex justify-center items-center gap-[24px] py-[0.75em] text-[14px] lg:text-[20px] bg-brand-accent2/5 border border-brand-accent2 text-brand-accent2-130 backdrop-blur-xl"
+            className="mt-8 font-normal w-max flex justify-center items-center gap-[24px] px-[4em] py-[0.75em] text-[14px] xl:text-[18px] bg-brand-accent2-130/5 hover:bg-brand-accent2 border border-brand-accent2-130 text-brand-accent2-130 hover:text-white transition-all duration-300"
           >
             <LetterSwapForward
               label="VIEW FULL CURRICULUM"
@@ -112,10 +112,10 @@ export default function Page() {
             transform coursework into publishable research and demonstrable
             products.
           </p>
-          <div className="flex gap-[1em] flex-wrap">
+          <div className="mt-8 flex gap-[1em] flex-wrap">
             <Link
               href="/research/labs"
-              className="mt-8 w-full lg:w-[25vw] flex justify-center items-center gap-[24px] px-[2em] py-[0.75em] text-[14px] lg:text-[20px] bg-brand-accent2/5 border border-brand-accent2 text-brand-accent2-130 backdrop-blur-xl"
+              className="font-normal w-max flex justify-center items-center gap-[24px] px-[4em] py-[0.75em] text-[14px] xl:text-[18px] bg-brand-accent2-130/5 hover:bg-brand-accent2 border border-brand-accent2-130 text-brand-accent2-130 hover:text-white transition-all duration-300"
             >
               <LetterSwapForward
                 label="VIEW RESEARCH LABS"
@@ -126,7 +126,7 @@ export default function Page() {
             </Link>
             <Link
               href="/research/publications"
-              className="mt-8 w-full lg:w-[25vw] flex justify-center items-center gap-[24px] px-[2em] py-[0.75em] text-[14px] lg:text-[20px] bg-brand-accent2/5 border border-brand-accent2 text-brand-accent2-130 backdrop-blur-xl"
+              className="font-normal w-max flex justify-center items-center gap-[24px] px-[4em] py-[0.75em] text-[14px] xl:text-[18px] bg-brand-accent2-130/5 hover:bg-brand-accent2 border border-brand-accent2-130 text-brand-accent2-130 hover:text-white transition-all duration-300"
             >
               <LetterSwapForward
                 label="VIEW PUBLICATIONS"

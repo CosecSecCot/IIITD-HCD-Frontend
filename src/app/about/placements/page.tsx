@@ -3,17 +3,11 @@ import Banner from "@/features/pages/about/components/Banner";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import qs from "qs";
 
-const _comp = [
-  "/collab/img-1.png",
-  "/collab/img-2.png",
-  "/collab/img-3.png",
-  "/collab/img-4.png",
-  "/collab/img-5.png",
-];
-const companies = [..._comp, ..._comp, ..._comp];
+export const dynamic = "force-dynamic";
 
-export default function Page() {
+export default async function Page() {
   return (
     <main>
       <article className="mx-auto mt-12 px-8 xl:w-[1280px] font-light">
@@ -30,34 +24,26 @@ export default function Page() {
           methodology, and real-world problem solving—making them highly sought
           after by industry and academia alike.
           <br />
-          <br />
           Placements are a reflection of our philosophy:{" "}
-          <span className="font-medium text-brand-accent2">
+          <strong className="font-medium text-brand-accent2">
             empowering students to innovate while solving real-world challenges.
-          </span>
+          </strong>
         </p>
 
-        <section className="mt-5 lg:mt-12">
-          <h2 className="font-medium text-[18px] lg:text-[24px] text-brand-accent2">
-            Where Our Graduates Go
-          </h2>
-          <p className="mt-2 text-[14px] lg:text-[20px]">
-            Our students have been placed in top organizations spanning
-            technology, research, and design:
-          </p>
-          <div className="w-full grid grid-cols-2 lg:grid-cols-5 gap-[2em] p-[2em]">
-            {companies.map((collaborator, idx) => (
-              <Image
-                key={idx}
-                src={collaborator}
-                alt=""
-                className="w-[25vw] lg:w-[5vw] h-auto aspect-square object-contain"
-                width={1000}
-                height={1000}
-              />
-            ))}
-          </div>
-        </section>
+        <Link
+          href="/rnd-building.png"
+          target="_blank"
+          className="mt-8 font-normal w-max flex justify-center items-center gap-[24px] px-[4em] py-[0.75em] text-[14px] xl:text-[18px] bg-brand-accent2-130/5 hover:bg-brand-accent2 border border-brand-accent2-130 text-brand-accent2-130 hover:text-white transition-all duration-300"
+        >
+          <LetterSwapForward
+            label="View Placement Brochure"
+            staggerDuration={0.005}
+            className="w-max"
+          />
+          <ArrowRight className="w-[14px] lg:w-[18px] h-auto" />
+        </Link>
+
+        <CompaniesSection />
 
         {/* <section className="my-5 lg:my-12">
           <div className="relative px-4 py-3 lg:px-8 lg:py-6 border border-brand-accent2 bg-brand-accent2/5 backdrop-blur-lg hover:backdrop-blur-2xl transition-all duration-300">
@@ -104,5 +90,54 @@ export default function Page() {
         </section>
       </article>
     </main>
+  );
+}
+
+async function CompaniesSection() {
+  const query = qs.stringify(
+    {
+      populate: "Companies",
+    },
+    {
+      encodeValuesOnly: true,
+    }
+  );
+
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/placements-page?${query}`
+  ).catch((reason) => console.log("[ERROR]", reason));
+  const data = await res?.json();
+
+  if (!data || data.error || data.data.length == 0 || !data.data.Companies) {
+    return;
+  }
+
+  const companies: string[] = data.data.Companies.map(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (item: any): string => `${process.env.NEXT_PUBLIC_STRAPI_URL}${item.url}`
+  );
+
+  return (
+    <section className="mt-5 lg:mt-12">
+      <h2 className="font-medium text-[18px] lg:text-[24px] text-brand-accent2">
+        Where Our Graduates Go
+      </h2>
+      <p className="mt-2 text-[14px] lg:text-[20px]">
+        Our students have been placed in top organizations spanning technology,
+        research, and design:
+      </p>
+      <div className="w-full grid grid-cols-2 lg:grid-cols-3 gap-[2em]">
+        {companies.map((collaborator, idx) => (
+          <Image
+            key={idx}
+            src={collaborator}
+            alt=""
+            className="mx-auto w-1/2 h-auto aspect-square object-contain"
+            width={1000}
+            height={1000}
+          />
+        ))}
+      </div>
+    </section>
   );
 }
