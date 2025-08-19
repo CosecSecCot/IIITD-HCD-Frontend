@@ -14,7 +14,7 @@ export type ResearchProject = {
   id: number;
   title: string;
   description: string;
-  source: string;
+  source?: string;
   faculty?: string;
   duration: {
     from: string;
@@ -130,22 +130,26 @@ function ProjectCard({
                   {project.title}
                 </h3>
                 <div className="reveal-animation-text flex gap-[12px] lg:gap-[32px] flex-wrap">
-                  <div>
-                    <h4 className="text-[14px] lg:text-[16px] opacity-80">
-                      Faculty Name
-                    </h4>
-                    <p className="text-[16px] lg:text-[18px] font-medium">
-                      {project.faculty}
-                    </p>
-                  </div>
-                  <div>
-                    <h4 className="text-[14px] lg:text-[16px] opacity-80">
-                      Project Funding
-                    </h4>
-                    <p className="text-[16px] lg:text-[18px] font-medium">
-                      {project.source}
-                    </p>
-                  </div>
+                  {project.faculty && (
+                    <div>
+                      <h4 className="text-[14px] lg:text-[16px] opacity-80">
+                        Faculty Name
+                      </h4>
+                      <p className="text-[16px] lg:text-[18px] font-medium">
+                        {project.faculty}
+                      </p>
+                    </div>
+                  )}
+                  {project.source && (
+                    <div>
+                      <h4 className="text-[14px] lg:text-[16px] opacity-80">
+                        Project Funding
+                      </h4>
+                      <p className="text-[16px] lg:text-[18px] font-medium">
+                        {project.source}
+                      </p>
+                    </div>
+                  )}
                   <div>
                     <h4 className="text-[14px] lg:text-[16px] opacity-80">
                       Duration

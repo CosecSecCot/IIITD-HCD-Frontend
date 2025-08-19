@@ -36,7 +36,7 @@ export default async function Page() {
       id: item.id,
       title: item.Title,
       description: item.LongDescription,
-      source: item.FundedBy.DisplayText,
+      source: item.FundedBy?.DisplayText,
       faculty: item.Faculties[0]?.Name,
       duration: {
         from: item.Duration.From,
