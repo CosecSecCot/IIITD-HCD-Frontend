@@ -59,11 +59,11 @@ export default async function Page() {
           breadcrumbs={["about", "news & Events"]}
         />
         <p className="mt-5 lg:mt-12 text-[14px] lg:text-[20px]">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae
-          reiciendis eaque, quas pariatur consequatur repellendus odit esse
-          laudantium tempore velit, earum eum enim sequi ratione aperiam, dolor
-          blanditiis doloremque minima unde voluptatibus quo voluptates
-          mollitia! Natus velit ut nostrum ducimus.
+          Stay up to date with the latest happenings at HCD IIIT Delhi. This
+          section brings you important announcements, upcoming events,
+          workshops, guest lectures, and achievements from our community.
+          Whether it’s academic milestones, research breakthroughs, or cultural
+          activities, you’ll find all the highlights here.
         </p>
 
         {news.length > 0 && (
