@@ -196,7 +196,7 @@ export default function Home() {
                     interactions.
                   </p>
                 </TextReveal>
-                <div className="relative flex h-[202px] justify-between px-5 lg:px-20 py-3 lg:py-6 bg-brand-accent2-130/[.02] border lg:border-2 border-brand-accent2 backdrop-blur-lg">
+                <div className="relative h-[202px] px-5 lg:px-20 py-3 lg:py-6 border lg:border-2 border-brand-accent2">
                   <div className="absolute inset-0 z-10 w-full h-full bg-brand-accent2/50 mix-blend-overlay" />
                   <Image
                     src="/rnd-building.png"
@@ -324,7 +324,7 @@ export default function Home() {
               filter: "url(#gooey-filter-pixel-trail)",
             }}
           >
-            <PixelTrailReveal pixelSize={128} delay={1000} fadeDuration={0}>
+            <PixelTrailReveal pixelSize={128} delay={400} fadeDuration={0}>
               <div className="relative w-full h-full space-y-12 lg:space-y-32 pb-[78px] bg-brand-accent2 text-white">
                 <section>
                   <div className="font-light pt-[48px] lg:pt-[90px] mx-auto xl:w-[75vw] px-8 flex max-lg:flex-col justify-between gap-5 lg:gap-8">
@@ -365,7 +365,7 @@ export default function Home() {
                           />
                         </div>
                       </div>
-                      <div className="relative w-full h-[145px] box-border flex justify-around px-5 lg:px-16 py-3 lg:py-6 gap-8 lg:gap-16 bg-brand-accent1/[.25] border lg:border-2 border-brand-accent1/50 backdrop-blur-lg">
+                      <div className="relative w-full h-[145px] box-border flex justify-around px-5 lg:px-16 py-3 lg:py-6 gap-8 lg:gap-16 bg-brand-accent1/[.25] border lg:border-2 border-brand-accent1/50">
                         <Image
                           src="/page-reveal/img03.png"
                           alt="R&D Building IIITD"
@@ -422,9 +422,9 @@ export default function Home() {
                       diverse thinkers reimagining how human-technology
                       interactions.
                     </p>
-                    <div className="flex h-[202px] justify-between px-5 lg:px-20 py-3 lg:py-6 bg-brand-accent1/[.25] border lg:border-2 border-brand-accent1/50 backdrop-blur-lg">
+                    <div className="h-[202px] px-5 lg:px-20 py-3 lg:py-6 border lg:border-2 border-brand-accent1/50 backdrop-blur-lg">
                       <Image
-                        src="/rnd-builing.png"
+                        src="/rnd-building.png"
                         alt="R&D Building IIITD"
                         width={376}
                         height={383}
