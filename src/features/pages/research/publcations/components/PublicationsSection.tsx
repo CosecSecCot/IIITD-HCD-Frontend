@@ -2,7 +2,7 @@
 
 import Dropdown from "@/components/Dropdown";
 import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Users } from "lucide-react";
 import { useMemo, useState } from "react";
 
 export type ResearchPublication = {
@@ -155,7 +155,8 @@ function PublicationCard({
       <h3 className="text-[16px] lg:text-[20px] font-medium">
         {publication.title}
       </h3>
-      <p className="font-helvetica_now_display text-[14px] lg:text-[18px] opacity-80">
+      <p className="font-helvetica_now_display text-[14px] lg:text-[18px] opacity-80 flex gap-2">
+        <Users className="w-[14px] lg:w-[18px] aspect-square" />{" "}
         {publication.authors.join(", ")}
       </p>
       <p
