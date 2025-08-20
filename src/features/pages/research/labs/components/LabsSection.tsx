@@ -144,15 +144,15 @@ function LabCard({
                   width={86}
                   height={86}
                 />
-                <h3 className="reveal-animation-text text-[16px] lg:text-[32px] font-medium">
+                <h3 className="text-[16px] lg:text-[32px] font-medium">
                   {lab.title}
                 </h3>
               </div>
-              <p className="reveal-animation-text font-helvetica_now_display text-[14px] lg:text-[24px] opacity-80">
+              <p className="font-helvetica_now_display text-[14px] lg:text-[24px] opacity-80">
                 {lab.full}
               </p>
             </div>
-            <p className="reveal-animation-text text-[14px] lg:text-[24px] font-medium opacity-80">
+            <p className="text-[14px] lg:text-[24px] font-medium opacity-80">
               {lab.lead}
             </p>
           </div>
@@ -207,17 +207,15 @@ function LabCard({
                   width={86}
                   height={86}
                 />
-                <h3 className="reveal-animation-text text-[16px] lg:text-[20px] font-medium">
+                <h3 className="text-[16px] lg:text-[20px] font-medium">
                   {lab.title}
                 </h3>
               </div>
-              <p className="reveal-animation-text font-helvetica_now_display text-[14px] lg:text-[18px] opacity-60">
+              <p className="font-helvetica_now_display text-[14px] lg:text-[18px] opacity-60">
                 {lab.short}
               </p>
             </div>
-            <p className="reveal-animation-text text-[14px] lg:text-[18px] opacity-60">
-              {lab.lead}
-            </p>
+            <p className="text-[14px] lg:text-[18px] opacity-60">{lab.lead}</p>
           </div>
         </>
       )}

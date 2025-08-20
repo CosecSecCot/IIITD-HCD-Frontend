@@ -1,7 +1,6 @@
 import { Anybody } from "next/font/google";
 import "./globals.css";
 import ReactLenis from "lenis/react";
-import AnimationInitializer from "@/features/animation/AnimationInitializer";
 import Script from "next/script";
 import { Metadata } from "next";
 
@@ -25,7 +24,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${anybody.variable} antialiased`}>
         <ReactLenis root />
-        <AnimationInitializer />
         <div className="texture-overlay" />
         {children}
         <Script id="microsoft-clarity">

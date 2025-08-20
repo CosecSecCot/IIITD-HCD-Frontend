@@ -55,7 +55,7 @@ export default async function Page(pageProps: {
     <>
       <Banner
         text={
-          searchParams.filter === "teaching" ? "Teaching Labs" : "Research Labs"
+          searchParams.filter === "Teaching" ? "Teaching Labs" : "Research Labs"
         }
         breadcrumbs={["research", "labs"]}
       />

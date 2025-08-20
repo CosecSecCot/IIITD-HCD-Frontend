@@ -152,7 +152,7 @@ function PublicationCard({
           {publication.lab}
         </span>
       )}
-      <h3 className="reveal-animation-text text-[16px] lg:text-[20px] font-medium">
+      <h3 className="text-[16px] lg:text-[20px] font-medium">
         {publication.title}
       </h3>
       <p className="font-helvetica_now_display text-[14px] lg:text-[18px] opacity-80">

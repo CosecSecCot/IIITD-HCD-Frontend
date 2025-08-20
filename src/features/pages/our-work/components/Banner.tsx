@@ -3,12 +3,14 @@
 import { useEffect, useRef, useState } from "react";
 import { StudentProject } from "./SmallProjectCard";
 import MediaBetweenText from "@/components/fancy/blocks/media-between-text";
+import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
+import TextReveal from "@/features/animation/TextReveal";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
 
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
 gsap.registerPlugin(useGSAP);
 
 export default function Banner({ projects }: { projects: StudentProject[] }) {
@@ -94,16 +96,20 @@ export default function Banner({ projects }: { projects: StudentProject[] }) {
     <section
       ref={containerRef}
       id="sticky-section"
-      className="relative bg-brand-accent2 w-[100vw] h-[80vh] lg:h-[calc(100vh-128px)] xl:h-[calc(100vh-160px)]"
+      className="relative bg-brand-gray4 w-[100vw] h-[80vh] lg:h-[calc(100vh-128px)] xl:h-[calc(100vh-160px)]"
     >
       <div className="absolute z-10 w-[50vw] xl:w-[37.5vw] top-0 right-0 p-[2em] text-right text-white border-r-[4px] lg:border-r-[12px] border-white bg-black/20 backdrop-blur-md">
-        <h1 className="font-medium text-[32px] lg:text-[64px] leading-none">
-          Our Work
-        </h1>
-        <p className="font-light text-[12px] lg:text-[18px]">
-          The program will prepare students to work in the IT industry as well
-          as digital media industry like gaming, animation.
-        </p>
+        <TextReveal>
+          <h1 className="font-medium text-[32px] lg:text-[64px] leading-none">
+            Our Work
+          </h1>
+        </TextReveal>
+        <TextReveal>
+          <p className="font-light text-[12px] lg:text-[18px]">
+            The program will prepare students to work in the IT industry as well
+            as digital media industry like gaming, animation.
+          </p>
+        </TextReveal>
       </div>
       <div className="absolute z-10 bottom-0 right-0 w-full lg:w-max flex text-white bg-black/20 backdrop-blur-md">
         <button
@@ -201,13 +207,15 @@ function MainProjectCard({ project }: { project: StudentProject }) {
   return (
     <div className="slide relative w-full h-full">
       <div className="absolute w-full h-full overflow-hidden">
-        <img
+        <Image
           src={project.img}
           alt={project.title}
           className="relative w-full h-full object-cover will-change-transform scale-[1.35]"
           style={{
             transform: "translateX(0)",
           }}
+          width={1280}
+          height={720}
         />
       </div>
       <div className="relative w-full h-full flex flex-col justify-end p-[2em] pb-[5em] lg:p-[4em] lg:pr-[212px] text-white bg-gradient-to-b from-black/60 via-black/0 to-black/90">

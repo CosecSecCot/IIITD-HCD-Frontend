@@ -1,6 +1,8 @@
 "use client";
 
 import CenterUnderline from "@/components/fancy/text/underline-center";
+import ClipReveal from "@/features/animation/ClipReveal";
+import TextReveal from "@/features/animation/TextReveal";
 import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -30,24 +32,32 @@ export default function Banner({
     >
       <div className="relative z-10 xl:w-[1280px] p-8 flex justify-between items-center">
         <div className="xl:w-1/3">
-          <Link
-            href=""
-            className="reveal-animation-opacity-only flex gap-[0.5em] text-[12px] lg:text-[20px] text-brand-accent2-130"
-            onClick={() => router.back()}
-          >
-            <ArrowLeft className="w-[14px] lg:w-[24px] h-auto" />
-            <CenterUnderline>Go Back</CenterUnderline>
-          </Link>
+          <ClipReveal>
+            <Link
+              href=""
+              className="reveal-animation-opacity-only flex gap-[0.5em] text-[12px] lg:text-[20px] text-brand-accent2-130"
+              onClick={() => router.back()}
+            >
+              <ArrowLeft className="w-[14px] lg:w-[24px] h-auto" />
+              <CenterUnderline>Go Back</CenterUnderline>
+            </Link>
+          </ClipReveal>
           <div className="mt-[24px] lg:mt-[40px] leading-tight">
-            <p className="text-[16px] lg:text-[26px] text-brand-accent2-130">
-              {subtitle}
-            </p>
-            <h1 className="font-light text-[28px] lg:text-[48px]">{title}</h1>
+            <TextReveal>
+              <p className="text-[16px] lg:text-[26px] text-brand-accent2-130">
+                {subtitle}
+              </p>
+            </TextReveal>
+            <TextReveal>
+              <h1 className="font-light text-[28px] lg:text-[48px]">{title}</h1>
+            </TextReveal>
           </div>
         </div>
-        <blockquote className="max-xl:hidden italic font-light text-right flex-shrink w-1/3">
-          &quot;{sideText}&quot;
-        </blockquote>
+        <TextReveal>
+          <blockquote className="max-xl:hidden italic font-light text-right flex-shrink w-1/3">
+            &quot;{sideText}&quot;
+          </blockquote>
+        </TextReveal>
       </div>
       <Image
         src="/study-banner-cover.svg"

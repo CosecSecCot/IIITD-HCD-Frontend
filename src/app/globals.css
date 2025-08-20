@@ -4,6 +4,7 @@
 @theme {
     /* Fonts */
     --font-anybody: var(--font-anybody);
+    --font-helvetica: Helvetica, "Helvetica Neue", Arial, sans-serif;
     --font-helvetica_now_display: var(--font-helvetica);
 
     /* Brand Colors */
@@ -42,12 +43,6 @@
     background-size: cover;
 }
 
-.reveal-animation-clip {
-    opacity: 0;
-    transform: translateY(0);
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-    will-change: transform, opacity, clip-path;
-}
 
 ::selection {
     background: color-mix(in oklab, var(--color-brand-accent1) 30%, transparent);

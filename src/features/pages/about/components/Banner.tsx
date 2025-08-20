@@ -1,4 +1,6 @@
 import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
+import ClipReveal from "@/features/animation/ClipReveal";
+import TextReveal from "@/features/animation/TextReveal";
 import { Search } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -18,49 +20,55 @@ export default function Banner({
 }) {
   return (
     <>
-      <p className="reveal-animation-clip font-normal text-[12px] lg:text-[20px] text-brand-accent2">
-        {breadcrumbs.map((breadcrumb, index) => {
-          if (index < breadcrumbs.length - 1) {
-            return (
-              <span key={index}>
-                <span
-                  // href={"/" + breadcrumbs.slice(0, index + 1).join("/")}
-                  className="uppercase"
-                  style={{
-                    //   color: `rgb(255, 255, 255, ${
-                    //     (index + 1) / breadcrumbs.length
-                    //   })`,
-                    color: `color-mix(in oklab, var(--color-brand-accent2) ${
-                      ((index + 1) / breadcrumbs.length) * 100
-                    }%, transparent)`,
-                  }}
-                >
-                  {breadcrumb}
-                  {index == breadcrumbs.length - 1 ? "" : " / "}
+      <ClipReveal>
+        <p className="font-normal text-[12px] lg:text-[20px] text-brand-accent2">
+          {breadcrumbs.map((breadcrumb, index) => {
+            if (index < breadcrumbs.length - 1) {
+              return (
+                <span key={index}>
+                  <span
+                    // href={"/" + breadcrumbs.slice(0, index + 1).join("/")}
+                    className="uppercase"
+                    style={{
+                      //   color: `rgb(255, 255, 255, ${
+                      //     (index + 1) / breadcrumbs.length
+                      //   })`,
+                      color: `color-mix(in oklab, var(--color-brand-accent2) ${
+                        ((index + 1) / breadcrumbs.length) * 100
+                      }%, transparent)`,
+                    }}
+                  >
+                    {breadcrumb}
+                    {index == breadcrumbs.length - 1 ? "" : " / "}
+                  </span>
                 </span>
+              );
+            }
+
+            return (
+              <span key={index} className="uppercase">
+                {breadcrumb}
               </span>
             );
-          }
-
-          return (
-            <span key={index} className="uppercase">
-              {breadcrumb}
-            </span>
-          );
-        })}
-      </p>
+          })}
+        </p>
+      </ClipReveal>
       <section
         role="banner"
         className="relative mt-2 lg:mt-5 w-full h-auto lg:aspect-video bg-neutral-300 rounded-xl lg:rounded-[30px] overflow-hidden"
       >
         <div className="relative z-20 w-full h-full px-5 pt-[10vh] pb-6 lg:px-10 lg:py-12 flex flex-col justify-end gap-[1em] text-white">
           <div className="lg:w-[70%]">
-            <h1 className="font-semibold text-[28px] lg:text-[48px] leading-none">
-              {title}
-            </h1>
-            <p className="mt-[0.5em] font-normal text-[14px] lg:text-[20px] leading-tight">
-              {subtitle}
-            </p>
+            <TextReveal>
+              <h1 className="font-semibold text-[28px] lg:text-[48px] leading-none">
+                {title}
+              </h1>
+            </TextReveal>
+            <TextReveal>
+              <p className="mt-[0.5em] font-normal text-[14px] lg:text-[20px] leading-tight">
+                {subtitle}
+              </p>
+            </TextReveal>
           </div>
           {links && (
             <div className="font-normal flex gap-x-[1em] gap-y-[0.5em] flex-wrap">

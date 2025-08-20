@@ -8,8 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger, SplitText, useGSAP);
 
 /**
- * `TextReveal` marks a text element for scroll-triggered animation
- * by adding the `reveal-animation-text` class.
+ * `TextReveal` marks a text element for scroll-triggered animation.
  *
  * @param {Object} props
  * @param {React.ReactElement} props.children - The single React element (like <p> or <h2>).

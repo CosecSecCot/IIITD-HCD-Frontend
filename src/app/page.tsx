@@ -10,6 +10,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
+import TextReveal from "@/features/animation/TextReveal";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://hcd.iiitd.ac.in"),
@@ -88,7 +89,7 @@ const programmeItems = [
 export default function Home() {
   return (
     <>
-      <PageReveal />
+      {/* <PageReveal /> */}
       <div className="background-element relative z-10 bg-white font-anybody shadow-xl">
         <Navbar type="solid" />
         <main className="relative">
@@ -96,20 +97,26 @@ export default function Home() {
             <section className="relative w-full h-full overflow-hidden">
               <div className="font-light mt-[48px] lg:mt-[90px] mx-auto xl:w-[75vw] px-8 flex max-lg:flex-col justify-between gap-5 lg:gap-8">
                 <div className="flex-1">
-                  <p className="text-[16px] lg:text-[36px] text-brand-accent2">
-                    Human Centred Design
-                  </p>
-                  <h1 className="text-[36px] lg:text-[96px] leading-none lg:leading-tight">
-                    Where{" "}
-                    <span className="font-normal text-brand-accent2">
-                      Creativity
-                    </span>{" "}
-                    Meets Innovation.
-                  </h1>
-                  <blockquote className="mt-[1em] text-[14px] lg:text-[28px] italic leading-tight">
-                    We are a collective of diverse thinkers reimagining how
-                    human-technology interactions.
-                  </blockquote>
+                  <TextReveal>
+                    <p className="text-[16px] lg:text-[36px] text-brand-accent2">
+                      Human Centred Design
+                    </p>
+                  </TextReveal>
+                  <TextReveal>
+                    <h1 className="text-[36px] lg:text-[96px] leading-none lg:leading-tight">
+                      Where{" "}
+                      <span className="font-normal text-brand-accent2">
+                        Creativity
+                      </span>{" "}
+                      Meets Innovation.
+                    </h1>
+                  </TextReveal>
+                  <TextReveal>
+                    <blockquote className="mt-[1em] text-[14px] lg:text-[28px] italic leading-tight">
+                      We are a collective of diverse thinkers reimagining how
+                      human-technology interactions.
+                    </blockquote>
+                  </TextReveal>
                 </div>
                 <div className="flex-1 flex flex-col lg:items-end gap-2 lg:gap-5">
                   <div className="flex gap-2 lg:gap-5 w-full">
@@ -144,9 +151,9 @@ export default function Home() {
                         <p className="font-normal text-[10px] lg:text-[20px] uppercase opacity-60">
                           {stat.label}
                         </p>
-                        <h2 className="text-[24px] lg:text-[54px] font-medium text-brand-accent2 leading-tight">
+                        <p className="text-[24px] lg:text-[54px] font-medium text-brand-accent2 leading-tight">
                           {stat.value}
-                        </h2>
+                        </p>
                       </div>
                     ))}
                   </div>
@@ -160,39 +167,16 @@ export default function Home() {
 
             <section className="relative w-full h-full overflow-hidden">
               <div className="relative z-10 mx-auto xl:w-[75vw] px-8 space-y-4 lg:space-y-[72px]">
-                <h2 className="text-[28px] lg:text-[94px] leading-tight">
-                  The Department of <br />
-                  <span className="text-brand-accent2">
-                    Human Centred Design
-                  </span>
-                </h2>
-                <p className="lg:ml-auto lg:w-2/3 font-light lg:text-right text-[14px] lg:text-[34px] leading-tight">
-                  We are a collective of diverse thinkers reimagining how{" "}
-                  <span className="font-normal text-brand-accent2">
-                    human-technology interactions
-                  </span>{" "}
-                  can be seamless and meaningful. We are a collective of diverse
-                  thinkers reimagining how human-technology interactions.
-                </p>
-                <div className="flex justify-between px-5 lg:px-20 py-3 lg:py-6 bg-brand-accent2-130/[.02] border lg:border-2 border-brand-accent2 backdrop-blur-lg">
-                  {[
-                    { label: "ALUMNI", value: "2000+" },
-                    { label: "STUDENTS", value: "2000+" },
-                    { label: "PAPERS", value: "20+" },
-                    { label: "FACULTY", value: "200+" },
-                  ].map((stat, idx) => (
-                    <div key={idx} className="leading-tight">
-                      <p className="text-[10px] lg:text-[30px] uppercase opacity-60">
-                        {stat.label}
-                      </p>
-                      <h2 className="text-[24px] lg:text-[90px] font-medium text-brand-accent2">
-                        {stat.value}
-                      </h2>
-                    </div>
-                  ))}
-                </div>
-                <div className="flex justify-between gap-[1em] lg:gap-[8em]">
-                  <p className="lg:w-1/2 font-light text-[14px] lg:text-[30px] leading-tight">
+                <TextReveal>
+                  <h2 className="text-[28px] lg:text-[94px] leading-tight">
+                    The Department of <br />
+                    <span className="text-brand-accent2">
+                      Human Centred Design
+                    </span>
+                  </h2>
+                </TextReveal>
+                <TextReveal>
+                  <p className="lg:ml-auto lg:w-2/3 font-light lg:text-right text-[14px] lg:text-[34px] leading-tight">
                     We are a collective of diverse thinkers reimagining how{" "}
                     <span className="font-normal text-brand-accent2">
                       human-technology interactions
@@ -201,12 +185,48 @@ export default function Home() {
                     diverse thinkers reimagining how human-technology
                     interactions.
                   </p>
-                  <p className="max-lg:hidden w-1/2 text-right text-[64px] leading-tight">
-                    Welcome to a new era of HCD, powered{" "}
-                    <span className="font-light italic text-brand-accent2">
-                      by you.
-                    </span>
-                  </p>
+                </TextReveal>
+                <div className="flex justify-between px-5 lg:px-20 py-3 lg:py-6 bg-brand-accent2-130/[.02] border lg:border-2 border-brand-accent2 backdrop-blur-lg">
+                  {[
+                    { label: "ALUMNI", value: "2000+" },
+                    { label: "STUDENTS", value: "2000+" },
+                    { label: "PAPERS", value: "20+" },
+                    { label: "FACULTY", value: "200+" },
+                  ].map((stat, idx) => (
+                    <div key={idx} className="leading-tight">
+                      <TextReveal>
+                        <p className="text-[10px] lg:text-[30px] uppercase opacity-60">
+                          {stat.label}
+                        </p>
+                      </TextReveal>
+                      <TextReveal>
+                        <p className="text-[24px] lg:text-[90px] font-medium text-brand-accent2">
+                          {stat.value}
+                        </p>
+                      </TextReveal>
+                    </div>
+                  ))}
+                </div>
+                <div className="flex justify-between gap-[1em] lg:gap-[8em]">
+                  <TextReveal>
+                    <p className="lg:w-1/2 font-light text-[14px] lg:text-[30px] leading-tight">
+                      We are a collective of diverse thinkers reimagining how{" "}
+                      <span className="font-normal text-brand-accent2">
+                        human-technology interactions
+                      </span>{" "}
+                      can be seamless and meaningful. We are a collective of
+                      diverse thinkers reimagining how human-technology
+                      interactions.
+                    </p>
+                  </TextReveal>
+                  <TextReveal>
+                    <p className="max-lg:hidden w-1/2 text-right text-[64px] leading-tight">
+                      Welcome to a new era of HCD, powered{" "}
+                      <span className="font-light italic text-brand-accent2">
+                        by you.
+                      </span>
+                    </p>
+                  </TextReveal>
                 </div>
               </div>
             </section>
@@ -225,14 +245,18 @@ export default function Home() {
                   />
                 </div>
                 <div className="lg:pr-[12.5vw] lg:text-right">
-                  <h1 className="text-[24px] lg:text-[44px] text-brand-accent2 leading-tight">
-                    HCD Faculty
-                  </h1>
-                  <p className="font-light text-[14px] lg:text-[24px] leading-tight">
-                    Our faculty, numbering over 200, is dedicated to pioneering
-                    innovative solutions for challenges that arise with each
-                    advancement.
-                  </p>
+                  <TextReveal>
+                    <h1 className="text-[24px] lg:text-[44px] text-brand-accent2 leading-tight">
+                      HCD Faculty
+                    </h1>
+                  </TextReveal>
+                  <TextReveal>
+                    <p className="font-light text-[14px] lg:text-[24px] leading-tight">
+                      Our faculty, numbering over 200, is dedicated to
+                      pioneering innovative solutions for challenges that arise
+                      with each advancement.
+                    </p>
+                  </TextReveal>
                   <p className="mt-[1em] font-normal flex justify-center items-center gap-[1em] px-[1em] py-[1em] text-[12px] lg:text-[20px] bg-brand-accent2 text-white">
                     <span>View Faculty</span>
                     <ArrowRight className="w-[12px] lg:w-[18px] h-auto" />
@@ -248,12 +272,14 @@ export default function Home() {
                     Mission &amp; Vision
                   </span>
                 </Heading>
-                <p className="max-lg:hidden font-light mt-[1em] mx-auto xl:w-[75vw] px-8 text-center text-[24px]">
-                  India has already established itself as the software hub of
-                  the world due to the large number of engineers that it
-                  produces. There is now an increasing and persistent demand of
-                  having engineers who can develop and design.
-                </p>
+                <TextReveal>
+                  <p className="max-lg:hidden font-light mt-[1em] mx-auto xl:w-[75vw] px-8 text-center text-[24px]">
+                    India has already established itself as the software hub of
+                    the world due to the large number of engineers that it
+                    produces. There is now an increasing and persistent demand
+                    of having engineers who can develop and design.
+                  </p>
+                </TextReveal>
                 <div className="mt-[32px] lg:mt-[44px]">
                   <div
                     className={`mx-auto xl:w-[1280px] px-8 grid gap-[1em] grid-cols-1 xl:grid-cols-5`}

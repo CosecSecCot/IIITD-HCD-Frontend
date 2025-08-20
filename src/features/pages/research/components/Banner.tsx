@@ -13,7 +13,7 @@ export default function Banner({
 }) {
   return (
     <section role="banner" className="relative min-h-[45vh] bg-brand-accent2">
-      <p className="reveal-animation-clip absolute top-[84px] lg:top-[146px] xl:top-[176px] mt-[2em] mr-8 right-0 xl:right-[calc(50vw-640px)] text-[12px] lg:text-[20px] text-white">
+      <p className="absolute top-[84px] lg:top-[146px] xl:top-[176px] mt-[2em] mr-8 right-0 xl:right-[calc(50vw-640px)] text-[12px] lg:text-[20px] text-white">
         {breadcrumbs.map((breadcrumb, index) => {
           if (index < breadcrumbs.length - 1) {
             return (
@@ -22,7 +22,9 @@ export default function Banner({
                   // href={"/" + breadcrumbs.slice(0, index + 1).join("/")}
                   className="uppercase"
                   style={{
-                    color: `rgb(255, 255, 255, ${(index + 1) / breadcrumbs.length})`,
+                    color: `rgb(255, 255, 255, ${
+                      (index + 1) / breadcrumbs.length
+                    })`,
                   }}
                 >
                   {breadcrumb}
@@ -39,7 +41,7 @@ export default function Banner({
           );
         })}
       </p>
-      <h1 className="reveal-animation-clip uppercase absolute bottom-4 left-8 xl:left-[calc(50vw-640px)] xl:ml-8 text-[28px] lg:text-[72px] text-white">
+      <h1 className="uppercase absolute bottom-4 left-8 xl:left-[calc(50vw-640px)] xl:ml-8 text-[28px] lg:text-[72px] text-white">
         {text}
       </h1>
       <Image

@@ -126,10 +126,10 @@ function ProjectCard({
           <div className="w-full flex flex-col justify-between gap-[32px] lg:gap-[48px]">
             <div className="flex flex-col gap-[12px] lg:gap-[16px]">
               <div className="flex flex-col gap-[16px] lg:gap-[24px]">
-                <h3 className="reveal-animation-text text-[16px] lg:text-[32px] font-medium">
+                <h3 className="text-[16px] lg:text-[32px] font-medium">
                   {project.title}
                 </h3>
-                <div className="reveal-animation-text flex gap-[12px] lg:gap-[32px] flex-wrap">
+                <div className="flex gap-[12px] lg:gap-[32px] flex-wrap">
                   {project.faculty && (
                     <div>
                       <h4 className="text-[14px] lg:text-[16px] opacity-80">
@@ -163,7 +163,7 @@ function ProjectCard({
                   </div>
                 </div>
               </div>
-              <p className="reveal-animation-text font-helvetica_now_display text-[14px] lg:text-[16px] opacity-80">
+              <p className="font-helvetica_now_display text-[14px] lg:text-[16px] opacity-80">
                 {project.fullDescription}
               </p>
             </div>
@@ -195,15 +195,15 @@ function ProjectCard({
             <div className="flex flex-col gap-[18px] lg:gap-[24px]">
               <div className="flex flex-col gap-[12px] lg:gap-[16px]">
                 <div className="flex flex-col gap-[12px] lg:gap-[16px]">
-                  <h3 className="reveal-animation-text text-[16px] lg:text-[20px] font-medium">
+                  <h3 className="text-[16px] lg:text-[20px] font-medium">
                     {project.title}
                   </h3>
                 </div>
-                <p className="reveal-animation-text font-helvetica_now_display text-[14px] lg:text-[18px] opacity-60 line-clamp-3">
+                <p className="font-helvetica_now_display text-[14px] lg:text-[18px] opacity-60 line-clamp-3">
                   {project.description}
                 </p>
               </div>
-              <p className="reveal-animation-text text-[14px] lg:text-[18px] opacity-60">
+              <p className="text-[14px] lg:text-[18px] opacity-60">
                 {project.source}
               </p>
             </div>
