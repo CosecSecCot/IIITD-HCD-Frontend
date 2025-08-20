@@ -14,7 +14,7 @@ export default async function Page() {
         <Banner
           title="Collaborating Across Borders to Shape the Future of Human-Centered Design"
           subtitle="We partner with leading universities, research institutes, and industry labs worldwide to advance human-centered innovation in computing, design, and technology."
-          imageSrc={"/rnd-building.png"}
+          imageSrc={"/page-reveal/img07.png"}
           links={[
             { title: "Become a Partner", href: "#partner-with-us" },
             { title: "Explore Collaborations", href: "#partners" },

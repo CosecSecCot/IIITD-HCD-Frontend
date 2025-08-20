@@ -89,7 +89,7 @@ const programmeItems = [
 export default function Home() {
   return (
     <>
-      {/* <PageReveal /> */}
+      <PageReveal />
       <div className="background-element relative z-10 bg-white font-anybody shadow-xl">
         <Navbar type="solid" />
         <main className="relative">
@@ -133,7 +133,7 @@ export default function Home() {
                     <div className="relative flex-1 aspect-square border-2 border-brand-accent2">
                       <div className="absolute inset-0 z-10 w-full h-full bg-brand-accent2/50 mix-blend-overlay" />
                       <Image
-                        src="/rnd-building.png"
+                        src="/students.png"
                         alt="R&D Building IIITD"
                         width={376}
                         height={383}
@@ -141,7 +141,17 @@ export default function Home() {
                       />
                     </div>
                   </div>
-                  <div className="w-max box-border flex justify-around px-5 lg:px-16 py-3 lg:py-6 gap-8 lg:gap-16 bg-brand-accent2-130/[.02] border lg:border-2 border-brand-accent2/50 backdrop-blur-lg">
+                  <div className="relative w-full h-[145px] box-border flex justify-around px-5 lg:px-16 py-3 lg:py-6 gap-8 lg:gap-16 bg-brand-accent2-130/[.02] border lg:border-2 border-brand-accent2/50 backdrop-blur-lg">
+                    <div className="absolute inset-0 z-10 w-full h-full bg-brand-accent2/50 mix-blend-overlay" />
+                    <Image
+                      src="/page-reveal/img03.png"
+                      alt="R&D Building IIITD"
+                      width={376}
+                      height={383}
+                      className="absolute inset-0 w-full h-full object-cover grayscale"
+                    />
+                  </div>
+                  {/* <div className="w-max box-border flex justify-around px-5 lg:px-16 py-3 lg:py-6 gap-8 lg:gap-16 bg-brand-accent2-130/[.02] border lg:border-2 border-brand-accent2/50 backdrop-blur-lg">
                     {[
                       { label: "ALUMNI", value: "2000+" },
                       { label: "STUDENTS", value: "2000+" },
@@ -156,7 +166,7 @@ export default function Home() {
                         </p>
                       </div>
                     ))}
-                  </div>
+                  </div> */}
                   <p className="font-normal w-max flex justify-center items-center gap-[1em] px-[1.5em] py-[1em] text-[12px] lg:text-[24px] bg-brand-accent2 text-white">
                     <span>View Study Options</span>
                     <ArrowRight className="w-[12px] lg:w-[18px] h-auto" />
@@ -186,7 +196,17 @@ export default function Home() {
                     interactions.
                   </p>
                 </TextReveal>
-                <div className="flex justify-between px-5 lg:px-20 py-3 lg:py-6 bg-brand-accent2-130/[.02] border lg:border-2 border-brand-accent2 backdrop-blur-lg">
+                <div className="relative flex h-[202px] justify-between px-5 lg:px-20 py-3 lg:py-6 bg-brand-accent2-130/[.02] border lg:border-2 border-brand-accent2 backdrop-blur-lg">
+                  <div className="absolute inset-0 z-10 w-full h-full bg-brand-accent2/50 mix-blend-overlay" />
+                  <Image
+                    src="/rnd-building.png"
+                    alt="R&D Building IIITD"
+                    width={376}
+                    height={383}
+                    className="absolute inset-0 w-full h-full object-cover grayscale"
+                  />
+                </div>
+                {/* <div className="flex justify-between px-5 lg:px-20 py-3 lg:py-6 bg-brand-accent2-130/[.02] border lg:border-2 border-brand-accent2 backdrop-blur-lg">
                   {[
                     { label: "ALUMNI", value: "2000+" },
                     { label: "STUDENTS", value: "2000+" },
@@ -206,7 +226,7 @@ export default function Home() {
                       </TextReveal>
                     </div>
                   ))}
-                </div>
+                </div> */}
                 <div className="flex justify-between gap-[1em] lg:gap-[8em]">
                   <TextReveal>
                     <p className="lg:w-1/2 font-light text-[14px] lg:text-[30px] leading-tight">
@@ -337,7 +357,7 @@ export default function Home() {
                         </div>
                         <div className="relative flex-1 aspect-square border-2 border-brand-accent1">
                           <Image
-                            src="/rnd-building.png"
+                            src="/students.png"
                             alt="R&D Building IIITD"
                             width={376}
                             height={383}
@@ -345,7 +365,16 @@ export default function Home() {
                           />
                         </div>
                       </div>
-                      <div className="w-max box-border flex justify-around px-5 lg:px-16 py-3 lg:py-6 gap-8 lg:gap-16 bg-brand-accent1/[.25] border lg:border-2 border-brand-accent1/50 backdrop-blur-lg">
+                      <div className="relative w-full h-[145px] box-border flex justify-around px-5 lg:px-16 py-3 lg:py-6 gap-8 lg:gap-16 bg-brand-accent1/[.25] border lg:border-2 border-brand-accent1/50 backdrop-blur-lg">
+                        <Image
+                          src="/page-reveal/img03.png"
+                          alt="R&D Building IIITD"
+                          width={376}
+                          height={383}
+                          className="absolute inset-0 w-full h-full object-cover"
+                        />
+                      </div>
+                      {/* <div className="w-max box-border flex justify-around px-5 lg:px-16 py-3 lg:py-6 gap-8 lg:gap-16 bg-brand-accent1/[.25] border lg:border-2 border-brand-accent1/50 backdrop-blur-lg">
                         {[
                           { label: "ALUMNI", value: "2000+" },
                           { label: "STUDENTS", value: "2000+" },
@@ -360,7 +389,7 @@ export default function Home() {
                             </h2>
                           </div>
                         ))}
-                      </div>
+                      </div> */}
                       <Link
                         href="/study/btech"
                         className="font-normal w-max flex justify-center items-center gap-[1em] px-[1.5em] py-[1em] text-[12px] lg:text-[24px] bg-brand-accent1 text-black"
@@ -393,7 +422,16 @@ export default function Home() {
                       diverse thinkers reimagining how human-technology
                       interactions.
                     </p>
-                    <div className="flex justify-between px-5 lg:px-20 py-3 lg:py-6 bg-brand-accent1/[.25] border lg:border-2 border-brand-accent1/50 backdrop-blur-lg">
+                    <div className="flex h-[202px] justify-between px-5 lg:px-20 py-3 lg:py-6 bg-brand-accent1/[.25] border lg:border-2 border-brand-accent1/50 backdrop-blur-lg">
+                      <Image
+                        src="/rnd-builing.png"
+                        alt="R&D Building IIITD"
+                        width={376}
+                        height={383}
+                        className="absolute inset-0 w-full h-full object-cover"
+                      />
+                    </div>
+                    {/* <div className="flex justify-between px-5 lg:px-20 py-3 lg:py-6 bg-brand-accent1/[.25] border lg:border-2 border-brand-accent1/50 backdrop-blur-lg">
                       {[
                         { label: "ALUMNI", value: "2000+" },
                         { label: "STUDENTS", value: "2000+" },
@@ -409,7 +447,7 @@ export default function Home() {
                           </h2>
                         </div>
                       ))}
-                    </div>
+                    </div> */}
                     <div className="flex justify-between gap-[1em] lg:gap-[8em]">
                       <p className="lg:w-1/2 font-light text-[14px] lg:text-[30px] leading-tight">
                         We are a collective of diverse thinkers reimagining how{" "}

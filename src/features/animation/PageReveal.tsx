@@ -164,7 +164,7 @@ export default function PageReveal() {
         {new Array(7).fill(0).map((_, index) => (
           <Image
             key={index}
-            src={`/page-reveal/img0${index + 1}.jpg`}
+            src={`/page-reveal/img0${index + 1}.png`}
             alt=""
             width={1280}
             height={720}
