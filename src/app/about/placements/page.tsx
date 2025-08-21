@@ -2,11 +2,36 @@ import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim"
 import LinkButton from "@/components/LinkButton";
 import Banner from "@/features/pages/about/components/Banner";
 import { ArrowRight } from "lucide-react";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import qs from "qs";
 
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: "HCD Placements at IIIT-Delhi | Placements",
+  description:
+    "Learn about HCD placements at IIIT-Delhi—career tracks in UX, product, XR, and media; internship pathways; recruiters; and alumni outcomes.",
+  keywords: [],
+  authors: [{ name: "IIIT Delhi HCD" }],
+  creator: "IIIT Delhi HCD",
+  publisher: "IIIT Delhi",
+  alternates: {
+    canonical: "/about/placements",
+  },
+
+  openGraph: {
+    // url: "https://hcd.iiitd.ac.in/",
+    siteName: "HCD IIITD",
+    locale: "en-IN",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    creator: "@hcdiiitd",
+  },
+};
 
 export default async function Page() {
   return (

@@ -2,8 +2,33 @@ import Banner from "@/features/pages/study/components/Banner";
 import CoursesSection, {
   Course,
 } from "@/features/pages/study/courses/components/CoursesSection";
+import { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: "HCD Courses at IIIT-Delhi | Core & Electives",
+  description:
+    "Browse HCD core and elective courses at IIIT-Delhi—interaction design, UX, visualization, XR/VR, and creative media aligned with industry and research.",
+  keywords: [],
+  authors: [{ name: "IIIT Delhi HCD" }],
+  creator: "IIIT Delhi HCD",
+  publisher: "IIIT Delhi",
+  alternates: {
+    canonical: "/study/courses",
+  },
+
+  openGraph: {
+    // url: "https://hcd.iiitd.ac.in/",
+    siteName: "HCD IIITD",
+    locale: "en-IN",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    creator: "@hcdiiitd",
+  },
+};
 
 export default async function Page(pageProps: {
   searchParams: Promise<{ filter?: string }>;

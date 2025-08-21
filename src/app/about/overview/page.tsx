@@ -1,8 +1,30 @@
-import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
 import LinkButton from "@/components/LinkButton";
 import Banner from "@/features/pages/about/components/Banner";
-import { ArrowRight } from "lucide-react";
-import Link from "next/link";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Human-Centered Design at IIIT-Delhi | Department Overview",
+  description:
+    "Discover HCD at IIIT-Delhi—our vision, people, studios, and labs at the intersection of design and computing to build inclusive, impactful technology.",
+  keywords: [],
+  authors: [{ name: "IIIT Delhi HCD" }],
+  creator: "IIIT Delhi HCD",
+  publisher: "IIIT Delhi",
+  alternates: {
+    canonical: "/about/overview",
+  },
+
+  openGraph: {
+    // url: "https://hcd.iiitd.ac.in/",
+    siteName: "HCD IIITD",
+    locale: "en-IN",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    creator: "@hcdiiitd",
+  },
+};
 
 const stats = [
   { label: "ALUMNI", value: "2000+" },

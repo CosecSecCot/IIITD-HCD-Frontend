@@ -2,8 +2,33 @@ import Banner from "@/features/pages/about/components/Banner";
 import NewsCard, {
   NewsEvent,
 } from "@/features/pages/about/news-events/components/NewsCard";
+import { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: "HCD News & Events | IIIT-Delhi",
+  description:
+    "See the latest from HCD at IIIT-Delhi—workshops, talks, showcases, and announcements from our design, HCI, and creative technology community.",
+  keywords: [],
+  authors: [{ name: "IIIT Delhi HCD" }],
+  creator: "IIIT Delhi HCD",
+  publisher: "IIIT Delhi",
+  alternates: {
+    canonical: "/about/news-events",
+  },
+
+  openGraph: {
+    // url: "https://hcd.iiitd.ac.in/",
+    siteName: "HCD IIITD",
+    locale: "en-IN",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    creator: "@hcdiiitd",
+  },
+};
 
 export default async function Page() {
   const res = await fetch(

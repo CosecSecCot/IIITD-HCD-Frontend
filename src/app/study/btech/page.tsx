@@ -1,8 +1,32 @@
 import LinkButton from "@/components/LinkButton";
 import Banner from "@/features/pages/study/components/Banner";
 import Heading from "@/features/pages/study/components/Heading";
-import ProgrammeCard from "@/features/pages/study/components/ProgrammeCard";
 import ViewCoursesCard from "@/features/pages/study/components/ViewCoursesCard";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "B.Tech in CSD at IIIT-Delhi | Computer Science & Design",
+  description:
+    "Study Computer Science & Design (CSD) at IIIT-Delhi—solid CS foundations + design, HCI, and creative tech. Explore curriculum, electives, and admissions.",
+  keywords: [],
+  authors: [{ name: "IIIT Delhi HCD" }],
+  creator: "IIIT Delhi HCD",
+  publisher: "IIIT Delhi",
+  alternates: {
+    canonical: "/study/btech",
+  },
+
+  openGraph: {
+    // url: "https://hcd.iiitd.ac.in/",
+    siteName: "HCD IIITD",
+    locale: "en-IN",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    creator: "@hcdiiitd",
+  },
+};
 
 const programmeItems = [
   {

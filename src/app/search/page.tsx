@@ -4,9 +4,34 @@ import PageHeading from "@/features/pages/connect/components/PageHeading";
 import SearchSection, {
   SearchContent,
 } from "@/features/pages/search/SearchSeciton";
+import { Metadata } from "next";
 import qs from "qs";
 
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: "Search HCD at IIIT-Delhi | Explore Programs, Research & People",
+  description:
+    "Use the HCD search at IIIT-Delhi to quickly find information on programs, courses, faculty, research labs, projects, news, etc.",
+  keywords: [],
+  authors: [{ name: "IIIT Delhi HCD" }],
+  creator: "IIIT Delhi HCD",
+  publisher: "IIIT Delhi",
+  alternates: {
+    canonical: "/search",
+  },
+
+  openGraph: {
+    // url: "https://hcd.iiitd.ac.in/",
+    siteName: "HCD IIITD",
+    locale: "en-IN",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    creator: "@hcdiiitd",
+  },
+};
 
 async function getData(url: string, query?: any): Promise<any[] | undefined> {
   const queryString = qs.stringify(query, {

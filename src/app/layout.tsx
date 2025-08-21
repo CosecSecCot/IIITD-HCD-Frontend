@@ -10,9 +10,24 @@ const anybody = Anybody({
 });
 
 export const metadata: Metadata = {
-  title: "Human Centred Design • IIIT Delhi",
+  title: "Human-Centered Design at IIIT-Delhi | Official Site",
   description:
-    "Explore the Department of Human Centred Design at IIIT Delhi — research labs, projects, faculty, programmes and publications driving inclusive, user-centered innovation.",
+    "HCD at IIIT-Delhi—programs in CSD & PhD, HCI/XR research, labs, projects, news, and admissions. Design × computing for real-world impact.",
+  keywords: [],
+  authors: [{ name: "IIIT Delhi HCD" }],
+  creator: "IIIT Delhi HCD",
+  publisher: "IIIT Delhi",
+
+  openGraph: {
+    // url: "https://hcd.iiitd.ac.in/",
+    siteName: "HCD IIITD",
+    locale: "en-IN",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    creator: "@hcdiiitd",
+  },
 };
 
 export default function RootLayout({

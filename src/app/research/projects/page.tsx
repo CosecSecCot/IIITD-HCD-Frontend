@@ -2,8 +2,33 @@ import Banner from "@/features/pages/research/components/Banner";
 import ProjectSection, {
   ResearchProject,
 } from "@/features/pages/research/projects/components/ProjectSection";
+import { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: "HCD Research & Teaching Labs | IIIT-Delhi",
+  description:
+    "Browse HCD projects real-world prototypes in UX, XR, creative media, and social impact, built in studios and research labs.",
+  keywords: [],
+  authors: [{ name: "IIIT Delhi HCD" }],
+  creator: "IIIT Delhi HCD",
+  publisher: "IIIT Delhi",
+  alternates: {
+    canonical: "/research/projects",
+  },
+
+  openGraph: {
+    // url: "https://hcd.iiitd.ac.in/",
+    siteName: "HCD IIITD",
+    locale: "en-IN",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    creator: "@hcdiiitd",
+  },
+};
 
 export default async function Page() {
   const res = await fetch(

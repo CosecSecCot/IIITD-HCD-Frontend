@@ -1,10 +1,32 @@
-import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
 import LinkButton from "@/components/LinkButton";
 import Banner from "@/features/pages/study/components/Banner";
 import Heading from "@/features/pages/study/components/Heading";
 import ViewCoursesCard from "@/features/pages/study/components/ViewCoursesCard";
-import { ArrowRight } from "lucide-react";
-import Link from "next/link";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "PhD in Human-Centered Design | IIIT-Delhi",
+  description:
+    "Advance HCI, UX, XR, and creative tech research with a PhD in HCD at IIIT-Delhi. Work in leading labs with expert faculty and strong publication culture.",
+  keywords: [],
+  authors: [{ name: "IIIT Delhi HCD" }],
+  creator: "IIIT Delhi HCD",
+  publisher: "IIIT Delhi",
+  alternates: {
+    canonical: "/study/phd",
+  },
+
+  openGraph: {
+    // url: "https://hcd.iiitd.ac.in/",
+    siteName: "HCD IIITD",
+    locale: "en-IN",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    creator: "@hcdiiitd",
+  },
+};
 
 export default function Page() {
   return (

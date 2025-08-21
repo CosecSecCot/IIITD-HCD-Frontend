@@ -6,8 +6,33 @@ import LabsSection, {
 import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
 import Link from "next/link";
 import { getContrastingTextColor } from "@/lib/utils";
+import { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: "HCD Research & Teaching Labs | IIIT-Delhi",
+  description:
+    "Visit HCD labs at IIIT-Delhi - Accessibility and Inclusive Design Lab, Creative Interfaces Lab, etc. Explore facilities, projects, and how students engage with research.",
+  keywords: [],
+  authors: [{ name: "IIIT Delhi HCD" }],
+  creator: "IIIT Delhi HCD",
+  publisher: "IIIT Delhi",
+  alternates: {
+    canonical: "/research/labs",
+  },
+
+  openGraph: {
+    // url: "https://hcd.iiitd.ac.in/",
+    siteName: "HCD IIITD",
+    locale: "en-IN",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    creator: "@hcdiiitd",
+  },
+};
 
 export default async function Page(pageProps: {
   searchParams: Promise<{ filter?: string }>;

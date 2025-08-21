@@ -2,8 +2,33 @@ import Banner from "@/features/pages/research/components/Banner";
 import PublicationsSection, {
   ResearchPublication,
 } from "@/features/pages/research/publcations/components/PublicationsSection";
+import { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: "HCD Publications | Research from IIIT-Delhi",
+  description:
+    "Access HCD publications from IIIT-Delhi—papers, articles, and proceedings in HCI, UX, XR, and human-centered technologies.",
+  keywords: [],
+  authors: [{ name: "IIIT Delhi HCD" }],
+  creator: "IIIT Delhi HCD",
+  publisher: "IIIT Delhi",
+  alternates: {
+    canonical: "/research/projects",
+  },
+
+  openGraph: {
+    // url: "https://hcd.iiitd.ac.in/",
+    siteName: "HCD IIITD",
+    locale: "en-IN",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    creator: "@hcdiiitd",
+  },
+};
 
 export default async function Page() {
   const res = await fetch(

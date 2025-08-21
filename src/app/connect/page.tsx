@@ -6,18 +6,11 @@ import { InstagramIcon, Mail } from "lucide-react";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://hcd.iiitd.ac.in"),
-  title: "Connect • Human Centred Design — IIIT Delhi",
+  title: "Connect with HCD | IIIT-Delhi",
   description:
-    "Get in touch with the Department of Human Centred Design at IIIT Delhi. Explore contact details, location, and ways to collaborate with our faculty and research labs.",
-  keywords: [
-    "contact HCD IIITD",
-    "IIIT Delhi Human Centred Design",
-    "connect HCD department",
-    "design research collaboration",
-    "contact IIITD",
-  ],
-  authors: [{ name: "IIIT Delhi — Human Centred Design" }],
+    "Contact the HCD Department at IIIT-Delhi using email, address, and visit info. Collaborate with our labs, explore programs, or plan a campus visit.",
+  keywords: [],
+  authors: [{ name: "IIIT Delhi HCD" }],
   creator: "IIIT Delhi HCD",
   publisher: "IIIT Delhi",
   alternates: {
@@ -25,28 +18,13 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: "Connect • Human Centred Design — IIIT Delhi",
-    description:
-      "Find contact details and collaboration opportunities with the Human Centred Design department at IIIT Delhi.",
-    url: "https://hcd.iiitd.ac.in/connect",
+    // url: "https://hcd.iiitd.ac.in/",
     siteName: "HCD IIITD",
     locale: "en-IN",
-    // images: [
-    //   {
-    //     url: "https://hcd.iiitd.ac.in/connect/og-image.png",
-    //     width: 1200,
-    //     height: 630,
-    //     alt: "Connect — HCD IIITD",
-    //   },
-    // ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Connect • Human Centred Design — IIIT Delhi",
-    description:
-      "Reach out to the Department of Human Centred Design, IIIT Delhi for collaborations, queries, and opportunities.",
-    // images: ["https://hcd.iiitd.ac.in/connect/og-image.png"],
     creator: "@hcdiiitd",
   },
 };

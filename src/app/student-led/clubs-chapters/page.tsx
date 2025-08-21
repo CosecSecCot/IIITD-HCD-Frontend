@@ -1,8 +1,33 @@
 import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
 import LinkButton from "@/components/LinkButton";
 import Heading from "@/features/pages/study/components/Heading";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Student-Led Initiatives | Clubs & Chapters at HCD IIIT-Delhi",
+  description:
+    "Explore student-led initiatives at IIIT-Delhi including the ACM SIGCHI Student Chapter and Design Hub. Join communities that foster innovation, design thinking, creativity, and collaboration in human-computer interaction and product design.",
+  keywords: [],
+  authors: [{ name: "IIIT Delhi HCD" }],
+  creator: "IIIT Delhi HCD",
+  publisher: "IIIT Delhi",
+  alternates: {
+    canonical: "/search",
+  },
+
+  openGraph: {
+    // url: "https://hcd.iiitd.ac.in/",
+    siteName: "HCD IIITD",
+    locale: "en-IN",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    creator: "@hcdiiitd",
+  },
+};
 
 export default function Page() {
   const breadcrumbs = ["student-led", "clubs-chapters"];
