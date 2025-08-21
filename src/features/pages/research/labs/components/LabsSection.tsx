@@ -132,12 +132,14 @@ function LabCard({
             <div className="flex flex-col gap-[12px] lg:gap-[16px]">
               <div className="flex items-center gap-[12px] lg:gap-[16px]">
                 <Image
-                  className="reveal-animation-opacity-only h-[40px] lg:h-[60px] w-auto"
+                  className="reveal-animation-opacity-only h-[40px] lg:h-[60px] w-auto grayscale"
                   style={{
                     // WARNING: for now we are assuming that foreground color will be black and white
                     // if you want to change it to custom color, modify the svg or make two images and change img src
-                    filter:
-                      lab.foreground === "#FFFFFF" ? "invert(100%)" : "none",
+                    // filter:
+                    //   lab.foreground === "#FFFFFF" ? "invert(100%)" : "none",
+                    mixBlendMode:
+                      lab.foreground === "#FFFFFF" ? "screen" : "overlay",
                   }}
                   src={lab.logo}
                   alt={`${lab.title} logo`}
@@ -206,6 +208,16 @@ function LabCard({
                   alt={`${lab.title} logo`}
                   width={86}
                   height={86}
+                  style={{
+                    // WARNING: for now we are assuming that foreground color will be black and white
+                    // if you want to change it to custom color, modify the svg or make two images and change img src
+                    filter: hover ? "grayscale(100%)" : "none",
+                    mixBlendMode: hover
+                      ? lab.foreground === "#FFFFFF"
+                        ? "screen"
+                        : "overlay"
+                      : "normal",
+                  }}
                 />
                 <h3 className="text-[16px] lg:text-[20px] font-medium">
                   {lab.title}
