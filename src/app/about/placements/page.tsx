@@ -51,18 +51,12 @@ export default async function Page() {
           after by industry and academia alike.
         </p>
 
-        <Link
-          href="/rnd-building.png"
+        <LinkButton
+          href="/brochure.pdf"
           target="_blank"
-          className="mt-8 font-normal w-max flex justify-center items-center gap-[24px] px-[4em] py-[0.75em] text-[14px] xl:text-[18px] bg-brand-accent2-130/5 hover:bg-brand-accent2 border border-brand-accent2-130 text-brand-accent2-130 hover:text-white transition-all duration-300"
-        >
-          <LetterSwapForward
-            label="View Placement Brochure"
-            staggerDuration={0.005}
-            className="w-max"
-          />
-          <ArrowRight className="w-[14px] lg:w-[18px] h-auto" />
-        </Link>
+          text="View Placement Brochure"
+          className="mt-8 w-max"
+        />
 
         <CompaniesSection />
 
@@ -99,7 +93,7 @@ export default async function Page() {
             </p>
             <LinkButton
               href="/connect"
-              className="mt-[2em]"
+              className="mt-[2em] lg:w-max"
               text="Connect With Us"
               type="solid"
             />

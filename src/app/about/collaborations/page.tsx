@@ -70,7 +70,7 @@ export default async function Page() {
             </p>
             <LinkButton
               href="/connect"
-              className="mt-[2em]"
+              className="mt-[2em] lg:w-max"
               text="Reach Out for Collaboration"
               type="solid"
             />

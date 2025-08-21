@@ -115,7 +115,7 @@ export default function Page() {
           <LinkButton
             href="/study/btech"
             text="VIEW FULL CURRICULUM"
-            className="mt-4"
+            className="mt-4 w-max"
           />
         </section>
 
@@ -136,7 +136,7 @@ export default function Page() {
             target="_blank"
             href="https://iiitd.ac.in/sites/default/files/docs/education/2025/2025-January-Minor%20in%20Human%20Centered%20Design.pdf"
             text="FOR MORE DETAILS"
-            className="mt-4"
+            className="mt-4 w-max"
           />
         </section>
 
@@ -151,7 +151,7 @@ export default function Page() {
           </p>
           <LinkButton
             href="/student-led/clubs-chapters"
-            className="mt-[2em]"
+            className="mt-[2em] lg:w-max"
             text="Learn More"
             type="solid"
           />
