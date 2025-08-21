@@ -127,7 +127,7 @@ export default function Page() {
                 target="_blank"
                 href="https://iiitd.ac.in/admissions/btech/2025/"
                 text="FOR MORE DETAILS"
-                className="mt-8"
+                className="mt-8 w-max"
               />
             </div>
           </section>

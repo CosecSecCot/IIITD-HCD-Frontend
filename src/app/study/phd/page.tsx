@@ -65,7 +65,7 @@ export default function Page() {
                 target="_blank"
                 href="https://iiitd.ac.in/academics/phd"
                 text="FOR MORE DETAILS"
-                className="lg:ml-[33.33%] mt-8"
+                className="lg:ml-[33.33%] mt-8 w-max"
               />
             </div>
           </section>

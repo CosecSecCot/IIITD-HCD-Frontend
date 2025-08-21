@@ -148,6 +148,7 @@ export default function Page() {
                   target="_blank"
                   href="https://sigchi.iiitd.ac.in"
                   text="LEARN MORE"
+                  className="w-max"
                 />
               </div>
             </div>
