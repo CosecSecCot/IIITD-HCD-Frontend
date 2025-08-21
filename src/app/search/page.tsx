@@ -19,8 +19,6 @@ async function getData(url: string, query?: any): Promise<any[] | undefined> {
 
   const data = await res?.json();
 
-  console.log(data);
-
   if (!data || data.error || data.data.length == 0) {
     return undefined;
   }
@@ -28,29 +26,68 @@ async function getData(url: string, query?: any): Promise<any[] | undefined> {
   return data.data;
 }
 
-export default async function Page() {
-  const newsAndEvents = (await getData("/api/news-and-events"))?.map(
+export default async function Page(pageProps: {
+  searchParams: Promise<{ filter?: string }>;
+}) {
+  const searchParams = await pageProps.searchParams;
+  const newsAndEvents = (
+    await getData("/api/news-and-events", {
+      filters: {
+        $or: [
+          { Title: { $containsi: searchParams.filter ?? "" } },
+          { Description: { $containsi: searchParams.filter ?? "" } },
+        ],
+      },
+    })
+  )?.map(
     (data): SearchContent => ({
       title: data.Title,
       description: data.Description,
       link: "/about/news-events/#",
     })
   );
-  const labs = (await getData("/api/labs"))?.map(
+  const labs = (
+    await getData("/api/labs", {
+      filters: {
+        $or: [
+          { LabName: { $containsi: searchParams.filter ?? "" } },
+          { LongDescription: { $containsi: searchParams.filter ?? "" } },
+        ],
+      },
+    })
+  )?.map(
     (data): SearchContent => ({
       title: data.LabName,
       description: data.LongDescription,
       link: "/research/labs",
     })
   );
-  const departmentProjects = (await getData("/api/department-projects"))?.map(
+  const departmentProjects = (
+    await getData("/api/department-projects", {
+      filters: {
+        $or: [
+          { Title: { $containsi: searchParams.filter ?? "" } },
+          { LongDescription: { $containsi: searchParams.filter ?? "" } },
+        ],
+      },
+    })
+  )?.map(
     (data): SearchContent => ({
       title: data.Title,
       description: data.LongDescription,
       link: "/research/projects",
     })
   );
-  const publications = (await getData("/api/publications"))?.map(
+  const publications = (
+    await getData("/api/publications", {
+      filters: {
+        $or: [
+          { Title: { $containsi: searchParams.filter ?? "" } },
+          { LongDescription: { $containsi: searchParams.filter ?? "" } },
+        ],
+      },
+    })
+  )?.map(
     (data): SearchContent => ({
       title: data.Title,
       description: data.LongDescription,
@@ -63,7 +100,20 @@ export default async function Page() {
     ...(labs ?? []),
     ...(departmentProjects ?? []),
     ...(publications ?? []),
-  ];
+  ].sort((a, b) => {
+    if (!searchParams.filter) return 0;
+
+    const aTitleMatch = a.title
+      .toLowerCase()
+      .includes(searchParams.filter.toLowerCase());
+    const bTitleMatch = b.title
+      .toLowerCase()
+      .includes(searchParams.filter.toLowerCase());
+
+    if (aTitleMatch && !bTitleMatch) return -1; // a comes first
+    if (!aTitleMatch && bTitleMatch) return 1; // b comes first
+    return 0;
+  });
 
   return (
     <>
@@ -77,7 +127,7 @@ export default async function Page() {
           />
         </main>
         <div className="mx-auto xl:w-[1280px] px-8 mb-[10vh]">
-          <SearchSection content={normalized} />
+          <SearchSection content={normalized} filter={searchParams.filter} />
         </div>
       </div>
       <Footer />

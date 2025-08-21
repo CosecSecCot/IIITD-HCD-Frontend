@@ -3,6 +3,7 @@
 import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export type SearchContent = {
@@ -13,44 +14,38 @@ export type SearchContent = {
 
 export default function SearchSection({
   content,
+  filter,
 }: {
   content: SearchContent[];
+  filter?: string;
 }) {
   const [search, setSearch] = useState("");
+  const router = useRouter();
 
-  let filteredContent = content.slice(0, Math.min(content.length, 10));
-  if (search !== "") {
-    filteredContent = [
-      ...content.filter((item) => {
-        if (!search) return true;
-        const query = search.toLowerCase();
-        return item.title.toLowerCase().includes(query);
-      }),
-      ...content.filter((item) => {
-        if (!search) return true;
-        const query = search.toLowerCase();
-        return (
-          !item.title.toLowerCase().includes(query) &&
-          item.description.toLowerCase().includes(query)
-        );
-      }),
-    ];
-  }
   return (
     <article>
       <div>
-        <input
-          type="text"
-          placeholder="Start Typing..."
-          className="w-full px-[1.75em] py-[0.5em] text-[28px] text-brand-accent2 border border-brand-accent2/30 backdrop-blur-lg rounded-full"
-          onChange={(e) => setSearch(e.target.value.toLowerCase())}
-        />
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            if (search.trim()) {
+              router.push(`/search?filter=${encodeURIComponent(search)}`);
+            }
+          }}
+        >
+          <input
+            type="text"
+            placeholder="Start Typing..."
+            className="w-full px-[1.75em] py-[0.5em] text-[22px] lg:text-[28px] text-brand-accent2 border border-brand-accent2/30 backdrop-blur-lg rounded-full"
+            onChange={(e) => setSearch(e.target.value.toLowerCase())}
+          />
+        </form>
       </div>
 
       <section className="mt-[48px]">
-        {filteredContent.length > 0 ? (
-          filteredContent.map((data, idx) => (
-            <SearchCard key={idx} content={data} query={search} />
+        {content.length > 0 ? (
+          content.map((data, idx) => (
+            <SearchCard key={idx} content={data} query={filter} />
           ))
         ) : (
           <div className="min-h-[40vh]">
@@ -64,7 +59,7 @@ export default function SearchSection({
   );
 }
 
-function highlightMatch(text: string, query: string) {
+function highlightMatch(text: string, query?: string) {
   if (!query) return text;
 
   const regex = new RegExp(`(${query})`, "gi");
@@ -86,18 +81,16 @@ function SearchCard({
   query,
 }: {
   content: SearchContent;
-  query: string;
+  query?: string;
 }) {
-  const [expanded, setExpanded] = useState(false);
+  //   const [expanded, setExpanded] = useState(false);
 
   return (
     <div className="relative z-[9990] px-[2em] py-[1.5em] lg:px-[4em] lg:py-[2.5em] border border-black/20 backdrop-blur-sm">
-      <div className="flex max-lg:flex-col gap-[1em] items-end lg:items-center">
-        <div>
-          <h3 className="text-[18px] lg:text-[24px] font-medium">
-            {highlightMatch(content.title, query)}
-          </h3>
-        </div>
+      <div>
+        <h3 className="text-[18px] lg:text-[24px] font-medium">
+          {highlightMatch(content.title, query)}
+        </h3>
       </div>
       <p
         className="font-helvetica_now_display text-[14px] lg:text-[20px] text-black/60 leading-tight transition-all duration-300"
