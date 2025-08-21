@@ -151,22 +151,6 @@ export default function Home() {
                       className="absolute inset-0 w-full h-full object-cover grayscale"
                     />
                   </div>
-                  {/* <div className="w-max box-border flex justify-around px-5 lg:px-16 py-3 lg:py-6 gap-8 lg:gap-16 bg-brand-accent2-130/[.02] border lg:border-2 border-brand-accent2/50 backdrop-blur-lg">
-                    {[
-                      { label: "ALUMNI", value: "2000+" },
-                      { label: "STUDENTS", value: "2000+" },
-                      { label: "FACULTY", value: "200+" },
-                    ].map((stat, idx) => (
-                      <div key={idx} className="leading-tight">
-                        <p className="font-normal text-[10px] lg:text-[20px] uppercase opacity-60">
-                          {stat.label}
-                        </p>
-                        <p className="text-[24px] lg:text-[54px] font-medium text-brand-accent2 leading-tight">
-                          {stat.value}
-                        </p>
-                      </div>
-                    ))}
-                  </div> */}
                   <p className="font-normal w-max flex justify-center items-center gap-[1em] px-[1.5em] py-[1em] text-[12px] lg:text-[24px] bg-brand-accent2 text-white">
                     <span>View Study Options</span>
                     <ArrowRight className="w-[12px] lg:w-[18px] h-auto" />
@@ -206,27 +190,6 @@ export default function Home() {
                     className="absolute inset-0 w-full h-full object-cover grayscale"
                   />
                 </div>
-                {/* <div className="flex justify-between px-5 lg:px-20 py-3 lg:py-6 bg-brand-accent2-130/[.02] border lg:border-2 border-brand-accent2 backdrop-blur-lg">
-                  {[
-                    { label: "ALUMNI", value: "2000+" },
-                    { label: "STUDENTS", value: "2000+" },
-                    { label: "PAPERS", value: "20+" },
-                    { label: "FACULTY", value: "200+" },
-                  ].map((stat, idx) => (
-                    <div key={idx} className="leading-tight">
-                      <TextReveal>
-                        <p className="text-[10px] lg:text-[30px] uppercase opacity-60">
-                          {stat.label}
-                        </p>
-                      </TextReveal>
-                      <TextReveal>
-                        <p className="text-[24px] lg:text-[90px] font-medium text-brand-accent2">
-                          {stat.value}
-                        </p>
-                      </TextReveal>
-                    </div>
-                  ))}
-                </div> */}
                 <div className="flex justify-between gap-[1em] lg:gap-[8em]">
                   <TextReveal>
                     <p className="lg:w-1/2 font-light text-[14px] lg:text-[30px] leading-tight">
@@ -374,22 +337,6 @@ export default function Home() {
                           className="absolute inset-0 w-full h-full object-cover"
                         />
                       </div>
-                      {/* <div className="w-max box-border flex justify-around px-5 lg:px-16 py-3 lg:py-6 gap-8 lg:gap-16 bg-brand-accent1/[.25] border lg:border-2 border-brand-accent1/50 backdrop-blur-lg">
-                        {[
-                          { label: "ALUMNI", value: "2000+" },
-                          { label: "STUDENTS", value: "2000+" },
-                          { label: "FACULTY", value: "200+" },
-                        ].map((stat, idx) => (
-                          <div key={idx} className="leading-tight">
-                            <p className="font-normal text-[10px] lg:text-[20px] uppercase opacity-60">
-                              {stat.label}
-                            </p>
-                            <h2 className="text-[24px] lg:text-[54px] font-medium text-brand-accent1 leading-tight">
-                              {stat.value}
-                            </h2>
-                          </div>
-                        ))}
-                      </div> */}
                       <Link
                         href="/study/btech"
                         className="font-normal w-max flex justify-center items-center gap-[1em] px-[1.5em] py-[1em] text-[12px] lg:text-[24px] bg-brand-accent1 text-black"
@@ -431,23 +378,6 @@ export default function Home() {
                         className="absolute inset-0 w-full h-full object-cover"
                       />
                     </div>
-                    {/* <div className="flex justify-between px-5 lg:px-20 py-3 lg:py-6 bg-brand-accent1/[.25] border lg:border-2 border-brand-accent1/50 backdrop-blur-lg">
-                      {[
-                        { label: "ALUMNI", value: "2000+" },
-                        { label: "STUDENTS", value: "2000+" },
-                        { label: "PAPERS", value: "20+" },
-                        { label: "FACULTY", value: "200+" },
-                      ].map((stat, idx) => (
-                        <div key={idx} className="leading-tight">
-                          <p className="text-[10px] lg:text-[30px] uppercase opacity-60">
-                            {stat.label}
-                          </p>
-                          <h2 className="text-[24px] lg:text-[90px] font-medium text-brand-accent1">
-                            {stat.value}
-                          </h2>
-                        </div>
-                      ))}
-                    </div> */}
                     <div className="flex justify-between gap-[1em] lg:gap-[8em]">
                       <p className="lg:w-1/2 font-light text-[14px] lg:text-[30px] leading-tight">
                         We are a collective of diverse thinkers reimagining how{" "}

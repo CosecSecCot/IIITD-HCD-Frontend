@@ -10,6 +10,8 @@ export default function Loading() {
         <main className="min-h-[90vh] flex justify-center items-center">
           <LoaderCircle
             size={128}
+            role="status"
+            aria-label="loading"
             className="text-brand-accent2 animate-spin"
           />
         </main>

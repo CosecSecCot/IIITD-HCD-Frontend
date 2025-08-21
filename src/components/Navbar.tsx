@@ -53,16 +53,26 @@ const navigationMap: NavigationItem[] = [
       { title: "", url: "" },
     ],
   },
-  { title: "our work", url: "/our-work" },
+  {
+    title: "Student-Led",
+    children: [
+      { title: "", url: "" },
+      { title: "", url: "" },
+      { title: "Clubs & Chapters", url: "/student-led/clubs-chapters" },
+      { title: "1Pixel Design Conf.", url: "/student-led/1pixel" },
+      { title: "Initiatives", url: "/student-led/initiatives" },
+      { title: "Exhibits", url: "/student-led/exhibits" },
+    ],
+  },
   {
     title: "people",
     children: [
       { title: "", url: "" },
       { title: "", url: "" },
       { title: "", url: "" },
+      { title: "", url: "" },
       { title: "faculty", url: "/people/faculty" },
       { title: "phd", url: "/people/phd" },
-      { title: "", url: "" },
     ],
   },
   { title: "connect", url: "/connect" },
