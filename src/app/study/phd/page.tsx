@@ -38,7 +38,7 @@ export default function Page() {
           "Design tomorrow's information technology products, services and systems which combine emerging technologies"
         }
       />
-      <main className="min-h-screen mt-[30px] mb-[10vh]">
+      <main className="mt-[30px] lg:mt-[128px] mb-[10vh]">
         <article>
           <section>
             <Heading align="left">
@@ -48,7 +48,7 @@ export default function Page() {
             </Heading>
 
             <div className="mx-auto mt-[32px] lg:mt-[80px] xl:w-[1280px] px-8">
-              <p className="ml-auto xl:w-2/3 text-[12px] lg:text-[24px] font-light">
+              <p className="ml-auto xl:w-2/3 text-[14px] lg:text-[24px] font-light">
                 The PhD program at IIIT-Delhi is focused towards research like
                 any other PhD program – limited coursework to enhance the
                 breadth and depth of a student, followed by focused research.
@@ -65,7 +65,7 @@ export default function Page() {
                 target="_blank"
                 href="https://iiitd.ac.in/academics/phd"
                 text="FOR MORE DETAILS"
-                className="ml-[33.33%] mt-8"
+                className="lg:ml-[33.33%] mt-8"
               />
             </div>
           </section>

@@ -2,6 +2,7 @@ import LinkButton from "@/components/LinkButton";
 import Banner from "@/features/pages/study/components/Banner";
 import Heading from "@/features/pages/study/components/Heading";
 import ViewCoursesCard from "@/features/pages/study/components/ViewCoursesCard";
+import { cn } from "@/lib/utils";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -28,27 +29,42 @@ export const metadata: Metadata = {
   },
 };
 
-const programmeItems = [
-  {
-    number: "01",
-    text: "Ability to function effectively in teams to accomplish a common goal.",
-  },
-  {
-    number: "02",
-    text: "Ability to design and implement efficient software solutions using suitable algorithms, data structures, and other computing techniques.",
-  },
-  {
-    number: "03",
-    text: "Understanding of design principles and techniques and ability to apply these for developing solutions to human/societal problems.",
-  },
-  {
-    number: "04",
-    text: "Ability to independently investigate a problem which can be solved by an Human Computer Interaction (HCI).",
-  },
-  {
-    number: "05",
-    text: "Ability to effectively use suitable tools and platforms, as well as enhance them, to develop applications/products.",
-  },
+const programmeTable: string[][] = [
+  [
+    "Introduction to Programming",
+    "Data structures and Algorithms",
+    "Operating Systems",
+    "Algorithm Design and Analysis / Algorithm Design and Analysis (B)*",
+    "Computer Networks",
+  ],
+  [
+    "Digital Circuits",
+    "Design Drawing & Visualization",
+    "Research Methods in Social Science and Design",
+    "Prototyping Interactive Systems",
+    "",
+  ],
+  [
+    "Maths I (Linear Algebra)",
+    "Maths II (Probability & Statistics)",
+    "Advanced Programming",
+    "Design of Interactive systems",
+    "Technical communication + Environmental Sciences",
+  ],
+  [
+    "Introduction to HCI",
+    "Computer Organization",
+    "Design Processes & Perspectives",
+    "Fundamentals of Database Management Systems",
+    "[Elective]",
+  ],
+  [
+    "Communication Skills",
+    "Visual Design & Communication",
+    "[Maths III (Multivariate Calculus) / Discrete Mathematics]",
+    "[SSH / Maths IV (ODE/PDE/Theory of Computation)]",
+    "",
+  ],
 ];
 
 export default function Page() {
@@ -61,7 +77,7 @@ export default function Page() {
           "Design tomorrow's information technology products, services and systems which combine emerging technologies"
         }
       />
-      <main className="min-h-screen mt-[30px] mb-[10vh]">
+      <main className="min-h-screen mt-[30px] lg:mt-[128px] mb-[10vh]">
         <article>
           <section>
             <Heading align="left">
@@ -123,9 +139,71 @@ export default function Page() {
               </span>{" "}
               Structure
             </Heading>
+
             <div className="mt-[32px] lg:mt-[80px]">
-              <div className={`mx-auto xl:w-[1280px] px-8 `}>
-                TABLE AYEGA YAHA
+              <div className="mx-auto xl:w-[1280px] px-8">
+                {/* ===== MOBILE: stacked semester cards ===== */}
+                <div className="lg:hidden space-y-4">
+                  {getSemestersFromTable(programmeTable).map(
+                    (semesterCourses, sIdx) => (
+                      <section
+                        key={sIdx}
+                        aria-labelledby={`sem-${sIdx + 1}-title`}
+                        className="p-[1em] bg-brand-gray1/5 border border-brand-accent2-130 backdrop-blur-lg"
+                      >
+                        <h3
+                          id={`sem-${sIdx + 1}-title`}
+                          className="font-semibold text-[20px] text-brand-accent2"
+                        >
+                          Semester {sIdx + 1}
+                        </h3>
+
+                        <ul className="mt-[1em] list-none space-y-[0.5em]">
+                          {semesterCourses.map((course, idx) => (
+                            <li key={idx} className="font-light text-[14px]">
+                              {course}
+                            </li>
+                          ))}
+                        </ul>
+                      </section>
+                    )
+                  )}
+                </div>
+
+                {/* ===== DESKTOP: original table, horizontal on lg+ ===== */}
+                <div className="hidden lg:block overflow-x-auto">
+                  <table className="table-fixed w-full border-collapse">
+                    <thead>
+                      <tr>
+                        <TableCell header>Semester 1</TableCell>
+                        <TableCell header>Semester 2</TableCell>
+                        <TableCell header>Semester 3</TableCell>
+                        <TableCell header>Semester 4</TableCell>
+                        <TableCell header>Semester 5</TableCell>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {programmeTable.map((row, ridx) => (
+                        <tr key={ridx}>
+                          {row.map((cell, cidx) => (
+                            <TableCell key={cidx}>
+                              {/* allow multi-line content by replacing `\n` with <br/> where needed */}
+                              {typeof cell === "string" ? (
+                                <>
+                                  {cell.split("\n").map((line, i) => (
+                                    <div key={i}>{line}</div>
+                                  ))}
+                                </>
+                              ) : (
+                                cell
+                              )}
+                            </TableCell>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </section>
@@ -137,4 +215,50 @@ export default function Page() {
       </main>
     </>
   );
+}
+
+function TableCell({
+  children,
+  header = false,
+  className = "",
+}: {
+  children: React.ReactNode;
+  header?: boolean;
+  className?: string;
+}) {
+  return header ? (
+    <th
+      className={cn(
+        className,
+        "px-[1em] py-[0.5em] text-left text-[14px] lg:text-[20px] text-white bg-brand-accent2 border border-brand-accent2-130 backdrop-blur-lg"
+      )}
+    >
+      {children}
+    </th>
+  ) : (
+    <td
+      className={cn(
+        className,
+        "font-light px-[1em] py-[0.5em] text-[14px] lg:text-[20px] border border-brand-accent2-130 backdrop-blur-lg"
+      )}
+    >
+      {children}
+    </td>
+  );
+}
+
+/* helper: convert programmeTable (rows x cols) -> semesters: array of columns */
+function getSemestersFromTable(table: string[][]) {
+  const cols = table[0]?.length || 0;
+  const semesters: string[][] = Array.from({ length: cols }, () => []);
+
+  for (let r = 0; r < table.length; r++) {
+    for (let c = 0; c < cols; c++) {
+      const val = (table[r] && table[r][c]) || "";
+      if (val && val.trim() !== "") {
+        semesters[c].push(val);
+      }
+    }
+  }
+  return semesters;
 }
