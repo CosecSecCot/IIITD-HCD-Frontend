@@ -3,6 +3,7 @@
 import Dropdown from "@/components/Dropdown";
 import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
 import { ArrowRight, Users } from "lucide-react";
+import Image from "next/image";
 import { useMemo, useState } from "react";
 
 export type ResearchPublication = {
@@ -14,6 +15,7 @@ export type ResearchPublication = {
   category: string;
   title: string;
   description: string;
+  venueImage?: string;
   tags: string[];
   link: string;
 };
@@ -147,18 +149,34 @@ function PublicationCard({
 
   return (
     <div className="relative z-[9990] px-[2em] py-[1.5em] lg:px-[4em] lg:py-[2.5em] border border-black/20 backdrop-blur-sm">
-      {publication.lab && (
-        <span className="uppercase text-[14px] lg:text-[18px] text-brand-accent2">
-          {publication.lab}
-        </span>
-      )}
-      <h3 className="text-[16px] lg:text-[20px] font-medium">
-        {publication.title}
-      </h3>
-      <p className="font-helvetica_now_display text-[14px] lg:text-[18px] opacity-80 flex gap-2">
-        <Users className="w-[14px] lg:w-[18px] aspect-square" />{" "}
-        {publication.authors.join(", ")}
-      </p>
+      <div className="flex max-lg:flex-col gap-[1em] items-end lg:items-center">
+        {publication.venueImage && (
+          <div className="relative w-[64px] lg:w-[88px] h-max aspect-square flex-shrink-0">
+            <div className="absolute inset-0 z-10 w-full h-full bg-brand-accent2 mix-blend-overlay hover:bg-brand-accent2-130 transition-all duration-300" />
+            <Image
+              src={publication.venueImage}
+              alt={publication.title + " venue"}
+              width={88}
+              height={88}
+              className="absolute inset-0 w-full h-full object-cover grayscale"
+            />
+          </div>
+        )}
+        <div>
+          {publication.lab && (
+            <span className="uppercase text-[14px] lg:text-[18px] text-brand-accent2">
+              {publication.lab}
+            </span>
+          )}
+          <h3 className="text-[16px] lg:text-[20px] font-medium">
+            {publication.title}
+          </h3>
+          <p className="font-helvetica_now_display text-[14px] lg:text-[18px] opacity-80 flex gap-2">
+            <Users className="w-[14px] lg:w-[18px] aspect-square" />{" "}
+            {publication.authors.join(", ")}
+          </p>
+        </div>
+      </div>
       <p
         className={`font-helvetica_now_display mt-[8px] lg:mt-[12px] text-[14px] lg:text-[18px] leading-tight opacity-60 transition-all duration-300 ${
           expanded ? "" : "line-clamp-2"
@@ -177,11 +195,11 @@ function PublicationCard({
       </button>
 
       <div className="flex justify-between flex-wrap gap-[2em] w-full mt-[2em]">
-        <div className="flex gap-[1em] flex-wrap">
+        <div className="flex gap-2 flex-wrap">
           {publication.tags.map((tag, idx) => (
             <span
               key={idx}
-              className="inline-block uppercase text-[14px] lg:text-[18px] bg-brand-accent2 text-white px-[1.5em] py-[0.5em] hover:bg-brand-accent2-130"
+              className="inline-block uppercase text-[12px] lg:text-[14px] bg-brand-accent2 text-white px-[1.5em] py-[0.5em] hover:bg-brand-accent2-130"
             >
               {tag}
             </span>

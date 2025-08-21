@@ -40,6 +40,9 @@ export default async function Page() {
       // ),
       title: item.Title,
       description: item.LongDescription,
+      venueImage: item.VenueImage
+        ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${item.VenueImage.url}`
+        : undefined,
       authors: item.Authors.map((author: { Name: string }) => author.Name),
       category: item.Type,
       lab: item.Lab?.LabName,
