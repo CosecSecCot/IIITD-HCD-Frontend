@@ -38,7 +38,7 @@ export default async function Page(pageProps: {
   searchParams: Promise<{ filter?: string }>;
 }) {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/labs?populate=*`
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/labs?sort[0]=LabName:asc&populate=*`
   ).catch((reason) => console.log("[ERROR]", reason));
   const data = await res?.json();
 

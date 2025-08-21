@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 
 export default async function Page() {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/publications?populate=*`
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/publications?sort[0]=Title:asc&populate=*`
   ).catch((reason) => console.log("[ERROR]", reason));
   const data = await res?.json();
 
