@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 gsap.registerPlugin(useGSAP);
 
@@ -87,6 +88,9 @@ export default function Navbar({
   const [firstSidebarOpen, setFirstSidebarOpen] = useState(false);
   const [secondSidebarOpen, setSecondSidebarOpen] = useState(false);
   const isMobileNavbarActive = useMediaQuery("(max-width: 1280px)");
+
+  const [search, setSearch] = useState("");
+  const router = useRouter();
 
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
@@ -213,11 +217,23 @@ export default function Navbar({
           <div className="relative right-[12.5vw] xl:right-[calc(12.5vw-82px)] flex items-center gap-28">
             <div className="flex items-center xl:gap-[36px] gap-[20px]">
               <div className="flex justify-between items-center lg:gap-[14px] gap-[8px] lg:px-6 px-3 lg:py-4 py-2 border border-white rounded-full overflow-hidden">
-                <input
-                  type="text"
-                  placeholder="SEARCH"
-                  className="max-lg:w-[5em] max-lg:text-[0.75em] bg-transparent outline-none placeholder:text-white/80"
-                />
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    if (search.trim()) {
+                      router.push(
+                        `/search?filter=${encodeURIComponent(search)}`
+                      );
+                    }
+                  }}
+                >
+                  <input
+                    type="text"
+                    placeholder="SEARCH"
+                    className="max-lg:w-[5em] w-[10em] max-lg:focus:w-[10em] focus:w-[15em] max-lg:text-[0.75em] bg-transparent outline-none placeholder:text-white/80 transition-all duration-300"
+                    onChange={(e) => setSearch(e.target.value.toLowerCase())}
+                  />
+                </form>
                 <Search size={16} />
               </div>
               <button className="cursor-pointer" onClick={openFirstSidebar}>
