@@ -1,3 +1,4 @@
+import LinkButton from "@/components/LinkButton";
 import Banner from "@/features/pages/study/components/Banner";
 import Heading from "@/features/pages/study/components/Heading";
 import ProgrammeCard from "@/features/pages/study/components/ProgrammeCard";
@@ -46,18 +47,20 @@ export default function Page() {
             </Heading>
             <div className="mx-auto mt-[12px] lg:mt-[80px] xl:w-[1280px] px-8 flex flex-col items-end">
               <p className="xl:w-2/3 text-[14px] lg:text-[24px] font-light">
-                The program will prepare students to work in the IT industry as
-                well as digital media industry like gaming, animation,
-                virtual/augmented reality, etc. The program will also allow
-                students, who want to pursue higher studies, to take up higher
-                studies in CS/IT or in Design.
+                The internet now underpins how organizations operate and engage
+                with stakeholders, elevating the need for effective interaction
+                design, rich media, and rigorous user experience practices. As
+                industries expand their digital presence, Interaction Design and
+                Design Methods have become essential to building intuitive,
+                high-impact IT products and services across sectors.
               </p>
               <p className="xl:w-2/3 mt-[32px] lg:mt-[80px] text-[14px] lg:text-[24px] font-light">
-                The program will prepare students to work in the IT industry as
-                well as digital media industry like gaming, animation,
-                virtual/augmented reality, etc. The program will also allow
-                students, who want to pursue higher studies, to take up higher
-                studies in CS/IT or in Design.
+                The B.Tech. in Computer Science and Design blends strong
+                computing foundations with design thinking and new media
+                fluency. A compact core in CS and Design is complemented by
+                flexible electives across CS, Design, and Digital Media,
+                enabling tailored pathways. Graduates are prepared for IT and
+                digital media roles, or advanced study in CS/IT or Design.
               </p>
             </div>
           </section>
@@ -80,6 +83,12 @@ export default function Page() {
                 will be made available on the admissions pages from time to
                 time. More details regarding admissions are available here.
               </p>
+              <LinkButton
+                target="_blank"
+                href="https://iiitd.ac.in/admissions/btech/2025/"
+                text="FOR MORE DETAILS"
+                className="mt-8"
+              />
             </div>
           </section>
 
@@ -91,22 +100,13 @@ export default function Page() {
               Structure
             </Heading>
             <div className="mt-[32px] lg:mt-[80px]">
-              <div
-                className={`mx-auto xl:w-[1280px] px-8 grid gap-[1em] grid-cols-1 xl:grid-cols-5`}
-              >
-                {programmeItems.map((item) => (
-                  <ProgrammeCard
-                    key={item.number}
-                    text={item.text}
-                    number={item.number}
-                  />
-                ))}
+              <div className={`mx-auto xl:w-[1280px] px-8 `}>
+                TABLE AYEGA YAHA
               </div>
             </div>
           </section>
 
           <section className="xl:w-[1280px] mx-auto mt-[64px] lg:mt-[128px] px-8 grid grid-cols-1 lg:grid-cols-2 gap-[1em]">
-            <ViewCoursesCard />
             <ViewCoursesCard />
           </section>
         </article>

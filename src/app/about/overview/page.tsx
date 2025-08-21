@@ -1,6 +1,6 @@
 import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
+import LinkButton from "@/components/LinkButton";
 import Banner from "@/features/pages/about/components/Banner";
-import ViewCoursesCard from "@/features/pages/study/components/ViewCoursesCard";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
@@ -39,7 +39,29 @@ export default function Page() {
             computing, AR/VR, game & media design, and intelligent interactive
             systems.
           </p>
-          <div className="w-full box-border flex justify-around mt-[16px] px-4 lg:px-[2em] py-[1em] bg-brand-accent2-130/[.02] border lg:border-2 border-brand-accent2/50 backdrop-blur-lg">
+
+          <div className="mt-5 lg:mt-12 relative p-6 lg:p-[40px] border border-brand-accent2 bg-brand-accent2/5 backdrop-blur-lg hover:backdrop-blur-2xl transition-all duration-300">
+            <h2 className="font-medium text-[18px] lg:text-[28px] text-brand-accent2">
+              Department Specialization Areas
+            </h2>
+            <p className="mt-[0.5em] text-[14px] lg:text-[18px]">
+              Our department brings together diverse expertise across design,
+              technology, and human-centered innovation through the following
+              specialization areas:
+            </p>
+            <ul className="mt-2 text-[14px] lg:text-[18px] list-disc list-inside">
+              <li>Human-Computer Interaction</li>
+              <li>Design Research</li>
+              <li>Animation, Digital Film-making and Game Design</li>
+              <li>Human-Centered Robotics & Artificial Intelligence</li>
+              <li>Mobile Systems & Applications</li>
+              <li>Machine Learning, Deep Learning</li>
+              <li>Inclusive Design & Accessibility</li>
+              <li>Augmented & Virtual Reality</li>
+            </ul>
+          </div>
+
+          {/* <div className="w-full box-border flex justify-around mt-[16px] px-4 lg:px-[2em] py-[1em] bg-brand-accent2-130/[.02] border lg:border-2 border-brand-accent2/50 backdrop-blur-lg">
             {stats.map((stat, idx) => (
               <div key={idx} className="leading-tight">
                 <p className="text-[10px] lg:text-[20px] uppercase opacity-60">
@@ -50,23 +72,7 @@ export default function Page() {
                 </h2>
               </div>
             ))}
-          </div>
-        </section>
-
-        <section className="mt-5 lg:mt-12">
-          <h2 className="font-medium text-[18px] lg:text-[24px] text-brand-accent2">
-            What is Human-Centered Design?
-          </h2>
-          <p className="mt-2 text-[14px] lg:text-[20px]">
-            Human-Centered Design (HCD) is an approach that places people’s
-            needs, behaviours and contexts at the centre of design. It
-            emphasizes empathy, field research, iterative prototyping and
-            evaluation so that products and systems address real user pain
-            points and scale responsibly. At IIIT-Delhi HCD, this methodology
-            drives both curriculum and research: students learn to observe
-            users, build low-fi and hi-fi prototypes, run evaluations, and
-            iterate until a measurable improvement is achieved.
-          </p>
+          </div> */}
         </section>
 
         <section className="mt-5 lg:mt-12">
@@ -83,60 +89,51 @@ export default function Page() {
             preparing students for design-focused engineering roles and academic
             research.
           </p>
-          <Link
+
+          <LinkButton
             href="/study/btech"
-            className="mt-8 font-normal w-max flex justify-center items-center gap-[24px] px-[4em] py-[0.75em] text-[14px] xl:text-[18px] bg-brand-accent2-130/5 hover:bg-brand-accent2 border border-brand-accent2-130 text-brand-accent2-130 hover:text-white transition-all duration-300"
-          >
-            <LetterSwapForward
-              label="VIEW FULL CURRICULUM"
-              staggerDuration={0.005}
-              className="w-max"
-            />
-            <ArrowRight className="w-[18px] h-auto" />
-          </Link>
+            text="VIEW FULL CURRICULUM"
+            className="mt-4"
+          />
         </section>
 
         <section className="my-5 lg:my-12">
           <h2 className="font-medium text-[18px] lg:text-[24px] text-brand-accent2">
-            Research, labs and collaborations
+            Minor in Human-Centered Design
           </h2>
           <p className="mt-2 text-[14px] lg:text-[20px]">
-            HCD at IIIT-Delhi houses active research labs and design projects in
-            HCI, XR, tangible interfaces, interactive media and ubiquitous
-            computing. Labs collaborate closely with CSE and other departments
-            to publish in peer-reviewed venues and build real prototypes that
-            move from lab to impact. Notable labs include the Creative
-            Interfaces Lab (HCI & XR research), design-research groups focused
-            on interactive media, and several industry-collaboration projects.
-            Students are encouraged to join labs, co-author papers, and
-            transform coursework into publishable research and demonstrable
-            products.
+            The Minor in HCD allows B.Tech students (CSE, ECE, CSAM, CSB, CSSS)
+            to complement their degree with design thinking and interaction
+            design skills. Open to all B.Tech students except CSD. Courses can
+            be taken after 2nd year; BTP in 3rd/4th year. The program equips
+            students with a foundation in human-centered methods, prototyping,
+            and emerging interaction technologies.
           </p>
-          <div className="mt-8 flex gap-[1em] flex-wrap">
-            <Link
-              href="/research/labs"
-              className="font-normal w-max flex justify-center items-center gap-[24px] px-[4em] py-[0.75em] text-[14px] xl:text-[18px] bg-brand-accent2-130/5 hover:bg-brand-accent2 border border-brand-accent2-130 text-brand-accent2-130 hover:text-white transition-all duration-300"
-            >
-              <LetterSwapForward
-                label="VIEW RESEARCH LABS"
-                staggerDuration={0.005}
-                className="w-max"
-              />
-              <ArrowRight className="w-[18px] h-auto" />
-            </Link>
-            <Link
-              href="/research/publications"
-              className="font-normal w-max flex justify-center items-center gap-[24px] px-[4em] py-[0.75em] text-[14px] xl:text-[18px] bg-brand-accent2-130/5 hover:bg-brand-accent2 border border-brand-accent2-130 text-brand-accent2-130 hover:text-white transition-all duration-300"
-            >
-              <LetterSwapForward
-                label="VIEW PUBLICATIONS"
-                staggerDuration={0.005}
-                className="w-max"
-              />
-              <ArrowRight className="w-[18px] h-auto" />
-            </Link>
-          </div>
+
+          <LinkButton
+            target="_blank"
+            href="https://iiitd.ac.in/sites/default/files/docs/education/2025/2025-January-Minor%20in%20Human%20Centered%20Design.pdf"
+            text="FOR MORE DETAILS"
+            className="mt-4"
+          />
         </section>
+
+        <div className="my-8 lg:my-16 relative p-6 lg:p-[40px] border border-brand-accent2 bg-brand-accent2/5 backdrop-blur-lg hover:backdrop-blur-2xl transition-all duration-300">
+          <h2 className="font-medium text-[18px] lg:text-[28px] text-brand-accent2">
+            Student-Led Clubs and Chapters
+          </h2>
+          <p className="mt-[0.5em] text-[14px] lg:text-[18px]">
+            Our student-led clubs and professional chapters organize talks,
+            reading groups, design critiques, hackathons, and skill-building
+            workshops that cultivate a culture of inquiry and collaboration.
+          </p>
+          <LinkButton
+            href="/student-led/clubs-chapters"
+            className="mt-[2em]"
+            text="Learn More"
+            type="solid"
+          />
+        </div>
       </article>
     </main>
   );

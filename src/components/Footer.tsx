@@ -57,12 +57,10 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/our-work">
-                    <CustomLinkText label="Our Work" />
-                  </Link>
-                </li>
-                <li>
-                  <Link href="">
+                  <Link
+                    target="_blank"
+                    href="https://www.iiitd.ac.in/people/faculty"
+                  >
                     <CustomLinkText label="Faculty" />
                   </Link>
                 </li>
@@ -77,18 +75,21 @@ export default function Footer() {
               </h2>
               <ul className="max-lg:mt-2 text-[16px] lg:text-[24px] space-y-1">
                 <li>
-                  <Link href="">
-                    <CustomLinkText label="Workshops" />
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/about/placements">
-                    <CustomLinkText label="Placements" />
+                  <Link
+                    target="_blank"
+                    href="https://1pxdesignconf.iiitd.edu.in/"
+                  >
+                    <CustomLinkText label="1Pixel Design Conf." />
                   </Link>
                 </li>
                 <li>
                   <Link href="/about/news-events">
                     <CustomLinkText label="Events" />
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/about/placements">
+                    <CustomLinkText label="Placements" />
                   </Link>
                 </li>
               </ul>
@@ -101,7 +102,7 @@ export default function Footer() {
                 CONTACT US
               </h2>
               <div className="grid grid-cols-3 gap-y-4 mt-2">
-                <Link href="mailto:hcd@iiitd.ac.in" aria-label="Email">
+                <Link href="mailto:admin-hcd@iiitd.ac.in" aria-label="Email">
                   <MailIcon className="w-[20px] lg:w-[24px] h-auto aspect-square" />
                 </Link>
                 <Link
@@ -139,7 +140,7 @@ export default function Footer() {
         <section className="flex justify-between items-center flex-wrap gap-x-4 gap-y-2 mt-8 xl:mt-12 text-[13px] lg:text-[20px] opacity-60">
           <div className="flex justify-between gap-[3em] max-xl:w-full">
             <span>Copyright &copy; 2024 IIITD</span>
-            <span className="text-right">Last Updated 12/05/2024</span>
+            <span className="text-right">Last Updated 21/08/2025</span>
           </div>
           <div className="flex justify-between gap-[3em] max-xl:w-full">
             <span>Terms &amp; Conditions</span>

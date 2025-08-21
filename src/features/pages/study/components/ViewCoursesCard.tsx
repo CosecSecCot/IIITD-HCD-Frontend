@@ -1,5 +1,6 @@
 import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export default function ViewCoursesCard() {
   return (
@@ -23,14 +24,15 @@ export default function ViewCoursesCard() {
             three-year study courses.
           </p>
         </div>
-        <button
+        <Link
+          href="/study/courses"
           type="button"
           className="flex items-center text-[12px] lg:text-[18px] gap-[0.5em] cursor-pointer"
           aria-label="View course details"
         >
           <LetterSwapForward label="VIEW DETAILS" staggerDuration={0.005} />
           <ArrowRight className="w-[14px] h-[14px]" />
-        </button>
+        </Link>
       </div>
     </div>
   );

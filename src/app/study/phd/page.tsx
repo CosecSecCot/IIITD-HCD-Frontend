@@ -1,6 +1,10 @@
+import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
+import LinkButton from "@/components/LinkButton";
 import Banner from "@/features/pages/study/components/Banner";
 import Heading from "@/features/pages/study/components/Heading";
 import ViewCoursesCard from "@/features/pages/study/components/ViewCoursesCard";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export default function Page() {
   return (
@@ -21,8 +25,8 @@ export default function Page() {
               @IIITD
             </Heading>
 
-            <div className="mx-auto mt-[32px] lg:mt-[80px] xl:w-[1280px] px-8 flex justify-end">
-              <p className="xl:w-2/3 text-[12px] lg:text-[24px] font-light">
+            <div className="mx-auto mt-[32px] lg:mt-[80px] xl:w-[1280px] px-8">
+              <p className="ml-auto xl:w-2/3 text-[12px] lg:text-[24px] font-light">
                 The PhD program at IIIT-Delhi is focused towards research like
                 any other PhD program – limited coursework to enhance the
                 breadth and depth of a student, followed by focused research.
@@ -35,11 +39,16 @@ export default function Page() {
                 a full selection process before being admitted to the PhD
                 program.
               </p>
+              <LinkButton
+                target="_blank"
+                href="https://iiitd.ac.in/academics/phd"
+                text="FOR MORE DETAILS"
+                className="ml-[33.33%] mt-8"
+              />
             </div>
           </section>
 
           <section className="xl:w-[1280px] mx-auto mt-[64px] lg:mt-[128px] px-8 grid grid-cols-1 lg:grid-cols-2 gap-[1em]">
-            <ViewCoursesCard />
             <ViewCoursesCard />
           </section>
         </article>

@@ -1,4 +1,5 @@
 import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
+import LinkButton from "@/components/LinkButton";
 import Banner from "@/features/pages/about/components/Banner";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
@@ -23,11 +24,6 @@ export default async function Page() {
           students graduate with a strong foundation in computing, design
           methodology, and real-world problem solving—making them highly sought
           after by industry and academia alike.
-          <br />
-          Placements are a reflection of our philosophy:{" "}
-          <strong className="font-medium text-brand-accent2">
-            empowering students to innovate while solving real-world challenges.
-          </strong>
         </p>
 
         <Link
@@ -71,21 +67,17 @@ export default async function Page() {
             </h2>
             <p className="mt-[0.5em] text-[14px] lg:text-[18px]">
               We invite companies, design studios, R&D labs, and startups to
-              collaborate with us in shaping the future of human-centered
-              innovation. Our dedicated Placement Cell ensures smooth
-              recruitment, from pre-placement talks to interviews.
+              engage with our talent pool and explore recruitment opportunities.
+              Our dedicated Placement Cell ensures a seamless recruitment
+              process, from pre-placement talks to interviews, providing an
+              efficient and professional experience for recruiters.
             </p>
-            <Link
+            <LinkButton
               href="/connect"
-              className="font-normal w-full xl:w-[25vw] mt-[2em] flex justify-center items-center gap-[24px] py-[0.75em] text-[12px] xl:text-[18px] bg-brand-accent2 text-white border border-brand-accent2 hover:bg-brand-accent2-130 transition-all duration-200"
-            >
-              <LetterSwapForward
-                label="Connect With Us"
-                staggerDuration={0.005}
-                className="w-max"
-              />
-              <ArrowRight className="w-[12px] lg:w-[18px] h-auto" />
-            </Link>
+              className="mt-[2em]"
+              text="Connect With Us"
+              type="solid"
+            />
           </div>
         </section>
       </article>

@@ -2,7 +2,7 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import ContactCard from "@/features/pages/connect/components/ContactCard";
 import PageHeading from "@/features/pages/connect/components/PageHeading";
-import { Mail } from "lucide-react";
+import { InstagramIcon, Mail } from "lucide-react";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -69,31 +69,17 @@ export default function Page() {
           <div className="mt-[6em] grid grid-cols-1 md:grid-cols-2 gap-y-12 ml-[12.5vw] xl:ml-[37.5vw] w-[75vw] xl:w-[50vw]">
             <ContactCard
               title="General Contact"
-              subtitle="Get in touch with us by email at hcd@iiitd.ac.in"
+              subtitle="Get in touch with us by email at admin-hcd@iiitd.ac.in"
               linkText="Get in Touch"
               linkHref="mailto:hcd.iiitd.ac.in"
               icon={<Mail className="w-[28px] h-auto" />}
             />
             <ContactCard
               title="Social Media"
-              subtitle="Get in touch with us by email at hcd@iiitd.ac.in"
+              subtitle="Follow us and stay updated with our social media."
               linkText="Stay Updated"
-              linkHref="mailto:hcd.iiitd.ac.in"
-              icon={<Mail className="w-[28px] h-auto" />}
-            />
-            <ContactCard
-              title="Frequently Asked"
-              subtitle="Get in touch with us by email at hcd@iiitd.ac.in"
-              linkText="View our FAQs"
-              linkHref="mailto:hcd.iiitd.ac.in"
-              icon={<Mail className="w-[28px] h-auto" />}
-            />
-            <ContactCard
-              title="Business Contact"
-              subtitle="Get in touch with us by email at hcd@iiitd.ac.in"
-              linkText="Connect with Us"
-              linkHref="mailto:hcd.iiitd.ac.in"
-              icon={<Mail className="w-[28px] h-auto" />}
+              linkHref=""
+              icon={<InstagramIcon className="w-[28px] h-auto" />}
             />
           </div>
 
@@ -106,22 +92,6 @@ export default function Page() {
               }
               subtitle="Directions"
               description="Is it a bit tricky to find our building? Yes. Did we design it that way? No."
-            />
-          </div>
-          <div className="mt-[6em] grid grid-cols-1 md:grid-cols-2 gap-y-12 ml-[12.5vw] xl:ml-[37.5vw] w-[75vw] xl:w-[50vw]">
-            <ContactCard
-              title="General Contact"
-              subtitle="Get in touch with us by email at hcd@iiitd.ac.in"
-              linkText="Get in Touch"
-              linkHref="mailto:hcd.iiitd.ac.in"
-              icon={<Mail className="w-[28px] h-auto" />}
-            />
-            <ContactCard
-              title="Social Media"
-              subtitle="Get in touch with us by email at hcd@iiitd.ac.in"
-              linkText="Stay Updated"
-              linkHref="mailto:hcd.iiitd.ac.in"
-              icon={<Mail className="w-[28px] h-auto" />}
             />
           </div>
           <div className="border border-brand-accent2 mt-[6em] ml-[12.5vw] xl:ml-[37.5vw] w-[75vw] xl:w-[50vw]">
