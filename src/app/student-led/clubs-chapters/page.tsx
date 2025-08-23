@@ -1,9 +1,7 @@
-import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
 import LinkButton from "@/components/LinkButton";
 import Heading from "@/features/pages/study/components/Heading";
 import { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Student-Led Initiatives | Clubs & Chapters at HCD IIIT-Delhi",
@@ -36,7 +34,6 @@ export default function Page() {
     <>
       <section
         role="banner"
-        // className="relative w-[100vw] h-[80vh] lg:h-[calc(100vh-128px)] xl:h-[calc(100vh-160px)] text-white flex flex-col justify-center shadow-2xl shadow-white"
         className="relative h-screen text-white flex flex-col justify-center shadow-2xl shadow-white"
       >
         <div className="absolute z-30 top-[38px] lg:top-[80px] right-8 xl:right-[calc(50vw-640px)] text-[12px] lg:text-[20px]">
@@ -45,7 +42,6 @@ export default function Page() {
               return (
                 <span key={index}>
                   <span
-                    // href={"/" + breadcrumbs.slice(0, index + 1).join("/")}
                     className="uppercase"
                     style={{
                       color: `color-mix(in oklab, white ${
@@ -81,28 +77,24 @@ export default function Page() {
             interactions.
           </p>
           <div className="mt-[2em] flex gap-x-[1em] gap-y-[0.5em] flex-wrap">
-            <Link
+            <LinkButton
               target="_blank"
               href="https://sigchi.iiitd.ac.in"
-              className="w-max gap-4 px-[2em] py-[0.5em] text-[12px] lg:text-[18px] rounded-full text-white border border-white backdrop-blur-lg hover:backdrop-blur-2xl transition-all duration-200"
-            >
-              <LetterSwapForward
-                label="ACM SIGCHI STUDENT CHAPTER"
-                staggerDuration={0.005}
-                className="w-max"
-              />
-            </Link>
-            <Link
+              text="IIITD ACM SIGCHI STUDENT CHAPTER"
+              type="transparent"
+              icon={null}
+              rounded
+              className="text-[12px] lg:text-[18px] lg:px-[2em] py-[0.5em]"
+            />
+            <LinkButton
               target="_blank"
               href="https://www.instagram.com/designhub.iiitd"
-              className="w-max gap-4 px-[2em] py-[0.5em] text-[12px] lg:text-[18px] rounded-full text-white border border-white backdrop-blur-lg hover:backdrop-blur-2xl transition-all duration-200"
-            >
-              <LetterSwapForward
-                label="DESIGNHUB SOCIETY"
-                staggerDuration={0.005}
-                className="w-max"
-              />
-            </Link>
+              text="DESIGNHUB SOCIETY"
+              type="transparent"
+              icon={null}
+              rounded
+              className="text-[12px] lg:text-[18px] lg:px-[2em] py-[0.5em]"
+            />
           </div>
         </div>
         <div className="absolute z-20 inset-0 w-full h-full pointer-events-none bg-gradient-to-r from-brand-accent2 via-brand-accent2-130/60 to-black/0" />
@@ -156,6 +148,17 @@ export default function Page() {
                 />
               </div>
             </div>
+            <div>
+              <div>
+                <Image
+                  src="/sigchi/inauguration.jpg"
+                  alt="IIITD ACM SIGCHI Student Chapter Inauguration"
+                  className="mt-[64px] lg:mt-[100px] mx-auto px-8 xl:w-[1280px] h-auto object-cover rounded-2xl"
+                  width={1280}
+                  height={720}
+                />
+              </div>
+            </div>
           </section>
 
           <section className="mt-[64px] lg:mt-[100px]">
@@ -174,6 +177,24 @@ export default function Page() {
                 students to experiment, share ideas, and contribute to impactful
                 design initiatives.
               </p>
+            </div>
+            <div>
+              <div className="mt-[64px] lg:mt-[100px] mx-auto px-8 xl:w-[1280px] flex gap-4">
+                <Image
+                  src="/design-hub/img1.jpeg"
+                  alt="DesignHub Society"
+                  className="flex-1 aspect-auto object-cover rounded-2xl"
+                  width={1280}
+                  height={720}
+                />
+                <Image
+                  src="/design-hub/img2.jpeg"
+                  alt="What DesignHub Does"
+                  className="flex-1 aspect-auto object-cover rounded-2xl"
+                  width={1280}
+                  height={720}
+                />
+              </div>
             </div>
           </section>
         </article>
