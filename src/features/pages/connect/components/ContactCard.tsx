@@ -8,8 +8,8 @@ export default function ContactCard({
   linkHref,
   icon,
 }: {
-  title: string;
-  subtitle: string;
+  title: string | React.ReactNode;
+  subtitle: string | React.ReactNode;
   linkText: string;
   linkHref: string;
   icon: React.ReactNode;

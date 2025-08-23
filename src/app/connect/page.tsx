@@ -47,9 +47,16 @@ export default function Page() {
           <div className="mt-[6em] grid grid-cols-1 md:grid-cols-2 gap-y-12 ml-[12.5vw] xl:ml-[37.5vw] w-[75vw] xl:w-[50vw]">
             <ContactCard
               title="General Contact"
-              subtitle="Get in touch with us by email at admin-hcd@iiitd.ac.in"
-              linkText="Get in Touch"
-              linkHref="mailto:hcd.iiitd.ac.in"
+              subtitle={
+                <span>
+                  Get in touch with us by email at{" "}
+                  <span style={{ whiteSpace: "nowrap" }}>
+                    admin-hcd@iiitd.ac.in
+                  </span>
+                </span>
+              }
+              linkText="admin-hcd@iiitd.ac.in"
+              linkHref="mailto:admin-hcd.iiitd.ac.in"
               icon={<Mail className="w-[28px] h-auto" />}
             />
             <ContactCard
