@@ -172,7 +172,7 @@ function PublicationCard({
             {publication.title}
           </h3>
           <p className="font-helvetica_now_display text-[14px] lg:text-[18px] opacity-80 flex gap-2">
-            <Users className="w-[14px] lg:w-[18px] aspect-square" />{" "}
+            <Users className="w-[14px] lg:w-[18px] aspect-square flex-shrink-0" />{" "}
             {publication.authors.join(", ")}
           </p>
         </div>
