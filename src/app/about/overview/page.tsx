@@ -81,6 +81,26 @@ export default function Page() {
               <li>Inclusive Design & Accessibility</li>
               <li>Augmented & Virtual Reality</li>
             </ul>
+
+            <h2 className="mt-4 font-medium text-[18px] lg:text-[28px] text-brand-accent2">
+              Research & Teaching Labs
+            </h2>
+            <p className="mt-[0.5em] text-[14px] lg:text-[18px]">
+              Our facilities support thorough investigation, fast prototyping,
+              and hands-on evaluation in areas like human–computer interaction,
+              accessibility, extended reality, gaming, intelligent systems, and
+              digital media. In these labs, faculty and students join forces on
+              sponsored initiatives, industry reports, and academic studies,
+              transforming their findings into real-world technologies and
+              peer-reviewed publications.
+            </p>
+            <LinkButton
+              target="_blank"
+              href="https://iiitd.ac.in/sites/default/files/docs/education/2025/2025-January-Minor%20in%20Human%20Centered%20Design.pdf"
+              text="VIEW LABS & FACILITIES"
+              className="mt-4 text-[12px]"
+              type="solid"
+            />
           </div>
 
           {/* <div className="w-full box-border flex justify-around mt-[16px] px-4 lg:px-[2em] py-[1em] bg-brand-accent2-130/[.02] border lg:border-2 border-brand-accent2/50 backdrop-blur-lg">
@@ -115,7 +135,7 @@ export default function Page() {
           <LinkButton
             href="/study/btech"
             text="VIEW FULL CURRICULUM"
-            className="mt-4 w-max"
+            className="mt-4 text-[12px]"
           />
         </section>
 
@@ -136,7 +156,26 @@ export default function Page() {
             target="_blank"
             href="https://iiitd.ac.in/sites/default/files/docs/education/2025/2025-January-Minor%20in%20Human%20Centered%20Design.pdf"
             text="FOR MORE DETAILS"
-            className="mt-4 w-max"
+            className="mt-4 text-[12px]"
+          />
+        </section>
+
+        <section className="my-5 lg:my-12">
+          <h2 className="font-medium text-[18px] lg:text-[24px] text-brand-accent2">
+            PhD in Human-Centered Design
+          </h2>
+          <p className="mt-2 text-[14px] lg:text-[20px]">
+            A research‑intensive doctoral program focused on HCI, accessibility,
+            XR, AI‑driven interaction, and design methods. Candidates complete
+            limited coursework followed by supervised, publication‑oriented
+            research, leveraging interdisciplinary collaboration and advanced
+            facilities to address high‑impact problems.
+          </p>
+
+          <LinkButton
+            href="/study/phd"
+            text="FOR MORE DETAILS"
+            className="mt-4 text-[12px]"
           />
         </section>
 
@@ -151,7 +190,7 @@ export default function Page() {
           </p>
           <LinkButton
             href="/student-led/clubs-chapters"
-            className="mt-[2em] lg:w-max"
+            className="mt-[2em] text-[12px]"
             text="Learn More"
             type="solid"
           />

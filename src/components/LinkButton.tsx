@@ -22,10 +22,10 @@ export default function LinkButton({
       target={target}
       href={href}
       className={cn(
-        className,
         type === "default"
-          ? "font-normal flex justify-center items-center gap-[24px] px-[2em] lg:px-[4em] py-[0.75em] text-[14px] xl:text-[18px] bg-brand-accent2-130/5 hover:bg-brand-accent2 border border-brand-accent2-130 text-brand-accent2-130 hover:text-white backdrop-blur-lg transition-all duration-300"
-          : "font-normal flex justify-center items-center gap-[24px] px-[2em] lg:px-[4em] py-[0.75em] text-[14px] xl:text-[18px] bg-brand-accent2 text-white border border-brand-accent2 hover:bg-brand-accent2-130 hover:text-white backdrop-blur-lg transition-all duration-300"
+          ? "font-normal w-max flex justify-center items-center gap-[24px] px-[2em] lg:px-[4em] py-[0.75em] text-[14px] lg:text-[18px] bg-brand-accent2-130/5 hover:bg-brand-accent2 border border-brand-accent2-130 text-brand-accent2-130 hover:text-white backdrop-blur-lg transition-all duration-300"
+          : "font-normal w-max flex justify-center items-center gap-[24px] px-[2em] lg:px-[4em] py-[0.75em] text-[14px] lg:text-[18px] bg-brand-accent2 text-white border border-brand-accent2 hover:bg-brand-accent2-130 hover:text-white backdrop-blur-lg transition-all duration-300",
+        className
       )}
     >
       <LetterSwapForward

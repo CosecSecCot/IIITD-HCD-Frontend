@@ -55,7 +55,7 @@ export default async function Page() {
           href="/brochure.pdf"
           target="_blank"
           text="View Placement Brochure"
-          className="mt-8 w-max"
+          className="mt-8 text-[12px]"
         />
 
         <CompaniesSection />
@@ -93,7 +93,7 @@ export default async function Page() {
             </p>
             <LinkButton
               href="/connect"
-              className="mt-[2em] lg:w-max"
+              className="mt-[2em] text-[12px]"
               text="Connect With Us"
               type="solid"
             />

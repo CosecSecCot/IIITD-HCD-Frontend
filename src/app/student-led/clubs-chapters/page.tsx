@@ -120,9 +120,14 @@ export default function Page() {
         <article>
           <section>
             <Heading align="left">
-              ACM{" "}
-              <span className="text-brand-accent2 font-semibold">SIGCHI</span>{" "}
-              Student Chapter
+              <span className="leading-none">
+                IIITD{" "}
+                <span className="text-brand-accent2 font-semibold">
+                  ACM SIGCHI
+                </span>{" "}
+                <br className="md:hidden" />
+                Student Chapter
+              </span>
             </Heading>
             <div className="mx-auto mt-[12px] lg:mt-[80px] xl:w-[1280px] px-8 flex flex-col items-end">
               <p className="xl:w-2/3 text-[14px] lg:text-[24px] font-light">
@@ -143,12 +148,11 @@ export default function Page() {
                 ideas and projects and supporting them in conducting HCI
                 research and publishing papers.
               </p>
-              <div className="xl:w-2/3 mt-[32px]">
+              <div className="w-full xl:w-2/3 mt-[32px]">
                 <LinkButton
                   target="_blank"
                   href="https://sigchi.iiitd.ac.in"
                   text="LEARN MORE"
-                  className="w-max"
                 />
               </div>
             </div>
