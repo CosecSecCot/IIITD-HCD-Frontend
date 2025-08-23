@@ -89,7 +89,7 @@ export default function PageReveal() {
       clipPath: "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)",
       duration: 1,
       ease: "power4.inOut",
-      delay: 6.75,
+      delay: 6.5,
       onComplete: () => setAnimationComplete(true),
     });
   });
@@ -164,7 +164,7 @@ export default function PageReveal() {
         {new Array(7).fill(0).map((_, index) => (
           <Image
             key={index}
-            src={`/page-reveal/img0${index + 1}.png`}
+            src={`/page-reveal/img${index + 1}.png`}
             alt=""
             width={1280}
             height={720}
