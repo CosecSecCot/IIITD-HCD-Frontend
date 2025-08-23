@@ -14,9 +14,11 @@ gsap.registerPlugin(useGSAP);
 type NavigationItem = {
   title: string;
   url?: string;
+  external?: boolean;
   children?: {
     title: string;
     url: string;
+    external?: boolean;
   }[];
 };
 
@@ -28,7 +30,7 @@ const navigationMap: NavigationItem[] = [
       { title: "News & Events", url: "/about/news-events" },
       { title: "collaborations", url: "/about/collaborations" },
       { title: "placements", url: "/about/placements" },
-      { title: "Careers", url: "https://iiitd.ac.in/careers/" },
+      { title: "Careers", url: "https://iiitd.ac.in/careers/", external: true },
       { title: "", url: "" },
     ],
   },
@@ -64,6 +66,7 @@ const navigationMap: NavigationItem[] = [
       {
         title: "1Pixel Design Conf.",
         url: "https://1pxdesignconf.iiitd.edu.in/",
+        external: true,
       },
       { title: "", url: "" },
     ],
@@ -75,7 +78,11 @@ const navigationMap: NavigationItem[] = [
       { title: "", url: "" },
       { title: "", url: "" },
       { title: "", url: "" },
-      { title: "faculty", url: "https://www.iiitd.ac.in/people/faculty" },
+      {
+        title: "faculty",
+        url: "https://www.iiitd.ac.in/people/faculty",
+        external: true,
+      },
       { title: "", url: "" },
     ],
   },
@@ -288,6 +295,7 @@ export default function Navbar({
             </div>
             <ul>
               {navigationMap.map((linkGroup, idx) => {
+                const isExternal = linkGroup.external;
                 return (
                   <li
                     key={idx}
@@ -305,6 +313,8 @@ export default function Navbar({
                       id="nav-link-primary"
                       href={linkGroup.url}
                       className="uppercase text-[28px] leading-tight font-medium"
+                      target={isExternal ? "_blank" : undefined}
+                      rel={isExternal ? "noopener noreferrer" : undefined}
                     >
                       {linkGroup.title}
                     </a>
@@ -338,7 +348,13 @@ export default function Navbar({
             {activeGroup &&
               activeGroup.children &&
               activeGroup.children.map((child, idx) => (
-                <a key={idx} href={child.url} className="px-[70px] py-[1em]">
+                <a
+                  key={idx}
+                  href={child.url}
+                  className="px-[70px] py-[1em]"
+                  target={child.external ? "_blank" : undefined}
+                  rel={child.external ? "noopener noreferrer" : undefined}
+                >
                   <span
                     id="nav-link-secondary"
                     key={idx}
@@ -375,6 +391,7 @@ export default function Navbar({
             </div>
             <ul>
               {navigationMap.map((linkGroup, idx) => {
+                const isExternal = linkGroup.external;
                 return (
                   <li
                     key={idx}
@@ -400,6 +417,8 @@ export default function Navbar({
                       id="nav-link-primary"
                       href={linkGroup.url}
                       className="relative z-10 uppercase text-[32px] leading-tight font-medium"
+                      target={isExternal ? "_blank" : undefined}
+                      rel={isExternal ? "noopener noreferrer" : undefined}
                     >
                       {linkGroup.title}
                     </a>
@@ -452,6 +471,8 @@ export default function Navbar({
                       key={idx}
                       href={child.url}
                       className="relative px-[70px] py-[20px] group hover:pl-[80px] transition-all duration-[300ms]"
+                      target={child.external ? "_blank" : undefined}
+                      rel={child.external ? "noopener noreferrer" : undefined}
                     >
                       <span
                         id="nav-link-secondary"
