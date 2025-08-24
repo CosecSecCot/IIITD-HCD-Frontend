@@ -161,7 +161,7 @@ export default function PageReveal() {
         <div className="progress-bar relative top-[-15px] w-0 h-1 bg-white"></div>
       </div>
       <div className="page-reveal-hero-imgs relative w-full h-full overflow-hidden">
-        {new Array(7).fill(0).map((_, index) => (
+        {new Array(6).fill(0).map((_, index) => (
           <Image
             key={index}
             src={`/page-reveal/img${index + 1}.png`}
