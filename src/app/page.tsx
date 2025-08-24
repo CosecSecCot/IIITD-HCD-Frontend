@@ -11,12 +11,11 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
 import TextReveal from "@/features/animation/TextReveal";
+import { Suspense } from "react";
+import NewsSection from "@/features/pages/home/components/NewsSection";
+import CenterUnderline from "@/components/fancy/text/underline-center";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://hcd.iiitd.ac.in"),
-  title: "Human Centred Design • IIIT Delhi",
-  description:
-    "Explore the Department of Human Centred Design at IIIT Delhi — research labs, projects, faculty, programmes and publications driving inclusive, user-centered innovation.",
   keywords: [
     "human centred design",
     "HCD",
@@ -28,39 +27,6 @@ export const metadata: Metadata = {
     "design education",
     "research labs",
   ],
-  authors: [{ name: "IIIT Delhi — Human Centred Design" }],
-  creator: "IIIT Delhi HCD",
-  publisher: "IIIT Delhi",
-  alternates: {
-    canonical: "/",
-  },
-
-  openGraph: {
-    title: "Human Centred Design • IIIT Delhi",
-    description:
-      "Explore the Department of Human Centred Design at IIIT Delhi — research labs, projects, faculty, programmes and publications.",
-    url: "https://hcd.iiitd.ac.in/",
-    siteName: "HCD IIITD",
-    // type: "website",
-    locale: "en-IN",
-    // images: [
-    //   {
-    //     url: "https://hcd.iiitd.ac.in/og-image.png", // replace with your OG image
-    //     width: 1200,
-    //     height: 630,
-    //     alt: "HCD IIITD — Human Centred Design",
-    //   },
-    // ],
-  },
-
-  twitter: {
-    card: "summary_large_image",
-    title: "Human Centred Design • IIIT Delhi",
-    description:
-      "Research labs, projects and programmes from the Department of Human Centred Design, IIIT Delhi.",
-    // images: ["https://hcd.iiitd.ac.in/og-image.png"],
-    creator: "@hcdiiitd",
-  },
 };
 
 const programmeItems = [
@@ -144,8 +110,8 @@ export default function Home() {
                   <div className="relative w-full h-[145px] box-border flex justify-around px-5 lg:px-16 py-3 lg:py-6 gap-8 lg:gap-16 bg-brand-accent2-130/[.02] border lg:border-2 border-brand-accent2/50 backdrop-blur-lg">
                     <div className="absolute inset-0 z-10 w-full h-full bg-brand-accent2/50 mix-blend-overlay" />
                     <Image
-                      src="/page-reveal/img03.png"
-                      alt="R&D Building IIITD"
+                      src="/page-reveal/img3.png"
+                      alt="1Pixel Design Conference"
                       width={376}
                       height={383}
                       className="absolute inset-0 w-full h-full object-cover grayscale"
@@ -227,7 +193,7 @@ export default function Home() {
                     className="absolute inset-0 w-full h-full border-2 lg:border-4 border-brand-accent2 grayscale"
                   />
                 </div>
-                <div className="lg:pr-[12.5vw] lg:text-right">
+                <div className="pr-8 xl:pr-[12.5vw] lg:text-right">
                   <TextReveal>
                     <h1 className="text-[24px] lg:text-[44px] text-brand-accent2 leading-tight">
                       HCD Faculty
@@ -247,6 +213,45 @@ export default function Home() {
                 </div>
               </div>
             </section>
+
+            <Suspense
+              fallback={
+                <section className="xl:w-[1280px] mx-auto px-8">
+                  <div className="flex justify-between items-center">
+                    <h2 className="text-[26px] lg:text-[48px] text-brand-accent2 leading-tight">
+                      News & Events
+                    </h2>
+                    <CenterUnderline>
+                      <Link
+                        href="/about/news-events"
+                        className="flex items-center gap-2 text-brand-accent2 text-[16px] lg:text-[20px]"
+                      >
+                        View All <ArrowRight className="w-[16px] h-auto" />
+                      </Link>
+                    </CenterUnderline>
+                  </div>
+                  <p className="font-light text-[14px] lg:text-[24px]">
+                    Stay up to date with the latest happenings at HCD IIIT
+                    Delhi. This section brings you important announcements,
+                    upcoming events, workshops, guest lectures, and achievements
+                    from our community.
+                  </p>
+                  <div className="mt-[1em] grid md:grid-cols-3 gap-8">
+                    <div className="relative bg-white aspect-square">
+                      <div className="absolute inset-0 w-full h-full bg-brand-gray1/70 animate-pulse rounded-md" />
+                    </div>
+                    <div className="relative bg-white aspect-square">
+                      <div className="absolute inset-0 w-full h-full bg-brand-gray1/70 animate-pulse rounded-md" />
+                    </div>
+                    <div className="relative bg-white aspect-square">
+                      <div className="absolute inset-0 w-full h-full bg-brand-gray1/70 animate-pulse rounded-md" />
+                    </div>
+                  </div>
+                </section>
+              }
+            >
+              <NewsSection />
+            </Suspense>
 
             <section className="relative w-full h-full overflow-hidden">
               <div>
@@ -330,8 +335,8 @@ export default function Home() {
                       </div>
                       <div className="relative w-full h-[145px] box-border flex justify-around px-5 lg:px-16 py-3 lg:py-6 gap-8 lg:gap-16 bg-brand-accent1/[.25] border lg:border-2 border-brand-accent1/50">
                         <Image
-                          src="/page-reveal/img03.png"
-                          alt="R&D Building IIITD"
+                          src="/page-reveal/img3.png"
+                          alt="1Pixel Design Conference"
                           width={376}
                           height={383}
                           className="absolute inset-0 w-full h-full object-cover"
@@ -410,7 +415,7 @@ export default function Home() {
                         className="absolute inset-0 w-full h-full border-2 lg:border-4 border-brand-accent1"
                       />
                     </div>
-                    <div className="lg:pr-[12.5vw] lg:text-right">
+                    <div className="pr-8 xl:pr-[12.5vw] lg:text-right">
                       <h1 className="text-[24px] lg:text-[44px] text-brand-accent1 leading-tight">
                         HCD Faculty
                       </h1>
@@ -434,6 +439,45 @@ export default function Home() {
                     </div>
                   </div>
                 </section>
+
+                <Suspense
+                  fallback={
+                    <section className="xl:w-[1280px] mx-auto px-8">
+                      <div className="flex justify-between items-center">
+                        <h2 className="text-[26px] lg:text-[48px] text-brand-accent1 leading-tight">
+                          News & Events
+                        </h2>
+                        <CenterUnderline className="text-brand-accent1">
+                          <Link
+                            href="/about/news-events"
+                            className="flex items-center gap-2 text-[16px] lg:text-[20px]"
+                          >
+                            View All <ArrowRight className="w-[16px] h-auto" />
+                          </Link>
+                        </CenterUnderline>
+                      </div>
+                      <p className="font-light text-[14px] lg:text-[24px]">
+                        Stay up to date with the latest happenings at HCD IIIT
+                        Delhi. This section brings you important announcements,
+                        upcoming events, workshops, guest lectures, and
+                        achievements from our community.
+                      </p>
+                      <div className="mt-[1em] grid md:grid-cols-3 gap-8">
+                        <div className="relative bg-brand-accent2 aspect-square">
+                          <div className="absolute inset-0 w-full h-full bg-brand-gray1/70 animate-pulse rounded-md" />
+                        </div>
+                        <div className="relative bg-brand-accent2 aspect-square">
+                          <div className="absolute inset-0 w-full h-full bg-brand-gray1/70 animate-pulse rounded-md" />
+                        </div>
+                        <div className="relative bg-brand-accent2 aspect-square">
+                          <div className="absolute inset-0 w-full h-full bg-brand-gray1/70 animate-pulse rounded-md" />
+                        </div>
+                      </div>
+                    </section>
+                  }
+                >
+                  <NewsSection inMask />
+                </Suspense>
 
                 <section>
                   <div>
