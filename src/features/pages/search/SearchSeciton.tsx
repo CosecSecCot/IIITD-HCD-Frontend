@@ -10,6 +10,7 @@ export type SearchContent = {
   title: string;
   description: string;
   link: string;
+  external?: boolean;
 };
 
 export default function SearchSection({
@@ -41,6 +42,13 @@ export default function SearchSection({
           />
         </form>
       </div>
+
+      {filter && (
+        <h2 className="mt-[1em] text-[30px] lg:text-[54px] leading-tight">
+          Search Results For:{" "}
+          <span className="font-light italic">"{filter}"</span>
+        </h2>
+      )}
 
       <section className="mt-[48px]">
         {content.length > 0 ? (
@@ -115,6 +123,7 @@ function SearchCard({
 
       <Link
         href={content.link}
+        target={content.external ? "_blank" : "_self"}
         className="mt-[0.75em] flex items-center text-[14px] lg:text-[18px] gap-[0.5em]"
       >
         <LetterSwapForward label="GO TO PAGE" staggerDuration={0.005} />

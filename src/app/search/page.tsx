@@ -68,7 +68,7 @@ export default async function Page(pageProps: {
     (data): SearchContent => ({
       title: data.Title,
       description: data.Description,
-      link: "/about/news-events/#",
+      link: "/about/news-events/" + data.id,
     })
   );
   const labs = (
@@ -116,7 +116,8 @@ export default async function Page(pageProps: {
     (data): SearchContent => ({
       title: data.Title,
       description: data.LongDescription,
-      link: "/research/publications",
+      link: data.Link,
+      external: true,
     })
   );
 
@@ -150,10 +151,13 @@ export default async function Page(pageProps: {
             subtitle="Find your requirement"
             description="We'd like to think our website has covered it all. But just in case, here are some other ways to help."
           />
+          <div className="mt-[10vh] mx-auto xl:w-[1280px] px-8 mb-[10vh]">
+            <SearchSection
+              content={normalized}
+              filter={searchParams.filter?.trim()}
+            />
+          </div>
         </main>
-        <div className="mx-auto xl:w-[1280px] px-8 mb-[10vh]">
-          <SearchSection content={normalized} filter={searchParams.filter} />
-        </div>
       </div>
       <Footer />
     </>
