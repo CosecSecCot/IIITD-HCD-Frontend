@@ -3,6 +3,7 @@ import Banner from "@/features/pages/about/components/Banner";
 import { Metadata } from "next";
 import Image from "next/image";
 import qs from "qs";
+import { Suspense } from "react";
 
 export const dynamic = "force-dynamic";
 
@@ -59,7 +60,7 @@ export default async function Page() {
           addresses problems at scale.
         </p>
 
-        <section className="mt-5 lg:mt-12">
+        <section className="mt-5 lg:mt-12" id="partner-with-us">
           <div className="relative p-6 lg:p-[40px] border border-brand-accent2 bg-brand-accent2/5 backdrop-blur-lg hover:backdrop-blur-2xl transition-all duration-300">
             <h2 className="font-medium text-[18px] lg:text-[28px] text-brand-accent2">
               Partner with IIIT-Delhi HCD
@@ -75,7 +76,33 @@ export default async function Page() {
               type="solid"
             />
           </div>
-          <CollabroatorsSection />
+
+          <section id="partners" className="mt-5 lg:mt-12">
+            <h2 className="text-[18px] lg:text-[24px] font-medium text-brand-accent2">
+              Our Global Collaborations
+            </h2>
+            <p className="mt-2 text-[14px] lg:text-[20px]">
+              We collaborate with top universities, institutes, and industry
+              partners worldwide—advancing joint research, exchanges,
+              publications, studios, and capstones that translate human-centered
+              innovation into impact.
+            </p>
+            <div className="w-full grid grid-cols-2 lg:grid-cols-3 gap-[2em] p-[2em]">
+              <Suspense
+                fallback={
+                  <>
+                    {new Array(6).fill(0).map(() => (
+                      <div className="relative bg-white mx-auto w-1/2 aspect-square">
+                        <div className="absolute inset-0 w-full h-full bg-brand-gray1/70 animate-pulse rounded-md" />
+                      </div>
+                    ))}
+                  </>
+                }
+              >
+                <CollabroatorsSection />
+              </Suspense>
+            </div>
+          </section>
         </section>
       </article>
     </main>
@@ -103,7 +130,11 @@ async function CollabroatorsSection() {
     data.data.length == 0 ||
     !data.data.Collaborators
   ) {
-    return;
+    return (
+      <p className="col-span-full text-center font-light italic text-[14px] lg:text-[20px] text-black/60">
+        There was some problem loading our collaborators.
+      </p>
+    );
   }
 
   const collaborators: string[] = data.data.Collaborators.map(
@@ -112,27 +143,17 @@ async function CollabroatorsSection() {
   );
 
   return (
-    <section id="partners" className="mt-5 lg:mt-12">
-      <h2 className="text-[18px] lg:text-[24px] font-medium text-brand-accent2">
-        Our Global Collaborations
-      </h2>
-      <p className="mt-2 text-[14px] lg:text-[20px]">
-        We collaborate with top universities, institutes, and industry partners
-        worldwide—advancing joint research, exchanges, publications, studios,
-        and capstones that translate human-centered innovation into impact.
-      </p>
-      <div className="w-full grid grid-cols-2 lg:grid-cols-3 gap-[2em] p-[2em]">
-        {collaborators.map((collaborator, idx) => (
-          <Image
-            key={idx}
-            src={collaborator}
-            alt=""
-            className="mx-auto w-1/2 h-auto aspect-square object-contain"
-            width={1000}
-            height={1000}
-          />
-        ))}
-      </div>
-    </section>
+    <>
+      {collaborators.map((collaborator, idx) => (
+        <Image
+          key={idx}
+          src={collaborator}
+          alt=""
+          className="mx-auto w-1/2 h-auto aspect-square object-contain"
+          width={1000}
+          height={1000}
+        />
+      ))}
+    </>
   );
 }

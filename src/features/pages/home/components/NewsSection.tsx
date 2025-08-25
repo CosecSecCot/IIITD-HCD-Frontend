@@ -98,7 +98,7 @@ export default async function NewsSection({
       <div className="mt-[1em] grid md:grid-cols-3 gap-4 lg:gap-8">
         {newsEvents.length === 0 ? (
           <TextReveal>
-            <p className="col-span-3 text-center font-light italic text-[14px] lg:text-[24px] text-white/60">
+            <p className="col-span-full text-center font-light italic text-[14px] lg:text-[24px] text-white/60">
               No news or events found.
             </p>
           </TextReveal>
@@ -148,7 +148,7 @@ function NewsEventCard({
           </p>
         </div>
         <Link
-          href="/about/news-events"
+          href={`/about/news-events/${content.id}`}
           className="font-normal w-full flex justify-center items-center gap-[24px] py-[0.75em] text-[14px] xl:text-[18px] bg-brand-accent2 text-white"
         >
           <LetterSwapForward
@@ -187,7 +187,7 @@ function NewsEventCard({
         </p>
       </div>
       <Link
-        href="/about/news-events"
+        href={`/about/news-events/${content.id}`}
         className="font-normal w-full flex justify-center items-center gap-[24px] py-[0.75em] text-[14px] xl:text-[18px] bg-brand-accent1 text-black"
       >
         <LetterSwapForward

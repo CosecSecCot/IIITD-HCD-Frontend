@@ -6,6 +6,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import qs from "qs";
+import { Suspense } from "react";
 
 export const dynamic = "force-dynamic";
 
@@ -58,7 +59,30 @@ export default async function Page() {
           className="mt-8 text-[12px]"
         />
 
-        <CompaniesSection />
+        <section className="mt-5 lg:mt-12">
+          <h2 className="font-medium text-[18px] lg:text-[24px] text-brand-accent2">
+            Where Our Graduates Go
+          </h2>
+          <p className="mt-2 text-[14px] lg:text-[20px]">
+            Our students have been placed in top organizations spanning
+            technology, research, and design:
+          </p>
+          <div className="w-full grid grid-cols-2 lg:grid-cols-3 gap-[2em] p-[2em]">
+            <Suspense
+              fallback={
+                <>
+                  {new Array(6).fill(0).map(() => (
+                    <div className="relative bg-white mx-auto w-1/2 aspect-square">
+                      <div className="absolute inset-0 w-full h-full bg-brand-gray1/70 animate-pulse rounded-md" />
+                    </div>
+                  ))}
+                </>
+              }
+            >
+              <CompaniesSection />
+            </Suspense>
+          </div>
+        </section>
 
         {/* <section className="my-5 lg:my-12">
           <div className="relative px-4 py-3 lg:px-8 lg:py-6 border border-brand-accent2 bg-brand-accent2/5 backdrop-blur-lg hover:backdrop-blur-2xl transition-all duration-300">
@@ -120,7 +144,11 @@ async function CompaniesSection() {
   const data = await res?.json();
 
   if (!data || data.error || data.data.length == 0 || !data.data.Companies) {
-    return;
+    return (
+      <p className="col-span-full text-center font-light italic text-[14px] lg:text-[20px] text-black/60">
+        There was some problem loading our recruiters.
+      </p>
+    );
   }
 
   const companies: string[] = data.data.Companies.map(
@@ -129,26 +157,17 @@ async function CompaniesSection() {
   );
 
   return (
-    <section className="mt-5 lg:mt-12">
-      <h2 className="font-medium text-[18px] lg:text-[24px] text-brand-accent2">
-        Where Our Graduates Go
-      </h2>
-      <p className="mt-2 text-[14px] lg:text-[20px]">
-        Our students have been placed in top organizations spanning technology,
-        research, and design:
-      </p>
-      <div className="w-full grid grid-cols-2 lg:grid-cols-3 gap-[2em]">
-        {companies.map((collaborator, idx) => (
-          <Image
-            key={idx}
-            src={collaborator}
-            alt=""
-            className="mx-auto w-1/2 h-auto aspect-square object-contain"
-            width={1000}
-            height={1000}
-          />
-        ))}
-      </div>
-    </section>
+    <>
+      {companies.map((collaborator, idx) => (
+        <Image
+          key={idx}
+          src={collaborator}
+          alt=""
+          className="mx-auto w-1/2 h-auto aspect-square object-contain"
+          width={1000}
+          height={1000}
+        />
+      ))}
+    </>
   );
 }
