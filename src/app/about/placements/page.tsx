@@ -52,7 +52,7 @@ export default async function Page() {
         </p>
 
         <LinkButton
-          href="/brochure.pdf"
+          href="/Placement_Brochure_HCD.pdf"
           target="_blank"
           text="View Placement Brochure"
           className="mt-8 text-[12px]"
