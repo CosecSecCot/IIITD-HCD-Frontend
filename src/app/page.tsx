@@ -15,6 +15,8 @@ import { Suspense } from "react";
 import NewsSection from "@/features/pages/home/components/NewsSection";
 import CenterUnderline from "@/components/fancy/text/underline-center";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   keywords: [
     "human centred design",

@@ -35,7 +35,6 @@ export default async function Page() {
     `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/news-and-events?populate=*`
   ).catch((reason) => console.log("[ERROR]", reason));
   const data = await res?.json();
-  console.log(data);
 
   if (!data || data.error || data.data.length == 0) {
     return (
