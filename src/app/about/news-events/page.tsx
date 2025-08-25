@@ -81,6 +81,8 @@ export default async function Page() {
           subtitle={normalized[0].description}
           imageSrc={normalized[0].img}
           breadcrumbs={["about", "news & Events"]}
+          asLink
+          href={`/about/news-events/${normalized[0].id}`}
         />
         <p className="mt-5 lg:mt-12 text-[14px] lg:text-[20px]">
           Stay up to date with the latest happenings at HCD IIIT Delhi. This
