@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { BlocksContent } from "@strapi/blocks-react-renderer";
 
 export type NewsEvent = {
   id: number;
@@ -13,6 +14,7 @@ export type NewsEvent = {
   title: string;
   description: string;
   img: string;
+  content: BlocksContent | ""; // content can be empty string if not needed
 };
 
 export default function NewsCard({ content }: { content: NewsEvent }) {
