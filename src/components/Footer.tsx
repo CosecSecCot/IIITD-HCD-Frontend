@@ -140,7 +140,7 @@ export default function Footer() {
         <section className="flex justify-between items-center flex-wrap gap-x-4 gap-y-2 mt-8 xl:mt-12 text-[13px] lg:text-[20px] opacity-60">
           <div className="flex justify-between gap-[3em] max-xl:w-full">
             <span>Copyright &copy; 2024 IIITD</span>
-            <span className="text-right">Last Updated 21/08/2025</span>
+            <span className="text-right">Last Updated 26/08/2025</span>
           </div>
           <div className="flex justify-between gap-[3em] max-xl:w-full">
             <span>Terms &amp; Conditions</span>

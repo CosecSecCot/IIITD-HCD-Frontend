@@ -5,3 +5,16 @@ services:
     restart: always
     ports:
       - "3000:3000"
+    env_file: .env
+    environment:
+      NEXT_PUBLIC_STRAPI_URL: ${NEXT_PUBLIC_STRAPI_URL}
+      NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL}   
+
+  watchtower:
+    image: containrrr/watchtower:latest
+    container_name: watchtower-frontend
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --interval 30 hcd-frontend
+    # “hcd-frontend” tells Watchtower to only watch & update the hcd-frontend service
