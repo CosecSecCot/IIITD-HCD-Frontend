@@ -10,6 +10,7 @@ const anybody = Anybody({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://hcd.iiitd.ac.in"),
   title: "Human-Centered Design at IIIT-Delhi | Official Site",
   description:
     "HCD at IIIT-Delhi—programs in CSD & PhD, HCI/XR research, labs, projects, news, and admissions. Design × computing for real-world impact.",
