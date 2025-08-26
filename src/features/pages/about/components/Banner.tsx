@@ -1,8 +1,12 @@
+"use client";
+
 import TextReveal from "@/features/animation/TextReveal";
-import { ArrowUpRight, Search } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Search } from "lucide-react";
 import Image from "next/image";
 import LinkButton from "@/components/LinkButton"; // <-- import LinkButton
 import Link from "next/link";
+import CenterUnderline from "@/components/fancy/text/underline-center";
+import { useRouter } from "next/navigation";
 
 export default function Banner({
   title,
@@ -21,6 +25,8 @@ export default function Banner({
   asLink?: boolean;
   href?: string;
 }) {
+  const router = useRouter();
+
   const bannerContent = (
     <section
       role="banner"
@@ -83,7 +89,17 @@ export default function Banner({
 
   return (
     <>
-      <Breadcrumbs breadcrumbs={breadcrumbs} />
+      <div className="flex gap-[1em] justify-between items-end">
+        <Breadcrumbs breadcrumbs={breadcrumbs} />
+        <Link
+          href=""
+          className="flex gap-[0.5em] flex-shrink-0 text-[12px] lg:text-[20px] text-brand-accent2 font-normal"
+          onClick={() => router.back()}
+        >
+          <ArrowLeft className="w-[14px] lg:w-[24px] h-auto" />
+          <CenterUnderline>Go Back</CenterUnderline>
+        </Link>
+      </div>
       {asLink && href ? (
         <Link href={href} className="relative group">
           <div className="absolute inset-0 z-40 rounded-xl lg:rounded-[30px] group-hover:bg-black/30 transition-colors duration-200" />
