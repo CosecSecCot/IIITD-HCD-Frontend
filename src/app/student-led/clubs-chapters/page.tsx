@@ -36,34 +36,34 @@ export default function Page() {
         role="banner"
         className="relative h-screen text-white flex flex-col justify-center shadow-2xl shadow-white"
       >
-        <div className="absolute z-30 top-[38px] lg:top-[80px] right-8 xl:right-[calc(50vw-640px)] text-[12px] lg:text-[20px]">
-          {breadcrumbs.map((breadcrumb, index) => {
-            if (index < breadcrumbs.length - 1) {
-              return (
-                <span key={index}>
-                  <span
-                    className="uppercase"
-                    style={{
-                      color: `color-mix(in oklab, white ${
-                        ((index + 1) / breadcrumbs.length) * 100
-                      }%, transparent)`,
-                    }}
-                  >
-                    {breadcrumb}
-                    {index == breadcrumbs.length - 1 ? "" : " / "}
+        <div className="relative z-30 mx-auto xl:w-[1280px] p-8">
+          <div className="absolute z-30 -top-[128px] lg:-top-[100px] right-8 text-[12px] lg:text-[20px]">
+            {breadcrumbs.map((breadcrumb, index) => {
+              if (index < breadcrumbs.length - 1) {
+                return (
+                  <span key={index}>
+                    <span
+                      className="uppercase"
+                      style={{
+                        color: `color-mix(in oklab, white ${
+                          ((index + 1) / breadcrumbs.length) * 100
+                        }%, transparent)`,
+                      }}
+                    >
+                      {breadcrumb}
+                      {index == breadcrumbs.length - 1 ? "" : " / "}
+                    </span>
                   </span>
+                );
+              }
+
+              return (
+                <span key={index} className="uppercase">
+                  {breadcrumb}
                 </span>
               );
-            }
-
-            return (
-              <span key={index} className="uppercase">
-                {breadcrumb}
-              </span>
-            );
-          })}
-        </div>
-        <div className="relative z-30 mx-auto xl:w-[1280px] p-8">
+            })}
+          </div>
           <p className="text-[18px] lg:text-[30px] text-white/60 leading-tight uppercase">
             Student-Led Initiatives
           </p>
@@ -148,12 +148,21 @@ export default function Page() {
                 />
               </div>
             </div>
-            <div>
+            <div className="mt-[64px] lg:mt-[100px] mx-auto px-8 xl:w-[1280px] grid lg:grid-cols-3 gap-4">
               <div>
+                <Image
+                  src="/sigchi/logo.png"
+                  alt="IIITD ACM SIGCHI Student Chapter Logo"
+                  className="w-full h-auto object-cover rounded-2xl"
+                  width={1280}
+                  height={720}
+                />
+              </div>
+              <div className="lg:col-span-2">
                 <Image
                   src="/sigchi/inauguration.jpg"
                   alt="IIITD ACM SIGCHI Student Chapter Inauguration"
-                  className="mt-[64px] lg:mt-[100px] mx-auto px-8 xl:w-[1280px] h-auto object-cover rounded-2xl"
+                  className="w-full h-auto object-cover rounded-2xl"
                   width={1280}
                   height={720}
                 />
@@ -179,7 +188,7 @@ export default function Page() {
               </p>
             </div>
             <div>
-              <div className="mt-[64px] lg:mt-[100px] mx-auto px-8 xl:w-[1280px] flex gap-4">
+              <div className="mt-[64px] lg:mt-[100px] mx-auto px-8 xl:w-[1280px] grid lg:grid-cols-2 gap-4">
                 <Image
                   src="/design-hub/img1.jpeg"
                   alt="DesignHub Society"
