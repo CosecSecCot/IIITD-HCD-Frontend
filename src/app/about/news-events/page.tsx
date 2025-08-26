@@ -3,6 +3,7 @@ import NewsCard, {
   NewsEvent,
 } from "@/features/pages/about/news-events/components/NewsCard";
 import { Metadata } from "next";
+import qs from "qs";
 
 export const dynamic = "force-dynamic";
 
@@ -31,8 +32,16 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
+  const query = qs.stringify(
+    {
+      sort: ["Date:desc"],
+      populate: "*",
+    },
+    { encodeValuesOnly: true }
+  );
+
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/news-and-events?populate=*`
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/news-and-events?${query}`
   ).catch((reason) => console.log("[ERROR]", reason));
   const data = await res?.json();
 
