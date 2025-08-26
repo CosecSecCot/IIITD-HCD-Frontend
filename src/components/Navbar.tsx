@@ -384,7 +384,7 @@ export default function Navbar({
             <div className="absolute top-0 right-0 flex justify-end px-[70px] py-[60px]">
               <button
                 onClick={closeSidebar}
-                className="flex items-center gap-[2px] border border-white rounded-full p-[1em] hover:bg-white hover:text-[#096964] transition-all ease-out duration-150"
+                className="flex items-center gap-[2px] border border-white rounded-full p-[1em] cursor-pointer hover:bg-white hover:text-[#096964] transition-all ease-out duration-150"
               >
                 <X size={40} />
               </button>
