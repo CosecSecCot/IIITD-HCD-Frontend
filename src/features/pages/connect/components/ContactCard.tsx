@@ -6,12 +6,14 @@ export default function ContactCard({
   subtitle,
   linkText,
   linkHref,
+  external = false,
   icon,
 }: {
   title: string | React.ReactNode;
   subtitle: string | React.ReactNode;
   linkText: string;
   linkHref: string;
+  external?: boolean;
   icon: React.ReactNode;
 }) {
   return (
@@ -22,6 +24,8 @@ export default function ContactCard({
       </div>
       <Link
         href={linkHref}
+        target={external ? "_blank" : "_self"}
+        rel={external ? "noopener noreferrer" : undefined}
         className="flex items-center gap-[0.5em] text-[18px] lg:text-[24px] font-medium hover:text-brand-accent2"
       >
         <CustomLinkText label={linkText} />

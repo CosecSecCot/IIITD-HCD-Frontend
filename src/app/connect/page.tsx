@@ -63,7 +63,8 @@ export default function Page() {
               title="Social Media"
               subtitle="Follow us and stay updated with our social media."
               linkText="Stay Updated"
-              linkHref=""
+              linkHref="https://www.instagram.com/hcdiiitd"
+              external
               icon={<InstagramIcon className="w-[28px] h-auto" />}
             />
             <ContactCard
