@@ -3,6 +3,8 @@ import Banner from "@/features/pages/about/components/Banner";
 import { NewsEvent } from "@/features/pages/about/news-events/components/NewsCard";
 import { notFound } from "next/navigation";
 
+export const dynamic = "force-dynamic";
+
 export default async function Page({ params }: { params: { slug: string } }) {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/news-and-events/${params.slug}?populate=*`
