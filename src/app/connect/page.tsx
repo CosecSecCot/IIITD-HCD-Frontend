@@ -66,6 +66,40 @@ export default function Page() {
               linkHref=""
               icon={<InstagramIcon className="w-[28px] h-auto" />}
             />
+            <ContactCard
+              title="Placement Cell Student Representative"
+              subtitle={
+                <span>
+                  Contact Pankhuri Singh at{" "}
+                  <span style={{ whiteSpace: "nowrap" }}>
+                    pankhuri22348@iiitd.ac.in
+                  </span>
+                </span>
+              }
+              linkText="pankhuri22348@iiitd.ac.in"
+              linkHref="mailto:pankhuri22348@iiitd.ac.in"
+              icon={<Mail className="w-[28px] h-auto" />}
+            />
+            <ContactCard
+              title={
+                <span>
+                  Student Senate
+                  <br />
+                  Representative
+                </span>
+              }
+              subtitle={
+                <span>
+                  Contact Omansh Arora at{" "}
+                  <span style={{ whiteSpace: "nowrap" }}>
+                    omansh22342@iiitd.ac.in
+                  </span>
+                </span>
+              }
+              linkText="omansh22342@iiitd.ac.in"
+              linkHref="mailto:omansh22342@iiitd.ac.in"
+              icon={<Mail className="w-[28px] h-auto" />}
+            />
           </div>
 
           <div className="mt-[80px] lg:mt-[180px]">

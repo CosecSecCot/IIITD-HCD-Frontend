@@ -15,12 +15,14 @@ export default function ContactCard({
   icon: React.ReactNode;
 }) {
   return (
-    <div className="pr-[1em]">
-      <h3 className="text-[18px] lg:text-[24px] font-semibold">{title}</h3>
-      <p className="text-[16px] lg:text-[20px]">{subtitle}</p>
+    <div className="pr-[1em] flex flex-col gap-[1em] justify-between">
+      <div>
+        <h3 className="text-[18px] lg:text-[24px] font-semibold">{title}</h3>
+        <p className="text-[16px] lg:text-[20px]">{subtitle}</p>
+      </div>
       <Link
         href={linkHref}
-        className="mt-[1em] flex items-center gap-[0.5em] text-[18px] lg:text-[24px] font-medium hover:text-brand-accent2"
+        className="flex items-center gap-[0.5em] text-[18px] lg:text-[24px] font-medium hover:text-brand-accent2"
       >
         <CustomLinkText label={linkText} />
         {icon}
