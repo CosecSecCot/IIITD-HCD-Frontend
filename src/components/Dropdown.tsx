@@ -26,15 +26,34 @@ export default function Dropdown({
         <LetterSwapForward label={selected || label} staggerDuration={0.005} />
 
         <ChevronDown
-          className={`absolute top-[calc(50%-9px)] lg:top-[calc(50%-12px)] right-[1em] w-[18px] h-[18px] lg:w-[24px] lg:h-[24px] ml-2 transition-transform ${open ? "rotate-180" : ""}`}
+          className={`absolute top-[calc(50%-9px)] lg:top-[calc(50%-12px)] right-[1em] w-[18px] h-[18px] lg:w-[24px] lg:h-[24px] ml-2 transition-transform ${
+            open ? "rotate-180" : ""
+          }`}
         />
       </button>
       {open && (
-        <ul className="absolute z-[9995] left-0 w-full bg-white border border-black/30 shadow-md">
+        <ul
+          onWheel={(e) => {
+            // Prevent page scroll when scrolling inside dropdown
+            const target = e.currentTarget;
+            if (
+              (e.deltaY < 0 && target.scrollTop === 0) || // scrolling up at top
+              (e.deltaY > 0 &&
+                target.scrollHeight - target.scrollTop <= target.clientHeight) // scrolling down at bottom
+            ) {
+              // allow page scroll
+              return;
+            }
+            e.stopPropagation();
+          }}
+          className="absolute z-[9995] left-0 w-full bg-white border border-black/30 shadow-md max-h-[12.75em] overflow-y-scroll"
+        >
           {options.map((opt) => (
             <li
               key={opt}
-              className={`px-[2em] py-[0.5em] hover:bg-brand-gray1/30 cursor-pointer text-[12px] lg:text-[18px] uppercase ${selected === opt ? "bg-brand-gray1/50" : ""}`}
+              className={`px-[2em] py-[0.5em] hover:bg-brand-gray1/30 cursor-pointer text-[12px] lg:text-[18px] uppercase ${
+                selected === opt ? "bg-brand-gray1/50" : ""
+              }`}
               onClick={() => {
                 onClickAction(opt);
                 setOpen(false);

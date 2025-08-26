@@ -43,7 +43,9 @@ export default function PublicationsSection({
   const categoryOptions = useMemo(
     () => [
       "ALL CATEGORIES",
-      ...Array.from(new Set(publications.map((pub) => pub.category))),
+      ...Array.from(
+        new Set(publications.map((pub) => pub.category.trim()))
+      ).sort(),
     ],
     [publications]
   );
@@ -51,7 +53,11 @@ export default function PublicationsSection({
   const researchAreaOptions = useMemo(
     () => [
       "ALL RESEARCH AREAS",
-      ...Array.from(new Set(publications.flatMap((pub) => pub.tags))),
+      ...Array.from(
+        new Set(
+          publications.flatMap((pub) => pub.tags.map((tag) => tag.trim()))
+        )
+      ).sort(),
     ],
     [publications]
   );
