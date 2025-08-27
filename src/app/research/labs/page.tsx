@@ -1,4 +1,4 @@
-import { Search } from "lucide-react";
+import { GraduationCap, Microscope, Search } from "lucide-react";
 import Banner from "@/features/pages/research/components/Banner";
 import LabsSection, {
   Lab,
@@ -94,11 +94,17 @@ export default async function Page(pageProps: {
               href="/research/labs?filter=Research"
               text="RESEARCH LABS"
               active={searchParams.filter !== "Teaching"}
+              icon={
+                <Microscope className="w-[12px] lg:w-[16px] aspect-square h-auto" />
+              }
             />
             <Button
               href="/research/labs?filter=Teaching"
               text="TEACHING LABS"
               active={searchParams.filter === "Teaching"}
+              icon={
+                <GraduationCap className="w-[12px] lg:w-[16px] aspect-square h-auto" />
+              }
             />
           </div>
           <LabsSection
@@ -119,10 +125,12 @@ function Button({
   href,
   text,
   active,
+  icon,
 }: {
   href: string;
   text: string;
   active: boolean;
+  icon?: React.ReactNode;
 }) {
   return (
     <Link
@@ -132,7 +140,11 @@ function Button({
       }`}
       scroll={false}
     >
-      <Search className="w-[12px] lg:w-[16px] aspect-square h-auto" />
+      {icon ? (
+        icon
+      ) : (
+        <Search className="w-[12px] lg:w-[16px] aspect-square h-auto" />
+      )}
       <LetterSwapForward label={text} staggerDuration={0.005} />
     </Link>
   );

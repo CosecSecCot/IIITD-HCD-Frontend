@@ -76,6 +76,7 @@ export default async function Page(pageProps: {
       };
     }
   );
+  courses.sort((a, b) => a.title.localeCompare(b.title));
 
   return (
     <>

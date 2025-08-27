@@ -1,7 +1,7 @@
 "use client";
 
 import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
-import { ArrowRight, Search } from "lucide-react";
+import { ArrowRight, GraduationCap, Search, Shuffle } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -45,11 +45,21 @@ export default function CoursesSection({
           active={filter !== "Core" && filter !== "Elective"}
           label={"All"}
         />
-        <Button text="Core Courses" active={filter === "Core"} label={"Core"} />
+        <Button
+          text="Core Courses"
+          active={filter === "Core"}
+          label={"Core"}
+          icon={
+            <GraduationCap className="w-[12px] lg:w-[16px] aspect-square h-auto" />
+          }
+        />
         <Button
           text="Elective Courses"
           active={filter === "Elective"}
           label={"Elective"}
+          icon={
+            <Shuffle className="w-[12px] lg:w-[16px] aspect-square h-auto" />
+          }
         />
       </div>
       <section className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 mt-[30px]">
@@ -78,10 +88,12 @@ function Button({
   text,
   active,
   label,
+  icon,
 }: {
   text: string;
   active: boolean;
   label: string;
+  icon?: React.ReactNode;
 }) {
   return (
     <Link
@@ -91,7 +103,11 @@ function Button({
       href={`/study/courses?filter=${label}`}
       scroll={false}
     >
-      <Search className="w-[12px] lg:w-[16px] aspect-square h-auto" />
+      {icon ? (
+        icon
+      ) : (
+        <Search className="w-[12px] lg:w-[16px] aspect-square h-auto" />
+      )}
       <LetterSwapForward label={text} staggerDuration={0.005} />
     </Link>
   );

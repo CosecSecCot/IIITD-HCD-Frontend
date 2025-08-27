@@ -20,7 +20,7 @@ export default function Banner({
   title: string;
   subtitle: string;
   imageSrc: string;
-  links?: { title: string; href: string }[];
+  links?: { title: string; href: string; icon?: React.ReactNode }[];
   breadcrumbs: string[];
   asLink?: boolean;
   href?: string;
@@ -54,7 +54,11 @@ export default function Banner({
                 type="solid"
                 rounded
                 icon={
-                  <Search className="w-[12px] lg:w-[18px] aspect-square h-auto" />
+                  links[0].icon ? (
+                    links[0].icon
+                  ) : (
+                    <Search className="w-[12px] lg:w-[18px] aspect-square h-auto" />
+                  )
                 }
                 iconPosition="right"
                 className="w-max px-[2em] lg:px-[2em] py-[0.5em]"
@@ -67,7 +71,11 @@ export default function Banner({
                 type="transparent"
                 rounded
                 icon={
-                  <Search className="w-[12px] lg:w-[18px] aspect-square h-auto" />
+                  links[1].icon ? (
+                    links[1].icon
+                  ) : (
+                    <Search className="w-[12px] lg:w-[18px] aspect-square h-auto" />
+                  )
                 }
                 iconPosition="right"
                 className="w-max px-[2em] lg:px-[2em] py-[0.5em]"

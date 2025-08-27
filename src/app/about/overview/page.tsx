@@ -1,5 +1,6 @@
 import LinkButton from "@/components/LinkButton";
 import Banner from "@/features/pages/about/components/Banner";
+import { BookOpen, Newspaper } from "lucide-react";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -43,8 +44,20 @@ export default function Page() {
           imageSrc={"/rnd-building.png"}
           breadcrumbs={["about", "overview"]}
           links={[
-            { title: "View Study Options", href: "/study/btech" },
-            { title: "News & Events", href: "/about/news-events" },
+            {
+              title: "View Study Options",
+              href: "/study/btech",
+              icon: (
+                <BookOpen className="w-[12px] lg:w-[18px] aspect-square h-auto" />
+              ),
+            },
+            {
+              title: "News & Events",
+              href: "/about/news-events",
+              icon: (
+                <Newspaper className="w-[12px] lg:w-[18px] aspect-square h-auto" />
+              ),
+            },
           ]}
         />
 

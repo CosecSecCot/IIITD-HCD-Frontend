@@ -34,7 +34,7 @@ const programmeTable: string[][] = [
     "Introduction to Programming",
     "Data structures and Algorithms",
     "Operating Systems",
-    "Algorithm Design and Analysis / Algorithm Design and Analysis (B)*",
+    "Algorithm Design and Analysis",
     "Computer Networks",
   ],
   [

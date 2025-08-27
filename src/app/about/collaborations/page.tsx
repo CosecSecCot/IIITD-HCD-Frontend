@@ -1,5 +1,6 @@
 import LinkButton from "@/components/LinkButton";
 import Banner from "@/features/pages/about/components/Banner";
+import { Handshake } from "lucide-react";
 import { Metadata } from "next";
 import Image from "next/image";
 import qs from "qs";
@@ -40,7 +41,13 @@ export default async function Page() {
           subtitle="We partner with leading universities, research institutes, and industry labs worldwide to advance human-centered innovation in computing, design, and technology."
           imageSrc={"/aid-lab-nu-visit.jpeg"}
           links={[
-            { title: "Become a Partner", href: "#partner-with-us" },
+            {
+              title: "Become a Partner",
+              href: "#partner-with-us",
+              icon: (
+                <Handshake className="w-[12px] lg:w-[18px] aspect-square h" />
+              ),
+            },
             { title: "Explore Collaborations", href: "#partners" },
           ]}
           breadcrumbs={["about", "collaborations"]}
@@ -60,7 +67,10 @@ export default async function Page() {
           addresses problems at scale.
         </p>
 
-        <section className="mt-5 lg:mt-12" id="partner-with-us">
+        <section
+          id="partner-with-us"
+          className="mt-5 lg:mt-12 scroll-mt-[20vh]"
+        >
           <div className="relative p-6 lg:p-[40px] border border-brand-accent2 bg-brand-accent2/5 backdrop-blur-lg hover:backdrop-blur-2xl transition-all duration-300">
             <h2 className="font-medium text-[18px] lg:text-[28px] text-brand-accent2">
               Partner with IIIT-Delhi HCD
@@ -77,7 +87,7 @@ export default async function Page() {
             />
           </div>
 
-          <section id="partners" className="mt-5 lg:mt-12">
+          <section id="partners" className="mt-5 lg:mt-12 scroll-mt-[20vh]">
             <h2 className="text-[18px] lg:text-[24px] font-medium text-brand-accent2">
               Our Global Collaborations
             </h2>
