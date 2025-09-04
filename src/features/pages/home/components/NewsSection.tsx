@@ -25,7 +25,7 @@ export default async function NewsSection({
       (item: any): NewsEvent => ({
         id: item.documentId,
         type: item.Type,
-        date: new Date(item.publishedAt),
+        date: new Date(item.Date),
         title: item.Title,
         description: item.Description,
         img: `${process.env.NEXT_PUBLIC_STRAPI_URL}${item.CoverImage.url}`,
