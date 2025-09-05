@@ -210,7 +210,7 @@ export default function Navbar({
             <Image
               src={"/logo-with-text-large.svg"}
               alt="IIITD HCD Department Logo"
-              className="w-auto h-[104px] max-lg:hidden "
+              className="w-auto h-[84px] max-lg:hidden "
               width={352}
               height={116}
               priority
