@@ -50,12 +50,12 @@ export default async function NewsSection({
             </Link>
           </CenterUnderline>
         </div>
-        <p className="font-light text-[14px] lg:text-[24px]">
+        <p className="font-light text-[14px] lg:text-[28px]">
           Stay up to date with the latest happenings at HCD IIIT Delhi. This
           section brings you important announcements, upcoming events,
           workshops, guest lectures, and achievements from our community.
         </p>
-        <div className="mt-[1em] grid md:grid-cols-3 gap-4 lg:gap-8">
+        <div className="mt-[4em] grid md:grid-cols-3 gap-4 lg:gap-8">
           {newsEvents.length === 0 ? (
             <TextReveal>
               <p className="col-span-3 text-center font-light italic text-[14px] lg:text-[24px] text-black/60">
@@ -120,7 +120,7 @@ function NewsEventCard({
     return (
       <div className="flex flex-col justify-between gap-[1em]">
         <div className="relative group">
-          <div className="absolute z-10 inset-0 bg-brand-accent2/50 mix-blend-overlay" />
+          <div className="absolute z-10 inset-0 bg-brand-accent2/50 group-hover:bg-transparent mix-blend-overlay transition-colors duration-200" />
           <Image
             src={content.img}
             alt={`${content.title} image`}

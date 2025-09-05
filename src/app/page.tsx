@@ -64,7 +64,7 @@ export default function Home() {
               <div className="font-light mt-[48px] lg:mt-[90px] mx-auto xl:w-[75vw] px-8 flex max-lg:flex-col justify-between gap-5 lg:gap-8">
                 <div className="flex-1">
                   <TextReveal>
-                    <p className="text-[16px] lg:text-[36px] text-brand-accent2">
+                    <p className="text-[16px] lg:text-[32px] text-brand-accent2">
                       <LetterSwapForward
                         label="Human Centred Design"
                         staggerDuration={0.005}
@@ -73,7 +73,7 @@ export default function Home() {
                     </p>
                   </TextReveal>
                   <TextReveal>
-                    <h1 className="text-[36px] lg:text-[96px] leading-none lg:leading-tight">
+                    <h1 className="text-[36px] lg:text-[86px] leading-none lg:leading-tight">
                       Where{" "}
                       <span className="font-normal text-brand-accent2">
                         <LetterSwapForward
@@ -87,7 +87,7 @@ export default function Home() {
                     </h1>
                   </TextReveal>
                   <TextReveal>
-                    <blockquote className="mt-[1em] text-[14px] lg:text-[28px] italic leading-tight">
+                    <blockquote className="mt-[1em] text-[14px] lg:text-[28px] leading-tight">
                       We are a collective of diverse thinkers reimagining how
                       human-technology interactions.
                     </blockquote>
@@ -128,7 +128,7 @@ export default function Home() {
                   </div>
                   <Link
                     href="/study/btech"
-                    className="font-normal w-max flex justify-center items-center gap-[1em] px-[1.5em] py-[1em] text-[12px] lg:text-[24px] text-white bg-brand-accent2 hover:bg-brand-accent2-130 transition-colors duration-200"
+                    className="font-normal md:w-[400px] flex justify-center items-center gap-[1em] px-[1.5em] py-[1em] text-[12px] lg:text-[20px] text-white bg-brand-accent2 hover:bg-brand-accent2-130 transition-colors duration-200"
                   >
                     <LetterSwapForward
                       label="View Study Options"
@@ -144,9 +144,9 @@ export default function Home() {
             <section className="relative w-full h-full overflow-hidden">
               <div className="relative z-10 mx-auto xl:w-[75vw] px-8 space-y-4 lg:space-y-[72px]">
                 <TextReveal>
-                  <h2 className="text-[28px] lg:text-[94px] leading-tight">
+                  <h2 className="font-light text-[28px] lg:text-[86px] leading-tight">
                     The Department of <br />
-                    <span className="text-brand-accent2">
+                    <span className="text-brand-accent2 font-normal">
                       <LetterSwapForward
                         label="Human Centred Design"
                         staggerDuration={0.005}
@@ -156,7 +156,7 @@ export default function Home() {
                   </h2>
                 </TextReveal>
                 <TextReveal>
-                  <p className="lg:ml-auto lg:w-2/3 font-light lg:text-right text-[14px] lg:text-[34px] leading-tight">
+                  <p className="lg:ml-auto lg:w-2/3 font-light lg:text-right text-[14px] lg:text-[28px] leading-tight">
                     We are a collective of diverse thinkers reimagining how{" "}
                     <span className="font-normal text-brand-accent2">
                       human-technology interactions
@@ -178,7 +178,7 @@ export default function Home() {
                 </div>
                 <div className="flex justify-between gap-[1em] lg:gap-[8em]">
                   <TextReveal>
-                    <p className="lg:w-1/2 font-light text-[14px] lg:text-[30px] leading-tight">
+                    <p className="lg:w-1/2 font-light text-[14px] lg:text-[28px] leading-tight">
                       We are a collective of diverse thinkers reimagining how{" "}
                       <span className="font-normal text-brand-accent2">
                         human-technology interactions
@@ -189,9 +189,9 @@ export default function Home() {
                     </p>
                   </TextReveal>
                   <TextReveal>
-                    <p className="max-lg:hidden w-1/2 text-right text-[64px] leading-tight">
+                    <p className="max-lg:hidden w-1/2 text-right text-[52px] leading-tight">
                       Welcome to a new era of HCD, powered{" "}
-                      <span className="font-light italic text-brand-accent2">
+                      <span className="font-light text-brand-accent2">
                         by you.
                       </span>
                     </p>
@@ -220,7 +220,7 @@ export default function Home() {
                     </h1>
                   </TextReveal>
                   <TextReveal>
-                    <p className="font-light text-[14px] lg:text-[24px] leading-tight">
+                    <p className="mt-[0.5em] font-light text-[14px] lg:text-[28px] leading-tight">
                       Our faculty, numbering over 200, is dedicated to
                       pioneering innovative solutions for challenges that arise
                       with each advancement.
@@ -257,7 +257,7 @@ export default function Home() {
                       </Link>
                     </CenterUnderline>
                   </div>
-                  <p className="font-light text-[14px] lg:text-[24px]">
+                  <p className="font-light text-[14px] lg:text-[28px]">
                     Stay up to date with the latest happenings at HCD IIIT
                     Delhi. This section brings you important announcements,
                     upcoming events, workshops, guest lectures, and achievements
@@ -287,7 +287,7 @@ export default function Home() {
                     Mission &amp; Vision
                   </span>
                 </Heading>
-                <p className="max-lg:hidden font-light mt-[1em] mx-auto xl:w-[75vw] px-8 text-center text-[24px]">
+                <p className="max-lg:hidden font-light mt-[1em] mx-auto xl:w-[75vw] px-8 text-center text-[28px]">
                   India has already established itself as the software hub of
                   the world due to the large number of engineers that it
                   produces. There is now an increasing and persistent demand of
