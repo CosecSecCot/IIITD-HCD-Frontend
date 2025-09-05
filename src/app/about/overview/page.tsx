@@ -108,8 +108,7 @@ export default function Page() {
               peer-reviewed publications.
             </p>
             <LinkButton
-              target="_blank"
-              href="https://iiitd.ac.in/sites/default/files/docs/education/2025/2025-January-Minor%20in%20Human%20Centered%20Design.pdf"
+              href="/research/labs"
               text="VIEW LABS & FACILITIES"
               className="mt-4 text-[12px]"
               type="solid"
