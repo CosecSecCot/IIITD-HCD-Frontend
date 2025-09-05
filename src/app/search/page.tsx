@@ -68,7 +68,7 @@ export default async function Page(pageProps: {
     (data): SearchContent => ({
       title: data.Title,
       description: data.Description,
-      link: "/about/news-events/" + data.id,
+      link: "/about/news-events/" + data.documentId,
     })
   );
   const labs = (
@@ -103,29 +103,29 @@ export default async function Page(pageProps: {
       link: "/research/projects",
     })
   );
-  const publications = (
-    await getData("/api/publications", {
-      filters: {
-        $or: [
-          { Title: { $containsi: searchParams.filter ?? "" } },
-          { LongDescription: { $containsi: searchParams.filter ?? "" } },
-        ],
-      },
-    })
-  )?.map(
-    (data): SearchContent => ({
-      title: data.Title,
-      description: data.LongDescription,
-      link: data.Link,
-      external: true,
-    })
-  );
+  // const publications = (
+  //   await getData("/api/publications", {
+  //     filters: {
+  //       $or: [
+  //         { Title: { $containsi: searchParams.filter ?? "" } },
+  //         { LongDescription: { $containsi: searchParams.filter ?? "" } },
+  //       ],
+  //     },
+  //   })
+  // )?.map(
+  //   (data): SearchContent => ({
+  //     title: data.Title,
+  //     description: data.LongDescription,
+  //     link: data.Link,
+  //     external: true,
+  //   })
+  // );
 
   const normalized: SearchContent[] = [
     ...(newsAndEvents ?? []),
     ...(labs ?? []),
     ...(departmentProjects ?? []),
-    ...(publications ?? []),
+    // ...(publications ?? []),
   ].sort((a, b) => {
     if (!searchParams.filter) return 0;
 
