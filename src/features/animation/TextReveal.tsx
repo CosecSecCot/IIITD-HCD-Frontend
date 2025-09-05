@@ -19,23 +19,25 @@ const TextReveal = ({
   start = 100,
   delay = 0,
   duration = 0.6,
+  stagger = 0.02,
   className = "",
 }: {
   children: React.ReactElement<{ ref?: unknown; className?: string }>;
   start?: number;
   delay?: number;
   duration?: number;
+  stagger?: number;
   className?: string;
 }) => {
   const elementRef = useRef<HTMLElement>(null);
 
   useGSAP(() => {
     const split = SplitText.create(elementRef.current, {
-      type: "lines",
-      mask: "lines",
+      type: "words",
+      mask: "words",
       autoSplit: true,
       onSplit: (self) => {
-        return gsap.from(self.lines, {
+        return gsap.from(self.words, {
           duration: duration,
           y: "100%",
           opacity: 0,
@@ -43,7 +45,7 @@ const TextReveal = ({
             trigger: elementRef.current,
             start: `top ${start}%`,
           },
-          stagger: 0.1,
+          stagger: stagger,
           delay: delay,
           ease: "circ.out",
         });

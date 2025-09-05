@@ -38,11 +38,9 @@ export default async function NewsSection({
     return (
       <section className="xl:w-[1280px] mx-auto px-8">
         <div className="flex justify-between items-center">
-          <TextReveal>
-            <h2 className="text-[26px] lg:text-[48px] text-brand-accent2 leading-tight">
-              News & Events
-            </h2>
-          </TextReveal>
+          <h2 className="text-[26px] lg:text-[48px] text-brand-accent2 leading-tight">
+            News & Events
+          </h2>
           <CenterUnderline>
             <Link
               href="/about/news-events"
@@ -52,13 +50,11 @@ export default async function NewsSection({
             </Link>
           </CenterUnderline>
         </div>
-        <TextReveal>
-          <p className="font-light text-[14px] lg:text-[24px]">
-            Stay up to date with the latest happenings at HCD IIIT Delhi. This
-            section brings you important announcements, upcoming events,
-            workshops, guest lectures, and achievements from our community.
-          </p>
-        </TextReveal>
+        <p className="font-light text-[14px] lg:text-[24px]">
+          Stay up to date with the latest happenings at HCD IIIT Delhi. This
+          section brings you important announcements, upcoming events,
+          workshops, guest lectures, and achievements from our community.
+        </p>
         <div className="mt-[1em] grid md:grid-cols-3 gap-4 lg:gap-8">
           {newsEvents.length === 0 ? (
             <TextReveal>
@@ -123,12 +119,12 @@ function NewsEventCard({
   if (!inMask) {
     return (
       <div className="flex flex-col justify-between gap-[1em]">
-        <div className="relative">
+        <div className="relative group">
           <div className="absolute z-10 inset-0 bg-brand-accent2/50 mix-blend-overlay" />
           <Image
             src={content.img}
             alt={`${content.title} image`}
-            className="w-full h-auto aspect-video border-1 lg:border-2 border-brand-accent2 grayscale bg-blend-overlay"
+            className="w-full h-auto aspect-video border-1 lg:border-2 border-brand-accent2 grayscale group-hover:grayscale-0 bg-blend-overlay transition-all duration-200"
             width={480}
             height={270}
           />
@@ -150,7 +146,7 @@ function NewsEventCard({
         </div>
         <Link
           href={`/about/news-events/${content.id}`}
-          className="font-normal w-full flex justify-center items-center gap-[24px] py-[0.75em] text-[14px] xl:text-[18px] bg-brand-accent2 text-white"
+          className="font-normal w-full flex justify-center items-center gap-[24px] py-[0.75em] text-[14px] xl:text-[18px] text-white bg-brand-accent2 hover:bg-brand-accent2-130 transition-colors duration-200"
         >
           <LetterSwapForward
             label={`View ${content.type}`}
