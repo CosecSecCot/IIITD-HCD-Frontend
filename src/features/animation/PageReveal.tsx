@@ -14,6 +14,7 @@ export default function PageReveal() {
     const digit2 = document.querySelector(".digit-2");
     const digit3 = document.querySelector(".digit-3");
 
+    // Dynamically creates the numbers for the "10s" digit column
     for (let digit = 0; digit <= 20; digit++) {
       const div = document.createElement("div");
       div.className = "num";
@@ -21,77 +22,73 @@ export default function PageReveal() {
       digit3?.appendChild(div);
     }
 
-    function animate(
-      digit: Element | null,
-      duration: number,
-      delay: number = 0
-    ) {
-      if (!digit) return;
-
-      const numHeight = digit.querySelector(".num")?.clientHeight;
-      if (!numHeight) return;
-
+    // --- Helper logic to calculate target distances ---
+    // This logic is needed before the timeline is built.
+    const getTweenData = (digit: Element | null) => {
+      if (!digit) return { target: null, y: 0 };
+      const numHeight = digit.querySelector(".num")?.clientHeight || 0;
       const totalDistance =
         (digit.querySelectorAll(".num").length - 1) * numHeight;
+      return { target: digit, y: -totalDistance };
+    };
 
-      gsap.to(digit, {
-        y: -totalDistance,
-        duration: duration,
-        delay: delay,
-        ease: "power2.inOut",
-      });
-    }
+    const data1 = getTweenData(digit1);
+    const data2 = getTweenData(digit2);
+    const data3 = getTweenData(digit3);
 
-    animate(digit3, 3);
-    animate(digit2, 3.5);
-    animate(digit1, 1, 2);
+    const tl = gsap.timeline();
 
-    gsap.to(".page-reveal-hero-main-img", {
-      y: 0,
-      opacity: 1,
-      clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-      stagger: 0.1,
-      duration: 0.6,
-      ease: "circ.out",
-    });
+    tl.to(
+      ".page-reveal-hero-main-img",
+      {
+        y: 0,
+        opacity: 1,
+        clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+        stagger: 0.1,
+        duration: 0.6,
+        ease: "circ.out",
+      },
+      0
+    );
+    tl.to(data3.target, { y: data3.y, duration: 2, ease: "power2.inOut" }, 0);
+    tl.to(data2.target, { y: data2.y, duration: 2.5, ease: "power2.inOut" }, 0);
+    tl.to(
+      data1.target,
+      { y: data1.y, duration: 0.5, ease: "power2.inOut" },
+      1.5
+    )
+      .to(".counter, .loading-text", { opacity: 0, duration: 0.5 })
+      .addLabel("progress_end", "<");
 
-    gsap.to(".progress-bar", {
-      width: "30%",
-      duration: 2,
-      ease: "power4.inOut",
-      delay: 3,
-    });
+    tl.to(
+      ".page-reveal-hero",
+      {
+        scale: 1.25,
+        duration: 1 + 4 * 0.4,
+        ease: "power3.inOut",
+      },
+      "progress_end"
+    );
 
-    gsap.to(".progress-bar", {
-      width: "100%",
-      opacity: 0,
-      duration: 2,
-      ease: "power3.out",
-      delay: 4.5,
-    });
-
-    gsap.to(".page-reveal-hero-imgs > img", {
-      clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-      duration: 1,
-      ease: "power4.inOut",
-      stagger: 0.25,
-      delay: 5,
-    });
-
-    gsap.to(".page-reveal-hero", {
-      scale: 1.25,
-      duration: 3,
-      ease: "power3.inOut",
-      delay: 5,
-    });
-
-    gsap.to(".page-reveal-hero", {
-      clipPath: "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)",
-      duration: 1,
-      ease: "power4.inOut",
-      delay: 6.5,
-      onComplete: () => setAnimationComplete(true),
-    });
+    tl.to(
+      ".page-reveal-hero-imgs > img",
+      {
+        clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+        duration: 1,
+        ease: "power4.inOut",
+        stagger: 0.4,
+      },
+      "progress_end"
+    ).to(
+      ".page-reveal-hero",
+      {
+        clipPath: "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)",
+        duration: 1,
+        ease: "power4.inOut",
+        onComplete: () => setAnimationComplete(true), // onComplete is here, as in original
+      },
+      "-=1"
+    );
   });
 
   if (animationComplete) return;
@@ -118,7 +115,7 @@ export default function PageReveal() {
         />
       </div>
       <div className="pre-loader w-[200%] h-full p-[1em] lg:p-[2em] fixed top-0 right-0 flex justify-end items-end gap-[0.5em] overflow-hidden">
-        <p className="w-max uppercase text-[40px] lg:text-[60px] leading-[64px] lg:leading-[60px] opacity-60 font-light">
+        <p className="loading-text w-max uppercase text-[40px] lg:text-[60px] leading-[64px] lg:leading-[60px] opacity-60 font-light">
           Loading
         </p>
         <div
@@ -161,10 +158,10 @@ export default function PageReveal() {
         <div className="progress-bar relative top-[-15px] w-0 h-1 bg-white"></div>
       </div>
       <div className="page-reveal-hero-imgs relative w-full h-full overflow-hidden">
-        {new Array(6).fill(0).map((_, index) => (
+        {[5, 3, 6, 2].map((index) => (
           <Image
             key={index}
-            src={`/page-reveal/img${index + 1}.png`}
+            src={`/page-reveal/img${index}.png`}
             alt=""
             width={1280}
             height={720}
