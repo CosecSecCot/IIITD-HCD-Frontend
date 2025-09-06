@@ -105,6 +105,45 @@ export default function Navbar({
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
+  // State to track scroll position and navbar visibility
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [showNavbar, setShowNavbar] = useState(true);
+
+  useEffect(() => {
+    const controlNavbar = () => {
+      const currentScrollY = window.scrollY;
+
+      // If the sidebar menu is open, always force the navbar to be visible
+      // and don't update the scroll logic.
+      if (firstSidebarOpen) {
+        setShowNavbar(true);
+        return;
+      }
+
+      if (currentScrollY <= 10) {
+        // Always show navbar if at the very top of the page
+        setShowNavbar(true);
+      } else if (
+        currentScrollY > lastScrollY &&
+        Math.abs(currentScrollY - lastScrollY) > 10
+      ) {
+        // Hide navbar when scrolling down (and past a small delta to avoid jitter)
+        setShowNavbar(false);
+      } else if (currentScrollY < lastScrollY) {
+        // Show navbar when scrolling up
+        setShowNavbar(true);
+      }
+
+      // Update last scroll position, ensuring it's never negative (due to elastic bounce on mobile)
+      setLastScrollY(currentScrollY <= 0 ? 0 : currentScrollY);
+    };
+
+    window.addEventListener("scroll", controlNavbar);
+    return () => {
+      window.removeEventListener("scroll", controlNavbar);
+    };
+  }, [lastScrollY, firstSidebarOpen]);
+
   const { contextSafe } = useGSAP(() => {});
 
   const openFirstSidebar = contextSafe(() => {
@@ -194,10 +233,14 @@ export default function Navbar({
   return (
     <div id="navigation-menu" className="sticky top-0 z-[9999] font-anybody">
       <header
-        className={`${type == "solid" ? "" : "absolute z-[999] top-0"} w-full`}
+        className={`${
+          type == "solid" ? "" : "absolute z-[999] top-0"
+        } w-full transition-transform duration-300 ease-in-out ${
+          showNavbar ? "translate-y-0" : "-translate-y-full"
+        }`}
       >
         <div
-          className={`relative text-white flex justify-between items-center xl:py-7 py-3 ${
+          className={`relative text-white flex justify-between items-center xl:py-6 py-3 ${
             type == "solid"
               ? "bg-brand-accent2-130"
               : "bg-brand-accent2-130/90 backdrop-blur-sm"
@@ -226,7 +269,7 @@ export default function Navbar({
           </Link>
           <div className="relative right-[12.5vw] xl:right-[calc(12.5vw-82px)] flex items-center gap-28">
             <div className="flex items-center xl:gap-[36px] gap-[20px]">
-              <div className="flex justify-between items-center lg:gap-[14px] gap-[8px] lg:px-6 px-3 lg:py-4 py-2 border border-white rounded-full overflow-hidden">
+              <div className="flex justify-between items-center lg:gap-[14px] gap-[8px] lg:px-6 px-3 lg:py-[0.8em] py-2 border border-white rounded-full overflow-hidden">
                 <form
                   onSubmit={(e) => {
                     e.preventDefault();
@@ -257,7 +300,7 @@ export default function Navbar({
             <Image
               src="/IIITD-logo-solid.svg"
               alt="IIITD Logo"
-              className="max-xl:hidden"
+              className="w-auto h-[34px] max-xl:hidden"
               width={82}
               height={41}
               priority
