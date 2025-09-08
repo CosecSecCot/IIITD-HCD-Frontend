@@ -80,10 +80,9 @@ const navigationMap: NavigationItem[] = [
       { title: "", url: "" },
       {
         title: "faculty",
-        url: "https://www.iiitd.ac.in/people/faculty",
-        external: true,
+        url: "/people/faculty",
       },
-      { title: "", url: "" },
+      { title: "PhD", url: "/people/phd" },
     ],
   },
   { title: "connect", url: "/connect" },
