@@ -1,10 +1,7 @@
-import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
 import LinkButton from "@/components/LinkButton";
 import Banner from "@/features/pages/about/components/Banner";
-import { ArrowRight } from "lucide-react";
 import { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import qs from "qs";
 import { Suspense } from "react";
 
@@ -67,7 +64,7 @@ export default async function Page() {
             Our students have been placed in top organizations spanning
             technology, research, and design:
           </p>
-          <div className="w-full grid grid-cols-2 lg:grid-cols-3 gap-[2em] p-[2em]">
+          {/* <div className="w-full grid grid-cols-2 lg:grid-cols-3 gap-[2em] p-[2em]">
             <Suspense
               fallback={
                 <>
@@ -81,6 +78,14 @@ export default async function Page() {
             >
               <CompaniesSection />
             </Suspense>
+          </div> */}
+          <div className="w-full mt-[1em]">
+            <Image
+              src="/placementImage.png"
+              alt=""
+              width={1920}
+              height={1080}
+            />
           </div>
         </section>
 
