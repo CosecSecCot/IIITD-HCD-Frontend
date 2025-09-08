@@ -61,7 +61,7 @@ export default function Home() {
         <main className="relative">
           <article className="space-y-12 lg:space-y-32 pb-[78px]">
             <section className="relative w-full h-full overflow-hidden">
-              <div className="font-light mt-[48px] lg:mt-[90px] mx-auto xl:w-[75vw] px-8 flex max-lg:flex-col justify-between gap-5 lg:gap-8">
+              <div className="font-light mt-[48px] lg:mt-[90px] mx-auto xl:w-[75vw] px-8 flex max-lg:flex-col justify-between items-center gap-5 lg:gap-8">
                 <div className="flex-1">
                   <TextReveal>
                     <p className="text-[16px] lg:text-[32px] text-brand-accent2">
@@ -221,13 +221,12 @@ export default function Home() {
                   </TextReveal>
                   <TextReveal>
                     <p className="mt-[0.5em] font-light text-[14px] lg:text-[28px] leading-tight">
-                      Our faculty, numbering over 200, is dedicated to
-                      pioneering innovative solutions for challenges that arise
-                      with each advancement.
+                      Our faculty is dedicated to pioneering innovative
+                      solutions for challenges that arise with each advancement.
                     </p>
                   </TextReveal>
                   <Link
-                    href="/study/btech"
+                    href="/people/faculty"
                     className="mt-[1em] font-normal flex justify-center items-center gap-[1em] px-[1em] py-[1em] text-[12px] lg:text-[20px] text-white bg-brand-accent2 hover:bg-brand-accent2-130 transition-colors duration-200"
                   >
                     <LetterSwapForward
