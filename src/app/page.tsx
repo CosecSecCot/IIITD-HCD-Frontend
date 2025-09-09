@@ -157,13 +157,14 @@ export default function Home() {
                 </TextReveal>
                 <TextReveal>
                   <p className="lg:ml-auto lg:w-2/3 font-light lg:text-right text-[14px] lg:text-[28px] leading-tight">
-                    We are a collective of diverse thinkers reimagining how{" "}
+                    The Department of Human-Centered Design at IIIT-Delhi stands
+                    at the intersection of{" "}
                     <span className="font-normal text-brand-accent2">
-                      human-technology interactions
-                    </span>{" "}
-                    can be seamless and meaningful. We are a collective of
-                    diverse thinkers reimagining how human-technology
-                    interactions.
+                      computing and design
+                    </span>
+                    , reimagining how technology can enrich human lives. Our
+                    work blends strong academic foundations with creativity and
+                    critical inquiry.
                   </p>
                 </TextReveal>
                 <div className="relative h-[202px] px-5 lg:px-20 py-3 lg:py-6 border lg:border-2 border-brand-accent2 group">
@@ -179,13 +180,17 @@ export default function Home() {
                 <div className="flex justify-between gap-[1em] lg:gap-[8em]">
                   <TextReveal>
                     <p className="lg:w-1/2 font-light text-[14px] lg:text-[28px] leading-tight">
-                      We are a collective of diverse thinkers reimagining how{" "}
+                      Through research, teaching, and collaboration, we empower
+                      students and scholars to address{" "}
                       <span className="font-normal text-brand-accent2">
-                        human-technology interactions
+                        real-world challenges
                       </span>{" "}
-                      can be seamless and meaningful. We are a collective of
-                      diverse thinkers reimagining how human-technology
-                      interactions.
+                      in interaction design, HCI, and emerging technologies. Our
+                      goal is to{" "}
+                      <span className="font-normal text-brand-accent2">
+                        build technology
+                      </span>{" "}
+                      that is innovative, ethical, and impactful.
                     </p>
                   </TextReveal>
                   <TextReveal>

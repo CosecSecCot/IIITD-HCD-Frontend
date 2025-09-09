@@ -5,14 +5,23 @@ import Image from "next/image";
 import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
 import CenterUnderline from "@/components/fancy/text/underline-center";
 import TextReveal from "@/features/animation/TextReveal";
+import qs from "qs";
 
 export default async function NewsSection({
   inMask = false,
 }: {
   inMask?: boolean;
 }) {
+  const query = qs.stringify(
+    {
+      sort: ["Date:desc"],
+      populate: "*",
+    },
+    { encodeValuesOnly: true }
+  );
+
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/news-and-events?populate=*`
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/news-and-events?${query}`
   ).catch((reason) => console.log("[ERROR]", reason));
   const data = await res?.json();
 
@@ -124,7 +133,7 @@ function NewsEventCard({
           <Image
             src={content.img}
             alt={`${content.title} image`}
-            className="w-full h-auto aspect-video border-1 lg:border-2 border-brand-accent2 grayscale group-hover:grayscale-0 bg-blend-overlay transition-all duration-200"
+            className="w-full h-auto aspect-video object-cover border-1 lg:border-2 border-brand-accent2 grayscale group-hover:grayscale-0 bg-blend-overlay transition-all duration-200"
             width={480}
             height={270}
           />
