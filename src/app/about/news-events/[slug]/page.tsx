@@ -9,10 +9,11 @@ export const dynamic = "force-dynamic";
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
+  const slug = (await params).slug;
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/news-and-events/${params.slug}?populate=*`,
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/news-and-events/${slug}?populate=*`,
     { next: { revalidate: 60 } }
   ).catch((reason) => console.log("[ERROR]", reason));
 
@@ -36,7 +37,7 @@ export async function generateMetadata({
     creator: "IIIT Delhi HCD",
     publisher: "IIIT Delhi",
     alternates: {
-      canonical: `/about/news-events/${params.slug}`,
+      canonical: `/about/news-events/${slug}`,
     },
     openGraph: {
       images: [
