@@ -102,7 +102,7 @@ export default function PageReveal() {
     >
       <div className="absolute w-full h-full inset-0 flex justify-center items-center">
         <Image
-          src="/logo-with-text-large-solid.svg"
+          src="/logo-with-text-large-solid.png"
           alt="Human Centred Design Department IIITD"
           width={452}
           height={149}

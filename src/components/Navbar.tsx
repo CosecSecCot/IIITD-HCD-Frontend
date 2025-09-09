@@ -158,7 +158,7 @@ export default function Navbar({
           opacity: 1,
           ease: "expo.out",
           duration: "0.5",
-        },
+        }
       )
       .to(
         "#nav-container",
@@ -166,7 +166,7 @@ export default function Navbar({
           x: isMobileNavbarActive ? "0%" : "50%",
           ease: "expo.out",
         },
-        "-=0.5",
+        "-=0.5"
       )
       .fromTo(
         "#nav-link-primary",
@@ -183,7 +183,7 @@ export default function Navbar({
           ease: "power3.out",
           stagger: 0.1,
         },
-        "-=0.5",
+        "-=0.5"
       );
   });
 
@@ -209,7 +209,7 @@ export default function Navbar({
           ease: "expo.out",
           duration: "0.5",
         },
-        "-=0.5",
+        "-=0.5"
       )
       .then(() => {
         if (secondSidebarOpen) {
@@ -250,9 +250,9 @@ export default function Navbar({
             href="/"
           >
             <Image
-              src={"/logo-with-text-large.svg"}
+              src={"/logo-with-text-large.png"}
               alt="IIITD HCD Department Logo"
-              className="w-auto h-[84px] max-lg:hidden "
+              className="w-auto h-[84px] max-lg:hidden drop-shadow-xl drop-shadow-black/30"
               width={352}
               height={116}
               priority
@@ -260,7 +260,7 @@ export default function Navbar({
             <Image
               src={"/logo.svg"}
               alt="IIITD HCD Department Logo"
-              className="w-auto h-[54px] lg:hidden"
+              className="w-auto h-[54px] lg:hidden drop-shadow-xl drop-shadow-black/30"
               width={352}
               height={116}
               priority
@@ -274,7 +274,7 @@ export default function Navbar({
                     e.preventDefault();
                     if (search.trim()) {
                       router.push(
-                        `/search?filter=${encodeURIComponent(search)}`,
+                        `/search?filter=${encodeURIComponent(search)}`
                       );
                     }
                   }}
@@ -379,7 +379,7 @@ export default function Navbar({
                     gsap.to("#nav-container", {
                       x: 0,
                       ease: "expo.out",
-                    }),
+                    })
                   )();
                 }}
                 className="flex items-center gap-[2px] border border-white rounded-full p-[1em]"
@@ -446,7 +446,7 @@ export default function Navbar({
                           gsap.to("#nav-container", {
                             x: "50%",
                             ease: "expo.out",
-                          }),
+                          })
                         )();
                         setActiveGroup(null);
                       }
@@ -486,13 +486,14 @@ export default function Navbar({
                 );
               })}
             </ul>
-            <div className="absolute bottom-0 px-[70px] py-[60px] opacity-40">
+            <div className="absolute bottom-0 px-[70px] py-[60px] opacity-40 w-full">
               <Image
-                src="/logo-with-text-large-solid.svg"
+                src="/logo-with-text-large-solid.png"
                 alt="IIITD HCD Department Logo"
                 width={352}
                 height={116}
                 priority
+                className="w-auto max-h-[116px] object-contain mx-auto"
               />
             </div>
           </div>

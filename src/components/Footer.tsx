@@ -18,11 +18,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 xl:grid-cols-3">
           <section className="flex flex-col gap-[40px] xl:gap-[80px]">
             <Image
-              src="/logo-with-text-large-solid.svg"
+              src="/logo-with-text-large-solid.png"
               alt="Human Centred Design Department"
               width={452}
               height={149}
               priority
+              className="w-auto max-h-[150px] object-contain"
             />
             {/* <div className="w-full">
               <p className="text-[16px] lg:text-[20px]">
