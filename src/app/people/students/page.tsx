@@ -1,20 +1,13 @@
-import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
-import LinkButton from "@/components/LinkButton";
 import PeopleSection, {
   People,
 } from "@/features/pages/people/components/PeopleSection";
-import { Search } from "lucide-react";
 import { Suspense } from "react";
 import Image from "next/image";
-import Link from "next/link";
 
 export const dynamic = "force-dynamic";
 
-export default async function Page(pageProps: {
-  searchParams: Promise<{ filter?: string }>;
-}) {
-  const searchParams = await pageProps.searchParams;
-  const breadcrumbs = ["people", "faculty"];
+export default async function Page() {
+  const breadcrumbs = ["people", "students"];
   return (
     <>
       <section
@@ -49,34 +42,16 @@ export default async function Page(pageProps: {
             })}
           </div>
           <p className="text-[18px] lg:text-[30px] text-white/60 leading-tight uppercase">
-            Faculuty & Professors
+            Students & Representatives
           </p>
           <h1 className="text-[38px] lg:text-[80px] leading-none uppercase">
-            Faculty At HCD
+            Students At HCD
           </h1>
           <p className="mt-[1em] lg:w-3/4 font-light text-[16px] lg:text-[26px] leading-tight">
-            Our faculty bring deep expertise and vision, leading impactful
-            research and guiding future innovators to reimagine the role of
-            technology in human lives.
+            Our student representatives bridge voices and ideas, fostering
+            collaboration and ensuring an inclusive, vibrant community within
+            HCD.
           </p>
-          <div className="mt-[2em] flex gap-x-[1em] gap-y-[0.5em] flex-wrap">
-            <LinkButton
-              href="/research/publications"
-              text="FACULTY PUBLICATIONS"
-              type="transparent"
-              icon={null}
-              rounded
-              className="text-[12px] lg:text-[18px] lg:px-[2em] py-[0.5em]"
-            />
-            <LinkButton
-              href="/research/labs"
-              text="RESEARCH LABS"
-              type="transparent"
-              icon={null}
-              rounded
-              className="text-[12px] lg:text-[18px] lg:px-[2em] py-[0.5em]"
-            />
-          </div>
         </div>
         <div className="absolute z-20 inset-0 w-full h-full pointer-events-none bg-gradient-to-r from-brand-accent2 via-brand-accent2-130/60 to-black/0" />
         <div className="absolute z-10 inset-0 w-full h-full pointer-events-none bg-brand-accent2/20" />
@@ -107,7 +82,7 @@ export default async function Page(pageProps: {
                 </div>
               }
             >
-              <FacultiesSection filter={searchParams.filter} />
+              <StudentRepresentativesSection />
             </Suspense>
           </section>
         </article>
@@ -116,13 +91,11 @@ export default async function Page(pageProps: {
   );
 }
 
-async function FacultiesSection({ filter }: { filter?: string }) {
+async function StudentRepresentativesSection() {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/faculties?sort[0]=Name:asc&populate=Image`
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/student-representatives?sort[0]=Name:asc&populate=Image`
   ).catch((reason) => console.log("[ERROR]", reason));
   const data = await res?.json();
-
-  console.log(data);
 
   if (!data || data.error || data.data.length == 0) {
     return (
@@ -131,25 +104,13 @@ async function FacultiesSection({ filter }: { filter?: string }) {
           Hmm...
         </h2>
         <p className="text-[16px] lg:text-[20px] italic font-light">
-          Looks like there was some problem fetching faculties.
+          Looks like no student representatives were found.
         </p>
       </div>
     );
   }
 
-  const filtered =
-    filter &&
-    (filter === "professor-of-practice" ||
-      filter === "visiting-faculty" ||
-      filter === "adjunct-faculty")
-      ? data.data.filter(
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          (item: any) =>
-            item.Type?.toLowerCase().replace(/\s+/g, "-") === filter
-        )
-      : data.data;
-
-  const normalized: People[] = filtered.map(
+  const normalized: People[] = data.data.map(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (item: any): People => ({
       id: item.id,
@@ -161,68 +122,8 @@ async function FacultiesSection({ filter }: { filter?: string }) {
   );
 
   return (
-    <>
-      <div
-        className="grid grid-cols-2 xl:grid-cols-3 grid-rows-1 text-[12px] lg:text-[18px] my-8"
-        role="tablist"
-      >
-        <Button
-          href="/people/faculty"
-          text="FACULTY"
-          active={
-            filter !== "professor-of-practice" &&
-            filter !== "visiting-faculty" &&
-            filter !== "adjunct-faculty"
-          }
-        />
-        <Button
-          href="/people/faculty?filter=professor-of-practice"
-          text="PROF. OF PRACTICE"
-          active={filter === "professor-of-practice"}
-        />
-        <Button
-          href="/people/faculty?filter=visiting-faculty"
-          text="VISITING FACULTY"
-          active={filter === "visiting-faculty"}
-        />
-        <Button
-          href="/people/faculty?filter=adjunct-faculty"
-          text="ADJUNCT FACULTY"
-          active={filter === "adjunct-faculty"}
-        />
-      </div>
-      <div>
-        <PeopleSection people={normalized} />
-      </div>
-    </>
-  );
-}
-
-function Button({
-  href,
-  text,
-  active,
-  icon,
-}: {
-  href: string;
-  text: string;
-  active: boolean;
-  icon?: React.ReactNode;
-}) {
-  return (
-    <Link
-      href={href}
-      className={`flex gap-[12px] lg:gap-[24px] items-center justify-center py-[0.5em] border border-black/30 ${
-        active ? "bg-brand-accent2 text-white" : "backdrop-blur-xl"
-      }`}
-      scroll={false}
-    >
-      {icon ? (
-        icon
-      ) : (
-        <Search className="w-[12px] lg:w-[16px] aspect-square h-auto" />
-      )}
-      <LetterSwapForward label={text} staggerDuration={0.005} />
-    </Link>
+    <div>
+      <PeopleSection people={normalized} />
+    </div>
   );
 }

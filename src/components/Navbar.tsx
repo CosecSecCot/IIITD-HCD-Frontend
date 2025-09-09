@@ -76,13 +76,13 @@ const navigationMap: NavigationItem[] = [
     children: [
       { title: "", url: "" },
       { title: "", url: "" },
-      { title: "", url: "" },
-      { title: "", url: "" },
       {
-        title: "faculty",
+        title: "Faculty",
         url: "/people/faculty",
       },
       { title: "PhD", url: "/people/phd" },
+      { title: "Students", url: "/people/students" },
+      { title: "Administration", url: "/people/administration" },
     ],
   },
   { title: "connect", url: "/connect" },
@@ -158,7 +158,7 @@ export default function Navbar({
           opacity: 1,
           ease: "expo.out",
           duration: "0.5",
-        }
+        },
       )
       .to(
         "#nav-container",
@@ -166,7 +166,7 @@ export default function Navbar({
           x: isMobileNavbarActive ? "0%" : "50%",
           ease: "expo.out",
         },
-        "-=0.5"
+        "-=0.5",
       )
       .fromTo(
         "#nav-link-primary",
@@ -183,7 +183,7 @@ export default function Navbar({
           ease: "power3.out",
           stagger: 0.1,
         },
-        "-=0.5"
+        "-=0.5",
       );
   });
 
@@ -209,7 +209,7 @@ export default function Navbar({
           ease: "expo.out",
           duration: "0.5",
         },
-        "-=0.5"
+        "-=0.5",
       )
       .then(() => {
         if (secondSidebarOpen) {
@@ -274,7 +274,7 @@ export default function Navbar({
                     e.preventDefault();
                     if (search.trim()) {
                       router.push(
-                        `/search?filter=${encodeURIComponent(search)}`
+                        `/search?filter=${encodeURIComponent(search)}`,
                       );
                     }
                   }}
@@ -379,7 +379,7 @@ export default function Navbar({
                     gsap.to("#nav-container", {
                       x: 0,
                       ease: "expo.out",
-                    })
+                    }),
                   )();
                 }}
                 className="flex items-center gap-[2px] border border-white rounded-full p-[1em]"
@@ -446,7 +446,7 @@ export default function Navbar({
                           gsap.to("#nav-container", {
                             x: "50%",
                             ease: "expo.out",
-                          })
+                          }),
                         )();
                         setActiveGroup(null);
                       }

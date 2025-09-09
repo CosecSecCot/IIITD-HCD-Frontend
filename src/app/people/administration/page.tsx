@@ -1,20 +1,14 @@
-import LinkButton from "@/components/LinkButton";
 import PeopleSection, {
   People,
 } from "@/features/pages/people/components/PeopleSection";
-import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
 import { Suspense } from "react";
-import { Search } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
+import { Mail, MapPin, Phone } from "lucide-react";
 
 export const dynamic = "force-dynamic";
 
-export default async function Page(pageProps: {
-  searchParams: Promise<{ filter?: string }>;
-}) {
-  const searchParams = await pageProps.searchParams;
-  const breadcrumbs = ["people", "PhD"];
+export default async function Page() {
+  const breadcrumbs = ["people", "administration"];
   return (
     <>
       <section
@@ -50,23 +44,13 @@ export default async function Page(pageProps: {
           </div>
           <p className="text-[18px] lg:text-[30px] text-white/60 leading-tight uppercase"></p>
           <h1 className="text-[38px] lg:text-[80px] leading-none uppercase">
-            PhD Scholars At HCD
+            Administration At HCD
           </h1>
           <p className="mt-[1em] lg:w-3/4 font-light text-[16px] lg:text-[26px] leading-tight">
-            Our PhD scholars are pushing boundaries with cutting-edge research,
-            exploring new dimensions of human-technology interactions, and
-            building knowledge that drives tomorrow’s solutions.
+            Our administration provides the foundation for excellence, enabling
+            smooth operations and supporting the growth of research, learning,
+            and innovation.
           </p>
-          <div className="mt-[2em] flex gap-x-[1em] gap-y-[0.5em] flex-wrap">
-            <LinkButton
-              href="/research/labs"
-              text="RESEARCH LABS"
-              type="transparent"
-              icon={null}
-              rounded
-              className="text-[12px] lg:text-[18px] lg:px-[2em] py-[0.5em]"
-            />
-          </div>
         </div>
         <div className="absolute z-20 inset-0 w-full h-full pointer-events-none bg-gradient-to-r from-brand-accent2 via-brand-accent2-130/60 to-black/0" />
         <div className="absolute z-10 inset-0 w-full h-full pointer-events-none bg-brand-accent2/20" />
@@ -97,7 +81,7 @@ export default async function Page(pageProps: {
                 </div>
               }
             >
-              <PhDStudentsSection filter={searchParams.filter} />
+              <AdministrationSection />
             </Suspense>
           </section>
         </article>
@@ -106,19 +90,13 @@ export default async function Page(pageProps: {
   );
 }
 
-const slugify = (str: string) =>
-  str
-    .toLowerCase()
-    .trim()
-    .replace(/[^\w\s-]/g, "") // remove non-word chars
-    .replace(/[\s_-]+/g, "-") // collapse whitespace and replace with -
-    .replace(/^-+|-+$/g, ""); // remove leading/trailing dashes
-
-async function PhDStudentsSection({ filter }: { filter?: string }) {
+async function AdministrationSection() {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/phd-students?sort[0]=Name:asc&populate=*`
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/administrations?sort[0]=Name:asc&populate=Image`
   ).catch((reason) => console.log("[ERROR]", reason));
   const data = await res?.json();
+
+  console.log(data);
 
   if (!data || data.error || data.data.length == 0) {
     return (
@@ -127,37 +105,35 @@ async function PhDStudentsSection({ filter }: { filter?: string }) {
           Hmm...
         </h2>
         <p className="text-[16px] lg:text-[20px] italic font-light">
-          Looks like no PhD students were found.
+          Looks like there was some problem fetching administration details.
         </p>
       </div>
     );
   }
 
-  const allLabs: string[] = data.data
-    .map((item: any) => item.Lab?.LabName) // Get all lab names (some might be null)
-    .filter(Boolean); // Filter out any falsy values
-  const uniqueLabs: string[] = [...new Set(allLabs)].sort();
-
-  const validLabSlugs = uniqueLabs.map(slugify);
-  const isValidLabFilter = validLabSlugs.includes(filter || "");
-
-  const filtered = isValidLabFilter
-    ? data.data.filter(
-        (item: any) => item.Lab?.LabName && slugify(item.Lab.LabName) === filter
-      )
-    : data.data; // Otherwise, show all data
-
-  const normalized: People[] = filtered.map(
+  const normalized: People[] = data.data.map(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (item: any): People => ({
       id: item.id,
       name: item.Name,
       description: (
         <>
-          {item.Lab && (
-            <span className="text-brand-accent2">{item.Lab.LabName}</span>
-          )}
-          <p className="mt-2">{item.ShortDescription}</p>
+          <p>{item.ShortDescription}</p>
+          <div className="mt-3 flex flex-col gap-2">
+            <p className="flex gap-4 items-center text-brand-accent2">
+              <Mail /> {item.Email}
+            </p>
+            {item.Phone && (
+              <p className="flex gap-4 items-center text-brand-accent2">
+                <Phone /> {item.Phone}
+              </p>
+            )}
+            {item.Office && (
+              <p className="flex gap-4 items-center text-brand-accent2">
+                <MapPin /> {item.Office}
+              </p>
+            )}
+          </div>
         </>
       ),
       img: `${process.env.NEXT_PUBLIC_STRAPI_URL}${item.Image.url}`,
@@ -166,66 +142,8 @@ async function PhDStudentsSection({ filter }: { filter?: string }) {
   );
 
   return (
-    <>
-      {/* --- START: Dynamic Button Rendering --- */}
-      <div
-        className="grid grid-cols-2 xl:grid-cols-3 grid-rows-1 text-[12px] lg:text-[18px] my-8"
-        role="tablist"
-      >
-        {/* Default "All" button */}
-        <Button
-          href="/people/phd"
-          text="ALL SCHOLARS"
-          active={!isValidLabFilter} // Active if NO valid lab filter is selected
-        />
-
-        {/* Dynamically render buttons for each unique lab */}
-        {uniqueLabs.map((labName) => {
-          const labSlug = slugify(labName);
-          return (
-            <Button
-              key={labSlug}
-              href={`/people/phd?filter=${labSlug}`}
-              text={labName.toUpperCase()} // Display lab name (uppercased to match style)
-              active={filter === labSlug} // Active if the current filter matches this lab's slug
-            />
-          );
-        })}
-      </div>
-      {/* --- END: Dynamic Button Rendering --- */}
-
-      <div>
-        <PeopleSection people={normalized} />
-      </div>
-    </>
-  );
-}
-
-function Button({
-  href,
-  text,
-  active,
-  icon,
-}: {
-  href: string;
-  text: string;
-  active: boolean;
-  icon?: React.ReactNode;
-}) {
-  return (
-    <Link
-      href={href}
-      className={`flex gap-[12px] lg:gap-[24px] items-center justify-center py-[0.5em] px-[2em] border border-black/30 ${
-        active ? "bg-brand-accent2 text-white" : "backdrop-blur-xl"
-      }`}
-      scroll={false}
-    >
-      {icon ? (
-        icon
-      ) : (
-        <Search className="flex-shrink-0 w-[12px] lg:w-[16px] aspect-square h-auto" />
-      )}
-      <p className="text-center">{text}</p>
-    </Link>
+    <div>
+      <PeopleSection people={normalized} />
+    </div>
   );
 }
