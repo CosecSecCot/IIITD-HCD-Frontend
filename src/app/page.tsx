@@ -207,7 +207,7 @@ export default function Home() {
 
             <section className="relative w-full min-h-screen flex flex-col justify-center overflow-hidden">
               <div className="flex max-lg:flex-col px-8 lg:px-[12.5vw] justify-between items-center gap-4 lg:gap-[60px]">
-                <div className="relative w-[60%] flex-shrink-0 aspect-video group">
+                <div className="relative w-full lg:w-[60%] flex-shrink-0 aspect-video group">
                   <div className="absolute inset-0 z-10 w-full h-full bg-brand-accent2/50 group-hover:bg-transparent mix-blend-overlay transition-all duration-200" />
                   <Image
                     src="/faculty.png"

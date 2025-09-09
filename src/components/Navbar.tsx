@@ -252,19 +252,19 @@ export default function Navbar({
             <Image
               src={"/logo-with-text-large-solid.png"}
               alt="IIITD HCD Department Logo"
-              className="w-auto h-[64px] max-lg:hidden drop-shadow-xl drop-shadow-black/30"
+              className="w-auto h-[54px] lg:h-[64px] drop-shadow-xl drop-shadow-black/30"
               width={352}
               height={116}
               priority
             />
-            <Image
+            {/* <Image
               src={"/logo.svg"}
               alt="IIITD HCD Department Logo"
               className="w-auto h-[54px] lg:hidden drop-shadow-xl drop-shadow-black/30"
               width={352}
               height={116}
               priority
-            />
+            /> */}
           </Link>
           <div className="relative right-[12.5vw] xl:right-[calc(12.5vw-82px)] flex items-center gap-28">
             <div className="flex items-center xl:gap-[36px] gap-[20px]">
