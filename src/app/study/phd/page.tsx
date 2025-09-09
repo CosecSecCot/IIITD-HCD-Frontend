@@ -38,7 +38,7 @@ export default function Page() {
           "Design tomorrow's information technology products, services and systems which combine emerging technologies"
         }
       />
-      <main className="mt-[30px] lg:mt-[128px] mb-[10vh]">
+      <main className="mt-[5vh] mb-[10vh]">
         <article>
           <section>
             <Heading align="left">

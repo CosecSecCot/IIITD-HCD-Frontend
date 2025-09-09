@@ -13,17 +13,17 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="sticky z-0 bottom-0 left-0 w-full py-8 xl:py-20 bg-gradient-to-r from-[#21928C] to-brand-accent2 text-white font-anybody">
+    <footer className="sticky z-0 bottom-0 left-0 w-full py-8 xl:py-12 bg-gradient-to-r from-[#21928C] to-brand-accent2 text-white font-anybody">
       <div className="xl:w-[1280px] px-8 mx-auto">
         <div className="grid grid-cols-1 xl:grid-cols-3">
-          <section className="flex flex-col gap-[40px] xl:gap-[80px]">
+          <section className="flex flex-col gap-[40px] xl:gap-[60px] justify-center">
             <Image
               src="/logo-with-text-large-solid.png"
               alt="Human Centred Design Department"
               width={452}
               height={149}
               priority
-              className="w-auto max-h-[150px] object-contain"
+              className="w-auto max-h-[128px] object-contain"
             />
             {/* <div className="w-full">
               <p className="text-[16px] lg:text-[20px]">
@@ -46,7 +46,7 @@ export default function Footer() {
               >
                 USEFUL LINKS
               </h2>
-              <ul className="max-lg:mt-2 text-[16px] lg:text-[24px] space-y-1">
+              <ul className="max-lg:mt-2 text-[16px] lg:text-[24px]">
                 <li>
                   <Link href="/study/btech">
                     <CustomLinkText label="Study @IIITD" />
@@ -74,7 +74,7 @@ export default function Footer() {
               >
                 INITIATIVES
               </h2>
-              <ul className="max-lg:mt-2 text-[16px] lg:text-[24px] space-y-1">
+              <ul className="max-lg:mt-2 text-[16px] lg:text-[24px]">
                 <li>
                   <Link
                     target="_blank"
@@ -138,7 +138,7 @@ export default function Footer() {
             </section>
           </section>
         </div>
-        <section className="flex justify-between items-center flex-wrap gap-x-4 gap-y-2 mt-8 xl:mt-12 text-[13px] lg:text-[20px] opacity-60">
+        <section className="flex justify-between items-center flex-wrap gap-x-4 gap-y-2 mt-8 text-[13px] lg:text-[20px] opacity-60">
           <div className="flex justify-between gap-[3em] max-xl:w-full">
             <span>Copyright &copy; 2024 IIITD</span>
             <span className="text-right">Last Updated 09/09/2025</span>

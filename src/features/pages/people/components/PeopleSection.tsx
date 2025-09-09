@@ -96,7 +96,7 @@ function PeopleCard({ person }: { person: People }) {
   );
   return (
     <div>
-      <div className="relative w-full h-auto aspect-square group">
+      <div className="relative w-full h-auto aspect-[0.8] group">
         {person.link ? (
           <Link target="_blank" href={person.link}>
             {imageContent}

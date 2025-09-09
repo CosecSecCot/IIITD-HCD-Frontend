@@ -57,14 +57,14 @@ export default function Home() {
     <>
       <PageReveal />
       <div className="background-element relative z-10 bg-white font-anybody shadow-xl">
-        <Navbar type="solid" />
+        <Navbar />
         <main className="relative">
-          <article className="space-y-12 lg:space-y-32 pb-[78px]">
-            <section className="relative w-full h-full overflow-hidden">
-              <div className="font-light mt-[48px] lg:mt-[90px] mx-auto xl:w-[75vw] px-8 flex max-lg:flex-col justify-between lg:items-center gap-5 lg:gap-8">
+          <article className="space-y-12 pb-[78px]">
+            <section className="relative w-full min-h-screen flex flex-col justify-center overflow-hidden">
+              <div className="font-light mt-[calc(5vh+80px)] lg:mt[90px] mx-auto xl:w-[75vw] px-8 flex max-lg:flex-col justify-between lg:items-center gap-5 lg:gap-8">
                 <div className="flex-1">
                   <TextReveal>
-                    <p className="text-[16px] lg:text-[32px] text-brand-accent2">
+                    <p className="text-[16px] lg:text-[32px] text-brand-accent2 leading-tight">
                       <LetterSwapForward
                         label="Human Centred Design"
                         staggerDuration={0.005}
@@ -73,7 +73,7 @@ export default function Home() {
                     </p>
                   </TextReveal>
                   <TextReveal>
-                    <h1 className="text-[36px] lg:text-[86px] leading-none lg:leading-tight">
+                    <h1 className="text-[36px] lg:text-[80px] leading-none lg:leading-tight">
                       Where{" "}
                       <span className="font-normal text-brand-accent2">
                         <LetterSwapForward
@@ -87,7 +87,7 @@ export default function Home() {
                     </h1>
                   </TextReveal>
                   <TextReveal>
-                    <blockquote className="mt-[1em] text-[14px] lg:text-[28px] leading-tight">
+                    <blockquote className="mt-[0.25em] text-[14px] lg:text-[28px] leading-tight">
                       We are a collective of diverse thinkers reimagining how
                       human-technology interactions.
                     </blockquote>
@@ -141,8 +141,8 @@ export default function Home() {
               </div>
             </section>
 
-            <section className="relative w-full h-full overflow-hidden">
-              <div className="relative z-10 mx-auto xl:w-[75vw] px-8 space-y-4 lg:space-y-[72px]">
+            <section className="relative w-full min-h-screen flex flex-col justify-center overflow-hidden">
+              <div className="relative z-10 mx-auto xl:w-[75vw] px-8 space-y-4 lg:space-y-8">
                 <TextReveal>
                   <h2 className="font-light text-[28px] lg:text-[86px] leading-tight">
                     The Department of <br />
@@ -205,9 +205,9 @@ export default function Home() {
               </div>
             </section>
 
-            <section className="relative w-full h-full overflow-hidden">
-              <div className="flex max-lg:flex-col max-lg:px-8 justify-between items-center gap-4 lg:gap-[60px]">
-                <div className="relative w-full lg:w-[60%] aspect-video flex-shrink-0 group">
+            <section className="relative w-full min-h-screen flex flex-col justify-center overflow-hidden">
+              <div className="flex max-lg:flex-col px-8 lg:px-[12.5vw] justify-between items-center gap-4 lg:gap-[60px]">
+                <div className="relative w-[60%] flex-shrink-0 aspect-video group">
                   <div className="absolute inset-0 z-10 w-full h-full bg-brand-accent2/50 group-hover:bg-transparent mix-blend-overlay transition-all duration-200" />
                   <Image
                     src="/faculty.png"
@@ -218,7 +218,7 @@ export default function Home() {
                     className="absolute inset-0 w-full h-full object-cover border-2 lg:border-4 border-brand-accent2 grayscale-100 group-hover:grayscale-25 transition-all duration-200"
                   />
                 </div>
-                <div className="pr-8 xl:pr-[12.5vw] lg:text-right">
+                <div className="w-full lg:text-right">
                   <TextReveal>
                     <h1 className="text-[24px] lg:text-[44px] text-brand-accent2 leading-tight">
                       HCD Faculty
@@ -247,7 +247,7 @@ export default function Home() {
 
             <Suspense
               fallback={
-                <section className="xl:w-[1280px] mx-auto px-8">
+                <section className="relative xl:w-[1280px] mx-auto px-8 min-h-screen flex flex-col justify-center overflow-hidden">
                   <div className="flex justify-between items-center">
                     <h2 className="text-[26px] lg:text-[48px] text-brand-accent2 leading-tight">
                       News & Events
@@ -284,7 +284,7 @@ export default function Home() {
               <NewsSection />
             </Suspense>
 
-            <section className="relative w-full h-full overflow-hidden">
+            <section className="relative w-full min-h-screen flex flex-col justify-center overflow-hidden">
               <div>
                 <Heading align="middle">
                   <span className="text-brand-accent2 font-normal">

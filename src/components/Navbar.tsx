@@ -119,7 +119,7 @@ export default function Navbar({
         return;
       }
 
-      if (currentScrollY <= 10) {
+      if (currentScrollY <= 104) {
         // Always show navbar if at the very top of the page
         setShowNavbar(true);
       } else if (
@@ -239,7 +239,7 @@ export default function Navbar({
         }`}
       >
         <div
-          className={`relative text-white flex justify-between items-center xl:py-6 py-3 ${
+          className={`relative text-white flex justify-between items-center xl:py-5 py-3 ${
             type == "solid"
               ? "bg-brand-accent2-130"
               : "bg-brand-accent2-130/90 backdrop-blur-sm"
@@ -250,9 +250,9 @@ export default function Navbar({
             href="/"
           >
             <Image
-              src={"/logo-with-text-large.png"}
+              src={"/logo-with-text-large-solid.png"}
               alt="IIITD HCD Department Logo"
-              className="w-auto h-[84px] max-lg:hidden drop-shadow-xl drop-shadow-black/30"
+              className="w-auto h-[64px] max-lg:hidden drop-shadow-xl drop-shadow-black/30"
               width={352}
               height={116}
               priority
@@ -423,7 +423,7 @@ export default function Navbar({
             id="nav-sidebar-first"
             className="relative flex flex-col justify-center w-[30vw] bg-[#096964] text-white"
           >
-            <div className="absolute top-0 right-0 flex justify-end px-[70px] py-[60px]">
+            <div className="absolute top-0 right-0 flex justify-end px-[70px] py-[40px]">
               <button
                 onClick={closeSidebar}
                 className="flex items-center gap-[2px] border border-white rounded-full p-[1em] cursor-pointer hover:bg-white hover:text-[#096964] transition-all ease-out duration-150"
@@ -486,14 +486,14 @@ export default function Navbar({
                 );
               })}
             </ul>
-            <div className="absolute bottom-0 px-[70px] py-[60px] opacity-40 w-full">
+            <div className="absolute bottom-0 px-[40px] py-[40px] opacity-40 w-full">
               <Image
                 src="/logo-with-text-large-solid.png"
                 alt="IIITD HCD Department Logo"
                 width={352}
                 height={116}
                 priority
-                className="w-auto max-h-[116px] object-contain mx-auto"
+                className="w-auto max-h-[84px] object-contain mx-auto"
               />
             </div>
           </div>
