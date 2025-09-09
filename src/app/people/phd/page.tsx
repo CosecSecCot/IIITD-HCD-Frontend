@@ -7,8 +7,33 @@ import { Suspense } from "react";
 import { Search } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: "PhD Scholars | HCD IIIT-Delhi",
+  description:
+    "Meet our PhD scholars at HCD IIIT-Delhi, advancing in human-computer interaction through groundbreaking research, new ideas, and future-focused innovation.",
+  keywords: [],
+  authors: [{ name: "IIIT Delhi HCD" }],
+  creator: "IIIT Delhi HCD",
+  publisher: "IIIT Delhi",
+  alternates: {
+    canonical: "/connect",
+  },
+
+  openGraph: {
+    // url: "https://hcd.iiitd.ac.in/",
+    siteName: "HCD IIITD",
+    locale: "en-IN",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    creator: "@hcdiiitd",
+  },
+};
 
 export default async function Page(pageProps: {
   searchParams: Promise<{ filter?: string }>;

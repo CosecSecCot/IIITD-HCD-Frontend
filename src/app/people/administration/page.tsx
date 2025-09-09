@@ -4,8 +4,33 @@ import PeopleSection, {
 import { Suspense } from "react";
 import Image from "next/image";
 import { Mail, MapPin, Phone } from "lucide-react";
+import { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: "Administration | HCD IIIT-Delhi",
+  description:
+    "Learn about the administration at HCD IIIT-Delhi, ensuring smooth operations, supporting academic excellence, and enabling innovation to thrive.",
+  keywords: [],
+  authors: [{ name: "IIIT Delhi HCD" }],
+  creator: "IIIT Delhi HCD",
+  publisher: "IIIT Delhi",
+  alternates: {
+    canonical: "/connect",
+  },
+
+  openGraph: {
+    // url: "https://hcd.iiitd.ac.in/",
+    siteName: "HCD IIITD",
+    locale: "en-IN",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    creator: "@hcdiiitd",
+  },
+};
 
 export default async function Page() {
   const breadcrumbs = ["people", "administration"];

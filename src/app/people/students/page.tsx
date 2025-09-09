@@ -3,8 +3,33 @@ import PeopleSection, {
 } from "@/features/pages/people/components/PeopleSection";
 import { Suspense } from "react";
 import Image from "next/image";
+import { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: "Students | HCD IIIT-Delhi",
+  description:
+    "Get to know the student representatives of HCD IIIT-Delhi, fostering collaboration, leadership, and a vibrant culture within the design and HCI community.",
+  keywords: [],
+  authors: [{ name: "IIIT Delhi HCD" }],
+  creator: "IIIT Delhi HCD",
+  publisher: "IIIT Delhi",
+  alternates: {
+    canonical: "/connect",
+  },
+
+  openGraph: {
+    // url: "https://hcd.iiitd.ac.in/",
+    siteName: "HCD IIITD",
+    locale: "en-IN",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    creator: "@hcdiiitd",
+  },
+};
 
 export default async function Page() {
   const breadcrumbs = ["people", "students"];
