@@ -61,7 +61,7 @@ export default function Home() {
         <main className="relative">
           <article className="space-y-12 lg:space-y-32 pb-[78px]">
             <section className="relative w-full h-full overflow-hidden">
-              <div className="font-light mt-[48px] lg:mt-[90px] mx-auto xl:w-[75vw] px-8 flex max-lg:flex-col justify-between items-center gap-5 lg:gap-8">
+              <div className="font-light mt-[48px] lg:mt-[90px] mx-auto xl:w-[75vw] px-8 flex max-lg:flex-col justify-between lg:items-center gap-5 lg:gap-8">
                 <div className="flex-1">
                   <TextReveal>
                     <p className="text-[16px] lg:text-[32px] text-brand-accent2">

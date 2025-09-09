@@ -107,7 +107,7 @@ export default function PageReveal() {
           width={452}
           height={149}
           priority
-          className="page-reveal-hero-main-img px-8"
+          className="page-reveal-hero-main-img px-8 w-auto max-h-[150px] object-contain"
           style={{
             clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
             opacity: 0,
