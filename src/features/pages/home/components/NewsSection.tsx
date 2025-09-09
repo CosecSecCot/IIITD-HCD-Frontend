@@ -45,7 +45,7 @@ export default async function NewsSection({
 
   if (!inMask) {
     return (
-      <section className="xl:w-[1280px] mx-auto px-8">
+      <section className="relative xl:w-[1280px] mx-auto px-8 min-h-[512px] flex flex-col justify-center overflow-hidden">
         <div className="flex justify-between items-center">
           <h2 className="text-[26px] lg:text-[48px] text-brand-accent2 leading-tight">
             News & Events
@@ -82,7 +82,7 @@ export default async function NewsSection({
   }
 
   return (
-    <section className="xl:w-[1280px] mx-auto px-8">
+    <section className="relative xl:w-[1280px] mx-auto px-8 min-h-[512px] flex flex-col justify-center overflow-hidden">
       <div className="flex justify-between items-center">
         <h2 className="text-[26px] lg:text-[48px] text-brand-accent1 leading-tight">
           News & Events

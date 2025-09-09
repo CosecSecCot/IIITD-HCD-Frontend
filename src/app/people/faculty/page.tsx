@@ -74,7 +74,7 @@ export default async function Page(pageProps: {
             })}
           </div>
           <p className="text-[18px] lg:text-[30px] text-white/60 leading-tight uppercase">
-            Faculuty & Professors
+            Faculty & Professors
           </p>
           <h1 className="text-[38px] lg:text-[80px] leading-none uppercase">
             Faculty At HCD

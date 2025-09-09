@@ -60,7 +60,7 @@ export default function Home() {
         <Navbar />
         <main className="relative">
           <article className="space-y-12 pb-[78px]">
-            <section className="relative w-full min-h-screen flex flex-col justify-center overflow-hidden">
+            <section className="relative w-full min-h-[512px] lg:min-h-screen flex flex-col justify-center overflow-hidden">
               <div className="font-light mt-[calc(5vh+80px)] lg:mt[90px] mx-auto xl:w-[75vw] px-8 flex max-lg:flex-col justify-between lg:items-center gap-5 lg:gap-8">
                 <div className="flex-1">
                   <TextReveal>
@@ -141,7 +141,7 @@ export default function Home() {
               </div>
             </section>
 
-            <section className="relative w-full min-h-screen flex flex-col justify-center overflow-hidden">
+            <section className="relative w-full min-h-[512px] lg:min-h-screen flex flex-col justify-center overflow-hidden">
               <div className="relative z-10 mx-auto xl:w-[75vw] px-8 space-y-4 lg:space-y-8">
                 <TextReveal>
                   <h2 className="font-light text-[28px] lg:text-[86px] leading-tight">
@@ -205,8 +205,8 @@ export default function Home() {
               </div>
             </section>
 
-            <section className="relative w-full min-h-screen flex flex-col justify-center overflow-hidden">
-              <div className="flex max-lg:flex-col px-8 lg:px-[12.5vw] justify-between items-center gap-4 lg:gap-[60px]">
+            <section className="relative w-full min-h-[512px] lg:min-h-screen flex flex-col justify-center overflow-hidden">
+              <div className="flex max-lg:flex-col px-8 xl:px-[12.5vw] justify-between items-center gap-4 lg:gap-[60px]">
                 <div className="relative w-full lg:w-[60%] flex-shrink-0 aspect-video group">
                   <div className="absolute inset-0 z-10 w-full h-full bg-brand-accent2/50 group-hover:bg-transparent mix-blend-overlay transition-all duration-200" />
                   <Image
@@ -247,7 +247,7 @@ export default function Home() {
 
             <Suspense
               fallback={
-                <section className="relative xl:w-[1280px] mx-auto px-8 min-h-screen flex flex-col justify-center overflow-hidden">
+                <section className="relative xl:w-[1280px] mx-auto px-8 min-h-[512px] lg:min-h-screen flex flex-col justify-center overflow-hidden">
                   <div className="flex justify-between items-center">
                     <h2 className="text-[26px] lg:text-[48px] text-brand-accent2 leading-tight">
                       News & Events
@@ -284,7 +284,7 @@ export default function Home() {
               <NewsSection />
             </Suspense>
 
-            <section className="relative w-full min-h-screen flex flex-col justify-center overflow-hidden">
+            <section className="relative w-full min-h-[512px] lg:min-h-screen flex flex-col justify-center overflow-hidden">
               <div>
                 <Heading align="middle">
                   <span className="text-brand-accent2 font-normal">

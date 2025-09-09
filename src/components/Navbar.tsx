@@ -282,7 +282,7 @@ export default function Navbar({
                   <input
                     type="text"
                     placeholder="SEARCH"
-                    className="max-lg:w-[5em] w-[10em] max-lg:focus:w-[10em] focus:w-[15em] max-lg:text-[0.75em] bg-transparent outline-none placeholder:text-white/80 transition-all duration-300"
+                    className="max-lg:w-[5em] w-[10em] max-lg:focus:w-[7em] focus:w-[15em] max-lg:text-[0.75em] bg-transparent outline-none placeholder:text-white/80 transition-all duration-300"
                     onChange={(e) => setSearch(e.target.value.toLowerCase())}
                   />
                 </form>
