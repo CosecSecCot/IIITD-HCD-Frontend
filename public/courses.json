@@ -20,6 +20,15 @@
         "Link": "https://techtree.iiitd.edu.in/viewDescription/filename?=DES102"
     },
     {
+        "Course Name": "Introduction to Intelligent Systems",
+        "Course Code": "CSE140",
+        "Course Acronym": "IIS",
+        "Prerequisites": "CSE101",
+        "Semester": "Winter",
+        "Credits": "4",
+        "Link": "https://techtree.iiitd.edu.in/viewDescription/filename?=CSE140"
+    },
+    {
         "Course Name": "Prototyping Interactive Systems",
         "Course Code": "DES130",
         "Course Acronym": "PIS",
@@ -69,24 +78,6 @@
         "Link": "https://techtree.iiitd.edu.in/viewDescription/filename?=DES205"
     },
     {
-        "Course Name": "Introduction to Animation and Graphics",
-        "Course Code": "DES302",
-        "Course Acronym": "IAG",
-        "Prerequisites": "None",
-        "Semester": "Monsoon",
-        "Credits": "4",
-        "Link": "https://techtree.iiitd.edu.in/viewDescription/filename?=DES302"
-    },
-    {
-        "Course Name": "Film Making and Radio Podcasting",
-        "Course Code": "DES303",
-        "Course Acronym": "FMRP",
-        "Prerequisites": "None",
-        "Semester": "Monsoon",
-        "Credits": "4",
-        "Link": "https://techtree.iiitd.edu.in/viewDescription/filename?=DES303"
-    },
-    {
         "Course Name": "Fundamentals of Audio for Engineers",
         "Course Code": "DES501",
         "Course Acronym": "FAE",
@@ -94,51 +85,6 @@
         "Semester": "Monsoon",
         "Credits": "4",
         "Link": "https://techtree.iiitd.edu.in/viewDescription/filename?=DES501"
-    },
-    {
-        "Course Name": "Introduction to 2D Animation",
-        "Course Code": "DES502",
-        "Course Acronym": "I2D",
-        "Prerequisites": "None",
-        "Semester": "Winter",
-        "Credits": "4",
-        "Link": "https://techtree.iiitd.edu.in/viewDescription/filename?=DES502"
-    },
-    {
-        "Course Name": "Introduction to 3D Character Animation",
-        "Course Code": "DES503",
-        "Course Acronym": "I3DA",
-        "Prerequisites": "DES302 or DES516",
-        "Semester": "Winter",
-        "Credits": "4",
-        "Link": "https://techtree.iiitd.edu.in/viewDescription/filename?=DES503"
-    },
-    {
-        "Course Name": "Narratives in Visual Communication",
-        "Course Code": "DES504",
-        "Course Acronym": "NVC",
-        "Prerequisites": "None",
-        "Semester": "Winter",
-        "Credits": "4",
-        "Link": "https://techtree.iiitd.edu.in/viewDescription/filename?=DES504"
-    },
-    {
-        "Course Name": "Advanced topics in Human Centered Computing (ATHCC)",
-        "Course Code": "DES506",
-        "Course Acronym": "ATHCC",
-        "Prerequisites": "DES204",
-        "Semester": "Winter",
-        "Credits": "4",
-        "Link": "https://techtree.iiitd.edu.in/viewDescription/filename?=DES506"
-    },
-    {
-        "Course Name": "Design Futures",
-        "Course Code": "DES509",
-        "Course Acronym": "DF",
-        "Prerequisites": "DES519",
-        "Semester": "Monsoon",
-        "Credits": "4",
-        "Link": "https://techtree.iiitd.edu.in/viewDescription/filename?=DES509"
     },
     {
         "Course Name": "Game Design and Development",
@@ -150,15 +96,6 @@
         "Link": "https://techtree.iiitd.edu.in/viewDescription/filename?=DES512"
     },
     {
-        "Course Name": "Wearable Applications, Research, Devices, Interactions",
-        "Course Code": "DES513",
-        "Course Acronym": "WARDI",
-        "Prerequisites": "None",
-        "Semester": "Monsoon",
-        "Credits": "4",
-        "Link": "https://techtree.iiitd.edu.in/viewDescription/filename?=DES513"
-    },
-    {
         "Course Name": "Digital Audio & Video Production Workflow",
         "Course Code": "DES514",
         "Course Acronym": "DAVP",
@@ -168,51 +105,6 @@
         "Link": "https://techtree.iiitd.edu.in/viewDescription/filename?=DES514"
     },
     {
-        "Course Name": "Information Systems in Public Health",
-        "Course Code": "DES515",
-        "Course Acronym": "ISPR",
-        "Prerequisites": "None",
-        "Semester": "Monsoon",
-        "Credits": "4",
-        "Link": "https://techtree.iiitd.edu.in/viewDescription/filename?=DES515"
-    },
-    {
-        "Course Name": "Introduction to 3D Production Design for Animation and Games",
-        "Course Code": "DES516",
-        "Course Acronym": "I3DD",
-        "Prerequisites": "None",
-        "Semester": "Monsoon",
-        "Credits": "4",
-        "Link": "https://techtree.iiitd.edu.in/viewDescription/filename?=DES516"
-    },
-    {
-        "Course Name": "Introduction to 3D Animation",
-        "Course Code": "DES516s",
-        "Course Acronym": "I3D",
-        "Prerequisites": "None",
-        "Semester": "Winter",
-        "Credits": "2",
-        "Link": "https://techtree.iiitd.edu.in/viewDescription/filename?=DES516s"
-    },
-    {
-        "Course Name": "Introduction to Motion Graphics",
-        "Course Code": "DES518",
-        "Course Acronym": "IMG",
-        "Prerequisites": "None",
-        "Semester": "Monsoon",
-        "Credits": "4",
-        "Link": "https://techtree.iiitd.edu.in/viewDescription/filename?=DES518"
-    },
-    {
-        "Course Name": "Human Centred AI",
-        "Course Code": "DES520",
-        "Course Acronym": "HCAI",
-        "Prerequisites": "DES204, CSE643 or CSE343/CSE543/ECE563 or CSE440",
-        "Semester": "Monsoon",
-        "Credits": "4",
-        "Link": "https://techtree.iiitd.edu.in/viewDescription/filename?=DES520"
-    },
-    {
         "Course Name": "Fundamentals of Video for Engineers",
         "Course Code": "DES521",
         "Course Acronym": "FVE",
@@ -220,15 +112,6 @@
         "Semester": "Winter",
         "Credits": "4",
         "Link": "https://techtree.iiitd.edu.in/viewDescription/filename?=DES521"
-    },
-    {
-        "Course Name": "Inclusive Design, Universal Design & Accessibility",
-        "Course Code": "DES522",
-        "Course Acronym": "IDUDA",
-        "Prerequisites": "DES201",
-        "Semester": "Monsoon",
-        "Credits": "4",
-        "Link": "https://techtree.iiitd.edu.in/viewDescription/filename?=DES522"
     },
     {
         "Course Name": "Prototyping Interactive Systems",
@@ -304,24 +187,6 @@
         "Link": "https://techtree.iiitd.edu.in/viewDescription/filename?=DES529"
     },
     {
-        "Course Name": "3D Creation for Extended Reality (XR)",
-        "Course Code": "DES532A",
-        "Course Acronym": "3CER",
-        "Prerequisites": "None",
-        "Semester": "Winter",
-        "Credits": "2",
-        "Link": "https://techtree.iiitd.edu.in/viewDescription/filename?=DES532A"
-    },
-    {
-        "Course Name": "Interaction Design Perspectives Methods",
-        "Course Code": "DES533",
-        "Course Acronym": "IDPM",
-        "Prerequisites": "None",
-        "Semester": "Winter",
-        "Credits": "4",
-        "Link": "https://techtree.iiitd.edu.in/viewDescription/filename?=DES533"
-    },
-    {
         "Course Name": "Tangible User Interfaces\n",
         "Course Code": "DES531",
         "Course Acronym": "TUI",
@@ -347,23 +212,6 @@
         "Semester": "Winter",
         "Credits": "4",
         "Link": "https://techtree.iiitd.edu.in/viewDescription/filename?=DES535"
-    },
-    {
-        "Course Name": "Design Research",
-        "Course Code": "DES536",
-        "Course Acronym": "",
-        "Prerequisites": "",
-        "Semester": "Winter",
-        "Credits": "2",
-        "Link": "https://techtree.iiitd.edu.in/viewDescription/filename?=DES536"
-    },
-    {
-        "Course Name": "User Experience Design and UI Design",
-        "Course Code": " DES537A",
-        "Course Acronym": "",
-        "Prerequisites": "",
-        "Semester": "Summer",
-        "Credits": "2",
-        "Link": "https://techtree.iiitd.edu.in/viewDescription/filename?=DES537A"
     }
+    
 ]}
