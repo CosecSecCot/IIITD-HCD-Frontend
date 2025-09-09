@@ -4,6 +4,8 @@ import PeopleSection, {
 import { Suspense } from "react";
 import Image from "next/image";
 import { Metadata } from "next";
+import { Mail } from "lucide-react";
+import Link from "next/link";
 
 export const dynamic = "force-dynamic";
 
@@ -140,7 +142,19 @@ async function StudentRepresentativesSection() {
     (item: any): People => ({
       id: item.id,
       name: item.Name,
-      description: item.ShortDescription,
+      description: (
+        <>
+          <p>{item.ShortDescription}</p>
+          <div className="mt-3 flex flex-col gap-2">
+            <Link
+              href={`mailto:${item.Email}`}
+              className="flex gap-4 items-center text-brand-accent2 hover:underline"
+            >
+              <Mail /> {item.Email}
+            </Link>
+          </div>
+        </>
+      ),
       img: `${process.env.NEXT_PUBLIC_STRAPI_URL}${item.Image.url}`,
       link: item.WebsiteLink,
     })

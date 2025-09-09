@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import Image from "next/image";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { Metadata } from "next";
+import Link from "next/link";
 
 export const dynamic = "force-dynamic";
 
@@ -145,9 +146,12 @@ async function AdministrationSection() {
         <>
           <p>{item.ShortDescription}</p>
           <div className="mt-3 flex flex-col gap-2">
-            <p className="flex gap-4 items-center text-brand-accent2">
+            <Link
+              href={`mailto:${item.Email}`}
+              className="flex gap-4 items-center text-brand-accent2 hover:underline"
+            >
               <Mail /> {item.Email}
-            </p>
+            </Link>
             {item.Phone && (
               <p className="flex gap-4 items-center text-brand-accent2">
                 <Phone /> {item.Phone}
