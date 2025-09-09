@@ -11,7 +11,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "HCD Collaborations | Industry & Academic Partners",
   description:
-    "Explore HCD partnerships at IIIT-Delhi—industry, academic, and civic collaborations powering joint research, live projects, and student opportunities.",
+    "Explore HCD partnerships at IIIT-Delhi. Learn more about industry, academic, and civic collaborations powering joint research, live projects, and student opportunities.",
   keywords: [],
   authors: [{ name: "IIIT Delhi HCD" }],
   creator: "IIIT Delhi HCD",
@@ -93,7 +93,7 @@ export default async function Page() {
             </h2>
             <p className="mt-2 text-[14px] lg:text-[20px]">
               We collaborate with top universities, institutes, and industry
-              partners worldwide—advancing joint research, exchanges,
+              partners worldwide, advancing joint research, exchanges,
               publications, studios, and capstones that translate human-centered
               innovation into impact.
             </p>

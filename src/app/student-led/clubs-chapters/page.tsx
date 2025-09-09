@@ -6,7 +6,7 @@ import Image from "next/image";
 export const metadata: Metadata = {
   title: "Student-Led Initiatives | Clubs & Chapters at HCD IIIT-Delhi",
   description:
-    "Explore student-led initiatives at IIIT-Delhi including the ACM SIGCHI Student Chapter and Design Hub. Join communities that foster innovation, design thinking, creativity, and collaboration in human-computer interaction and product design.",
+    "Explore student-led initiatives at IIIT-Delhi. Join communities that foster innovation, design thinking, creativity, and collaboration in human-computer interaction and product design.",
   keywords: [],
   authors: [{ name: "IIIT Delhi HCD" }],
   creator: "IIIT Delhi HCD",
@@ -71,10 +71,9 @@ export default function Page() {
             Clubs & Chapters
           </h1>
           <p className="mt-[1em] lg:w-3/4 font-light text-[16px] lg:text-[26px] leading-tight">
-            We are a collective of diverse thinkers reimagining how
-            human-technology interactions can be seamless and meaningful. We are
-            a collective of diverse thinkers reimagining how human-technology
-            interactions.
+            Our student-led clubs and chapters are shaping the future of
+            human-technology interactions through creativity, collaboration, and
+            innovation. Together, we make ideas come alive.
           </p>
           <div className="mt-[2em] flex gap-x-[1em] gap-y-[0.5em] flex-wrap">
             <LinkButton

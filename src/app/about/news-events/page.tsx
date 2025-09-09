@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "HCD News & Events | IIIT-Delhi",
   description:
-    "See the latest from HCD at IIIT-Delhi—workshops, talks, showcases, and announcements from our design, HCI, and creative technology community.",
+    "See the latest from HCD at IIIT-Delhi. Learn more about workshops, talks, showcases, and announcements from our design, HCI, and creative technology community.",
   keywords: [],
   authors: [{ name: "IIIT Delhi HCD" }],
   creator: "IIIT Delhi HCD",

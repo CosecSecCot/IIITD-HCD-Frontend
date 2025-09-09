@@ -147,9 +147,9 @@ export default async function Page(pageProps: {
         <Navbar type="solid" />
         <main className="pt-24 mb-[10vh]">
           <PageHeading
-            title="Search Page"
+            title="Search"
             subtitle="Find your requirement"
-            description="We'd like to think our website has covered it all. But just in case, here are some other ways to help."
+            description="Looking for something specific? Use our search to explore programs, people, and projects instantly."
           />
           <div className="mt-[10vh] mx-auto xl:w-[1280px] px-8 mb-[10vh]">
             <SearchSection

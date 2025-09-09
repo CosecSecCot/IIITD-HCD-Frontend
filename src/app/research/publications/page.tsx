@@ -9,7 +9,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "HCD Publications | Research from IIIT-Delhi",
   description:
-    "Access HCD publications from IIIT-Delhi—papers, articles, and proceedings in HCI, UX, XR, and human-centered technologies.",
+    "Access HCD publications from IIIT-Delhi. See research papers and journal articles in HCI, UX, XR, and human-centered technologies.",
   keywords: [],
   authors: [{ name: "IIIT Delhi HCD" }],
   creator: "IIIT Delhi HCD",

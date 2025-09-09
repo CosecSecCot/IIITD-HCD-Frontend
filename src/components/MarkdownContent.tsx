@@ -100,7 +100,7 @@ export default function MarkdownContent({
                 height={image.height}
               />
               {image.caption && (
-                <p className="text-center text-[12px] lg:text-[14px] italic mt-1 opacity-70">
+                <p className="text-center text-[12px] lg:text-[14px] mt-1 opacity-70">
                   {image.caption}
                 </p>
               )}

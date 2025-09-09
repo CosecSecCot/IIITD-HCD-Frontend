@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://hcd.iiitd.ac.in"),
   title: "Human-Centered Design at IIIT-Delhi | Official Site",
   description:
-    "HCD at IIIT-Delhi—programs in CSD & PhD, HCI/XR research, labs, projects, news, and admissions. Design × computing for real-world impact.",
+    "The Department of Human-Centered Design at IIIT-Delhi stands at the intersection of computing and design, reimagining how technology can enrich human lives. Our work blends strong academic foundations with creativity and critical inquiry. Explore programs in CSD & PhD, HCI/XR research, labs, projects, news, and admissions.",
   keywords: [],
   authors: [{ name: "IIIT Delhi HCD" }],
   creator: "IIIT Delhi HCD",

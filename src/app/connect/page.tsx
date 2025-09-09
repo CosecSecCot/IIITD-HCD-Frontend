@@ -42,7 +42,7 @@ export default function Page() {
               </span>
             }
             subtitle="Get in touch"
-            description="We'd like to think our website has covered it all. But just in case, here are some other ways to help."
+            description="Have questions or ideas to share? We’re just a message away and happy to hear from you."
           />
           <div className="mt-[6em] grid grid-cols-1 md:grid-cols-2 gap-y-12 ml-[12.5vw] xl:ml-[37.5vw] w-[75vw] xl:w-[50vw]">
             <ContactCard

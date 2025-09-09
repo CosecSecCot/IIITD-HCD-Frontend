@@ -54,7 +54,7 @@ export default function Banner({
           </div>
         </div>
         <TextReveal>
-          <blockquote className="max-xl:hidden italic font-light text-right flex-shrink w-1/3">
+          <blockquote className="max-xl:hidden font-light text-right flex-shrink w-1/3">
             &quot;{sideText}&quot;
           </blockquote>
         </TextReveal>

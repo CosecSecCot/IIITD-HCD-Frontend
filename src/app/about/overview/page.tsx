@@ -6,7 +6,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Human-Centered Design at IIIT-Delhi | Department Overview",
   description:
-    "Discover HCD at IIIT-Delhi—our vision, people, studios, and labs at the intersection of design and computing to build inclusive, impactful technology.",
+    "Discover HCD at IIIT-Delhi. Learn more about our vision, people, studios, and labs at the intersection of design and computing to build inclusive, impactful technology.",
   keywords: [],
   authors: [{ name: "IIIT Delhi HCD" }],
   creator: "IIIT Delhi HCD",
@@ -64,7 +64,7 @@ export default function Page() {
         <section className="mt-5 lg:mt-12">
           <p className="text-[14px] lg:text-[20px]">
             Human-Centered Design (HCD) at IIIT-Delhi trains technically
-            rigorous designers — engineers who think like designers, and
+            rigorous designers, engineers who think like designers, and
             designers who code. Our B.Tech. in Computer Science & Design (CSD)
             blends algorithms and systems with design methods, prototyping and
             user research so graduates can create usable, inclusive and scalable

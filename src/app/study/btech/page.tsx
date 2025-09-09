@@ -8,7 +8,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "B.Tech in CSD at IIIT-Delhi | Computer Science & Design",
   description:
-    "Study Computer Science & Design (CSD) at IIIT-Delhi—solid CS foundations + design, HCI, and creative tech. Explore curriculum, electives, and admissions.",
+    "Study Computer Science & Design (CSD) at IIIT-Delhi. We provide solid CS foundations + design, HCI, and creative tech. Explore curriculum, electives, and admissions.",
   keywords: [],
   authors: [{ name: "IIIT Delhi HCD" }],
   creator: "IIIT Delhi HCD",

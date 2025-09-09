@@ -12,16 +12,16 @@ export default function ViewCoursesCard() {
         <div className="space-y-[0.5em]">
           <div>
             <p className="text-[14px] lg:text-[20px] leading-tight">
-              Bachelor’s Degree
+              Programs at IIIT-Delhi
             </p>
             <h3 className="font-medium text-[24px] lg:text-[40px] text-brand-accent2">
               View Courses
             </h3>
           </div>
           <p className="text-[14px] lg:text-[24px]">
-            The first level of the university system:
+            Explore our academic offerings,
             <br />
-            three-year study courses.
+            designed to blend strong foundations with innovation and research.
           </p>
         </div>
         <Link

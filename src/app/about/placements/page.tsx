@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "HCD Placements at IIIT-Delhi | Placements",
   description:
-    "Learn about HCD placements at IIIT-Delhi—career tracks in UX, product, XR, and media; internship pathways; recruiters; and alumni outcomes.",
+    "Learn about HCD placements at IIIT-Delhi. Explore career tracks in UX, product, XR, and media. Learn about our recruiters and get in touch with us.",
   keywords: [],
   authors: [{ name: "IIIT Delhi HCD" }],
   creator: "IIIT Delhi HCD",
@@ -37,7 +37,7 @@ export default async function Page() {
       <article className="mx-auto mt-12 px-8 xl:w-[1280px] font-light">
         <Banner
           title="Where Design Meets Opportunity: Placements at IIIT-Delhi HCD"
-          subtitle="Our graduates step into leading roles across technology, design, research, and innovation—driving impact in top companies, startups, and academic institutions worldwide."
+          subtitle="Our graduates step into leading roles across technology, design, research, and innovation, driving impact in top companies, startups, and academic institutions worldwide."
           imageSrc={"/1pixel.png"}
           breadcrumbs={["about", "placements"]}
         />
@@ -45,7 +45,7 @@ export default async function Page() {
           The Human-Centered Design (HCD) program at IIIT-Delhi blends technical
           excellence, design thinking, and interdisciplinary research. Our
           students graduate with a strong foundation in computing, design
-          methodology, and real-world problem solving—making them highly sought
+          methodology, and real-world problem solving, making them highly sought
           after by industry and academia alike.
         </p>
 
