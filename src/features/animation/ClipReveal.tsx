@@ -1,12 +1,13 @@
 "use client";
 
 import { cloneElement, useRef } from "react";
+import {cn} from "@/lib/utils";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(useGSAP);
 
 /**
- * `ClipReveal` marks a element for clip-path reveal animation
+ * `ClipReveal` marks an element for clip-path reveal animation
  *
  * @param {Object} props
  * @param {React.ReactElement} props.children - The single React element (like <p> or <h2>).
@@ -42,7 +43,7 @@ const ClipReveal = ({
 
   return cloneElement(children, {
     ref: elementRef,
-    className: `${children.props.className || ""} ${className}`,
+    className: cn(children.props.className || "", className),
   });
 };
 

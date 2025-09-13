@@ -1,14 +1,16 @@
 "use client";
 
 import { useRef, useState } from "react";
-import Image from "next/image";
 import { Globe, X } from "lucide-react";
+import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
+import { cn } from "@/lib/utils";
+import Image from "next/image";
+import Link from "next/link";
+
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { Flip } from "gsap/Flip";
-import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
-import Link from "next/link";
-
 gsap.registerPlugin(Flip, useGSAP);
 
 export type Lab = {
@@ -73,17 +75,15 @@ export default function LabsSection({ labs }: { labs: Lab[] }) {
       ref={cardsContainerRef}
       className="grid grid-cols-1 xl:grid-cols-3"
     >
-      {labs
-        // .filter((lab) => lab.type === activeTab)
-        .map((lab) => (
-          <LabCard
-            key={lab.id}
-            lab={lab}
-            expanded={lab.id === expandedId}
-            onExpand={() => handleExpand(lab.id)}
-            onCollapse={handleCollapse}
-          />
-        ))}
+      {labs.map((lab) => (
+        <LabCard
+          key={lab.id}
+          lab={lab}
+          expanded={lab.id === expandedId}
+          onExpand={() => handleExpand(lab.id)}
+          onCollapse={handleCollapse}
+        />
+      ))}
     </section>
   );
 }
@@ -100,6 +100,114 @@ function LabCard({
   onCollapse: () => void;
 }) {
   const [hover, setHover] = useState(false);
+  const canHover = useMediaQuery("(pointer: fine)");
+
+  const LabCardExpanded = () => (
+    <>
+      <div className="flex flex-col gap-[18px] lg:gap-[24px]">
+        <div className="flex flex-col gap-[12px] lg:gap-[16px]">
+          <div className="flex items-center gap-[12px] lg:gap-[16px]">
+            <Image
+              className="reveal-animation-opacity-only h-[40px] lg:h-[60px] w-auto grayscale"
+              style={{
+                mixBlendMode:
+                  lab.foreground === "#FFFFFF" ? "screen" : "overlay",
+              }}
+              src={lab.logo}
+              alt={`${lab.title} logo`}
+              width={86}
+              height={86}
+            />
+            <h3 className="text-[16px] lg:text-[32px] font-medium">
+              {lab.title}
+            </h3>
+          </div>
+          <p className="font-helvetica_now_display text-[14px] lg:text-[24px] opacity-80">
+            {lab.full}
+          </p>
+        </div>
+        <p className="text-[14px] lg:text-[24px] font-medium opacity-80">
+          {lab.lead}
+        </p>
+      </div>
+      <div className="flex justify-between flex-row-reverse flex-wrap w-full">
+        <button
+          type="button"
+          onClick={onCollapse}
+          className="reveal-animation-opacity-only flex items-center text-[14px] lg:text-[20px] gap-[0.5em] cursor-pointer"
+          aria-label={`Close ${lab.title} details`}
+        >
+          <span>CLOSE</span>
+          <X className="w-[16px] h-[16px]" />
+        </button>
+        {lab.website === "" ? (
+          <div aria-hidden />
+        ) : (
+          <Link
+            href={lab.website}
+            target="_blank"
+            className="reveal-animation-opacity-only text-[14px] lg:text-[20px] px-[1em] lg:px-[2em] py-[0.5em] border inline-flex gap-[16px] items-center justify-center transition-all duration-200"
+            style={{
+              borderColor: lab.foreground,
+            }}
+            onMouseEnter={(e) => {
+              if (!canHover) return;
+              e.currentTarget.style.backgroundColor = lab.foreground;
+              e.currentTarget.style.color = lab.background;
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = "transparent";
+              e.currentTarget.style.color = lab.foreground;
+            }}
+          >
+            <LetterSwapForward
+              label="VISIT WEBSITE"
+              staggerDuration={0.005}
+              className="w-max"
+            />
+            <Globe className="max-lg:hidden w-[12px] lg:w-[16px] aspect-square h-auto" />
+          </Link>
+        )}
+      </div>
+    </>
+  );
+
+  const LabCardCollapsed = () => (
+    <>
+      <div className="flex flex-col gap-[18px] lg:gap-[24px]">
+        <div className="flex flex-col gap-[12px] lg:gap-[16px]">
+          <div className="flex items-center gap-[12px] lg:gap-[16px]">
+            <Image
+              className="reveal-animation-opacity-only h-[40px] lg:h-[60px] w-auto"
+              src={lab.logo}
+              alt={`${lab.title} logo`}
+              width={86}
+              height={86}
+              style={{
+                // WARNING: for now we are assuming that foreground color will be black and white
+                // if you want to change it to custom color, modify the svg or make two images and change img src
+                filter: canHover && hover ? "grayscale(100%)" : "none",
+                mixBlendMode:
+                  canHover && hover
+                    ? lab.foreground === "#FFFFFF"
+                      ? "screen"
+                      : "overlay"
+                    : "normal",
+              }}
+            />
+            <h3 className="text-[16px] lg:text-[20px] font-medium">
+              {lab.title}
+            </h3>
+          </div>
+          <p className="font-helvetica_now_display text-[14px] lg:text-[18px] opacity-60">
+            {lab.short}
+          </p>
+        </div>
+        <p className="text-[14px] lg:text-[18px] opacity-60">{lab.lead}</p>
+      </div>
+    </>
+  );
+
   const expanded_class = expanded
     ? "z-[99] xl:col-span-2 xl:row-span-2"
     : "cursor-pointer";
@@ -114,7 +222,7 @@ function LabCard({
               color: lab.foreground,
             }
           : {
-              backgroundColor: hover ? lab.backgroundDim : "white",
+              backgroundColor: canHover && hover ? lab.backgroundDim : "white",
             }
       }
       onMouseEnter={() => {
@@ -124,113 +232,12 @@ function LabCard({
         setHover(false);
       }}
       onClick={expanded ? () => {} : onExpand}
-      className={`w-full flex flex-col justify-between gap-[32px] lg:gap-[48px] p-[28px] lg:p-[40px] border border-black/10 ${expanded_class}`}
-    >
-      {expanded ? (
-        <>
-          <div className="flex flex-col gap-[18px] lg:gap-[24px]">
-            <div className="flex flex-col gap-[12px] lg:gap-[16px]">
-              <div className="flex items-center gap-[12px] lg:gap-[16px]">
-                <Image
-                  className="reveal-animation-opacity-only h-[40px] lg:h-[60px] w-auto grayscale"
-                  style={{
-                    // WARNING: for now we are assuming that foreground color will be black and white
-                    // if you want to change it to custom color, modify the svg or make two images and change img src
-                    // filter:
-                    //   lab.foreground === "#FFFFFF" ? "invert(100%)" : "none",
-                    mixBlendMode:
-                      lab.foreground === "#FFFFFF" ? "screen" : "overlay",
-                  }}
-                  src={lab.logo}
-                  alt={`${lab.title} logo`}
-                  width={86}
-                  height={86}
-                />
-                <h3 className="text-[16px] lg:text-[32px] font-medium">
-                  {lab.title}
-                </h3>
-              </div>
-              <p className="font-helvetica_now_display text-[14px] lg:text-[24px] opacity-80">
-                {lab.full}
-              </p>
-            </div>
-            <p className="text-[14px] lg:text-[24px] font-medium opacity-80">
-              {lab.lead}
-            </p>
-          </div>
-          <div className="flex justify-between flex-row-reverse flex-wrap w-full">
-            <button
-              type="button"
-              onClick={onCollapse}
-              className="reveal-animation-opacity-only flex items-center text-[14px] lg:text-[20px] gap-[0.5em] cursor-pointer"
-              aria-label={`Close ${lab.title} details`}
-            >
-              <span>CLOSE</span>
-              <X className="w-[16px] h-[16px]" />
-            </button>
-            {lab.website === "" ? (
-              <div aria-hidden />
-            ) : (
-              <Link
-                href={lab.website}
-                target="_blank"
-                className="reveal-animation-opacity-only text-[14px] lg:text-[20px] px-[1em] lg:px-[2em] py-[0.5em] border inline-flex gap-[16px] items-center justify-center transition-all duration-200"
-                style={{
-                  borderColor: lab.foreground,
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = lab.foreground;
-                  e.currentTarget.style.color = lab.background;
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = "transparent";
-                  e.currentTarget.style.color = lab.foreground;
-                }}
-              >
-                <LetterSwapForward
-                  label="VISIT WEBSITE"
-                  staggerDuration={0.005}
-                  className="w-max"
-                />
-                <Globe className="max-lg:hidden w-[12px] lg:w-[16px] aspect-square h-auto" />
-              </Link>
-            )}
-          </div>
-        </>
-      ) : (
-        <>
-          <div className="flex flex-col gap-[18px] lg:gap-[24px]">
-            <div className="flex flex-col gap-[12px] lg:gap-[16px]">
-              <div className="flex items-center gap-[12px] lg:gap-[16px]">
-                <Image
-                  className="reveal-animation-opacity-only h-[40px] lg:h-[60px] w-auto"
-                  src={lab.logo}
-                  alt={`${lab.title} logo`}
-                  width={86}
-                  height={86}
-                  style={{
-                    // WARNING: for now we are assuming that foreground color will be black and white
-                    // if you want to change it to custom color, modify the svg or make two images and change img src
-                    filter: hover ? "grayscale(100%)" : "none",
-                    mixBlendMode: hover
-                      ? lab.foreground === "#FFFFFF"
-                        ? "screen"
-                        : "overlay"
-                      : "normal",
-                  }}
-                />
-                <h3 className="text-[16px] lg:text-[20px] font-medium">
-                  {lab.title}
-                </h3>
-              </div>
-              <p className="font-helvetica_now_display text-[14px] lg:text-[18px] opacity-60">
-                {lab.short}
-              </p>
-            </div>
-            <p className="text-[14px] lg:text-[18px] opacity-60">{lab.lead}</p>
-          </div>
-        </>
+      className={cn(
+        "w-full flex flex-col justify-between gap-[32px] lg:gap-[48px] p-[28px] lg:p-[40px] border border-black/10",
+        expanded_class
       )}
+    >
+      {expanded ? <LabCardExpanded /> : <LabCardCollapsed />}
     </div>
   );
 }

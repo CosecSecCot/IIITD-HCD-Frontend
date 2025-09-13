@@ -27,13 +27,6 @@ export const metadata: Metadata = {
   },
 };
 
-const stats = [
-  { label: "ALUMNI", value: "2000+" },
-  { label: "STUDENTS", value: "2000+" },
-  { label: "PAPERS", value: "20+" },
-  { label: "FACULTY", value: "200+" },
-];
-
 export default function Page() {
   return (
     <main>
@@ -114,19 +107,6 @@ export default function Page() {
               type="solid"
             />
           </div>
-
-          {/* <div className="w-full box-border flex justify-around mt-[16px] px-4 lg:px-[2em] py-[1em] bg-brand-accent2-130/[.02] border lg:border-2 border-brand-accent2/50 backdrop-blur-lg">
-            {stats.map((stat, idx) => (
-              <div key={idx} className="leading-tight">
-                <p className="text-[10px] lg:text-[20px] uppercase opacity-60">
-                  {stat.label}
-                </p>
-                <h2 className="text-[24px] lg:text-[54px] font-medium text-brand-accent2">
-                  {stat.value}
-                </h2>
-              </div>
-            ))}
-          </div> */}
         </section>
 
         <section className="mt-5 lg:mt-12">

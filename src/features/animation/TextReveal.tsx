@@ -1,6 +1,7 @@
 "use client";
 
 import { cloneElement, useRef } from "react";
+import {cn} from "@/lib/utils";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/SplitText";
@@ -11,7 +12,7 @@ gsap.registerPlugin(ScrollTrigger, SplitText, useGSAP);
  * `TextReveal` marks a text element for scroll-triggered animation.
  *
  * @param {Object} props
- * @param {React.ReactElement} props.children - The single React element (like <p> or <h2>).
+ * @param {React.ReactElement} props.children - The single React element (like \<p\> or \<h2\>).
  * @param {string?} props.className - Optional additional class names.
  */
 const TextReveal = ({
@@ -59,7 +60,7 @@ const TextReveal = ({
 
   return cloneElement(children, {
     ref: elementRef,
-    className: `${children.props.className || ""} ${className}`,
+    className: cn(children.props.className || "", className),
   });
 };
 

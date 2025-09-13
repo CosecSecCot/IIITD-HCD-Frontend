@@ -1,13 +1,8 @@
 "use client";
 
-import Link from "next/link";
-
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { Flip } from "gsap/Flip";
-import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
-gsap.registerPlugin(Flip, useGSAP);
+import Link from "next/link";
+import Image from "next/image";
 
 export type People = {
   id: number;
@@ -26,52 +21,6 @@ export default function PeopleSection({ people }: { people: People[] }) {
     </section>
   );
 }
-
-// function PeopleCard({ person }: { person: People }) {
-//   const inner = (
-//     <div className="relative w-full h-full bg-brand-accent1/10 group-hover:bg-brand-accent2 backdrop-blur-2xl transition-colors ease-in-out duration-500">
-//       <div className="absolute inset-0 w-full h-full">
-//         <Image
-//           src={person.img}
-//           alt={person.name}
-//           width={400}
-//           height={400}
-//           className="absolute inset-0 w-full h-full object-cover pointer-events-none grayscale-100 group-hover:grayscale-0 transition-all duration-500"
-//         />
-//         <div className="absolute inset-0 w-full h-full bg-brand-accent2/50 group-hover:bg-transparent mix-blend-overlay transition-all duration-500" />
-//         <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-black/20 to-black/0" />
-//       </div>
-//       <div className="absolute top-0 left-0 p-4 lg:p-6 text-white text-shadow-lg text-shadow-black/20 max-md:hidden group-hover:translate-y-[-200%] transition-transform ease-in-out duration-500">
-//         <h2 className="uppercase font-medium text-[18px] lg:text-[30px] leading-none">
-//           {person.name}
-//         </h2>
-//         <p className="text-[12px] lg:text-[20px]">{person.description}</p>
-//       </div>
-//       <div className="absolute bottom-0 w-full flex flex-col justify-center items-center text-center px-[2em] py-[0.5em] text-white bg-black/50 backdrop-blur-md md:translate-y-full md:group-hover:translate-y-0 transition-transform ease-in-out duration-500">
-//         <h2 className="uppercase font-medium text-[18px] lg:text-[30px] leading-none">
-//           {person.name}
-//         </h2>
-//         <p className="text-[12px] lg:text-[20px]">{person.description}</p>
-//       </div>
-//     </div>
-//   );
-//   if (person.link) {
-//     return (
-//       <Link
-//         target="_blank"
-//         href={person.link}
-//         className="w-full h-auto aspect-square overflow-hidden group"
-//       >
-//         {inner}
-//       </Link>
-//     );
-//   }
-//   return (
-//     <div className="w-full h-auto aspect-square overflow-hidden group">
-//       {inner}
-//     </div>
-//   );
-// }
 
 function PeopleCard({ person }: { person: People }) {
   const imageContent = (
@@ -94,6 +43,7 @@ function PeopleCard({ person }: { person: People }) {
       </div>
     </>
   );
+
   return (
     <div>
       <div className="relative w-full h-auto aspect-[0.8] group">

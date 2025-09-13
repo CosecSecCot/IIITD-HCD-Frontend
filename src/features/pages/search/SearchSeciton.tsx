@@ -46,7 +46,7 @@ export default function SearchSection({
       {filter && (
         <h2 className="mt-[1em] text-[30px] lg:text-[54px] leading-tight">
           Search Results For:{" "}
-          <span className="font-light italic">"{filter}"</span>
+          <span className="font-light italic">&ldquo;{filter}&rdquo;</span>
         </h2>
       )}
 
@@ -91,8 +91,6 @@ function SearchCard({
   content: SearchContent;
   query?: string;
 }) {
-  //   const [expanded, setExpanded] = useState(false);
-
   return (
     <div className="relative z-[9990] px-[2em] py-[1.5em] lg:px-[4em] lg:py-[2.5em] border border-black/20 backdrop-blur-sm">
       <div>
@@ -102,25 +100,9 @@ function SearchCard({
       </div>
       <p
         className="font-helvetica_now_display text-[14px] lg:text-[20px] text-black/60 leading-tight transition-all duration-300"
-        // expanded ? "" : "line-clamp-2"
       >
         {highlightMatch(content.description, query)}
       </p>
-
-      {/* <button
-        className="font-helvetica_now_display text-[14px] lg:text-[20px] text-brand-accent1 cursor-pointer"
-        onClick={() => setExpanded((prev) => !prev)}
-        aria-expanded={expanded}
-        aria-controls={`desc-${content.id}`}
-      >
-        <CenterUnderline
-          underlineHeightRatio={0.075}
-          underlinePaddingRatio={-0.25}
-        >
-          {expanded ? "Show Less" : "Read More..."}
-        </CenterUnderline>
-      </button> */}
-
       <Link
         href={content.link}
         target={content.external ? "_blank" : "_self"}

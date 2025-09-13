@@ -67,7 +67,7 @@ export default async function Page() {
       title: item.Title,
       description: item.Description,
       img: `${process.env.NEXT_PUBLIC_STRAPI_URL}${item.CoverImage.url}`,
-      content: "", // we dont need content on this page
+      content: "", // we don't need content on this page
     })
   );
 
@@ -98,8 +98,8 @@ export default async function Page() {
           Stay up to date with the latest happenings at HCD IIIT Delhi. This
           section brings you important announcements, upcoming events,
           workshops, guest lectures, and achievements from our community.
-          Whether it’s academic milestones, research breakthroughs, or cultural
-          activities, you’ll find all the highlights here.
+          Whether it&lsquo;s academic milestones, research breakthroughs, or
+          cultural activities, you&lsquo;ll find all the highlights here.
         </p>
 
         {news.length > 0 && (

@@ -39,11 +39,6 @@ function CustomLinkText({ label }: { label: string }) {
   return (
     <CenterUnderline underlineHeightRatio={0.075}>
       {label}
-      {/* <LetterSwapForward
-        label={label}
-        staggerDuration={0.001}
-        className="leading-tight"
-      /> */}
     </CenterUnderline>
   );
 }

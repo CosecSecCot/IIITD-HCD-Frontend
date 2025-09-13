@@ -2,7 +2,6 @@ import LinkButton from "@/components/LinkButton";
 import PeopleSection, {
   People,
 } from "@/features/pages/people/components/PeopleSection";
-import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
 import { Suspense } from "react";
 import { Search } from "lucide-react";
 import Image from "next/image";
@@ -80,7 +79,7 @@ export default async function Page(pageProps: {
           <p className="mt-[1em] lg:w-3/4 font-light text-[16px] lg:text-[26px] leading-tight">
             Our PhD scholars are pushing boundaries with cutting-edge research,
             exploring new dimensions of human-technology interactions, and
-            building knowledge that drives tomorrow’s solutions.
+            building knowledge that drives tomorrow&lsquo;s solutions.
           </p>
           <div className="mt-[2em] flex gap-x-[1em] gap-y-[0.5em] flex-wrap">
             <LinkButton
@@ -159,6 +158,7 @@ async function PhDStudentsSection({ filter }: { filter?: string }) {
   }
 
   const allLabs: string[] = data.data
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     .map((item: any) => item.Lab?.LabName) // Get all lab names (some might be null)
     .filter(Boolean); // Filter out any falsy values
   const uniqueLabs: string[] = [...new Set(allLabs)].sort();
@@ -168,6 +168,7 @@ async function PhDStudentsSection({ filter }: { filter?: string }) {
 
   const filtered = isValidLabFilter
     ? data.data.filter(
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (item: any) => item.Lab?.LabName && slugify(item.Lab.LabName) === filter
       )
     : data.data; // Otherwise, show all data

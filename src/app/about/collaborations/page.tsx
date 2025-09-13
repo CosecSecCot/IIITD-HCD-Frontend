@@ -101,15 +101,18 @@ export default async function Page() {
               <Suspense
                 fallback={
                   <>
-                    {new Array(6).fill(0).map(() => (
-                      <div className="relative bg-white mx-auto w-1/2 aspect-square">
+                    {new Array(6).fill(0).map((_, index) => (
+                      <div
+                        key={index}
+                        className="relative bg-white mx-auto w-1/2 aspect-square"
+                      >
                         <div className="absolute inset-0 w-full h-full bg-brand-gray1/70 animate-pulse rounded-md" />
                       </div>
                     ))}
                   </>
                 }
               >
-                <CollabroatorsSection />
+                <CollaboratorsSection />
               </Suspense>
             </div>
           </section>
@@ -119,7 +122,7 @@ export default async function Page() {
   );
 }
 
-async function CollabroatorsSection() {
+async function CollaboratorsSection() {
   const query = qs.stringify(
     {
       populate: "Collaborators",
@@ -142,7 +145,7 @@ async function CollabroatorsSection() {
   ) {
     return (
       <p className="col-span-full text-center font-light italic text-[14px] lg:text-[20px] text-black/60">
-        There was some problem loading our collaborators.
+        There was some problem fetching our collaborators.
       </p>
     );
   }

@@ -187,6 +187,15 @@ export default function Navbar({
       );
   });
 
+  const openSecondSidebar = contextSafe(() => {
+      setSecondSidebarOpen(true);
+      const timeline = gsap.timeline();
+      timeline.to("#nav-container", {
+          x: isMobileNavbarActive ? "-50%" : 0,
+          ease: "expo.out",
+      });
+  });
+
   const closeSidebar = contextSafe(() => {
     const timeline = gsap.timeline();
     timeline
@@ -218,15 +227,6 @@ export default function Navbar({
         setFirstSidebarOpen(false);
         setActiveGroup(null);
       });
-  });
-
-  const openSecondSidebar = contextSafe(() => {
-    setSecondSidebarOpen(true);
-    const timeline = gsap.timeline();
-    timeline.to("#nav-container", {
-      x: isMobileNavbarActive ? "-50%" : 0,
-      ease: "expo.out",
-    });
   });
 
   return (

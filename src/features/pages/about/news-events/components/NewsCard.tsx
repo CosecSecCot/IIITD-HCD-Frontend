@@ -17,20 +17,18 @@ export type NewsEvent = {
   content: BlocksContent | ""; // content can be empty string if not needed
 };
 
-export default function NewsCard({ content }: { content: NewsEvent }) {
+export default function NewsCard({ news }: { news: NewsEvent }) {
   const [expanded, setExpanded] = useState(false);
 
-  const { wordCount, shouldClamp } = useMemo(() => {
-    const text = (content.description || "").trim();
+  const { shouldClamp } = useMemo(() => {
+    const text = (news.description || "").trim();
     const words = text.length === 0 ? [] : text.split(/\s+/).filter(Boolean);
     const wc = words.length;
-    return { wordCount: wc, shouldClamp: wc > 100 };
-  }, [content.description]);
+    return { shouldClamp: wc > 100 };
+  }, [news.description]);
 
-  const descId = `desc-${content.id}`;
-
-  // You can change this to the actual link for the news/event if available
-  const newsHref = `/about/news-events/${content.id}`;
+  const descId = `desc-${news.id}`;
+  const newsHref = `/about/news-events/${news.id}`;
 
   return (
     <div className="flex flex-col md:flex-row md:items-center md:gap-8">
@@ -40,8 +38,8 @@ export default function NewsCard({ content }: { content: NewsEvent }) {
         tabIndex={-1}
       >
         <Image
-          src={content.img}
-          alt={content.title + " cover image"}
+          src={news.img}
+          alt={news.title + " cover image"}
           width={427}
           height={240}
           className="absolute inset-0 w-full h-full object-cover transition-transform duration-300"
@@ -53,11 +51,11 @@ export default function NewsCard({ content }: { content: NewsEvent }) {
       </Link>
       <div className="mt-3">
         <p className="text-[14px] lg:text-[18px] text-brand-accent2/80">
-          {formatDateToMonthYear(content.date.toDateString())}
+          {formatDateToMonthYear(news.date.toDateString())}
         </p>
         <Link href={newsHref}>
           <h3 className="font-medium text-[20px] lg:text-[20px] text-brand-accent2 leading-tight hover:underline">
-            {content.title}
+            {news.title}
           </h3>
         </Link>
 
@@ -67,7 +65,7 @@ export default function NewsCard({ content }: { content: NewsEvent }) {
             shouldClamp && !expanded ? "line-clamp-4" : ""
           }`}
         >
-          {content.description}
+          {news.description}
         </p>
 
         {/* show button only for long descriptions */}

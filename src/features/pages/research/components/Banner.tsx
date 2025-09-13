@@ -1,8 +1,4 @@
 import Image from "next/image";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-
-gsap.registerPlugin(useGSAP);
 
 export default function Banner({
   text,

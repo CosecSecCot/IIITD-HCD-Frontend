@@ -33,6 +33,7 @@ export const metadata: Metadata = {
   },
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 async function getData(url: string, query?: any): Promise<any[] | undefined> {
   const queryString = qs.stringify(query, {
     encodeValuesOnly: true,

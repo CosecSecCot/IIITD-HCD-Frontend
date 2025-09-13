@@ -1,7 +1,5 @@
-import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
 import CenterUnderline from "@/components/fancy/text/underline-center";
 import {
-  ArrowRight,
   FacebookIcon,
   InstagramIcon,
   LinkedinIcon,
@@ -157,11 +155,6 @@ function CustomLinkText({ label }: { label: string }) {
   return (
     <CenterUnderline underlineHeightRatio={0.075} underlinePaddingRatio={-0.25}>
       {label}
-      {/* <LetterSwapForward
-        label={label}
-        staggerDuration={0.001}
-        className="leading-tight"
-      /> */}
     </CenterUnderline>
   );
 }

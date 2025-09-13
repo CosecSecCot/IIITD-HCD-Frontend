@@ -1,11 +1,11 @@
 "use client";
 
-import TextReveal from "@/features/animation/TextReveal";
 import { ArrowLeft, ArrowUpRight, Search } from "lucide-react";
-import Image from "next/image";
-import LinkButton from "@/components/LinkButton"; // <-- import LinkButton
-import Link from "next/link";
+import LinkButton from "@/components/LinkButton";
 import CenterUnderline from "@/components/fancy/text/underline-center";
+import TextReveal from "@/features/animation/TextReveal";
+import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function Banner({

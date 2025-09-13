@@ -9,7 +9,6 @@ import { useMemo, useState } from "react";
 export type ResearchPublication = {
   id: number;
   year: number;
-  // faculties: string[];
   authors: string[];
   lab?: string;
   category: string;

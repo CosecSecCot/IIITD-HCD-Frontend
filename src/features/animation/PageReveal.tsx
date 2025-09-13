@@ -22,7 +22,6 @@ export default function PageReveal() {
       digit3?.appendChild(div);
     }
 
-    // --- Helper logic to calculate target distances ---
     // This logic is needed before the timeline is built.
     const getTweenData = (digit: Element | null) => {
       if (!digit) return { target: null, y: 0 };
@@ -32,6 +31,7 @@ export default function PageReveal() {
       return { target: digit, y: -totalDistance };
     };
 
+    // animation data for each of the digits
     const data1 = getTweenData(digit1);
     const data2 = getTweenData(digit2);
     const data3 = getTweenData(digit3);
@@ -85,7 +85,7 @@ export default function PageReveal() {
         clipPath: "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)",
         duration: 1,
         ease: "power4.inOut",
-        onComplete: () => setAnimationComplete(true), // onComplete is here, as in original
+        onComplete: () => setAnimationComplete(true),
       },
       "-=1"
     );
@@ -159,6 +159,8 @@ export default function PageReveal() {
       </div>
       <div className="page-reveal-hero-imgs relative w-full h-full overflow-hidden">
         {[5, 3, 6, 2].map((index) => (
+          // change the images as you like, you would not need to change anything in the animation logic to do that.
+          // make sure you are also adding those images in the `/public/page-reveal/` folder.
           <Image
             key={index}
             src={`/page-reveal/img${index}.png`}

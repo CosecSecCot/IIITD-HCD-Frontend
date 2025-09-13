@@ -19,7 +19,7 @@ export default function NotFound() {
           </TextReveal>
           <TextReveal>
             <p className="font-light text-[14px] lg:text-[20px]">
-              We couldn't find the page you were looking for
+              We couldn&lsquo;t find the page you were looking for
             </p>
           </TextReveal>
         </main>

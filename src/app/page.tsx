@@ -2,7 +2,7 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import PageReveal from "@/features/animation/PageReveal";
 import Heading from "@/features/pages/study/components/Heading";
-import ProgrammeCard from "@/features/pages/study/components/ProgrammeCard";
+import ProgrammeCard from "@/features/pages/home/components/ProgrammeCard";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
