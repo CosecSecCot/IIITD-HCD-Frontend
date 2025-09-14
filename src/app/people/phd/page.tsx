@@ -1,7 +1,6 @@
 import LinkButton from "@/components/LinkButton";
-import PeopleSection, {
-  People,
-} from "@/features/pages/people/components/PeopleSection";
+import PeopleSection from "@/features/pages/people/components/PeopleSection";
+import { People } from "@/types";
 import { Suspense } from "react";
 import { Search } from "lucide-react";
 import Image from "next/image";

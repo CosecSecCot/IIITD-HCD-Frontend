@@ -1,7 +1,6 @@
 import Banner from "@/features/pages/about/components/Banner";
-import NewsCard, {
-  NewsEvent,
-} from "@/features/pages/about/news-events/components/NewsCard";
+import NewsCard from "@/features/pages/about/news-events/components/NewsCard";
+import { NewsEvent } from "@/types";
 import { Metadata } from "next";
 import qs from "qs";
 
@@ -74,13 +73,13 @@ export default async function Page() {
   const news = normalized
     .filter((news) => news.type == "News")
     .map((news, idx) => {
-      return <NewsCard key={idx} content={news} />;
+      return <NewsCard key={idx} news={news} />;
     });
 
   const events = normalized
     .filter((event) => event.type == "Event")
     .map((event, idx) => {
-      return <NewsCard key={idx} content={event} />;
+      return <NewsCard key={idx} news={event} />;
     });
 
   return (

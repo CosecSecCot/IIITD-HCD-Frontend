@@ -1,20 +1,10 @@
 "use client";
 
 import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
+import { Course } from "@/types";
 import { ArrowRight, GraduationCap, Search, Shuffle } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
-
-export type Course = {
-  id: number;
-  credits: string;
-  title: string;
-  acronym: string;
-  code: string;
-  prerequisites: string;
-  mandatory: boolean;
-  url: string;
-};
 
 export default function CoursesSection({
   courses,

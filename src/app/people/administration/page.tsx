@@ -1,6 +1,5 @@
-import PeopleSection, {
-  People,
-} from "@/features/pages/people/components/PeopleSection";
+import PeopleSection from "@/features/pages/people/components/PeopleSection";
+import { People } from "@/types";
 import { Suspense } from "react";
 import Image from "next/image";
 import { Mail, MapPin, Phone } from "lucide-react";

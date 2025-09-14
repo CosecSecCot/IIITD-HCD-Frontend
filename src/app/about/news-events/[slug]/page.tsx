@@ -1,8 +1,8 @@
 import MarkdownContent from "@/components/MarkdownContent";
 import Banner from "@/features/pages/about/components/Banner";
-import { NewsEvent } from "@/features/pages/about/news-events/components/NewsCard";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { NewsEvent } from "@/types";
 
 export const dynamic = "force-dynamic";
 

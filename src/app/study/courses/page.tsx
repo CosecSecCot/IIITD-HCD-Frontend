@@ -1,7 +1,6 @@
 import Banner from "@/features/pages/study/components/Banner";
-import CoursesSection, {
-  Course,
-} from "@/features/pages/study/courses/components/CoursesSection";
+import CoursesSection from "@/features/pages/study/courses/components/CoursesSection";
+import { Course } from "@/types";
 import { Metadata } from "next";
 
 export const dynamic = "force-dynamic";

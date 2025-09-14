@@ -3,14 +3,7 @@
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-
-export type People = {
-  id: number;
-  name: string;
-  description: string | React.ReactNode;
-  img: string;
-  link?: string;
-};
+import { People } from "@/types";
 
 export default function PeopleSection({ people }: { people: People[] }) {
   return (

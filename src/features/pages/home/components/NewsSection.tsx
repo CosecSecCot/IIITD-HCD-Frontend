@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { NewsEvent } from "../../about/news-events/components/NewsCard";
+import { NewsEvent } from "@/types";
 import Image from "next/image";
 import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
 import CenterUnderline from "@/components/fancy/text/underline-center";

@@ -5,6 +5,7 @@ import { Globe, X } from "lucide-react";
 import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { cn } from "@/lib/utils";
+import { Lab } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -12,20 +13,6 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { Flip } from "gsap/Flip";
 gsap.registerPlugin(Flip, useGSAP);
-
-export type Lab = {
-  id: number;
-  title: string;
-  short: string;
-  lead: string;
-  logo: string;
-  full: string;
-  type: string;
-  website: string;
-  foreground: string;
-  background: string;
-  backgroundDim: string;
-};
 
 export default function LabsSection({ labs }: { labs: Lab[] }) {
   const [expandedId, setExpandedId] = useState<number | null>(null);

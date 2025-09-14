@@ -4,30 +4,13 @@ import { useRef, useState } from "react";
 import { ArrowRight, X } from "lucide-react";
 import { formatDateToMonthYear } from "@/utils/formatDate";
 import { cn } from "@/lib/utils";
+import { ResearchProject } from "@/types";
 import Image from "next/image";
 
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { Flip } from "gsap/Flip";
 gsap.registerPlugin(Flip, useGSAP);
-
-export type ResearchProject = {
-  id: number;
-  title: string;
-  description: string;
-  source?: string;
-  faculty?: string;
-  duration: {
-    from: string;
-    to?: string;
-  };
-  image: {
-    width?: number;
-    height?: number;
-    url: string;
-  };
-  fullDescription: string;
-};
 
 export default function ProjectSection({
   projects,

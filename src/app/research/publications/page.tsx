@@ -1,7 +1,6 @@
 import Banner from "@/features/pages/research/components/Banner";
-import PublicationsSection, {
-  ResearchPublication,
-} from "@/features/pages/research/publcations/components/PublicationsSection";
+import PublicationsSection from "@/features/pages/research/publcations/components/PublicationsSection";
+import { ResearchPublication } from "@/types";
 import { Metadata } from "next";
 
 export const dynamic = "force-dynamic";

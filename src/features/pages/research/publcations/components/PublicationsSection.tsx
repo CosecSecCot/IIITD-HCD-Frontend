@@ -2,22 +2,10 @@
 
 import Dropdown from "@/components/Dropdown";
 import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
+import { ResearchPublication } from "@/types";
 import { ArrowRight, Users } from "lucide-react";
 import Image from "next/image";
 import { useMemo, useState } from "react";
-
-export type ResearchPublication = {
-  id: number;
-  year: number;
-  authors: string[];
-  lab?: string;
-  category: string;
-  title: string;
-  description: string;
-  venueImage?: string;
-  tags: string[];
-  link: string;
-};
 
 export default function PublicationsSection({
   publications,

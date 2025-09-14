@@ -5,17 +5,7 @@ import Image from "next/image";
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { BlocksContent } from "@strapi/blocks-react-renderer";
-
-export type NewsEvent = {
-  id: number;
-  type: "News" | "Event";
-  date: Date;
-  title: string;
-  description: string;
-  img: string;
-  content: BlocksContent | ""; // content can be empty string if not needed
-};
+import { NewsEvent } from "@/types";
 
 export default function NewsCard({ news }: { news: NewsEvent }) {
   const [expanded, setExpanded] = useState(false);

@@ -1,7 +1,6 @@
 import Banner from "@/features/pages/research/components/Banner";
-import ProjectSection, {
-  ResearchProject,
-} from "@/features/pages/research/projects/components/ProjectSection";
+import ProjectSection from "@/features/pages/research/projects/components/ProjectSection";
+import { ResearchProject } from "@/types";
 import { Metadata } from "next";
 
 export const dynamic = "force-dynamic";

@@ -1,8 +1,7 @@
 import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
 import LinkButton from "@/components/LinkButton";
-import PeopleSection, {
-  People,
-} from "@/features/pages/people/components/PeopleSection";
+import PeopleSection from "@/features/pages/people/components/PeopleSection";
+import { People } from "@/types";
 import { Search } from "lucide-react";
 import { Suspense } from "react";
 import Image from "next/image";

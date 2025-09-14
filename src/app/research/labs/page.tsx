@@ -1,8 +1,7 @@
 import { GraduationCap, Microscope, Search } from "lucide-react";
 import Banner from "@/features/pages/research/components/Banner";
-import LabsSection, {
-  Lab,
-} from "@/features/pages/research/labs/components/LabsSection";
+import LabsSection from "@/features/pages/research/labs/components/LabsSection";
+import { Lab } from "@/types";
 import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
 import Link from "next/link";
 import { getContrastingTextColor } from "@/lib/utils";
