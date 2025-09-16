@@ -26,7 +26,7 @@ export default function ContactCard({
         href={linkHref}
         target={external ? "_blank" : "_self"}
         rel={external ? "noopener noreferrer" : undefined}
-        className="flex items-center gap-[0.5em] text-[18px] lg:text-[24px] font-medium hover:text-brand-accent2"
+        className="w-max flex items-center gap-[0.5em] text-[18px] lg:text-[24px] font-medium hover:text-brand-accent2"
       >
         <CustomLinkText label={linkText} />
         {icon}
@@ -37,8 +37,6 @@ export default function ContactCard({
 
 function CustomLinkText({ label }: { label: string }) {
   return (
-    <CenterUnderline underlineHeightRatio={0.075}>
-      {label}
-    </CenterUnderline>
+    <CenterUnderline underlineHeightRatio={0.075}>{label}</CenterUnderline>
   );
 }

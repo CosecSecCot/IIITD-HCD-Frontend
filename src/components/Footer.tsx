@@ -4,8 +4,8 @@ import {
   InstagramIcon,
   LinkedinIcon,
   MailIcon,
-  TwitterIcon,
 } from "lucide-react";
+import XIcon from "@mui/icons-material/X";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -46,6 +46,11 @@ export default function Footer() {
               </h2>
               <ul className="max-lg:mt-2 text-[16px] lg:text-[24px]">
                 <li>
+                  <Link href="/research/labs">
+                    <CustomLinkText label="Research" />
+                  </Link>
+                </li>
+                <li>
                   <Link href="/study/btech">
                     <CustomLinkText label="Study @IIITD" />
                   </Link>
@@ -56,10 +61,7 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    target="_blank"
-                    href="https://www.iiitd.ac.in/people/faculty"
-                  >
+                  <Link href="/people/faculty">
                     <CustomLinkText label="Faculty" />
                   </Link>
                 </li>
@@ -123,7 +125,7 @@ export default function Footer() {
                   target="_blank"
                   aria-label="Twitter"
                 >
-                  <TwitterIcon className="w-[20px] lg:w-[24px] h-auto aspect-square" />
+                  <XIcon className="w-[20px] lg:w-[24px] h-auto aspect-square" />
                 </Link>
                 <Link
                   href="https://www.facebook.com/hcdiiitd"

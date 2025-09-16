@@ -42,7 +42,7 @@ export default function RootLayout({
         <ReactLenis root />
         <div className="texture-overlay" />
         {children}
-        <Script id="microsoft-clarity">
+        {/* <Script id="microsoft-clarity">
           {`
             (function(c,l,a,r,i,t,y){
                 c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -50,7 +50,7 @@ export default function RootLayout({
                 y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
             })(window, document, "clarity", "script", "svupvq6vwh");
           `}
-        </Script>
+        </Script> */}
       </body>
     </html>
   );

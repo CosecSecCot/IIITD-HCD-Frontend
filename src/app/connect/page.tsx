@@ -2,7 +2,8 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import ContactCard from "@/features/pages/connect/components/ContactCard";
 import PageHeading from "@/features/pages/connect/components/PageHeading";
-import { InstagramIcon, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
+import XIcon from "@mui/icons-material/X";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -63,9 +64,9 @@ export default function Page() {
               title="Social Media"
               subtitle="Follow us and stay updated with our social media."
               linkText="Stay Updated"
-              linkHref="https://www.instagram.com/hcdiiitd"
+              linkHref="https://twitter.com/hcdiiitd"
               external
-              icon={<InstagramIcon className="w-[28px] h-auto" />}
+              icon={<XIcon className="w-[28px] h-auto" />}
             />
             <ContactCard
               title="Placement Cell Student Representative"

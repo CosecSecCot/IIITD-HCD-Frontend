@@ -161,7 +161,7 @@ async function FacultiesSection({ filter }: { filter?: string }) {
     );
   }
 
-  const filtered =
+  const filtered: any[] =
     filter &&
     (filter === "professor-of-practice" ||
       filter === "visiting-faculty" ||
@@ -173,12 +173,31 @@ async function FacultiesSection({ filter }: { filter?: string }) {
         )
       : data.data;
 
+  // Core faculty should come before other faculties
+  filtered.sort((a, b) => {
+    if (a.Type === "core") {
+      if (b.Type === "core") {
+        return a.Name < b.Name ? -1 : 1;
+      }
+      return -1;
+    } else {
+      return 0;
+    }
+  });
+
   const normalized: People[] = filtered.map(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (item: any): People => ({
       id: item.id,
       name: item.Name,
-      description: item.ShortDescription,
+      description: (
+        <>
+          {item.Position && (
+            <span className="text-brand-accent2">{item.Position}</span>
+          )}
+          <p className="mt-2">{item.ShortDescription}</p>
+        </>
+      ),
       img: `${process.env.NEXT_PUBLIC_STRAPI_URL}${item.Image.url}`,
       link: item.WebsiteLink,
     })

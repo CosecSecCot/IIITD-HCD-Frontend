@@ -50,9 +50,9 @@ const navigationMap: NavigationItem[] = [
     children: [
       { title: "", url: "" },
       { title: "", url: "" },
-      { title: "Courses", url: "/study/courses" },
       { title: "B.Tech", url: "/study/btech" },
       { title: "PhD", url: "/study/phd" },
+      { title: "Courses", url: "/study/courses" },
       { title: "", url: "" },
     ],
   },
@@ -80,9 +80,9 @@ const navigationMap: NavigationItem[] = [
         title: "Faculty",
         url: "/people/faculty",
       },
-      { title: "PhD", url: "/people/phd" },
-      { title: "Students", url: "/people/students" },
       { title: "Administration", url: "/people/administration" },
+      { title: "PhD", url: "/people/phd" },
+      { title: "Student Body", url: "/people/students" },
     ],
   },
   { title: "connect", url: "/connect" },
@@ -188,12 +188,12 @@ export default function Navbar({
   });
 
   const openSecondSidebar = contextSafe(() => {
-      setSecondSidebarOpen(true);
-      const timeline = gsap.timeline();
-      timeline.to("#nav-container", {
-          x: isMobileNavbarActive ? "-50%" : 0,
-          ease: "expo.out",
-      });
+    setSecondSidebarOpen(true);
+    const timeline = gsap.timeline();
+    timeline.to("#nav-container", {
+      x: isMobileNavbarActive ? "-50%" : 0,
+      ease: "expo.out",
+    });
   });
 
   const closeSidebar = contextSafe(() => {

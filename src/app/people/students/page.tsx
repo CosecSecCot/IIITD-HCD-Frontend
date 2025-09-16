@@ -68,7 +68,7 @@ export default async function Page() {
             })}
           </div>
           <p className="text-[18px] lg:text-[30px] text-white/60 leading-tight uppercase">
-            Students & Representatives
+            Student body & Representatives
           </p>
           <h1 className="text-[38px] lg:text-[80px] leading-none uppercase">
             Students At HCD
