@@ -1,7 +1,6 @@
 import { Anybody } from "next/font/google";
 import "./globals.css";
 import ReactLenis from "lenis/react";
-import Script from "next/script";
 import { Metadata } from "next";
 
 const anybody = Anybody({
