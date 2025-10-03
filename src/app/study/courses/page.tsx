@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "HCD Courses at IIIT-Delhi | Core & Electives",
   description:
-    "Browse HCD core and elective courses at IIIT-Delhi. Explore interaction design, UX, visualization, XR/VR, and creative media aligned with industry and research.",
+    "Browse core and elective courses offered by HCD department at IIIT-Delhi. Explore interaction design, UX, visualization, XR/VR, and creative media aligned with industry and research.",
   keywords: [],
   authors: [{ name: "IIIT Delhi HCD" }],
   creator: "IIIT Delhi HCD",
