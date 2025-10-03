@@ -17,7 +17,7 @@ export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   keywords: [
-    "human centred design",
+    "human centered design",
     "HCD",
     "IIIT Delhi",
     "human-computer interaction",
@@ -66,7 +66,7 @@ export default function Home() {
                   <TextReveal>
                     <p className="text-[16px] lg:text-[32px] text-brand-accent2 leading-tight">
                       <LetterSwapForward
-                        label="Human Centred Design"
+                        label="Human Centered Design"
                         staggerDuration={0.005}
                         className="w-max"
                       />
@@ -148,7 +148,7 @@ export default function Home() {
                     The Department of <br />
                     <span className="text-brand-accent2 font-normal">
                       <LetterSwapForward
-                        label="Human Centred Design"
+                        label="Human Centered Design"
                         staggerDuration={0.005}
                         className="w-max"
                       />

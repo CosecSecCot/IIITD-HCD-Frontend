@@ -4,7 +4,7 @@ import TextReveal from "@/features/animation/TextReveal";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "404 • Human Centred Design • IIIT Delhi",
+  title: "404 • Human Centered Design • IIIT Delhi",
   description: "We couldn't find the page you were looking for.",
 };
 

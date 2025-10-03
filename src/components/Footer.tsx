@@ -17,7 +17,7 @@ export default function Footer() {
           <section className="flex flex-col gap-[40px] xl:gap-[60px] justify-center">
             <Image
               src="/logo-with-text-large-solid.png"
-              alt="Human Centred Design Department"
+              alt="Human Centered Design Department"
               width={452}
               height={149}
               priority
