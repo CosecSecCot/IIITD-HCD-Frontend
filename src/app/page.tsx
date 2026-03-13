@@ -95,35 +95,32 @@ export default function Home() {
                 </div>
                 <div className="flex-1 flex flex-col lg:items-end gap-2 lg:gap-5">
                   <div className="flex gap-2 lg:gap-5 w-full">
-                    <div className="relative flex-1 aspect-square border-2 border-brand-accent2 group">
-                      <div className="absolute inset-0 z-10 w-full h-full bg-brand-accent2/50 group-hover:bg-transparent mix-blend-overlay transition-all duration-200" />
+                    <div className="relative flex-1 aspect-square border-2 border-brand-accent2">
                       <Image
                         src="/rnd-building.png"
                         alt="R&D Building IIITD"
                         width={376}
                         height={383}
-                        className="absolute inset-0 w-full h-full object-cover grayscale-100 group-hover:grayscale-0 transition-all duration-200"
+                        className="absolute inset-0 w-full h-full object-cover"
                       />
                     </div>
-                    <div className="relative flex-1 aspect-square border-2 border-brand-accent2 group">
-                      <div className="absolute inset-0 z-10 w-full h-full bg-brand-accent2/50 group-hover:bg-transparent mix-blend-overlay transition-all duration-200" />
+                    <div className="relative flex-1 aspect-square border-2 border-brand-accent2">
                       <Image
                         src="/students.png"
                         alt="R&D Building IIITD"
                         width={376}
                         height={383}
-                        className="absolute inset-0 w-full h-full object-cover grayscale-100 group-hover:grayscale-0 transition-all duration-200"
+                        className="absolute inset-0 w-full h-full object-cover"
                       />
                     </div>
                   </div>
-                  <div className="relative w-full h-[145px] box-border flex justify-around px-5 lg:px-16 py-3 lg:py-6 gap-8 lg:gap-16 bg-brand-accent2-130/[.02] border lg:border-2 border-brand-accent2/50 backdrop-blur-lg group">
-                    <div className="absolute inset-0 z-10 w-full h-full bg-brand-accent2/50 group-hover:bg-transparent mix-blend-overlay transition-all duration-200" />
+                  <div className="relative w-full h-[145px] box-border flex justify-around px-5 lg:px-16 py-3 lg:py-6 gap-8 lg:gap-16 bg-brand-accent2-130/[.02] border lg:border-2 border-brand-accent2/50 backdrop-blur-lg">
                     <Image
                       src="/page-reveal/img3.png"
                       alt="1Pixel Design Conference"
                       width={376}
                       height={383}
-                      className="absolute inset-0 w-full h-full object-cover grayscale-100 group-hover:grayscale-0 transition-all duration-200"
+                      className="absolute inset-0 w-full h-full object-cover"
                     />
                   </div>
                   <Link
@@ -167,14 +164,13 @@ export default function Home() {
                     critical inquiry.
                   </p>
                 </TextReveal>
-                <div className="relative h-[202px] px-5 lg:px-20 py-3 lg:py-6 border lg:border-2 border-brand-accent2 group">
-                  <div className="absolute inset-0 z-10 w-full h-full bg-brand-accent2/50 group-hover:bg-transparent mix-blend-overlay transition-all duration-200" />
+                <div className="relative h-[350px] lg:h-[500px] px-5 lg:px-20 py-3 lg:py-6 border lg:border-2 border-brand-accent2">
                   <Image
                     src="/rnd-building.png"
                     alt="R&D Building IIITD"
                     width={376}
                     height={383}
-                    className="absolute inset-0 w-full h-full object-cover grayscale-100 group-hover:grayscale-0 transition-all duration-200"
+                    className="absolute inset-0 w-full h-full object-cover"
                   />
                 </div>
                 <div className="flex justify-between gap-[1em] lg:gap-[8em]">
@@ -207,15 +203,14 @@ export default function Home() {
 
             <section className="relative w-full min-h-[512px] lg:min-h-screen flex flex-col justify-center overflow-hidden">
               <div className="flex max-lg:flex-col px-8 xl:px-[12.5vw] justify-between items-center gap-4 lg:gap-[60px]">
-                <div className="relative w-full lg:w-[60%] flex-shrink-0 aspect-video group">
-                  <div className="absolute inset-0 z-10 w-full h-full bg-brand-accent2/50 group-hover:bg-transparent mix-blend-overlay transition-all duration-200" />
+                <div className="relative w-full lg:w-[60%] flex-shrink-0 aspect-video">
                   <Image
                     src="/faculty.png"
                     alt="Faculty at IIITD HCD"
                     width={1186}
                     height={682}
                     priority
-                    className="absolute inset-0 w-full h-full object-cover border-2 lg:border-4 border-brand-accent2 grayscale-100 group-hover:grayscale-25 transition-all duration-200"
+                    className="absolute inset-0 w-full h-full object-cover border-2 lg:border-4 border-brand-accent2"
                   />
                 </div>
                 <div className="w-full lg:text-right">
