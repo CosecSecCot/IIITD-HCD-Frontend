@@ -2,7 +2,7 @@ import PeopleSection from "@/features/pages/people/components/PeopleSection";
 import { People } from "@/types";
 import { Suspense } from "react";
 import Image from "next/image";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import { Metadata } from "next";
 import Link from "next/link";
 
@@ -117,7 +117,7 @@ export default async function Page() {
 
 async function AdministrationSection() {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/administrations?sort[0]=Name:asc&populate=Image`
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/administrations?sort[0]=Name:asc&populate=Image&fields[0]=Name&fields[1]=ShortDescription&fields[2]=Email&fields[3]=Office&fields[4]=WebsiteLink`
   ).catch((reason) => console.log("[ERROR]", reason));
   const data = await res?.json();
 
@@ -151,11 +151,6 @@ async function AdministrationSection() {
             >
               <Mail /> {item.Email}
             </Link>
-            {item.Phone && (
-              <p className="flex gap-4 items-center text-brand-accent2">
-                <Phone /> {item.Phone}
-              </p>
-            )}
             {item.Office && (
               <p className="flex gap-4 items-center text-brand-accent2">
                 <MapPin /> {item.Office}
