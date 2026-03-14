@@ -80,11 +80,10 @@ function NewsEventCard({ content }: { content: NewsEvent }) {
   return (
     <div className="flex flex-col justify-between gap-[1em]">
       <div className="relative group">
-        <div className="absolute z-10 inset-0 bg-brand-accent2/50 group-hover:bg-transparent mix-blend-overlay transition-colors duration-200" />
         <Image
           src={content.img}
           alt={`${content.title} image`}
-          className="w-full h-auto aspect-video object-cover border-1 lg:border-2 border-brand-accent2 grayscale group-hover:grayscale-0 bg-blend-overlay transition-all duration-200"
+          className="w-full h-auto aspect-video object-cover border-1 lg:border-2 border-brand-accent2"
           width={480}
           height={270}
         />
