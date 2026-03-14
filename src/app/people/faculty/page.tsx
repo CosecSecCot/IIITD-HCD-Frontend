@@ -162,17 +162,23 @@ async function FacultiesSection({ filter }: { filter?: string }) {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const visible: any[] = data.data.filter(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (item: any) => item.HideFromFacultyPage !== true
+  );
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const filtered: any[] =
     filter &&
     (filter === "professor-of-practice" ||
       filter === "visiting-faculty" ||
       filter === "adjunct-faculty")
-      ? data.data.filter(
+      ? visible.filter(
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           (item: any) =>
             item.Type?.toLowerCase().replace(/\s+/g, "-") === filter
         )
-      : data.data;
+      : visible;
 
   // Core faculty should come before other faculties
   filtered.sort((a, b) => {
