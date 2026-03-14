@@ -2,8 +2,9 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import ContactCard from "@/features/pages/connect/components/ContactCard";
 import PageHeading from "@/features/pages/connect/components/PageHeading";
-import { Mail } from "lucide-react";
+import { FacebookIcon, InstagramIcon, LinkedinIcon, Mail } from "lucide-react";
 import XIcon from "@mui/icons-material/X";
+import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -60,14 +61,54 @@ export default function Page() {
               linkHref="mailto:admin-hcd.iiitd.ac.in"
               icon={<Mail className="w-[28px] h-auto" />}
             />
-            <ContactCard
-              title="Social Media"
-              subtitle="Follow us and stay updated with our social media."
-              linkText="Stay Updated"
-              linkHref="https://twitter.com/hcdiiitd"
-              external
-              icon={<XIcon className="w-[28px] h-auto" />}
-            />
+            <div className="pr-[1em] flex flex-col gap-[1em] justify-between">
+              <div>
+                <h3 className="text-[18px] lg:text-[24px] font-semibold">
+                  Social Media
+                </h3>
+                <p className="text-[16px] lg:text-[20px]">
+                  Follow us and stay updated with our social media.
+                </p>
+              </div>
+              <div className="flex items-center gap-[1em]">
+                <Link
+                  href="https://twitter.com/hcdiiitd"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="X (Twitter)"
+                  className="hover:text-brand-accent2"
+                >
+                  <XIcon className="w-[28px] h-auto" />
+                </Link>
+                <Link
+                  href="https://in.linkedin.com/company/hcdiiitd"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                  className="hover:text-brand-accent2"
+                >
+                  <LinkedinIcon className="w-[28px] h-auto" />
+                </Link>
+                <Link
+                  href="https://www.instagram.com/hcdiiitd"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="hover:text-brand-accent2"
+                >
+                  <InstagramIcon className="w-[28px] h-auto" />
+                </Link>
+                <Link
+                  href="https://www.facebook.com/hcdiiitd"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                  className="hover:text-brand-accent2"
+                >
+                  <FacebookIcon className="w-[28px] h-auto" />
+                </Link>
+              </div>
+            </div>
             <ContactCard
               title="Placement Cell Student Representative"
               subtitle={
