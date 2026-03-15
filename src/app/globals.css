@@ -44,6 +44,11 @@
 }
 
 
+img {
+    -webkit-user-drag: none;
+    user-drag: none;
+}
+
 ::selection {
     background: color-mix(in oklab, var(--color-brand-accent1) 30%, transparent);
 }
