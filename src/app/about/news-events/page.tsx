@@ -57,7 +57,7 @@ export default async function Page() {
     );
   }
 
-  const normalized: NewsEvent[] = data.data.map(
+  const normalized: NewsEvent[] = data.data.filter((item: any) => item.Draft !== true).map(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (item: any): NewsEvent => ({
       id: item.documentId,
@@ -65,7 +65,7 @@ export default async function Page() {
       date: new Date(item.Date),
       title: item.Title,
       description: item.Description,
-      img: `${process.env.NEXT_PUBLIC_STRAPI_URL}${item.CoverImage.url}`,
+      img: item.CoverImage ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${item.CoverImage.url}` : "",
       content: "", // we don't need content on this page
     })
   );

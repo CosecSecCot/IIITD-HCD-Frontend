@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ImageOff } from "lucide-react";
 import { NewsEvent } from "@/types";
 import Image from "next/image";
 import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
@@ -25,7 +25,7 @@ export default async function NewsSection() {
   if (!data || data.error || data.data.length == 0) {
     newsEvents = [];
   } else {
-    newsEvents = data.data.slice(0, 3).map(
+    newsEvents = data.data.filter((item: any) => item.Draft !== true).slice(0, 3).map(
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (item: any): NewsEvent => ({
         id: item.documentId,
@@ -33,7 +33,7 @@ export default async function NewsSection() {
         date: new Date(item.Date),
         title: item.Title,
         description: item.Description,
-        img: `${process.env.NEXT_PUBLIC_STRAPI_URL}${item.CoverImage.url}`,
+        img: item.CoverImage ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${item.CoverImage.url}` : "",
         content: "", // we don't need content on this page
       })
     );
@@ -80,13 +80,19 @@ function NewsEventCard({ content }: { content: NewsEvent }) {
   return (
     <div className="flex flex-col justify-between gap-[1em]">
       <div className="relative group">
-        <Image
-          src={content.img}
-          alt={`${content.title} image`}
-          className="w-full h-auto aspect-video object-cover border-1 lg:border-2 border-brand-accent2"
-          width={480}
-          height={270}
-        />
+        {content.img ? (
+          <Image
+            src={content.img}
+            alt={`${content.title} image`}
+            className="w-full h-auto aspect-video object-cover border-1 lg:border-2 border-brand-accent2"
+            width={480}
+            height={270}
+          />
+        ) : (
+          <div className="w-full aspect-video border-1 lg:border-2 border-brand-accent2 bg-brand-accent2/10 flex items-center justify-center">
+            <ImageOff className="w-[32px] h-auto text-brand-accent2/30" />
+          </div>
+        )}
       </div>
       <div className="space-y-[0.25em]">
         <p className="text-[14px] lg:text-[20px] text-black/60">

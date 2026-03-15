@@ -40,21 +40,25 @@ export async function generateMetadata({
       canonical: `/about/news-events/${slug}`,
     },
     openGraph: {
-      images: [
-        {
-          url: `${process.env.NEXT_PUBLIC_STRAPI_URL}${item.CoverImage.url}`,
-          width: 1200,
-          height: 630,
-          alt: item.Title,
-        },
-      ],
+      ...(item.CoverImage && {
+        images: [
+          {
+            url: `${process.env.NEXT_PUBLIC_STRAPI_URL}${item.CoverImage.url}`,
+            width: 1200,
+            height: 630,
+            alt: item.Title,
+          },
+        ],
+      }),
       type: "article",
       siteName: "HCD IIITD",
       locale: "en-IN",
     },
     twitter: {
       card: "summary_large_image",
-      images: [`${process.env.NEXT_PUBLIC_STRAPI_URL}${item.CoverImage.url}`],
+      ...(item.CoverImage && {
+        images: [`${process.env.NEXT_PUBLIC_STRAPI_URL}${item.CoverImage.url}`],
+      }),
       creator: "@hcdiiitd",
     },
   };
@@ -69,7 +73,7 @@ export default async function Page(props: {
   ).catch((reason) => console.log("[ERROR]", reason));
   const data = await res?.json();
 
-  if (!data || data.error || data.data.length == 0) {
+  if (!data || data.error || data.data.length == 0 || data.data.Draft === true) {
     notFound();
   }
 
@@ -80,7 +84,7 @@ export default async function Page(props: {
     date: new Date(item.publishedAt),
     title: item.Title,
     description: item.Description,
-    img: `${process.env.NEXT_PUBLIC_STRAPI_URL}${item.CoverImage.url}`,
+    img: item.CoverImage ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${item.CoverImage.url}` : "",
     content: item.Content,
   };
 

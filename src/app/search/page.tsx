@@ -65,8 +65,8 @@ export default async function Page(pageProps: {
         ],
       },
     })
-  )?.map(
-    (data): SearchContent => ({
+  )?.filter((item: any) => item.Draft !== true).map(
+    (data: any): SearchContent => ({
       title: data.Title,
       description: data.Description,
       link: "/about/news-events/" + data.documentId,

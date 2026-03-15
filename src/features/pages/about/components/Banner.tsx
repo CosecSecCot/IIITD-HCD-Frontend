@@ -85,13 +85,17 @@ export default function Banner({
         )}
       </div>
       <div className="absolute inset-0 z-10 w-full h-full bg-gradient-to-b from-black/50 lg:from-black/0 to-black/50 lg:to-black/50" />
-      <Image
-        src={imageSrc}
-        alt="banner"
-        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-        width={1280}
-        height={720}
-      />
+      {imageSrc ? (
+        <Image
+          src={imageSrc}
+          alt="banner"
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+          width={1280}
+          height={720}
+        />
+      ) : (
+        <div className="absolute inset-0 w-full h-full bg-brand-accent2" />
+      )}
     </section>
   );
 

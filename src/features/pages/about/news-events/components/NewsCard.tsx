@@ -4,7 +4,7 @@ import { formatDateToMonthYear } from "@/utils/formatDate";
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ImageOff } from "lucide-react";
 import { NewsEvent } from "@/types";
 
 export default function NewsCard({ news }: { news: NewsEvent }) {
@@ -27,13 +27,19 @@ export default function NewsCard({ news }: { news: NewsEvent }) {
         className="relative w-full md:w-1/3 h-auto aspect-video md:aspect-[4/3] flex-shrink-0 bg-neutral-300 rounded-xl overflow-hidden group"
         tabIndex={-1}
       >
-        <Image
-          src={news.img}
-          alt={news.title + " cover image"}
-          width={427}
-          height={240}
-          className="absolute inset-0 w-full h-full object-cover transition-transform duration-300"
-        />
+        {news.img ? (
+          <Image
+            src={news.img}
+            alt={news.title + " cover image"}
+            width={427}
+            height={240}
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-300"
+          />
+        ) : (
+          <div className="absolute inset-0 w-full h-full bg-brand-accent2/10 flex items-center justify-center">
+            <ImageOff className="w-[32px] h-auto text-brand-accent2/30" />
+          </div>
+        )}
         <div className="absolute inset-0 z-10 rounded-xl bg-black/0 group-hover:bg-black/30 transition-colors duration-200" />
         <div className="absolute top-0 right-0 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-200 m-3">
           <ArrowUpRight size={32} className="text-white drop-shadow-lg" />
