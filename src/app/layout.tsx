@@ -1,6 +1,7 @@
 import { Anybody } from "next/font/google";
 import "./globals.css";
 import ReactLenis from "lenis/react";
+import ScrollToTop from "@/components/ScrollToTop";
 import { Metadata } from "next";
 
 const anybody = Anybody({
@@ -39,6 +40,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${anybody.variable} antialiased`}>
         <ReactLenis root />
+        <ScrollToTop />
         <div className="texture-overlay" />
         {children}
         {/* <Script id="microsoft-clarity">

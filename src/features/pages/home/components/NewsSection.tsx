@@ -12,6 +12,7 @@ export default async function NewsSection() {
     {
       sort: ["Date:desc"],
       populate: "*",
+      pagination: { pageSize: 100 },
     },
     { encodeValuesOnly: true }
   );

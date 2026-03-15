@@ -35,6 +35,7 @@ export default async function Page() {
     {
       sort: ["Date:desc"],
       populate: "*",
+      pagination: { pageSize: 100 },
     },
     { encodeValuesOnly: true }
   );
@@ -57,6 +58,7 @@ export default async function Page() {
     );
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const normalized: NewsEvent[] = data.data.filter((item: any) => item.Draft !== true).map(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (item: any): NewsEvent => ({
@@ -69,6 +71,19 @@ export default async function Page() {
       content: "", // we don't need content on this page
     })
   );
+
+  if (normalized.length === 0) {
+    return (
+      <main className="mx-auto min-h-[80vh] xl:w-[1280px] px-8 py-[20vh] text-center">
+        <h2 className="text-[20px] lg:text-[28px] text-brand-accent2 font-semibold">
+          Hmm...
+        </h2>
+        <p className="text-[16px] lg:text-[20px] italic font-light">
+          Looks like no news or events were found.
+        </p>
+      </main>
+    );
+  }
 
   const news = normalized
     .filter((news) => news.type == "News")

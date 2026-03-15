@@ -130,24 +130,42 @@ export default function Banner({
   );
 }
 
+const breadcrumbHrefMap: Record<string, string> = {
+  about: "/about/overview",
+  "news & events": "/about/news-events",
+  overview: "/about/overview",
+  collaborations: "/about/collaborations",
+  placements: "/about/placements",
+};
+
 function Breadcrumbs({ breadcrumbs }: { breadcrumbs: string[] }) {
   return (
     <p className="font-normal text-[12px] lg:text-[20px] text-brand-accent2">
       {breadcrumbs.map((breadcrumb, index) => {
+        const href = breadcrumbHrefMap[breadcrumb.toLowerCase()];
         if (index < breadcrumbs.length - 1) {
+          const content = (
+            <span
+              className="uppercase"
+              style={{
+                color: `color-mix(in oklab, var(--color-brand-accent2) ${
+                  ((index + 1) / breadcrumbs.length) * 100
+                }%, transparent)`,
+              }}
+            >
+              {breadcrumb}
+            </span>
+          );
           return (
             <span key={index}>
-              <span
-                className="uppercase"
-                style={{
-                  color: `color-mix(in oklab, var(--color-brand-accent2) ${
-                    ((index + 1) / breadcrumbs.length) * 100
-                  }%, transparent)`,
-                }}
-              >
-                {breadcrumb}
-                {index == breadcrumbs.length - 1 ? "" : " / "}
-              </span>
+              {href ? (
+                <Link href={href} className="hover:underline">
+                  {content}
+                </Link>
+              ) : (
+                content
+              )}
+              {" / "}
             </span>
           );
         }
