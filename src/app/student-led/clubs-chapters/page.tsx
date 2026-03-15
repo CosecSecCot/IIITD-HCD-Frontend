@@ -85,7 +85,7 @@ export default function Page() {
               rounded
               className="text-[12px] lg:text-[18px] lg:px-[2em] py-[0.5em]"
             />
-            <LinkButton
+            {/* <LinkButton
               target="_blank"
               href="https://www.instagram.com/designhub.iiitd"
               text="DESIGNHUB SOCIETY"
@@ -93,7 +93,7 @@ export default function Page() {
               icon={null}
               rounded
               className="text-[12px] lg:text-[18px] lg:px-[2em] py-[0.5em]"
-            />
+            /> */}
           </div>
         </div>
         <div className="absolute z-20 inset-0 w-full h-full pointer-events-none bg-gradient-to-r from-brand-accent2 via-brand-accent2-130/60 to-black/0" />
@@ -169,7 +169,7 @@ export default function Page() {
             </div>
           </section>
 
-          <section className="mt-[64px] lg:mt-[100px]">
+          {/* <section className="mt-[64px] lg:mt-[100px]">
             <Heading align="right">
               <span className="text-brand-accent2 font-semibold">Design</span>{" "}
               Hub
@@ -204,7 +204,7 @@ export default function Page() {
                 />
               </div>
             </div>
-          </section>
+          </section> */}
         </article>
       </main>
     </>
