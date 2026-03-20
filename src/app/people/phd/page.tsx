@@ -185,7 +185,9 @@ async function PhDStudentsSection({ filter }: { filter?: string }) {
           <p className="mt-2">{item.ShortDescription}</p>
         </>
       ),
-      img: `${process.env.NEXT_PUBLIC_STRAPI_URL}${item.Image.url}`,
+      img: item.Image?.url
+        ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${item.Image.url}`
+        : undefined,
       link: item.WebsiteLink,
     })
   );

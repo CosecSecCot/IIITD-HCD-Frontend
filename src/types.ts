@@ -70,6 +70,6 @@ export type People = {
   id: number;
   name: string;
   description: string | React.ReactNode;
-  img: string;
+  img?: string;
   link?: string;
 };

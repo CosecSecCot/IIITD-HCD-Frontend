@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, UserRound } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { People } from "@/types";
@@ -18,13 +18,19 @@ export default function PeopleSection({ people }: { people: People[] }) {
 function PeopleCard({ person }: { person: People }) {
   const imageContent = (
     <>
-      <Image
-        src={person.img}
-        alt={person.name}
-        width={400}
-        height={400}
-        className="absolute inset-0 w-full h-full border border-brand-accent2 object-cover pointer-events-none grayscale-50 group-hover:grayscale-0 transition-all duration-300"
-      />
+      {person.img ? (
+        <Image
+          src={person.img}
+          alt={person.name}
+          width={400}
+          height={400}
+          className="absolute inset-0 w-full h-full border border-brand-accent2 object-cover pointer-events-none grayscale-50 group-hover:grayscale-0 transition-all duration-300"
+        />
+      ) : (
+        <div className="absolute inset-0 w-full h-full border border-brand-accent2 bg-gray-200 flex items-center justify-center">
+          <UserRound className="w-1/3 h-1/3 text-gray-400" />
+        </div>
+      )}
       <div className="absolute inset-0 w-full h-full bg-brand-accent2/50 group-hover:bg-transparent mix-blend-overlay transition-all duration-500" />
       <div className="absolute inset-0 right-0 w-full h-full bg-gradient-to-b from-black/0 to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
         {person.link && (
