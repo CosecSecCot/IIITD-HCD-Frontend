@@ -547,7 +547,7 @@ export default function Navbar({
                       <a
                         id="nav-link-primary"
                         href={linkGroup.url}
-                        className="absolute inset-0 flex items-center px-[70px] uppercase text-[28px] leading-tight font-medium"
+                        className="w-full uppercase text-[28px] leading-tight font-medium"
                         target={isExternal ? "_blank" : undefined}
                         rel={isExternal ? "noopener noreferrer" : undefined}
                       >
@@ -645,12 +645,12 @@ export default function Navbar({
                         setActiveGroup(null);
                       }
                     }}
-                    className={`relative flex justify-between items-center w-full px-[70px] py-[20px] cursor-pointer group hover:pl-[80px] transition-all duration-[300ms]`}
+                    className={`relative flex justify-between items-center w-full py-[20px] cursor-pointer group transition-all duration-[300ms]`}
                   >
                     {linkGroup.children ? (
                       <span
                         id="nav-link-primary"
-                        className="relative z-10 uppercase text-[32px] leading-tight font-medium"
+                        className="relative z-10 uppercase text-[32px] leading-tight font-medium px-[70px] group-hover:px-[80px] transition-all duration-[300ms]"
                       >
                         {linkGroup.title}
                       </span>
@@ -658,7 +658,7 @@ export default function Navbar({
                       <a
                         id="nav-link-primary"
                         href={linkGroup.url}
-                        className="absolute inset-0 z-10 flex items-center px-[70px] uppercase text-[32px] leading-tight font-medium"
+                        className="relative z-10 w-full uppercase text-[32px] leading-tight font-medium px-[70px] group-hover:px-[80px] transition-all duration-[300ms]"
                         target={isExternal ? "_blank" : undefined}
                         rel={isExternal ? "noopener noreferrer" : undefined}
                       >
