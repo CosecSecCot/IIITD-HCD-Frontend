@@ -510,12 +510,12 @@ export default function Navbar({
         >
           <nav
             id="nav-sidebar-first"
-            className="relative flex flex-col justify-center w-full h-full bg-brand-accent2 text-white"
+            className="relative flex flex-col justify-center w-full h-full bg-white text-brand-accent2"
           >
             <div className="absolute top-0 right-0 pr-[70px] pt-[60px]">
               <button
                 onClick={closeSidebar}
-                className="flex items-center gap-[2px] border border-white rounded-full p-[1em]"
+                className="flex items-center gap-[2px] border border-brand-accent2 rounded-full p-[1em]"
               >
                 <X size={32} />
               </button>
@@ -534,19 +534,28 @@ export default function Navbar({
                         setActiveGroup(null);
                       }
                     }}
-                    className="flex justify-between w-full px-[70px] py-[1em]"
+                    className="relative flex justify-between items-center w-full px-[70px] py-[1em] cursor-pointer"
                   >
-                    <a
-                      id="nav-link-primary"
-                      href={linkGroup.url}
-                      className="uppercase text-[28px] leading-tight font-medium"
-                      target={isExternal ? "_blank" : undefined}
-                      rel={isExternal ? "noopener noreferrer" : undefined}
-                    >
-                      {linkGroup.title}
-                    </a>
+                    {linkGroup.children ? (
+                      <span
+                        id="nav-link-primary"
+                        className="uppercase text-[28px] leading-tight font-medium"
+                      >
+                        {linkGroup.title}
+                      </span>
+                    ) : (
+                      <a
+                        id="nav-link-primary"
+                        href={linkGroup.url}
+                        className="absolute inset-0 flex items-center px-[70px] uppercase text-[28px] leading-tight font-medium"
+                        target={isExternal ? "_blank" : undefined}
+                        rel={isExternal ? "noopener noreferrer" : undefined}
+                      >
+                        {linkGroup.title}
+                      </a>
+                    )}
                     {linkGroup.children && (
-                      <ChevronRight size={32} color="white" />
+                      <ChevronRight size={32} className="text-brand-accent2" />
                     )}
                   </li>
                 );
@@ -555,7 +564,7 @@ export default function Navbar({
           </nav>
           <nav
             id="nav-sidebar-second"
-            className="relative flex flex-col justify-center w-full bg-[#033836] text-white"
+            className="relative flex flex-col justify-center w-full bg-gray-50 text-brand-accent2"
           >
             <div className="absolute top-0 right-0 pr-[70px] pt-[60px]">
               <button
@@ -567,7 +576,7 @@ export default function Navbar({
                     })
                   )();
                 }}
-                className="flex items-center gap-[2px] border border-white rounded-full p-[1em]"
+                className="flex items-center gap-[2px] border border-brand-accent2 rounded-full p-[1em]"
               >
                 <ArrowLeft size={32} />
               </button>
@@ -606,12 +615,12 @@ export default function Navbar({
         >
           <div
             id="nav-sidebar-first"
-            className="relative flex flex-col justify-center w-[30vw] bg-[#096964] text-white"
+            className="relative flex flex-col justify-center w-[30vw] bg-white text-brand-accent2"
           >
             <div className="absolute top-0 right-0 flex justify-end px-[70px] py-[40px]">
               <button
                 onClick={closeSidebar}
-                className="flex items-center gap-[2px] border border-white rounded-full p-[1em] cursor-pointer hover:bg-white hover:text-[#096964] transition-all ease-out duration-150"
+                className="flex items-center gap-[2px] border border-brand-accent2 rounded-full p-[1em] cursor-pointer hover:bg-brand-accent2 hover:text-white transition-all ease-out duration-150"
               >
                 <X size={40} />
               </button>
@@ -636,24 +645,30 @@ export default function Navbar({
                         setActiveGroup(null);
                       }
                     }}
-                    className={`relative flex justify-between w-full px-[70px] py-[20px] ${
-                      linkGroup.children ? "cursor-pointer" : ""
-                    } group hover:pl-[80px] transition-all duration-[300ms]`}
+                    className={`relative flex justify-between items-center w-full px-[70px] py-[20px] cursor-pointer group hover:pl-[80px] transition-all duration-[300ms]`}
                   >
-                    <a
-                      id="nav-link-primary"
-                      href={linkGroup.url}
-                      className="relative z-10 uppercase text-[32px] leading-tight font-medium"
-                      target={isExternal ? "_blank" : undefined}
-                      rel={isExternal ? "noopener noreferrer" : undefined}
-                    >
-                      {linkGroup.title}
-                    </a>
+                    {linkGroup.children ? (
+                      <span
+                        id="nav-link-primary"
+                        className="relative z-10 uppercase text-[32px] leading-tight font-medium"
+                      >
+                        {linkGroup.title}
+                      </span>
+                    ) : (
+                      <a
+                        id="nav-link-primary"
+                        href={linkGroup.url}
+                        className="absolute inset-0 z-10 flex items-center px-[70px] uppercase text-[32px] leading-tight font-medium"
+                        target={isExternal ? "_blank" : undefined}
+                        rel={isExternal ? "noopener noreferrer" : undefined}
+                      >
+                        {linkGroup.title}
+                      </a>
+                    )}
                     {linkGroup.children && (
                       <ChevronRight
                         size={36}
-                        color="white"
-                        className={`z-10 ${
+                        className={`z-10 text-brand-accent2 ${
                           activeGroup === linkGroup ? "rotate-180" : ""
                         } transition-all duration-250`}
                       />
@@ -663,28 +678,28 @@ export default function Navbar({
                         activeGroup === linkGroup ? "h-full" : "h-0"
                       } w-full group-hover:h-full ${
                         activeGroup === linkGroup
-                          ? "bg-[#033836]"
-                          : "bg-[#033836]/75"
+                          ? "bg-brand-accent2/10"
+                          : "bg-brand-accent2/5"
                       } transition-all ease-[cubic-bezier(.06,.92,.35,1)] duration-1000`}
                     />
                   </li>
                 );
               })}
             </ul>
-            <div className="absolute bottom-0 px-[40px] py-[40px] opacity-40 w-full">
+            <div className="absolute bottom-0 px-[40px] py-[40px] w-full">
               <Image
-                src="/logo-with-text-large-solid.png"
+                src="/logo.svg"
                 alt="IIITD HCD Department Logo"
                 width={352}
                 height={116}
                 priority
-                className="w-auto max-h-[84px] object-contain mx-auto"
+                className="w-auto max-h-[48px] object-contain mx-auto"
               />
             </div>
           </div>
           <div
             id="nav-sidebar-second"
-            className="flex flex-col justify-center w-[30vw] bg-[#033836] text-white"
+            className="flex flex-col justify-center w-[30vw] bg-gray-50 text-brand-accent2"
           >
             {activeGroup &&
               activeGroup.children &&
@@ -708,7 +723,7 @@ export default function Navbar({
                       >
                         {child.title}
                       </span>
-                      <div className="absolute top-0 left-0 h-0 w-full group-hover:h-full bg-[#096964]/75 transition-all ease-[cubic-bezier(.06,.92,.35,1)] duration-1000" />
+                      <div className="absolute top-0 left-0 h-0 w-full group-hover:h-full bg-brand-accent2/5 transition-all ease-[cubic-bezier(.06,.92,.35,1)] duration-1000" />
                     </a>
                   );
                 }
