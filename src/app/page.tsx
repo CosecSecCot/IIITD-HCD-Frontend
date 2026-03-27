@@ -12,6 +12,7 @@ import TextReveal from "@/features/animation/TextReveal";
 import { Suspense } from "react";
 import NewsSection from "@/features/pages/home/components/NewsSection";
 import CenterUnderline from "@/components/fancy/text/underline-center";
+import HeroCarousel from "@/features/pages/home/components/HeroCarousel";
 
 export const dynamic = "force-dynamic";
 
@@ -57,88 +58,60 @@ export default function Home() {
     <>
       <PageReveal />
       <div className="background-element relative z-10 bg-white font-anybody shadow-xl">
-        <Navbar />
+        <Navbar type="hero" />
         <main className="relative">
           <article className="space-y-12 pb-[78px]">
-            <section className="relative w-full min-h-[512px] lg:min-h-screen flex flex-col justify-center overflow-hidden">
-              <div className="font-light mt-[calc(5vh+80px)] lg:mt[90px] mx-auto xl:w-[75vw] px-8 flex max-lg:flex-col justify-between lg:items-center gap-5 lg:gap-8">
-                <div className="flex-1">
-                  <TextReveal>
-                    <p className="text-[16px] lg:text-[32px] text-brand-accent2 leading-tight">
-                      <LetterSwapForward
-                        label="Human Centered Design"
-                        staggerDuration={0.005}
-                        className="w-max"
-                      />
-                    </p>
-                  </TextReveal>
-                  <TextReveal>
-                    <h1 className="text-[36px] lg:text-[80px] leading-none lg:leading-tight">
-                      Where{" "}
-                      <span className="font-normal text-brand-accent2">
-                        <LetterSwapForward
-                          label="Creativity"
-                          staggerDuration={0.02}
-                          className="w-max"
-                        />
-                        {/* Creativity */}
-                      </span>{" "}
-                      Meets Innovation.
-                    </h1>
-                  </TextReveal>
-                  <TextReveal>
-                    <blockquote className="mt-[0.25em] text-[14px] lg:text-[28px] leading-tight">
-                      We are a collective of diverse thinkers reimagining how
-                      human-technology interactions.
-                    </blockquote>
-                  </TextReveal>
-                </div>
-                <div className="flex-1 flex flex-col lg:items-end gap-2 lg:gap-5">
-                  <div className="flex gap-2 lg:gap-5 w-full">
-                    <div className="relative flex-1 aspect-square border-2 border-brand-accent2">
-                      <Image
-                        src="/rnd-building.png"
-                        alt="R&D Building IIITD"
-                        width={376}
-                        height={383}
-                        className="absolute inset-0 w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="relative flex-1 aspect-square border-2 border-brand-accent2">
-                      <Image
-                        src="/students.png"
-                        alt="R&D Building IIITD"
-                        width={376}
-                        height={383}
-                        className="absolute inset-0 w-full h-full object-cover"
-                      />
-                    </div>
-                  </div>
-                  <div className="relative w-full h-[145px] box-border flex justify-around px-5 lg:px-16 py-3 lg:py-6 gap-8 lg:gap-16 bg-brand-accent2-130/[.02] border lg:border-2 border-brand-accent2/50 backdrop-blur-lg">
-                    <Image
-                      src="/page-reveal/img3.png"
-                      alt="1Pixel Design Conference"
-                      width={376}
-                      height={383}
-                      className="absolute inset-0 w-full h-full object-cover"
-                    />
-                  </div>
-                  <Link
-                    href="/study/btech"
-                    className="font-normal md:w-[400px] flex justify-center items-center gap-[1em] px-[1.5em] py-[1em] text-[12px] lg:text-[20px] text-white bg-brand-accent2 hover:bg-brand-accent2-130 transition-colors duration-200"
-                  >
+            <section className="relative w-full h-screen flex flex-col justify-center items-center overflow-hidden">
+              <HeroCarousel />
+              <div className="relative z-10 text-center px-8 max-w-[900px] mx-auto">
+                <TextReveal>
+                  <p className="text-[16px] lg:text-[32px] text-white/80 leading-tight flex justify-center">
                     <LetterSwapForward
-                      label="View Study Options"
+                      label="Human Centered Design"
                       staggerDuration={0.005}
-                      className="w-max"
                     />
-                    <ArrowRight className="w-[12px] lg:w-[18px] h-auto" />
-                  </Link>
-                </div>
+                  </p>
+                </TextReveal>
+                <TextReveal>
+                  <h1 className="mt-3 lg:mt-5 text-[36px] lg:text-[80px] text-white font-light leading-none lg:leading-tight">
+                    Where{" "}
+                    <span className="font-normal">Creativity</span>{" "}
+                    Meets Innovation.
+                  </h1>
+                </TextReveal>
+                <TextReveal>
+                  <blockquote className="mt-[0.25em] text-[14px] lg:text-[28px] text-white/80 font-light leading-tight max-w-[700px] mx-auto">
+                    We are a collective of diverse thinkers reimagining
+                    human-technology interactions.
+                  </blockquote>
+                </TextReveal>
+                <TextReveal>
+                  <div className="mt-6 lg:mt-10 flex justify-center gap-4">
+                    <Link
+                      href="/study/btech"
+                      className="font-normal flex justify-center items-center gap-[0.5em] px-[1.5em] py-[1em] text-[12px] lg:text-[20px] text-brand-accent2 bg-white hover:bg-white/90 transition-colors duration-200"
+                    >
+                      <LetterSwapForward
+                        label="View Study Options"
+                        staggerDuration={0.005}
+                      />
+                      <ArrowRight className="w-[12px] lg:w-[18px] h-auto" />
+                    </Link>
+                    <Link
+                      href="/about/overview"
+                      className="font-normal flex justify-center items-center gap-[0.5em] px-[1.5em] py-[1em] text-[12px] lg:text-[20px] text-white border border-white/50 hover:bg-white/10 transition-colors duration-200"
+                    >
+                      <LetterSwapForward
+                        label="Learn More"
+                        staggerDuration={0.005}
+                      />
+                    </Link>
+                  </div>
+                </TextReveal>
               </div>
             </section>
 
-            <section className="relative w-full min-h-[512px] lg:min-h-screen flex flex-col justify-center overflow-hidden">
+            <section className="relative w-full min-h-[512px] lg:min-h-screen flex flex-col justify-center overflow-hidden mt-12 lg:mt-24">
               <div className="relative z-10 mx-auto xl:w-[75vw] px-8 space-y-4 lg:space-y-8">
                 <TextReveal>
                   <h2 className="font-light text-[28px] lg:text-[86px] leading-tight">

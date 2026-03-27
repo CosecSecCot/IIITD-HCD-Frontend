@@ -91,7 +91,7 @@ const navigationMap: NavigationItem[] = [
 export default function Navbar({
   type = "default",
 }: {
-  type?: "default" | "solid";
+  type?: "default" | "solid" | "hero";
 }) {
   const [activeGroup, setActiveGroup] = useState<NavigationItem | null>();
   const [firstSidebarOpen, setFirstSidebarOpen] = useState(false);
@@ -208,6 +208,14 @@ export default function Navbar({
   // State to track scroll position and navbar visibility
   const [lastScrollY, setLastScrollY] = useState(0);
   const [showNavbar, setShowNavbar] = useState(true);
+  const [pastHero, setPastHero] = useState(false);
+
+  useEffect(() => {
+    if (type !== "hero") return;
+    const onScroll = () => setPastHero(window.scrollY > window.innerHeight * 0.6);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [type]);
 
   useEffect(() => {
     const controlNavbar = () => {
@@ -334,16 +342,18 @@ export default function Navbar({
     <div id="navigation-menu" className="sticky top-0 z-[9999] font-anybody">
       <header
         className={`${
-          type == "solid" ? "" : "absolute z-[999] top-0"
+          type === "solid" ? "" : "absolute z-[999] top-0"
         } w-full transition-transform duration-300 ease-in-out ${
           showNavbar ? "translate-y-0" : "-translate-y-full"
         }`}
       >
         <div
-          className={`relative text-white flex justify-between items-center xl:py-5 py-3 ${
-            type == "solid"
-              ? "bg-brand-accent2-130"
-              : "bg-brand-accent2-130/90 backdrop-blur-sm"
+          className={`relative text-white flex justify-between items-center xl:py-5 py-3 transition-colors duration-500 ${
+            type === "hero" && !pastHero
+              ? "bg-transparent"
+              : type == "solid"
+                ? "bg-brand-accent2-130"
+                : "bg-brand-accent2-130/90 backdrop-blur-sm"
           }`}
         >
           <Link
