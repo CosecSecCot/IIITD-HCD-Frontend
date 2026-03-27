@@ -3,7 +3,7 @@
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { ArrowLeft, ChevronRight, Menu, Search, X } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Image from "next/image";
@@ -99,7 +99,108 @@ export default function Navbar({
   const isMobileNavbarActive = useMediaQuery("(max-width: 1280px)");
 
   const [search, setSearch] = useState("");
+  type SearchResult = {
+    title: string;
+    link: string;
+    description?: string;
+    image?: string;
+    date?: string;
+    category: "News & Events" | "Labs" | "Projects";
+  };
+  const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
+  const [searchLoading, setSearchLoading] = useState(false);
+  const [hasSearched, setHasSearched] = useState(false);
+  const [searchFocused, setSearchFocused] = useState(false);
+  const searchRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
+
+  const abortControllerRef = useRef<AbortController | null>(null);
+
+  const fetchSearchResults = useCallback(async (query: string) => {
+    // Cancel any in-flight request
+    abortControllerRef.current?.abort();
+
+    if (!query.trim()) {
+      setSearchResults([]);
+      setSearchLoading(false);
+      setHasSearched(false);
+      return;
+    }
+
+    const controller = new AbortController();
+    abortControllerRef.current = controller;
+    setSearchLoading(true);
+
+    const base = process.env.NEXT_PUBLIC_STRAPI_URL;
+    const q = encodeURIComponent(query);
+    const endpoints = [
+      {
+        url: `/api/news-and-events?filters[$or][0][Title][$containsi]=${q}&filters[$or][1][Description][$containsi]=${q}&populate=*&pagination[pageSize]=3&sort[0]=Date:desc`,
+        map: (d: any): SearchResult => ({
+          title: d.Title,
+          description: d.Description,
+          link: `/about/news-events/${d.documentId}`,
+          image: d.CoverImage ? `${base}${d.CoverImage.url}` : undefined,
+          date: d.Date,
+          category: "News & Events",
+        }),
+      },
+      {
+        url: `/api/labs?filters[$or][0][LabName][$containsi]=${q}&filters[$or][1][LongDescription][$containsi]=${q}&populate=*&pagination[pageSize]=2`,
+        map: (d: any): SearchResult => ({
+          title: d.LabName,
+          description: d.LongDescription,
+          link: "/research/labs",
+          image: d.LabLogo ? `${base}${d.LabLogo.url}` : undefined,
+          category: "Labs",
+        }),
+      },
+      {
+        url: `/api/department-projects?filters[$or][0][Title][$containsi]=${q}&filters[$or][1][LongDescription][$containsi]=${q}&pagination[pageSize]=2`,
+        map: (d: any): SearchResult => ({
+          title: d.Title,
+          description: d.LongDescription,
+          link: "/research/projects",
+          category: "Projects",
+        }),
+      },
+    ];
+    try {
+      const all = await Promise.all(
+        endpoints.map(async (ep) => {
+          const res = await fetch(`${base}${ep.url}`, { signal: controller.signal });
+          const json = await res.json();
+          if (!json?.data) return [];
+          return json.data
+            .filter((item: any) => item.Draft !== true)
+            .map(ep.map);
+        })
+      );
+      if (!controller.signal.aborted) {
+        setSearchResults(all.flat().slice(0, 5));
+        setHasSearched(true);
+      }
+    } catch (e: any) {
+      if (e?.name !== "AbortError") setSearchResults([]);
+    } finally {
+      if (!controller.signal.aborted) setSearchLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => fetchSearchResults(search), 500);
+    return () => clearTimeout(timeout);
+  }, [search, fetchSearchResults]);
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (searchRef.current && !searchRef.current.contains(e.target as Node)) {
+        setSearchFocused(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
@@ -268,25 +369,99 @@ export default function Navbar({
           </Link>
           <div className="relative right-[12.5vw] xl:right-[calc(12.5vw-82px)] flex items-center gap-28">
             <div className="flex items-center xl:gap-[36px] gap-[20px]">
-              <div className="flex justify-between items-center lg:gap-[14px] gap-[8px] lg:px-6 px-3 lg:py-[0.8em] py-2 border border-white rounded-full overflow-hidden">
-                <form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    if (search.trim()) {
-                      router.push(
-                        `/search?filter=${encodeURIComponent(search)}`
-                      );
-                    }
-                  }}
-                >
-                  <input
-                    type="text"
-                    placeholder="SEARCH"
-                    className="max-lg:w-[5em] w-[10em] max-lg:focus:w-[10em] focus:w-[20em] max-lg:text-[0.75em] bg-transparent outline-none placeholder:text-white/80 transition-all duration-300"
-                    onChange={(e) => setSearch(e.target.value.toLowerCase())}
-                  />
-                </form>
-                <Search size={16} />
+              <div className="relative" ref={searchRef}>
+                <div className="flex justify-between items-center lg:gap-[14px] gap-[8px] lg:px-6 px-3 lg:py-[0.8em] py-2 border border-white rounded-full overflow-hidden">
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      if (search.trim()) {
+                        setSearchFocused(false);
+                        router.push(
+                          `/search?filter=${encodeURIComponent(search)}`
+                        );
+                      }
+                    }}
+                  >
+                    <input
+                      type="text"
+                      placeholder="SEARCH"
+                      className="max-lg:w-[5em] w-[10em] max-lg:focus:w-[10em] focus:w-[20em] max-lg:text-[0.75em] bg-transparent outline-none placeholder:text-white/80 transition-all duration-300"
+                      onChange={(e) => setSearch(e.target.value.toLowerCase())}
+                      onFocus={() => setSearchFocused(true)}
+                    />
+                  </form>
+                  <Search size={16} />
+                </div>
+                {searchFocused && search.trim() && hasSearched && (
+                  <div className="absolute top-full mt-2 right-0 w-[320px] lg:w-[420px] bg-white rounded-xl shadow-2xl border border-black/10 overflow-hidden z-50">
+                    {searchLoading ? (
+                      <div className="px-4 py-6 text-center text-black/40 text-sm">
+                        Searching...
+                      </div>
+                    ) : searchResults.length > 0 ? (
+                      <>
+                        {searchResults.map((result, idx) => (
+                          <Link
+                            key={idx}
+                            href={result.link}
+                            onClick={() => setSearchFocused(false)}
+                            className="flex items-center gap-3 px-4 py-3 hover:bg-brand-accent2/5 transition-colors border-b border-black/5 last:border-b-0"
+                          >
+                            {result.image ? (
+                              <img
+                                src={result.image}
+                                alt=""
+                                className="w-12 h-12 rounded-lg object-cover flex-shrink-0 bg-black/5"
+                              />
+                            ) : (
+                              <div className="w-12 h-12 rounded-lg bg-brand-accent2/10 flex items-center justify-center flex-shrink-0">
+                                <Search size={16} className="text-brand-accent2/40" />
+                              </div>
+                            )}
+                            <div className="min-w-0 flex-1">
+                              <p className="text-[13px] font-medium text-brand-accent2 truncate">
+                                {result.title}
+                              </p>
+                              <div className="flex items-center gap-2 mt-0.5">
+                                <span className="text-[11px] text-brand-accent2/80 font-medium">
+                                  {result.category}
+                                </span>
+                                {result.date && (
+                                  <>
+                                    <span className="text-black/20 text-[11px]">·</span>
+                                    <span className="text-[11px] text-black/40">
+                                      {new Date(result.date).toLocaleDateString("en-IN", {
+                                        month: "short",
+                                        year: "numeric",
+                                      })}
+                                    </span>
+                                  </>
+                                )}
+                              </div>
+                              {result.description && (
+                                <p className="text-[11px] text-black/40 truncate mt-0.5">
+                                  {result.description}
+                                </p>
+                              )}
+                            </div>
+                          </Link>
+                        ))}
+                        <Link
+                          href={`/search?filter=${encodeURIComponent(search)}`}
+                          onClick={() => setSearchFocused(false)}
+                          className="flex items-center justify-center gap-1.5 px-4 py-3 text-sm text-brand-accent2 font-medium hover:bg-brand-accent2/5 transition-colors"
+                        >
+                          View all results
+                          <ChevronRight size={14} />
+                        </Link>
+                      </>
+                    ) : (
+                      <div className="px-4 py-6 text-center text-black/40 text-sm">
+                        No results found
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
               <button className="cursor-pointer" onClick={openFirstSidebar}>
                 <Menu
