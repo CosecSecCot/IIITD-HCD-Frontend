@@ -68,7 +68,7 @@ const navigationMap: NavigationItem[] = [
         url: "https://1pxdesignconf.iiitd.edu.in/",
         external: true,
       },
-      { title: "", url: "" },
+      { title: "Achievements", url: "/student-led/achievements" },
     ],
   },
   {
