@@ -40,6 +40,16 @@ export default async function Page(pageProps: {
     `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/labs?sort[0]=LabName:asc&populate=*`
   ).catch((reason) => console.log("[ERROR]", reason));
   const data = await res?.json();
+  
+   console.log(data)
+    // This is the case sensitive sorting, starpi doesn't support this, to solve this problem we implemented sorting logic on frontend
+    const sortedLabs = (data ?.data ?? []).sort((a: any, b: any) =>
+      (a.LabName || "").localeCompare(
+        b.LabName || "",
+        undefined,
+        { sensitivity: "base" }
+      )
+    );
 
   if (!data || data.error || data.data.length == 0) {
     return (
