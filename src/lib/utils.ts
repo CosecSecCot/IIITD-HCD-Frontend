@@ -37,3 +37,15 @@ export function getContrastingTextColor(hex: string): string {
   // Return black or white
   return luminance > 0.179 ? "#000000" : "#FFFFFF";
 }
+
+// Build a URL-safe slug from a lab / project / person name.
+// "Creative Interfaces Lab" -> "creative-interfaces-lab"
+export function slugify(input: string): string {
+  return input
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/&/g, " and ")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}

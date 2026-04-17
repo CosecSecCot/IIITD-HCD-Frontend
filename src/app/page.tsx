@@ -18,6 +18,7 @@ import MomentsGallery from "@/features/pages/home/components/MomentsGallery";
 import AreasOfPractice, {
   type AreaItem,
 } from "@/features/pages/home/components/AreasOfPractice";
+import { slugify } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
@@ -74,13 +75,13 @@ async function fetchAreas(): Promise<AreaItem[]> {
     if (!data?.data?.length) return [];
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return data.data.slice(0, 6).map((item: any): AreaItem => {
-      const website = item.WebsiteLink?.URL as string | undefined;
+      const slug = slugify(item.LabName);
       return {
         title: item.LabName,
         short: deriveAcronym(item.LabName),
         body: item.ShortDescription ?? "",
-        href: website && website.length > 0 ? website : "/research/labs",
-        external: Boolean(website && website.length > 0),
+        href: `/research/labs?lab=${encodeURIComponent(slug)}`,
+        external: false,
       };
     });
   } catch (err) {

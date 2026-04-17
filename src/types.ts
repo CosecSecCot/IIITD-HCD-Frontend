@@ -12,6 +12,7 @@ export type NewsEvent = {
 
 export type Lab = {
   id: number;
+  slug: string;
   title: string;
   short: string;
   lead: string;

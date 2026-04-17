@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { Globe, X } from "lucide-react";
 import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
@@ -14,11 +15,34 @@ import { useGSAP } from "@gsap/react";
 import { Flip } from "gsap/Flip";
 gsap.registerPlugin(Flip, useGSAP);
 
-export default function LabsSection({ labs }: { labs: Lab[] }) {
-  const [expandedId, setExpandedId] = useState<number | null>(null);
+export default function LabsSection({
+  labs,
+  initialSlug,
+}: {
+  labs: Lab[];
+  initialSlug?: string;
+}) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const initialExpandedId =
+    (initialSlug && labs.find((l) => l.slug === initialSlug)?.id) ?? null;
+
+  const [expandedId, setExpandedId] = useState<number | null>(
+    initialExpandedId
+  );
 
   const cardsContainerRef = useRef<HTMLElement>(null);
-  const flipStateRef = useRef<Flip.FlipState>(null); // store flip state between render & GSAP callback
+  const flipStateRef = useRef<Flip.FlipState>(null);
+
+  const updateLabParam = (slug: string | null) => {
+    const params = new URLSearchParams(searchParams.toString());
+    if (slug) params.set("lab", slug);
+    else params.delete("lab");
+    const qs = params.toString();
+    router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false });
+  };
 
   const { contextSafe } = useGSAP({
     scope: cardsContainerRef,
@@ -26,18 +50,18 @@ export default function LabsSection({ labs }: { labs: Lab[] }) {
   });
 
   const handleExpand = contextSafe((id: number) => {
-    // Capture BEFORE state (all cards)
     const cards = gsap.utils.toArray<Element>("[data-lab-card]");
     flipStateRef.current = Flip.getState(cards);
-
-    // Trigger React layout change
     setExpandedId(id);
+    const lab = labs.find((l) => l.id === id);
+    if (lab) updateLabParam(lab.slug);
   });
 
   const handleCollapse = contextSafe(() => {
     const cards = gsap.utils.toArray<Element>("[data-lab-card]");
     flipStateRef.current = Flip.getState(cards);
     setExpandedId(null);
+    updateLabParam(null);
   });
 
   // Animate layout change whenever expandedId changes
@@ -51,11 +75,30 @@ export default function LabsSection({ labs }: { labs: Lab[] }) {
         absolute: false,
       });
 
-      // clear stored state so stale references aren't reused
       flipStateRef.current = null;
     },
     { scope: cardsContainerRef, dependencies: [expandedId] }
   );
+
+  // On first render, if we landed with ?lab=<slug>, scroll the expanded card into view
+  useEffect(() => {
+    if (initialExpandedId == null) return;
+    const el = cardsContainerRef.current?.querySelector<HTMLElement>(
+      `[data-lab-id="${initialExpandedId}"]`
+    );
+    if (!el) return;
+    // wait a frame so layout settles
+    requestAnimationFrame(() => {
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+  }, [initialExpandedId]);
+
+  // If the slug in the URL changes externally (e.g. back/forward), sync the expanded state
+  useEffect(() => {
+    const slug = searchParams.get("lab");
+    const matched = slug ? labs.find((l) => l.slug === slug)?.id ?? null : null;
+    setExpandedId((prev) => (prev === matched ? prev : matched));
+  }, [searchParams, labs]);
 
   return (
     <section

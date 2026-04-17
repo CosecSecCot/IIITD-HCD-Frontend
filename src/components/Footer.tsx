@@ -60,7 +60,7 @@ export default function Footer() {
         {/* top: brand + nav */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
           {/* brand */}
-          <div className="lg:col-span-5 flex flex-col gap-6">
+          <div className="lg:col-span-3 flex flex-col gap-6">
             <Image
               src="/logo-with-text-large-solid.png"
               alt="Human-Centered Design, IIIT-Delhi"
@@ -100,7 +100,7 @@ export default function Footer() {
 
           <nav
             aria-label="Initiatives"
-            className="lg:col-span-2 flex flex-col gap-3 lg:gap-4"
+            className="lg:col-span-3 flex flex-col gap-3 lg:gap-4"
           >
             <h2 className="text-[12px] lg:text-[13px] tracking-[0.25em] uppercase text-white/50">
               Initiatives
@@ -124,7 +124,7 @@ export default function Footer() {
           {/* contact */}
           <section
             aria-label="Get in touch"
-            className="lg:col-span-2 flex flex-col gap-3 lg:gap-4"
+            className="lg:col-span-3 flex flex-col gap-3 lg:gap-4"
           >
             <h2 className="text-[12px] lg:text-[13px] tracking-[0.25em] uppercase text-white/50">
               Get in touch

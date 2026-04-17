@@ -4,7 +4,7 @@ import LabsSection from "@/features/pages/research/labs/components/LabsSection";
 import { Lab } from "@/types";
 import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
 import Link from "next/link";
-import { getContrastingTextColor } from "@/lib/utils";
+import { getContrastingTextColor, slugify } from "@/lib/utils";
 import { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Page(pageProps: {
-  searchParams: Promise<{ filter?: string }>;
+  searchParams: Promise<{ filter?: string; lab?: string }>;
 }) {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/labs?sort[0]=LabName:asc&populate=*`
@@ -61,6 +61,7 @@ export default async function Page(pageProps: {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (item: any): Lab => ({
       id: item.id,
+      slug: slugify(item.LabName),
       type: item.LabType,
       title: item.LabName,
       logo: `${process.env.NEXT_PUBLIC_STRAPI_URL}${item.LabLogo.url}`,
@@ -75,12 +76,22 @@ export default async function Page(pageProps: {
   );
 
   const searchParams = await pageProps.searchParams;
+
+  // If a lab slug is present, auto-select the correct filter tab based on that lab's type.
+  const targetLab = searchParams.lab
+    ? normalized.find((l) => l.slug === searchParams.lab)
+    : undefined;
+  const activeFilter: "Research" | "Teaching" =
+    targetLab?.type === "Teaching"
+      ? "Teaching"
+      : searchParams.filter === "Teaching"
+      ? "Teaching"
+      : "Research";
+
   return (
     <>
       <Banner
-        text={
-          searchParams.filter === "Teaching" ? "Teaching Labs" : "Research Labs"
-        }
+        text={activeFilter === "Teaching" ? "Teaching Labs" : "Research Labs"}
         breadcrumbs={["research", "labs"]}
       />
       <main>
@@ -92,7 +103,7 @@ export default async function Page(pageProps: {
             <Button
               href="/research/labs?filter=Research"
               text="RESEARCH LABS"
-              active={searchParams.filter !== "Teaching"}
+              active={activeFilter === "Research"}
               icon={
                 <Microscope className="w-[12px] lg:w-[16px] aspect-square h-auto" />
               }
@@ -100,19 +111,15 @@ export default async function Page(pageProps: {
             <Button
               href="/research/labs?filter=Teaching"
               text="TEACHING LABS"
-              active={searchParams.filter === "Teaching"}
+              active={activeFilter === "Teaching"}
               icon={
                 <GraduationCap className="w-[12px] lg:w-[16px] aspect-square h-auto" />
               }
             />
           </div>
           <LabsSection
-            labs={normalized.filter((lab) => {
-              if (searchParams.filter === "Teaching") {
-                return lab.type === searchParams.filter;
-              }
-              return lab.type === "Research";
-            })}
+            labs={normalized.filter((lab) => lab.type === activeFilter)}
+            initialSlug={searchParams.lab}
           />
         </article>
       </main>
