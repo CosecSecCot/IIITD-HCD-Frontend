@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 const images = [
   { src: "/rnd-building.png", alt: "R&D Building IIITD" },
   { src: "/students.png", alt: "Students at IIITD HCD" },
-  { src: "/faculty.png", alt: "Faculty at IIITD HCD" },
+  { src: "/hcd/5Z4A17.webp", alt: "Faculty at IIITD HCD" },
   { src: "/page-reveal/img3.png", alt: "1Pixel Design Conference" },
   { src: "/museo-visit.jpeg", alt: "Museo Visit" },
   { src: "/aid-lab-nu-visit.jpeg", alt: "AID Lab NU Visit" },

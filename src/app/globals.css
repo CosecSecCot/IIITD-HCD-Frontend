@@ -7,10 +7,10 @@
     --font-helvetica: Helvetica, "Helvetica Neue", Arial, sans-serif;
     --font-helvetica_now_display: var(--font-helvetica);
 
-    /* Brand Colors */
-    --color-brand-accent1: #69C2BD;
-    --color-brand-accent2: #096964;
-    --color-brand-accent2-130: #064a46;
+    /* Brand Colors — Cobalt Tide primary */
+    --color-brand-accent1: #7FB5CC;
+    --color-brand-accent2: #245F78;
+    --color-brand-accent2-130: #1A4A5E;
 
     --color-brand-gray1: #939598;
     --color-brand-gray2: #818285;
@@ -21,6 +21,9 @@
     --color-brand-green: #336909;
     --color-brand-red: #69090B;
     --color-brand-voilet: #4C1073;
+
+    /* Secondary: Salt Foam — used as the single warm counterpoint to cobalt */
+    --color-salt-foam: #EEE6CA;
 }
 
 .texture-overlay {
