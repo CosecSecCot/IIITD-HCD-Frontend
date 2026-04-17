@@ -22,8 +22,9 @@
     --color-brand-red: #69090B;
     --color-brand-voilet: #4C1073;
 
-    /* Secondary: Salt Foam — used as the single warm counterpoint to cobalt */
-    --color-salt-foam: #EEE6CA;
+    /* Secondary: Terracotta Coral — warm Mediterranean accent to cobalt */
+    --color-terracotta: #D17B3E;
+    --color-terracotta-130: #A55E28;
 }
 
 .texture-overlay {
@@ -60,4 +61,30 @@ img, .noselect {
 
 ::selection {
     background: color-mix(in oklab, var(--color-brand-accent1) 30%, transparent);
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-hide {
+    scrollbar-width: none;
+}
+
+/* Subtle dot-grid pattern — used as a textured backdrop on light sections */
+.dot-grid {
+    background-image: radial-gradient(
+        color-mix(in oklab, var(--color-brand-accent2) 18%, transparent) 1px,
+        transparent 1px
+    );
+    background-size: 22px 22px;
+    background-position: 0 0;
+}
+
+/* Terracotta variant for warm section washes */
+.dot-grid-warm {
+    background-image: radial-gradient(
+        color-mix(in oklab, var(--color-terracotta) 22%, transparent) 1px,
+        transparent 1px
+    );
+    background-size: 22px 22px;
 }

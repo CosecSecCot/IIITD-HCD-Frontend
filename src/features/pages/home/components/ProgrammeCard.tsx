@@ -10,7 +10,7 @@ export default function ProgrammeCard({
       <p className="text-[14px] lg:text-[20px] font-light break-words">
         {text}
       </p>
-      <p className="text-[64px] lg:text-[96px] leading-none text-brand-accent2-130 group-hover:text-brand-accent1 font-extralight opacity-40 self-end">
+      <p className="text-[64px] lg:text-[96px] leading-none text-brand-accent2-130 group-hover:text-terracotta font-extralight opacity-40 group-hover:opacity-100 transition-[color,opacity] duration-200 self-end">
         {number}
       </p>
     </div>

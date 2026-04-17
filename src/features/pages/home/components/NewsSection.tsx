@@ -1,9 +1,7 @@
 import Link from "next/link";
-import { ArrowRight, ImageOff } from "lucide-react";
+import { ArrowRight, ArrowUpRight, ImageOff } from "lucide-react";
 import { NewsEvent } from "@/types";
 import Image from "next/image";
-import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
-import CenterUnderline from "@/components/fancy/text/underline-center";
 import TextReveal from "@/features/animation/TextReveal";
 import qs from "qs";
 
@@ -26,6 +24,7 @@ export default async function NewsSection() {
   if (!data || data.error || data.data.length == 0) {
     newsEvents = [];
   } else {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     newsEvents = data.data.filter((item: any) => item.Draft !== true).slice(0, 3).map(
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (item: any): NewsEvent => ({
@@ -35,43 +34,45 @@ export default async function NewsSection() {
         title: item.Title,
         description: item.Description,
         img: item.CoverImage ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${item.CoverImage.url}` : "",
-        content: "", // we don't need content on this page
+        content: "",
       })
     );
   }
 
   return (
-    <section className="relative xl:w-[1280px] mx-auto px-8 min-h-[512px] flex flex-col justify-center overflow-hidden">
-      <div className="flex justify-between items-center">
-        <h2 className="text-[26px] lg:text-[48px] text-brand-accent2 leading-tight">
-          News & Events
-        </h2>
-        <CenterUnderline>
+    <section className="relative w-full py-[10vh] lg:py-[14vh] overflow-hidden">
+      <div className="mx-auto xl:w-[1280px] px-8">
+        <div className="flex items-end justify-between gap-8 mb-8 lg:mb-12">
+          <div>
+            <h2 className="font-light text-[32px] lg:text-[64px] leading-none text-brand-accent2">
+              News &amp; events
+            </h2>
+            <p className="mt-4 lg:mt-6 max-w-[560px] font-light text-[14px] lg:text-[18px] text-black/70 leading-snug">
+              Talks, workshops, guest lectures, and the occasional celebration.
+            </p>
+          </div>
           <Link
             href="/about/news-events"
-            className="flex items-center gap-2 text-brand-accent2 text-[16px] lg:text-[20px]"
+            className="flex-shrink-0 group inline-flex items-center gap-2 text-[14px] lg:text-[16px] text-brand-accent2 hover:text-terracotta transition-colors duration-200"
           >
-            View All <ArrowRight className="w-[16px] h-auto" />
+            <span className="border-b border-current">View all</span>
+            <ArrowUpRight className="w-[18px] h-auto transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Link>
-        </CenterUnderline>
-      </div>
-      <p className="font-light text-[14px] lg:text-[28px]">
-        Stay up to date with the latest happenings at HCD IIIT Delhi. This
-        section brings you important announcements, upcoming events, workshops,
-        guest lectures, and achievements from our community.
-      </p>
-      <div className="mt-[4em] grid md:grid-cols-3 gap-4 lg:gap-8">
-        {newsEvents.length === 0 ? (
-          <TextReveal>
-            <p className="col-span-3 text-center font-light italic text-[14px] lg:text-[24px] text-black/60">
-              No news or events found.
-            </p>
-          </TextReveal>
-        ) : (
-          newsEvents.map((item) => (
-            <NewsEventCard key={item.id} content={item} />
-          ))
-        )}
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+          {newsEvents.length === 0 ? (
+            <TextReveal>
+              <p className="col-span-3 text-center font-light italic text-[14px] lg:text-[20px] text-black/50 py-16">
+                No news or events found.
+              </p>
+            </TextReveal>
+          ) : (
+            newsEvents.map((item) => (
+              <NewsEventCard key={item.id} content={item} />
+            ))
+          )}
+        </div>
       </div>
     </section>
   );
@@ -79,48 +80,45 @@ export default async function NewsSection() {
 
 function NewsEventCard({ content }: { content: NewsEvent }) {
   return (
-    <div className="flex flex-col justify-between gap-[1em]">
-      <div className="relative group">
+    <Link
+      href={`/about/news-events/${content.id}`}
+      className="group flex flex-col gap-4"
+    >
+      <div className="relative aspect-video overflow-hidden bg-brand-accent2/5">
         {content.img ? (
           <Image
             src={content.img}
-            alt={`${content.title} image`}
-            className="w-full h-auto aspect-video object-cover border-1 lg:border-2 border-brand-accent2"
-            width={480}
-            height={270}
+            alt={content.title}
+            fill
+            sizes="(max-width: 768px) 100vw, 33vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
           />
         ) : (
-          <div className="w-full aspect-video border-1 lg:border-2 border-brand-accent2 bg-brand-accent2/10 flex items-center justify-center">
-            <ImageOff className="w-[32px] h-auto text-brand-accent2/30" />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <ImageOff className="w-[32px] h-auto text-brand-accent2/25" />
           </div>
         )}
       </div>
-      <div className="space-y-[0.25em]">
-        <p className="text-[14px] lg:text-[20px] text-black/60">
+      <div className="flex items-center gap-2 text-[12px] lg:text-[13px] tracking-wide uppercase text-terracotta-130">
+        <span>{content.type}</span>
+        <span className="opacity-40">·</span>
+        <span className="text-black/50 normal-case tracking-normal">
           {content.date.toLocaleDateString("en-GB", {
             day: "numeric",
             month: "long",
             year: "numeric",
           })}
-        </p>
-        <h3 className="font-medium text-[18px] lg:text-[24px] text-brand-accent2 leading-tight">
-          {content.title}
-        </h3>
-        <p className="font-light text-[14px] lg:text-[18px] line-clamp-3">
-          {content.description}
-        </p>
+        </span>
       </div>
-      <Link
-        href={`/about/news-events/${content.id}`}
-        className="font-normal w-full flex justify-center items-center gap-[24px] py-[0.75em] text-[14px] xl:text-[18px] text-white bg-brand-accent2 hover:bg-brand-accent2-130 transition-colors duration-200"
-      >
-        <LetterSwapForward
-          label={`View ${content.type}`}
-          staggerDuration={0.005}
-          className="w-max"
-        />
-        <ArrowRight className="w-[14px] lg:w-[18px] h-auto" />
-      </Link>
-    </div>
+      <h3 className="text-[20px] lg:text-[26px] font-medium leading-[1.15] text-brand-accent2 group-hover:text-terracotta transition-colors duration-200">
+        {content.title}
+      </h3>
+      <p className="font-light text-[14px] lg:text-[16px] line-clamp-3 text-black/70 leading-snug">
+        {content.description}
+      </p>
+      <span className="mt-auto inline-flex items-center gap-1 text-[13px] lg:text-[14px] text-brand-accent2 opacity-70 group-hover:opacity-100 transition-opacity">
+        Read <ArrowRight className="w-[14px] h-auto" />
+      </span>
+    </Link>
   );
 }

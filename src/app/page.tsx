@@ -13,6 +13,11 @@ import { Suspense } from "react";
 import NewsSection from "@/features/pages/home/components/NewsSection";
 import CenterUnderline from "@/components/fancy/text/underline-center";
 import HeroCarousel from "@/features/pages/home/components/HeroCarousel";
+import ScrollManifesto from "@/features/pages/home/components/ScrollManifesto";
+import MomentsGallery from "@/features/pages/home/components/MomentsGallery";
+import AreasOfPractice, {
+  type AreaItem,
+} from "@/features/pages/home/components/AreasOfPractice";
 
 export const dynamic = "force-dynamic";
 
@@ -53,14 +58,46 @@ const programmeItems = [
   },
 ];
 
-export default function Home() {
+function deriveAcronym(name: string): string {
+  const words = name.replace(/[^A-Za-z\s]/g, "").split(/\s+/).filter(Boolean);
+  if (words.length >= 2) return (words[0][0] + words[1][0]).toUpperCase();
+  return (words[0]?.slice(0, 3) ?? "LAB").toUpperCase();
+}
+
+async function fetchAreas(): Promise<AreaItem[]> {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/labs?sort[0]=LabName:asc&populate=*`,
+      { cache: "no-store" }
+    );
+    const data = await res.json();
+    if (!data?.data?.length) return [];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return data.data.slice(0, 6).map((item: any): AreaItem => {
+      const website = item.WebsiteLink?.URL as string | undefined;
+      return {
+        title: item.LabName,
+        short: deriveAcronym(item.LabName),
+        body: item.ShortDescription ?? "",
+        href: website && website.length > 0 ? website : "/research/labs",
+        external: Boolean(website && website.length > 0),
+      };
+    });
+  } catch (err) {
+    console.log("[ERROR] fetching labs for home:", err);
+    return [];
+  }
+}
+
+export default async function Home() {
+  const areas = await fetchAreas();
   return (
     <>
       <PageReveal />
       <div className="background-element relative z-10 bg-white font-anybody shadow-xl">
         <Navbar type="hero" />
         <main className="relative">
-          <article className="space-y-12 pb-[78px]">
+          <article className="space-y-0 pb-[78px]">
             <section className="relative w-full h-screen flex flex-col justify-center items-center overflow-hidden">
               <HeroCarousel />
               <div className="relative z-10 text-center px-8 max-w-[900px] mx-auto">
@@ -75,7 +112,7 @@ export default function Home() {
                 <TextReveal>
                   <h1 className="mt-3 lg:mt-5 text-[36px] lg:text-[80px] text-white font-light leading-none lg:leading-tight">
                     Where{" "}
-                    <span className="font-normal">Creativity</span>{" "}
+                    <span className="font-normal text-terracotta">Creativity</span>{" "}
                     Meets Innovation.
                   </h1>
                 </TextReveal>
@@ -111,7 +148,7 @@ export default function Home() {
               </div>
             </section>
 
-            <section className="relative w-full min-h-[512px] lg:min-h-screen flex flex-col justify-center overflow-hidden mt-12 lg:mt-24">
+            <section className="relative w-full py-[10vh] lg:py-[14vh] flex flex-col justify-center overflow-hidden">
               <div className="relative z-10 mx-auto xl:w-[75vw] px-8 space-y-4 lg:space-y-8">
                 <TextReveal>
                   <h2 className="font-light text-[28px] lg:text-[86px] leading-tight">
@@ -174,7 +211,11 @@ export default function Home() {
               </div>
             </section>
 
-            <section className="relative w-full min-h-[512px] lg:min-h-screen flex flex-col justify-center overflow-hidden">
+            <ScrollManifesto />
+
+            {areas.length > 0 && <AreasOfPractice areas={areas} />}
+
+            <section className="relative w-full py-[10vh] lg:py-[14vh] flex flex-col justify-center overflow-hidden">
               <div className="flex max-lg:flex-col px-8 xl:px-[12.5vw] justify-between items-center gap-4 lg:gap-[60px]">
                 <div className="relative w-full lg:w-[60%] flex-shrink-0 aspect-video">
                   <Image
@@ -212,6 +253,8 @@ export default function Home() {
                 </div>
               </div>
             </section>
+
+            <MomentsGallery />
 
             <Suspense
               fallback={
@@ -252,31 +295,27 @@ export default function Home() {
               <NewsSection />
             </Suspense>
 
-            <section className="relative w-full min-h-[512px] lg:min-h-screen flex flex-col justify-center overflow-hidden">
-              <div>
-                <Heading align="middle">
-                  <span className="text-brand-accent2 font-normal">
-                    Mission &amp; Vision
-                  </span>
-                </Heading>
-                <p className="max-lg:hidden font-light mt-[1em] mx-auto xl:w-[75vw] px-8 text-center text-[28px]">
-                  India has already established itself as the software hub of
-                  the world due to the large number of engineers that it
-                  produces. There is now an increasing and persistent demand of
-                  having engineers who can develop and design.
-                </p>
-                <div className="mt-[32px] lg:mt-[44px]">
-                  <div
-                    className={`mx-auto xl:w-[1280px] px-8 grid gap-[1em] grid-cols-1 xl:grid-cols-5`}
-                  >
-                    {programmeItems.map((item) => (
-                      <ProgrammeCard
-                        key={item.number}
-                        text={item.text}
-                        number={item.number}
-                      />
-                    ))}
-                  </div>
+            <section className="dot-grid relative w-full py-[10vh] lg:py-[14vh] overflow-hidden bg-brand-accent2/[0.04]">
+              <div className="mx-auto xl:w-[1280px] px-8">
+                <div className="max-w-[820px] mb-8 lg:mb-12">
+                  <h2 className="font-light text-[32px] lg:text-[64px] leading-none text-brand-accent2">
+                    Mission &amp;{" "}
+                    <span className="text-terracotta">vision</span>
+                  </h2>
+                  <p className="mt-4 lg:mt-6 font-light text-[14px] lg:text-[20px] text-black/70 leading-snug max-w-[640px]">
+                    India is the software hub of the world. Our goal is to
+                    shape the engineers who can also design — and the
+                    designers who can also code.
+                  </p>
+                </div>
+                <div className="grid gap-3 lg:gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-5">
+                  {programmeItems.map((item) => (
+                    <ProgrammeCard
+                      key={item.number}
+                      text={item.text}
+                      number={item.number}
+                    />
+                  ))}
                 </div>
               </div>
             </section>
