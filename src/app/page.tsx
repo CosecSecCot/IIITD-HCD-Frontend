@@ -19,6 +19,8 @@ import MomentsGallery from "@/features/pages/home/components/MomentsGallery";
 import AreasOfPractice, {
   type AreaItem,
 } from "@/features/pages/home/components/AreasOfPractice";
+import MarqueeStrip from "@/features/pages/home/components/MarqueeStrip";
+import FeaturedPublications from "@/features/pages/home/components/FeaturedPublications";
 import { slugify } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
@@ -207,6 +209,8 @@ export default async function Home() {
 
             <ScrollManifesto />
 
+            <MarqueeStrip />
+
             {areas.length > 0 && <AreasOfPractice areas={areas} />}
 
             <section className="relative w-full py-[10vh] lg:py-[14vh] flex flex-col justify-center overflow-hidden">
@@ -247,6 +251,8 @@ export default async function Home() {
                 </div>
               </div>
             </section>
+
+            <FeaturedPublications />
 
             <MomentsGallery />
 
