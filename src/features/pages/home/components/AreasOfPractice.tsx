@@ -4,6 +4,7 @@ import HeroShader from "./HeroShaderMount";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { useHoverGoPill } from "@/components/HoverGoPill";
 
 export type AreaItem = {
   title: string;
@@ -53,6 +54,7 @@ function AreaCard({
   external,
   index,
 }: AreaItem & { index: number }) {
+  const { pill, handlers } = useHoverGoPill();
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -64,14 +66,15 @@ function AreaCard({
         href={href}
         target={external ? "_blank" : undefined}
         rel={external ? "noopener noreferrer" : undefined}
-        className="group relative block h-full p-6 lg:p-8 bg-white/95 hover:bg-terracotta transition-colors duration-300"
+        {...handlers}
+        className="group relative block h-full p-6 lg:p-8 bg-white/95 hover:bg-terracotta transition-colors duration-300 overflow-hidden"
       >
         <div className="flex items-start justify-between gap-3">
           <span className="text-[11px] lg:text-[13px] tracking-[0.25em] uppercase text-brand-accent2 group-hover:text-white transition-colors duration-300">
             {short}
           </span>
           <ArrowUpRight
-            className="w-[18px] h-auto text-brand-accent2 group-hover:text-white transition-colors duration-300 -translate-x-1 group-hover:translate-x-0 group-hover:-translate-y-0.5 transition-transform"
+            className="w-[18px] h-auto text-brand-accent2 group-hover:text-white/0 transition-all duration-300"
             strokeWidth={1.5}
           />
         </div>
@@ -81,6 +84,7 @@ function AreaCard({
         <p className="mt-3 lg:mt-4 text-[13px] lg:text-[15px] font-light text-black/70 group-hover:text-white/90 transition-colors duration-300 leading-snug">
           {body}
         </p>
+        {pill}
       </Link>
     </motion.div>
   );

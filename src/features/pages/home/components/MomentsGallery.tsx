@@ -15,10 +15,10 @@ const moments = [
   { src: "/aid-lab-nu-visit.jpeg", caption: "AID Lab · NU", meta: "Collaboration visit" },
 ];
 
-// advance one slide per this many pixels of vertical scroll while the section is in view
-const SCROLL_PX_PER_ADVANCE = 220;
-
 export default function MomentsGallery() {
+  const autoplay = useRef(
+    Autoplay({ delay: 2000, stopOnInteraction: false, stopOnMouseEnter: true })
+  );
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
       loop: true,
@@ -27,15 +27,12 @@ export default function MomentsGallery() {
       dragFree: false,
       containScroll: false,
     },
-    [Autoplay({ delay: 4500, stopOnInteraction: false, stopOnMouseEnter: true })]
+    [autoplay.current]
   );
   const [selected, setSelected] = useState(0);
   const [snapCount, setSnapCount] = useState(0);
 
   const sectionRef = useRef<HTMLElement>(null);
-  const inViewRef = useRef(false);
-  const lastScrollYRef = useRef(0);
-  const accumRef = useRef(0);
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
@@ -50,46 +47,30 @@ export default function MomentsGallery() {
     emblaApi.on("reInit", onSelect);
   }, [emblaApi, onSelect]);
 
-  // observe whether the section is in view so scroll only drives advancement when relevant
-  useEffect(() => {
-    const el = sectionRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        inViewRef.current = entries[0]?.isIntersecting ?? false;
-      },
-      { threshold: 0.25 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
+  // restart the autoplay timer after the user nudges the carousel — avoids a
+  // jarring quick advance right after a manual interaction
+  const resetAutoplay = useCallback(() => {
+    const ap = autoplay.current as unknown as { reset?: () => void };
+    ap.reset?.();
   }, []);
 
-  // map vertical scroll delta to horizontal carousel movement while in view
-  useEffect(() => {
-    if (!emblaApi) return;
-    lastScrollYRef.current = window.scrollY;
-    const onScroll = () => {
-      const y = window.scrollY;
-      const dy = y - lastScrollYRef.current;
-      lastScrollYRef.current = y;
-      if (!inViewRef.current) return;
-      accumRef.current += dy;
-      while (accumRef.current >= SCROLL_PX_PER_ADVANCE) {
-        emblaApi.scrollNext();
-        accumRef.current -= SCROLL_PX_PER_ADVANCE;
-      }
-      while (accumRef.current <= -SCROLL_PX_PER_ADVANCE) {
-        emblaApi.scrollPrev();
-        accumRef.current += SCROLL_PX_PER_ADVANCE;
-      }
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [emblaApi]);
+  const scrollPrev = useCallback(() => {
+    emblaApi?.scrollPrev();
+    resetAutoplay();
+  }, [emblaApi, resetAutoplay]);
 
-  const scrollPrev = () => emblaApi?.scrollPrev();
-  const scrollNext = () => emblaApi?.scrollNext();
-  const scrollTo = (i: number) => emblaApi?.scrollTo(i);
+  const scrollNext = useCallback(() => {
+    emblaApi?.scrollNext();
+    resetAutoplay();
+  }, [emblaApi, resetAutoplay]);
+
+  const scrollTo = useCallback(
+    (i: number) => {
+      emblaApi?.scrollTo(i);
+      resetAutoplay();
+    },
+    [emblaApi, resetAutoplay]
+  );
 
   return (
     <section

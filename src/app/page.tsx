@@ -21,6 +21,7 @@ import AreasOfPractice, {
 } from "@/features/pages/home/components/AreasOfPractice";
 import MarqueeStrip from "@/features/pages/home/components/MarqueeStrip";
 import FeaturedPublications from "@/features/pages/home/components/FeaturedPublications";
+import PhilosophyShowcase from "@/features/pages/home/components/PhilosophyShowcase";
 import { slugify } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
@@ -132,12 +133,14 @@ export default async function Home() {
                       href="/study/btech"
                       text="View Study Options"
                       type="inverse"
+                      className="!px-[1.25em] lg:!px-[1.75em]"
                     />
                     <LinkButton
                       href="/about/overview"
                       text="Learn More"
                       type="transparent"
                       icon={null}
+                      className="!px-[1.25em] lg:!px-[1.75em]"
                     />
                   </div>
                 </TextReveal>
@@ -252,6 +255,8 @@ export default async function Home() {
               </div>
             </section>
 
+            <PhilosophyShowcase />
+
             <FeaturedPublications />
 
             <MomentsGallery />
@@ -303,9 +308,10 @@ export default async function Home() {
                     <span className="text-terracotta">vision</span>
                   </h2>
                   <p className="mt-4 lg:mt-6 font-light text-[14px] lg:text-[20px] text-black/70 leading-snug max-w-[640px]">
-                    India is the software hub of the world. Our goal is to
-                    shape the engineers who can also design — and the
-                    designers who can also code.
+                    India has already established itself as the software hub of
+                    the world due to the large number of engineers that it
+                    produces. There is now an increasing and persistent demand
+                    of having engineers who can develop and design.
                   </p>
                 </div>
                 <div className="grid gap-3 lg:gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-5">

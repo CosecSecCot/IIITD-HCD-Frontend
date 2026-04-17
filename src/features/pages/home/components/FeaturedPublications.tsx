@@ -1,15 +1,9 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import qs from "qs";
-
-type Pub = {
-  id: number;
-  year: number;
-  title: string;
-  authors: string[];
-  venue: string;
-  link: string;
-};
+import PublicationRow, {
+  type PubRow as Pub,
+} from "./PublicationRow";
 
 async function fetchPublications(): Promise<Pub[]> {
   try {
@@ -17,7 +11,7 @@ async function fetchPublications(): Promise<Pub[]> {
       {
         sort: ["Date:desc"],
         populate: "*",
-        pagination: { pageSize: 6 },
+        pagination: { pageSize: 4 },
       },
       { encodeValuesOnly: true }
     );
@@ -43,12 +37,6 @@ async function fetchPublications(): Promise<Pub[]> {
     console.log("[ERROR] fetching publications for home:", err);
     return [];
   }
-}
-
-function formatAuthors(authors: string[]): string {
-  if (authors.length === 0) return "";
-  if (authors.length <= 3) return authors.join(", ");
-  return `${authors.slice(0, 3).join(", ")} et al.`;
 }
 
 export default async function FeaturedPublications() {
@@ -82,47 +70,21 @@ export default async function FeaturedPublications() {
             </li>
           ))}
         </ol>
+
+        <div className="mt-8 lg:mt-12 flex justify-center">
+          <Link
+            href="/research/publications"
+            className="group inline-flex items-center gap-3 px-6 lg:px-8 py-3 lg:py-4 border border-brand-accent2 text-brand-accent2 hover:bg-brand-accent2 hover:text-white transition-colors duration-200 text-[13px] lg:text-[15px] tracking-[0.2em] uppercase font-medium"
+          >
+            View all publications
+            <ArrowUpRight
+              className="w-[16px] lg:w-[18px] h-auto transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              strokeWidth={1.75}
+            />
+          </Link>
+        </div>
       </div>
     </section>
   );
 }
 
-function PublicationRow({ pub }: { pub: Pub }) {
-  const external = pub.link.startsWith("http");
-  const content = (
-    <div className="group grid grid-cols-[auto_1fr_auto] gap-6 lg:gap-12 items-center py-6 lg:py-8 px-2 transition-colors duration-300 hover:bg-terracotta/[0.06]">
-      <span className="text-[14px] lg:text-[20px] font-light tabular-nums text-brand-accent2/70 w-[4ch]">
-        {pub.year || "—"}
-      </span>
-      <div className="min-w-0">
-        <h3 className="text-[18px] md:text-[24px] lg:text-[32px] leading-[1.2] font-light text-brand-accent2 group-hover:text-terracotta transition-colors duration-300">
-          {pub.title}
-        </h3>
-        {(pub.authors.length > 0 || pub.venue) && (
-          <p className="mt-2 text-[13px] lg:text-[15px] font-light text-black/55">
-            {formatAuthors(pub.authors)}
-            {pub.authors.length > 0 && pub.venue && " · "}
-            {pub.venue && <span className="italic">{pub.venue}</span>}
-          </p>
-        )}
-      </div>
-      <ArrowUpRight
-        className="w-[20px] lg:w-[28px] h-auto text-brand-accent2/50 group-hover:text-terracotta transition-all duration-300 translate-x-[-4px] group-hover:translate-x-0 group-hover:-translate-y-0.5"
-        strokeWidth={1.5}
-      />
-    </div>
-  );
-
-  if (!pub.link) return content;
-
-  return (
-    <Link
-      href={pub.link}
-      target={external ? "_blank" : undefined}
-      rel={external ? "noopener noreferrer" : undefined}
-      className="block"
-    >
-      {content}
-    </Link>
-  );
-}
