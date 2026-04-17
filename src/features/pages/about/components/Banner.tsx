@@ -103,14 +103,14 @@ export default function Banner({
     <>
       <div className="flex gap-[1em] justify-between items-end">
         <Breadcrumbs breadcrumbs={breadcrumbs} />
-        <Link
-          href=""
-          className="flex gap-[0.5em] flex-shrink-0 text-[12px] lg:text-[20px] text-brand-accent2 font-normal"
+        <button
+          type="button"
           onClick={() => router.back()}
+          className="flex gap-[0.5em] flex-shrink-0 text-[12px] lg:text-[20px] text-brand-accent2 font-normal cursor-pointer"
         >
           <ArrowLeft className="w-[14px] lg:w-[24px] h-auto" />
           <CenterUnderline>Go Back</CenterUnderline>
-        </Link>
+        </button>
       </div>
       {asLink && href ? (
         <Link href={href} className="relative group">

@@ -5,7 +5,6 @@ import ClipReveal from "@/features/animation/ClipReveal";
 import TextReveal from "@/features/animation/TextReveal";
 import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 /**
@@ -33,14 +32,14 @@ export default function Banner({
       <div className="relative z-10 xl:w-[1280px] p-8 flex justify-between items-center">
         <div className="xl:w-1/3">
           <ClipReveal>
-            <Link
-              href=""
-              className="reveal-animation-opacity-only flex gap-[0.5em] text-[12px] lg:text-[20px] text-brand-accent2-130"
+            <button
+              type="button"
               onClick={() => router.back()}
+              className="reveal-animation-opacity-only flex gap-[0.5em] text-[12px] lg:text-[20px] text-brand-accent2-130 cursor-pointer"
             >
               <ArrowLeft className="w-[14px] lg:w-[24px] h-auto" />
               <CenterUnderline>Go Back</CenterUnderline>
-            </Link>
+            </button>
           </ClipReveal>
           <div className="mt-[24px] lg:mt-[40px] leading-tight">
             <TextReveal>
