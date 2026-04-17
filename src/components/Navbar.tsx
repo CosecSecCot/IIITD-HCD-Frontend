@@ -420,7 +420,7 @@ export default function Navbar({
                             {result.image ? (
                               <img
                                 src={result.image}
-                                alt=""
+                                alt={result.title}
                                 className="w-12 h-12 rounded-lg object-cover flex-shrink-0 bg-black/5"
                               />
                             ) : (

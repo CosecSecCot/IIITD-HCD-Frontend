@@ -58,7 +58,7 @@ export default function Page() {
                 </span>
               }
               linkText="admin-hcd@iiitd.ac.in"
-              linkHref="mailto:admin-hcd.iiitd.ac.in"
+              linkHref="mailto:admin-hcd@iiitd.ac.in"
               icon={<Mail className="w-[28px] h-auto" />}
             />
             <div className="pr-[1em] flex flex-col gap-[1em] justify-between">

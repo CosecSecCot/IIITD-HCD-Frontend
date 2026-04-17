@@ -178,7 +178,7 @@ export default function Home() {
               <div className="flex max-lg:flex-col px-8 xl:px-[12.5vw] justify-between items-center gap-4 lg:gap-[60px]">
                 <div className="relative w-full lg:w-[60%] flex-shrink-0 aspect-video">
                   <Image
-                    src="/faculty.png"
+                    src="/hcd/5Z4A17.webp"
                     alt="Faculty at IIITD HCD"
                     width={1186}
                     height={682}
