@@ -242,7 +242,29 @@ async function FacultiesSection({ filter }: { filter?: string }) {
         />
       </div>
       <div>
-        <PeopleSection people={normalized} />
+        {normalized.length === 0 ? (
+          <div className="flex flex-col items-center justify-center min-h-[40vh] text-center px-4">
+            <h2 className="text-[20px] lg:text-[28px] text-brand-accent2 font-semibold">
+              No faculty to show here yet
+            </h2>
+            <p className="mt-2 text-[14px] lg:text-[18px] opacity-80 max-w-[600px]">
+              {filter === "professor-of-practice" &&
+                "We don't have any professors of practice listed right now."}
+              {filter === "visiting-faculty" &&
+                "No visiting faculty are listed at the moment."}
+              {filter === "adjunct-faculty" &&
+                "No adjunct faculty are listed at the moment."}
+            </p>
+            <Link
+              href="/people/faculty"
+              className="mt-[1.5em] inline-flex items-center gap-2 px-[1.5em] py-[0.75em] text-[12px] lg:text-[16px] text-white bg-brand-accent2 hover:bg-brand-accent2-130 transition-colors duration-200"
+            >
+              View all faculty
+            </Link>
+          </div>
+        ) : (
+          <PeopleSection people={normalized} />
+        )}
       </div>
     </>
   );
