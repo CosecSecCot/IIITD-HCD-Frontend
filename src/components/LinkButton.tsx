@@ -18,7 +18,7 @@ export default function LinkButton({
   href: string;
   target?: HTMLAttributeAnchorTarget;
   className?: string;
-  type?: "default" | "solid" | "transparent";
+  type?: "default" | "solid" | "transparent" | "inverse";
   icon?: ReactNode;
   iconPosition?: "left" | "right";
   rounded?: boolean;
@@ -30,6 +30,8 @@ export default function LinkButton({
       ? "bg-brand-accent2-130/5 hover:bg-brand-accent2 border-brand-accent2-130 text-brand-accent2-130 hover:text-white backdrop-blur-lg"
       : type === "solid"
       ? "bg-brand-accent2 text-white border-brand-accent2 hover:bg-brand-accent2-130 backdrop-blur-lg"
+      : type === "inverse"
+      ? "bg-white text-brand-accent2 border-white hover:bg-white/90"
       : "bg-transparent text-white border border-white backdrop-blur-lg hover:backdrop-blur-2xl";
   const roundedClass = rounded ? "rounded-full" : "";
 

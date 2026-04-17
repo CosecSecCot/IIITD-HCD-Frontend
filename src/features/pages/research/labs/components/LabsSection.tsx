@@ -80,17 +80,21 @@ export default function LabsSection({
     { scope: cardsContainerRef, dependencies: [expandedId] }
   );
 
-  // On first render, if we landed with ?lab=<slug>, scroll the expanded card into view
+  // On first render, if we landed with ?lab=<slug>, smooth-scroll to the expanded card.
+  // The card carries a CSS scroll-margin-top so it sits below the navbar instead of
+  // flush against the viewport top.
   useEffect(() => {
     if (initialExpandedId == null) return;
     const el = cardsContainerRef.current?.querySelector<HTMLElement>(
       `[data-lab-id="${initialExpandedId}"]`
     );
     if (!el) return;
-    // wait a frame so layout settles
-    requestAnimationFrame(() => {
-      el.scrollIntoView({ behavior: "smooth", block: "center" });
-    });
+    // wait two frames so the Flip animation doesn't fight us
+    requestAnimationFrame(() =>
+      requestAnimationFrame(() => {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      })
+    );
   }, [initialExpandedId]);
 
   // If the slug in the URL changes externally (e.g. back/forward), sync the expanded state
@@ -245,16 +249,15 @@ function LabCard({
   return (
     <div
       data-lab-card
-      style={
-        expanded
-          ? {
-              backgroundColor: lab.background,
-              color: lab.foreground,
-            }
+      data-lab-id={lab.id}
+      style={{
+        scrollMarginTop: "120px",
+        ...(expanded
+          ? { backgroundColor: lab.background, color: lab.foreground }
           : {
               backgroundColor: canHover && hover ? lab.backgroundDim : "white",
-            }
-      }
+            }),
+      }}
       onMouseEnter={() => {
         setHover(true);
       }}

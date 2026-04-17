@@ -57,10 +57,10 @@ export default function Footer() {
   return (
     <footer className="sticky z-0 bottom-0 left-0 w-full bg-brand-accent2 text-white font-anybody">
       <div className="mx-auto xl:w-[1280px] px-8 py-14 lg:py-20">
-        {/* top: brand + nav */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
+        {/* top: brand left, nav columns right */}
+        <div className="flex flex-col lg:flex-row lg:justify-between gap-14 lg:gap-24">
           {/* brand */}
-          <div className="lg:col-span-3 flex flex-col gap-6">
+          <div className="flex flex-col gap-6 lg:max-w-[420px]">
             <Image
               src="/logo-with-text-large-solid.png"
               alt="Human-Centered Design, IIIT-Delhi"
@@ -69,87 +69,88 @@ export default function Footer() {
               priority
               className="w-auto h-[84px] lg:h-[96px] object-contain object-left"
             />
-            <p className="max-w-[360px] font-light text-[14px] lg:text-[16px] text-white/70 leading-snug">
+            <p className="font-light text-[14px] lg:text-[16px] text-white/70 leading-snug">
               Department of Human-Centered Design at IIIT-Delhi — where
               computing becomes a{" "}
-              <span className="text-terracotta">creative medium</span>.
+              <span className="text-terracotta-light">creative medium</span>.
             </p>
           </div>
 
-          {/* nav columns */}
-          <nav
-            aria-label="Useful links"
-            className="lg:col-span-3 flex flex-col gap-3 lg:gap-4"
-          >
-            <h2 className="text-[12px] lg:text-[13px] tracking-[0.25em] uppercase text-white/50">
-              Explore
-            </h2>
-            <ul className="flex flex-col gap-2 lg:gap-3 text-[15px] lg:text-[17px] font-light">
-              {usefulLinks.map((l) => (
-                <li key={l.href}>
-                  <Link
-                    href={l.href}
-                    className="inline-block w-fit text-white/90 hover:text-terracotta transition-colors duration-200"
-                  >
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          <nav
-            aria-label="Initiatives"
-            className="lg:col-span-3 flex flex-col gap-3 lg:gap-4"
-          >
-            <h2 className="text-[12px] lg:text-[13px] tracking-[0.25em] uppercase text-white/50">
-              Initiatives
-            </h2>
-            <ul className="flex flex-col gap-2 lg:gap-3 text-[15px] lg:text-[17px] font-light">
-              {initiatives.map((l) => (
-                <li key={l.href}>
-                  <Link
-                    href={l.href}
-                    target={l.external ? "_blank" : undefined}
-                    rel={l.external ? "noopener noreferrer" : undefined}
-                    className="inline-block w-fit text-white/90 hover:text-terracotta transition-colors duration-200"
-                  >
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          {/* contact */}
-          <section
-            aria-label="Get in touch"
-            className="lg:col-span-3 flex flex-col gap-3 lg:gap-4"
-          >
-            <h2 className="text-[12px] lg:text-[13px] tracking-[0.25em] uppercase text-white/50">
-              Get in touch
-            </h2>
-            <Link
-              href="mailto:admin-hcd@iiitd.ac.in"
-              className="text-[15px] lg:text-[17px] font-light text-white hover:text-terracotta transition-colors duration-200 break-all"
+          {/* nav columns — right-aligned, equal gaps */}
+          <div className="flex flex-wrap gap-12 lg:gap-16">
+            <nav
+              aria-label="Useful links"
+              className="flex flex-col gap-3 lg:gap-4 min-w-[160px]"
             >
-              admin-hcd@iiitd.ac.in
-            </Link>
-            <div className="flex items-center gap-4 mt-2">
-              {socials.map(({ icon: Icon, href, label, external }) => (
-                <Link
-                  key={label}
-                  href={href}
-                  aria-label={label}
-                  target={external ? "_blank" : undefined}
-                  rel={external ? "noopener noreferrer" : undefined}
-                  className="text-white/80 hover:text-terracotta transition-colors duration-200"
-                >
-                  <Icon className="w-[20px] h-[20px]" />
-                </Link>
-              ))}
-            </div>
-          </section>
+              <h2 className="text-[12px] lg:text-[13px] tracking-[0.25em] uppercase text-white/50">
+                Explore
+              </h2>
+              <ul className="flex flex-col gap-2 lg:gap-3 text-[15px] lg:text-[17px] font-light">
+                {usefulLinks.map((l) => (
+                  <li key={l.href}>
+                    <Link
+                      href={l.href}
+                      className="inline-block w-fit text-white/90 hover:text-terracotta-light transition-colors duration-200"
+                    >
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            <nav
+              aria-label="Initiatives"
+              className="flex flex-col gap-3 lg:gap-4 min-w-[160px]"
+            >
+              <h2 className="text-[12px] lg:text-[13px] tracking-[0.25em] uppercase text-white/50">
+                Initiatives
+              </h2>
+              <ul className="flex flex-col gap-2 lg:gap-3 text-[15px] lg:text-[17px] font-light">
+                {initiatives.map((l) => (
+                  <li key={l.href}>
+                    <Link
+                      href={l.href}
+                      target={l.external ? "_blank" : undefined}
+                      rel={l.external ? "noopener noreferrer" : undefined}
+                      className="inline-block w-fit text-white/90 hover:text-terracotta-light transition-colors duration-200"
+                    >
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            <section
+              aria-label="Get in touch"
+              className="flex flex-col gap-3 lg:gap-4 min-w-[220px]"
+            >
+              <h2 className="text-[12px] lg:text-[13px] tracking-[0.25em] uppercase text-white/50">
+                Get in touch
+              </h2>
+              <Link
+                href="mailto:admin-hcd@iiitd.ac.in"
+                className="text-[15px] lg:text-[17px] font-light text-white hover:text-terracotta-light transition-colors duration-200 break-all"
+              >
+                admin-hcd@iiitd.ac.in
+              </Link>
+              <div className="flex items-center gap-4 mt-2">
+                {socials.map(({ icon: Icon, href, label, external }) => (
+                  <Link
+                    key={label}
+                    href={href}
+                    aria-label={label}
+                    target={external ? "_blank" : undefined}
+                    rel={external ? "noopener noreferrer" : undefined}
+                    className="text-white/80 hover:text-terracotta-light transition-colors duration-200"
+                  >
+                    <Icon className="w-[20px] h-[20px]" />
+                  </Link>
+                ))}
+              </div>
+            </section>
+          </div>
         </div>
 
         {/* divider */}
@@ -163,16 +164,16 @@ export default function Footer() {
           </div>
           <div className="flex gap-6">
             <Link
-              href="#"
-              className="hover:text-terracotta transition-colors duration-200"
+              href="/connect"
+              className="hover:text-terracotta-light transition-colors duration-200"
             >
-              Terms &amp; Conditions
+              Connect
             </Link>
             <Link
-              href="#"
-              className="hover:text-terracotta transition-colors duration-200"
+              href="/about/overview"
+              className="hover:text-terracotta-light transition-colors duration-200"
             >
-              Privacy Policy
+              About
             </Link>
           </div>
         </div>

@@ -645,7 +645,7 @@ export default function Navbar({
                         setActiveGroup(null);
                       }
                     }}
-                    className={`relative flex justify-between items-center w-full py-[20px] cursor-pointer group transition-all duration-[300ms]`}
+                    className={`relative flex justify-between items-center w-full pr-[70px] py-[20px] cursor-pointer group transition-all duration-[300ms]`}
                   >
                     {linkGroup.children ? (
                       <span

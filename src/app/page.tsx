@@ -12,6 +12,7 @@ import TextReveal from "@/features/animation/TextReveal";
 import { Suspense } from "react";
 import NewsSection from "@/features/pages/home/components/NewsSection";
 import CenterUnderline from "@/components/fancy/text/underline-center";
+import LinkButton from "@/components/LinkButton";
 import HeroCarousel from "@/features/pages/home/components/HeroCarousel";
 import ScrollManifesto from "@/features/pages/home/components/ScrollManifesto";
 import MomentsGallery from "@/features/pages/home/components/MomentsGallery";
@@ -98,7 +99,7 @@ export default async function Home() {
       <div className="background-element relative z-10 bg-white font-anybody shadow-xl">
         <Navbar type="hero" />
         <main className="relative">
-          <article className="space-y-0 pb-[78px]">
+          <article className="space-y-0">
             <section className="relative w-full h-screen flex flex-col justify-center items-center overflow-hidden">
               <HeroCarousel />
               <div className="relative z-10 text-center px-8 max-w-[900px] mx-auto">
@@ -113,7 +114,7 @@ export default async function Home() {
                 <TextReveal>
                   <h1 className="mt-3 lg:mt-5 text-[36px] lg:text-[80px] text-white font-light leading-none lg:leading-tight">
                     Where{" "}
-                    <span className="font-normal text-terracotta">Creativity</span>{" "}
+                    <span className="font-normal text-terracotta-light">Creativity</span>{" "}
                     Meets Innovation.
                   </h1>
                 </TextReveal>
@@ -124,26 +125,18 @@ export default async function Home() {
                   </blockquote>
                 </TextReveal>
                 <TextReveal>
-                  <div className="mt-6 lg:mt-10 flex justify-center gap-4">
-                    <Link
+                  <div className="mt-6 lg:mt-10 flex justify-center gap-4 flex-wrap">
+                    <LinkButton
                       href="/study/btech"
-                      className="font-normal flex justify-center items-center gap-[0.5em] px-[1.5em] py-[1em] text-[12px] lg:text-[20px] text-brand-accent2 bg-white hover:bg-white/90 transition-colors duration-200"
-                    >
-                      <LetterSwapForward
-                        label="View Study Options"
-                        staggerDuration={0.005}
-                      />
-                      <ArrowRight className="w-[12px] lg:w-[18px] h-auto" />
-                    </Link>
-                    <Link
+                      text="View Study Options"
+                      type="inverse"
+                    />
+                    <LinkButton
                       href="/about/overview"
-                      className="font-normal flex justify-center items-center gap-[0.5em] px-[1.5em] py-[1em] text-[12px] lg:text-[20px] text-white border border-white/50 hover:bg-white/10 transition-colors duration-200"
-                    >
-                      <LetterSwapForward
-                        label="Learn More"
-                        staggerDuration={0.005}
-                      />
-                    </Link>
+                      text="Learn More"
+                      type="transparent"
+                      icon={null}
+                    />
                   </div>
                 </TextReveal>
               </div>
@@ -152,7 +145,7 @@ export default async function Home() {
             <section className="relative w-full py-[10vh] lg:py-[14vh] flex flex-col justify-center overflow-hidden">
               <div className="relative z-10 mx-auto xl:w-[1280px] px-8 space-y-4 lg:space-y-8">
                 <TextReveal>
-                  <h2 className="font-light text-[28px] lg:text-[86px] leading-tight">
+                  <h2 className="font-light text-[36px] lg:text-[80px] leading-[1.05]">
                     The Department of <br />
                     <span className="text-brand-accent2 font-normal">
                       <LetterSwapForward
@@ -230,9 +223,9 @@ export default async function Home() {
                 </div>
                 <div className="w-full lg:text-right">
                   <TextReveal>
-                    <h1 className="text-[24px] lg:text-[44px] text-brand-accent2 leading-tight">
+                    <h2 className="font-light text-[32px] lg:text-[64px] leading-[1.05] text-brand-accent2">
                       HCD Faculty
-                    </h1>
+                    </h2>
                   </TextReveal>
                   <TextReveal>
                     <p className="mt-[0.5em] font-light text-[14px] lg:text-[28px] leading-tight">

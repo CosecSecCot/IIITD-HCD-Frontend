@@ -25,6 +25,8 @@
     /* Secondary: Terracotta Coral — warm Mediterranean accent to cobalt */
     --color-terracotta: #D17B3E;
     --color-terracotta-130: #A55E28;
+    /* lighter peach for use on cobalt/dark backgrounds; keeps warmth but reads */
+    --color-terracotta-light: #F2B97D;
 }
 
 .texture-overlay {
