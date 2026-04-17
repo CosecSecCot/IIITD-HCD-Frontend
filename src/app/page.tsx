@@ -149,7 +149,7 @@ export default async function Home() {
             </section>
 
             <section className="relative w-full py-[10vh] lg:py-[14vh] flex flex-col justify-center overflow-hidden">
-              <div className="relative z-10 mx-auto xl:w-[75vw] px-8 space-y-4 lg:space-y-8">
+              <div className="relative z-10 mx-auto xl:w-[1280px] px-8 space-y-4 lg:space-y-8">
                 <TextReveal>
                   <h2 className="font-light text-[28px] lg:text-[86px] leading-tight">
                     The Department of <br />
@@ -216,7 +216,7 @@ export default async function Home() {
             {areas.length > 0 && <AreasOfPractice areas={areas} />}
 
             <section className="relative w-full py-[10vh] lg:py-[14vh] flex flex-col justify-center overflow-hidden">
-              <div className="flex max-lg:flex-col px-8 xl:px-[12.5vw] justify-between items-center gap-4 lg:gap-[60px]">
+              <div className="mx-auto xl:w-[1280px] flex max-lg:flex-col px-8 justify-between items-center gap-4 lg:gap-[60px]">
                 <div className="relative w-full lg:w-[60%] flex-shrink-0 aspect-video">
                   <Image
                     src="/hcd/5Z4A17.webp"
