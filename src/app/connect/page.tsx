@@ -160,7 +160,7 @@ export default function Page() {
             <iframe
               title="IIITD Location"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.795892320593!2d77.2706012752857!3d28.545854075712214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce3e564daac1d%3A0x2c582e340e7bc556!2sIndraprastha%20Institute%20of%20Information%20Technology%20Delhi!5e0!3m2!1sen!2sin!4v1753296700147!5m2!1sen!2sin"
-              className="w-full h-56"
+              className="w-full h-[60vh] lg:h-[70vh]"
               allowFullScreen
               loading="lazy"
             ></iframe>
