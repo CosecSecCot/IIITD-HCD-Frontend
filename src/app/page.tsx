@@ -22,6 +22,7 @@ import AreasOfPractice, {
 import MarqueeStrip from "@/features/pages/home/components/MarqueeStrip";
 import FeaturedPublications from "@/features/pages/home/components/FeaturedPublications";
 import PhilosophyShowcase from "@/features/pages/home/components/PhilosophyShowcase";
+import ProjectShowcase from "@/features/pages/home/components/ProjectShowcase";
 import { slugify } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
@@ -256,6 +257,8 @@ export default async function Home() {
             </section>
 
             <PhilosophyShowcase />
+
+            <ProjectShowcase />
 
             <FeaturedPublications />
 

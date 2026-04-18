@@ -6,7 +6,7 @@ import { useState } from "react";
 import LetterSwapForward from "@/components/fancy/text/letter-swap-forward-anim";
 
 // Set to true to show the coming soon state instead of achievements
-const COMING_SOON = false;
+const COMING_SOON = true;
 
 const achievements = [
   {
