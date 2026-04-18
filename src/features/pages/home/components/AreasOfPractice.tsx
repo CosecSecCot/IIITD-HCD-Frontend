@@ -94,7 +94,7 @@ function AreaCard({
             ) : null}
           </div>
           <ArrowUpRight
-            className="w-[18px] h-auto text-brand-accent2 group-hover:text-white/0 transition-all duration-300"
+            className="w-[18px] h-auto text-brand-accent2 group-hover:text-white transition-colors duration-300"
             strokeWidth={1.5}
           />
         </div>
