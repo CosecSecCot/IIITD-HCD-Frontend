@@ -80,7 +80,7 @@ function AreaCard({
         target={external ? "_blank" : undefined}
         rel={external ? "noopener noreferrer" : undefined}
         {...handlers}
-        className="group relative block h-full p-6 lg:p-8 bg-white/95 hover:bg-terracotta transition-colors duration-300 overflow-hidden"
+        className="group relative block h-full p-6 lg:p-8 bg-white/95 hover:bg-brand-accent2-130 transition-colors duration-300 overflow-hidden"
       >
         <div className="flex items-start justify-between gap-3">
           <div className="h-[40px] lg:h-[48px] w-[40px] lg:w-[48px] flex items-center justify-center">
