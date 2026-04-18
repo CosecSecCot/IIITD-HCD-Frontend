@@ -650,7 +650,7 @@ export default function Navbar({
                     {linkGroup.children ? (
                       <span
                         id="nav-link-primary"
-                        className="relative z-10 uppercase text-[32px] leading-tight font-medium px-[70px] group-hover:px-[80px] transition-all duration-[300ms]"
+                        className="relative z-10 uppercase text-[32px] leading-tight font-medium px-[70px] group-hover:px-[80px] transition-all duration-[300ms] whitespace-nowrap"
                       >
                         {linkGroup.title}
                       </span>
@@ -658,7 +658,7 @@ export default function Navbar({
                       <a
                         id="nav-link-primary"
                         href={linkGroup.url}
-                        className="relative z-10 w-full uppercase text-[32px] leading-tight font-medium px-[70px] group-hover:px-[80px] transition-all duration-[300ms]"
+                        className="relative z-10 w-full uppercase text-[32px] leading-tight font-medium px-[70px] group-hover:px-[80px] transition-all duration-[300ms] whitespace-nowrap"
                         target={isExternal ? "_blank" : undefined}
                         rel={isExternal ? "noopener noreferrer" : undefined}
                       >

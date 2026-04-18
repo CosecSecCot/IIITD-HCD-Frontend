@@ -4,7 +4,7 @@ import {
   LinkedinIcon,
   MailIcon,
 } from "lucide-react";
-import XIcon from "@mui/icons-material/X";
+import XIcon from "@/components/icons/XIcon";
 import Image from "next/image";
 import Link from "next/link";
 

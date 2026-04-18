@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar";
 import ContactCard from "@/features/pages/connect/components/ContactCard";
 import PageHeading from "@/features/pages/connect/components/PageHeading";
 import { FacebookIcon, InstagramIcon, LinkedinIcon, Mail } from "lucide-react";
-import XIcon from "@mui/icons-material/X";
+import XIcon from "@/components/icons/XIcon";
 import Link from "next/link";
 import { Metadata } from "next";
 
