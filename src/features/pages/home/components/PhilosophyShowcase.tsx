@@ -214,6 +214,7 @@ function MobileCard({ tenet, index }: { tenet: Tenet; index: number }) {
         className="object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-brand-accent2/95 via-brand-accent2/45 to-brand-accent2/10" />
+      <div className="absolute inset-x-0 top-0 h-[35%] bg-gradient-to-b from-brand-accent2/85 via-brand-accent2/35 to-transparent" />
       <div className="absolute top-5 left-5 right-5 flex items-center justify-between text-white">
         <span className="text-[11px] tracking-[0.3em] uppercase font-medium tabular-nums">
           {tenet.numeral}
