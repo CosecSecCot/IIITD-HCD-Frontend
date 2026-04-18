@@ -112,9 +112,9 @@ export default async function Home() {
                   </p>
                 </TextReveal>
                 <TextReveal>
-                  <h1 className="mt-3 lg:mt-5 text-[36px] lg:text-[80px] text-white font-light leading-none lg:leading-tight">
+                  <h1 className="mt-3 lg:mt-5 text-[36px] lg:text-[80px] text-white font-light leading-none lg:leading-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)]">
                     Where{" "}
-                    <span className="font-normal text-terracotta-light">Creativity</span>{" "}
+                    <span className="font-normal text-terracotta">Creativity</span>{" "}
                     Meets Innovation.
                   </h1>
                 </TextReveal>

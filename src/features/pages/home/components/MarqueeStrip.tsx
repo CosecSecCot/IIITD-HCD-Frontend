@@ -46,7 +46,12 @@ export default function MarqueeStrip() {
 
       <style>{`
         .marquee-track {
-          animation: hcd-marquee 32s linear infinite;
+          animation: hcd-marquee 14s linear infinite;
+        }
+        @media (min-width: 1024px) {
+          .marquee-track {
+            animation-duration: 22s;
+          }
         }
         @keyframes hcd-marquee {
           from { transform: translateX(0); }

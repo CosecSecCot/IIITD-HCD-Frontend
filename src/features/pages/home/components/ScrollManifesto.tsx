@@ -36,7 +36,7 @@ export default function ScrollManifesto() {
     >
       <div className="sticky top-0 h-screen flex items-center justify-center px-6 lg:px-16">
         <div className="mx-auto xl:w-[1180px] w-full">
-          <p className="text-[28px] md:text-[44px] lg:text-[62px] leading-[1.25] font-light text-brand-accent2">
+          <p className="text-[clamp(2.25rem,9vw,2.875rem)] md:text-[44px] lg:text-[62px] leading-[1.2] font-light text-brand-accent2">
             {words.map((token, i) => {
               if (token.trim().length === 0) return <span key={i}>{token}</span>;
               const idx = wordIndices.indexOf(i);
