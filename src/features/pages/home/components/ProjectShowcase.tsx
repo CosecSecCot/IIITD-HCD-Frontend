@@ -1,6 +1,7 @@
 "use client";
 
 import LinkButton from "@/components/LinkButton";
+import { useLenis } from "lenis/react";
 import Matter from "matter-js";
 import { ArrowRight, RotateCcw, X } from "lucide-react";
 import Image from "next/image";
@@ -70,7 +71,7 @@ const projects: Project[] = [
     overview:
       "An AR overlay layered over museum exhibits at Museo Camera (Gurgaon). Built and tested with low-vision visitors, the prototype surfaces contextual audio description and high-contrast captioning tied to the visitor's gaze.",
     tags: ["AR", "Accessibility", "Field Study"],
-    thumb: "/aid-lab-nu-visit.jpeg",
+    thumb: "/page-reveal/img6.png",
   },
   {
     title: "Haptic Feedback Wearable",
@@ -135,24 +136,41 @@ export default function ProjectShowcase() {
   const openModalRef = useRef<(idx: number) => void>(() => {});
   const [isResetting, setIsResetting] = useState(false);
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
+  const [isClosingModal, setIsClosingModal] = useState(false);
   const activeProject = activeIdx !== null ? projects[activeIdx] : null;
+  const lenis = useLenis();
+
+  const closeModal = () => {
+    if (activeIdx === null || isClosingModal) return;
+    setIsClosingModal(true);
+    window.setTimeout(() => {
+      setActiveIdx(null);
+      setIsClosingModal(false);
+    }, 240);
+  };
 
   useEffect(() => {
-    openModalRef.current = (idx: number) => setActiveIdx(idx);
+    openModalRef.current = (idx: number) => {
+      setIsClosingModal(false);
+      setActiveIdx(idx);
+    };
   }, []);
 
   useEffect(() => {
     if (activeIdx === null) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setActiveIdx(null);
+      if (e.key === "Escape") closeModal();
     };
     document.body.style.overflow = "hidden";
+    lenis?.stop();
     window.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = "";
+      lenis?.start();
       window.removeEventListener("keydown", onKey);
     };
-  }, [activeIdx]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeIdx, lenis]);
 
   const handleReset = () => {
     if (isResetting) return;
@@ -518,7 +536,8 @@ export default function ProjectShowcase() {
       {activeProject && (
         <ProjectModal
           project={activeProject}
-          onClose={() => setActiveIdx(null)}
+          onClose={closeModal}
+          isClosing={isClosingModal}
         />
       )}
 
@@ -569,20 +588,30 @@ export default function ProjectShowcase() {
 function ProjectModal({
   project,
   onClose,
+  isClosing,
 }: {
   project: Project;
   onClose: () => void;
+  isClosing: boolean;
 }) {
   return (
     <div
-      className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-[fade-in_200ms_ease-out]"
+      className={`fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm ${
+        isClosing
+          ? "animate-[fade-out_220ms_ease-in_forwards]"
+          : "animate-[fade-in_220ms_ease-out]"
+      }`}
       onClick={onClose}
       role="dialog"
       aria-modal="true"
       aria-labelledby="project-modal-title"
     >
       <div
-        className="relative w-full max-w-[560px] bg-white rounded-xl overflow-hidden shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)] animate-[modal-in_260ms_cubic-bezier(0.22,1,0.36,1)]"
+        className={`relative w-full max-w-[560px] bg-white rounded-xl overflow-hidden shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)] ${
+          isClosing
+            ? "animate-[modal-out_220ms_cubic-bezier(0.4,0,0.2,1)_forwards]"
+            : "animate-[modal-in_260ms_cubic-bezier(0.22,1,0.36,1)]"
+        }`}
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -602,7 +631,7 @@ function ProjectModal({
             sizes="560px"
             className="object-cover"
           />
-          <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
+          <div className="absolute inset-x-0 bottom-0 h-2/3 bg-[linear-gradient(to_top,rgba(26,74,94,0.95)_0%,rgba(36,95,120,0.7)_40%,rgba(36,95,120,0)_100%)] pointer-events-none" />
           <div className="absolute bottom-4 left-5 right-5 text-white">
             <p className="text-[10px] tracking-[0.3em] uppercase text-white/80 font-medium">
               {project.course}
@@ -664,9 +693,17 @@ function ProjectModal({
           from { opacity: 0; }
           to { opacity: 1; }
         }
+        @keyframes fade-out {
+          from { opacity: 1; }
+          to { opacity: 0; }
+        }
         @keyframes modal-in {
           from { opacity: 0; transform: translateY(16px) scale(0.96); }
           to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        @keyframes modal-out {
+          from { opacity: 1; transform: translateY(0) scale(1); }
+          to { opacity: 0; transform: translateY(12px) scale(0.97); }
         }
       `}</style>
     </div>
