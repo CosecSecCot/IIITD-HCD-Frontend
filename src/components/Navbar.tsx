@@ -668,9 +668,9 @@ export default function Navbar({
                     {linkGroup.children && (
                       <ChevronRight
                         size={36}
-                        className={`z-10 text-brand-accent2 ${
+                        className={`absolute right-[70px] top-1/2 -translate-y-1/2 shrink-0 z-10 text-brand-accent2 group-hover:translate-x-[10px] ${
                           activeGroup === linkGroup ? "rotate-180" : ""
-                        } transition-all duration-250`}
+                        } transition-transform duration-[300ms]`}
                       />
                     )}
                     <div

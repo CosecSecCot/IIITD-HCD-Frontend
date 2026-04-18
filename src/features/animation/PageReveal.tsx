@@ -6,10 +6,16 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(useGSAP);
 
+const SESSION_KEY = "hcd:page-reveal-seen";
+
 export default function PageReveal() {
   const [animationComplete, setAnimationComplete] = useState(false);
 
   useGSAP(() => {
+    if (sessionStorage.getItem(SESSION_KEY) === "1") {
+      setAnimationComplete(true);
+      return;
+    }
     const digit1 = document.querySelector(".digit-1");
     const digit2 = document.querySelector(".digit-2");
     const digit3 = document.querySelector(".digit-3");
@@ -85,7 +91,10 @@ export default function PageReveal() {
         clipPath: "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)",
         duration: 1,
         ease: "power4.inOut",
-        onComplete: () => setAnimationComplete(true),
+        onComplete: () => {
+          sessionStorage.setItem(SESSION_KEY, "1");
+          setAnimationComplete(true);
+        },
       },
       "-=1"
     );

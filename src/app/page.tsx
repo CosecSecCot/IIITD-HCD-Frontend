@@ -63,12 +63,6 @@ const programmeItems = [
   },
 ];
 
-function deriveAcronym(name: string): string {
-  const words = name.replace(/[^A-Za-z\s]/g, "").split(/\s+/).filter(Boolean);
-  if (words.length >= 2) return (words[0][0] + words[1][0]).toUpperCase();
-  return (words[0]?.slice(0, 3) ?? "LAB").toUpperCase();
-}
-
 async function fetchAreas(): Promise<AreaItem[]> {
   try {
     const res = await fetch(
@@ -80,9 +74,12 @@ async function fetchAreas(): Promise<AreaItem[]> {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return data.data.slice(0, 6).map((item: any): AreaItem => {
       const slug = slugify(item.LabName);
+      const logoUrl = item.LabLogo?.url
+        ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${item.LabLogo.url}`
+        : undefined;
       return {
         title: item.LabName,
-        short: deriveAcronym(item.LabName),
+        logo: logoUrl,
         body: item.ShortDescription ?? "",
         href: `/research/labs?lab=${encodeURIComponent(slug)}`,
         external: false,
@@ -150,14 +147,17 @@ export default async function Home() {
             <section className="relative w-full py-[10vh] lg:py-[14vh] flex flex-col justify-center overflow-hidden">
               <div className="relative z-10 mx-auto xl:w-[1280px] px-8 space-y-4 lg:space-y-8">
                 <TextReveal>
-                  <h2 className="font-light text-[36px] lg:text-[80px] leading-[1.05]">
+                  <h2 className="font-light text-[32px] lg:text-[80px] leading-[1.05]">
                     The Department of <br />
                     <span className="text-brand-accent2 font-normal">
-                      <LetterSwapForward
-                        label="Human Centered Design"
-                        staggerDuration={0.005}
-                        className="w-max"
-                      />
+                      <span className="lg:hidden">Human Centered Design</span>
+                      <span className="hidden lg:inline-block">
+                        <LetterSwapForward
+                          label="Human Centered Design"
+                          staggerDuration={0.005}
+                          className="w-max"
+                        />
+                      </span>
                     </span>
                   </h2>
                 </TextReveal>

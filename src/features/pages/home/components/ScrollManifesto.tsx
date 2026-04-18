@@ -32,8 +32,7 @@ export default function ScrollManifesto() {
     <section
       ref={containerRef}
       aria-label="Department manifesto"
-      className="relative w-full"
-      style={{ height: "220vh" }}
+      className="relative w-full h-[150vh] lg:h-[220vh]"
     >
       <div className="sticky top-0 h-screen flex items-center justify-center px-6 lg:px-16">
         <div className="mx-auto xl:w-[1180px] w-full">

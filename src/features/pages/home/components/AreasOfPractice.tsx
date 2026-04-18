@@ -3,12 +3,13 @@
 import HeroShader from "./HeroShaderMount";
 import { motion } from "motion/react";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { useHoverGoPill } from "@/components/HoverGoPill";
+import LinkButton from "@/components/LinkButton";
 
 export type AreaItem = {
   title: string;
-  short: string;
+  logo?: string;
   body: string;
   href: string;
   external?: boolean;
@@ -31,8 +32,10 @@ export default function AreasOfPractice({ areas }: { areas: AreaItem[] }) {
             <span className="text-terracotta-light font-normal">practice</span>
           </h2>
           <p className="mt-4 lg:mt-6 max-w-[640px] font-light text-[14px] lg:text-[22px] text-white/80 leading-snug">
-            Move your cursor — the field reacts. Explore the directions we
-            research, teach, and build in.
+            Our work cuts across disciplines — from interaction and interface
+            design to HCI, accessibility, AI, and emerging media. Each area
+            below is a lab where faculty and students prototype, research, and
+            build together.
           </p>
         </div>
 
@@ -41,6 +44,16 @@ export default function AreasOfPractice({ areas }: { areas: AreaItem[] }) {
             <AreaCard key={a.title} {...a} index={i} />
           ))}
         </div>
+
+        <div className="mt-10 lg:mt-14 flex justify-center">
+          <LinkButton
+            href="/research/labs"
+            text="View all labs"
+            type="transparent"
+            rounded
+            icon={<ArrowRight className="w-[14px] lg:w-[18px] h-auto" />}
+          />
+        </div>
       </div>
     </section>
   );
@@ -48,7 +61,7 @@ export default function AreasOfPractice({ areas }: { areas: AreaItem[] }) {
 
 function AreaCard({
   title,
-  short,
+  logo,
   body,
   href,
   external,
@@ -70,9 +83,16 @@ function AreaCard({
         className="group relative block h-full p-6 lg:p-8 bg-white/95 hover:bg-terracotta transition-colors duration-300 overflow-hidden"
       >
         <div className="flex items-start justify-between gap-3">
-          <span className="text-[11px] lg:text-[13px] tracking-[0.25em] uppercase text-brand-accent2 group-hover:text-white transition-colors duration-300">
-            {short}
-          </span>
+          <div className="h-[40px] lg:h-[48px] w-[40px] lg:w-[48px] flex items-center justify-center">
+            {logo ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={logo}
+                alt={`${title} logo`}
+                className="max-h-full max-w-full object-contain"
+              />
+            ) : null}
+          </div>
           <ArrowUpRight
             className="w-[18px] h-auto text-brand-accent2 group-hover:text-white/0 transition-all duration-300"
             strokeWidth={1.5}
@@ -81,7 +101,7 @@ function AreaCard({
         <h3 className="mt-6 lg:mt-12 text-[20px] lg:text-[28px] leading-[1.15] font-medium text-brand-accent2 group-hover:text-white transition-colors duration-300">
           {title}
         </h3>
-        <p className="mt-3 lg:mt-4 text-[13px] lg:text-[15px] font-light text-black/70 group-hover:text-white/90 transition-colors duration-300 leading-snug">
+        <p className="mt-3 lg:mt-4 text-[13px] lg:text-[15px] font-light text-black/70 group-hover:text-white/90 transition-colors duration-300 leading-snug line-clamp-4">
           {body}
         </p>
         {pill}

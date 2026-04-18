@@ -79,8 +79,9 @@ export default function MomentsGallery() {
       className="relative w-full bg-terracotta/[0.06] py-[10vh] lg:py-[14vh] overflow-hidden"
     >
       <div className="mx-auto xl:w-[1280px] px-8 mb-8 lg:mb-12 flex items-end justify-between gap-8">
-        <h2 className="font-light text-[32px] lg:text-[64px] leading-none text-brand-accent2">
-          Moments
+        <h2 className="font-light text-[32px] lg:text-[64px] leading-[1.05] text-brand-accent2 text-balance">
+          Moments from{" "}
+          <span className="font-normal">the HCD department</span>
         </h2>
         <p className="max-md:hidden font-light text-[14px] lg:text-[18px] text-black/60 max-w-[360px] text-right">
           Visits, conferences, classrooms, and everything in between.

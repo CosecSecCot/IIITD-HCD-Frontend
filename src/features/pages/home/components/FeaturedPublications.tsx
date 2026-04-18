@@ -1,9 +1,10 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import qs from "qs";
 import PublicationRow, {
   type PubRow as Pub,
 } from "./PublicationRow";
+import LinkButton from "@/components/LinkButton";
 
 async function fetchPublications(): Promise<Pub[]> {
   try {
@@ -72,16 +73,13 @@ export default async function FeaturedPublications() {
         </ol>
 
         <div className="mt-8 lg:mt-12 flex justify-center">
-          <Link
+          <LinkButton
             href="/research/publications"
-            className="group inline-flex items-center gap-3 px-6 lg:px-8 py-3 lg:py-4 border border-brand-accent2 text-brand-accent2 hover:bg-brand-accent2 hover:text-white transition-colors duration-200 text-[13px] lg:text-[15px] tracking-[0.2em] uppercase font-medium"
-          >
-            View all publications
-            <ArrowUpRight
-              className="w-[16px] lg:w-[18px] h-auto transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-              strokeWidth={1.75}
-            />
-          </Link>
+            text="View all publications"
+            type="default"
+            rounded
+            icon={<ArrowRight className="w-[14px] lg:w-[18px] h-auto" />}
+          />
         </div>
       </div>
     </section>
