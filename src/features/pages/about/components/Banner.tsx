@@ -84,7 +84,7 @@ export default function Banner({
           </div>
         )}
       </div>
-      <div className="absolute inset-0 z-10 w-full h-full bg-gradient-to-b from-black/50 lg:from-black/0 to-black/50 lg:to-black/50" />
+      <div className="absolute inset-0 z-10 w-full h-full bg-[linear-gradient(to_bottom,rgba(36,95,120,0.4)_0%,rgba(36,95,120,0.15)_30%,rgba(26,74,94,0.7)_60%,rgba(26,74,94,0.97)_100%)] lg:bg-[linear-gradient(to_bottom,rgba(36,95,120,0)_0%,rgba(36,95,120,0)_25%,rgba(26,74,94,0.6)_55%,rgba(26,74,94,0.95)_100%)]" />
       {imageSrc ? (
         <Image
           src={imageSrc}
