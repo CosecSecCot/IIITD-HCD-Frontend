@@ -29,7 +29,7 @@ export default function AreasOfPractice({ areas }: { areas: AreaItem[] }) {
         <div className="max-w-[900px]">
           <h2 className="font-light text-[32px] lg:text-[64px] leading-[1.05] text-white">
             Areas of{" "}
-            <span className="text-terracotta-light font-normal">practice</span>
+            <span className="text-terracotta font-normal">practice</span>
           </h2>
           <p className="mt-4 lg:mt-6 max-w-[640px] font-light text-[14px] lg:text-[22px] text-white/80 leading-snug">
             Our work cuts across disciplines — from interaction and interface
@@ -80,7 +80,7 @@ function AreaCard({
         target={external ? "_blank" : undefined}
         rel={external ? "noopener noreferrer" : undefined}
         {...handlers}
-        className="group relative block h-full p-6 lg:p-8 bg-white/95 hover:bg-brand-accent2-130 transition-colors duration-300 overflow-hidden"
+        className="group relative block h-full p-6 lg:p-8 bg-white hover:bg-terracotta transition-colors duration-300 overflow-hidden"
       >
         <div className="flex items-start justify-between gap-3">
           <div className="h-[40px] lg:h-[48px] w-[40px] lg:w-[48px] flex items-center justify-center">
