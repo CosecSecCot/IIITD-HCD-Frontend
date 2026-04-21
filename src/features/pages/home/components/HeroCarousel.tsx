@@ -36,7 +36,14 @@ export default function HeroCarousel() {
           }`}
         />
       ))}
-      <div className="absolute inset-0 bg-brand-accent2/70" />
+      <div className="absolute inset-0 bg-brand-accent2/55" />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 70% 55% at center, rgba(9,59,105,0.55) 0%, rgba(9,59,105,0.25) 55%, rgba(9,59,105,0) 100%)",
+        }}
+      />
     </div>
   );
 }

@@ -69,10 +69,13 @@ export default function Footer() {
               priority
               className="w-auto h-[84px] lg:h-[96px] object-contain object-left"
             />
-            <p className="font-light text-[14px] lg:text-[16px] text-white/70 leading-snug">
+            <p className="font-light text-[14px] lg:text-[16px] text-white/80 leading-snug">
               Department of Human-Centered Design at IIIT-Delhi — where
               computing becomes a{" "}
-              <span className="text-terracotta-light">creative medium</span>.
+              <span className="text-terracotta-light font-medium">
+                creative medium
+              </span>
+              .
             </p>
           </div>
 

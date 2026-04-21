@@ -114,8 +114,7 @@ export default async function Home() {
                 </TextReveal>
                 <TextReveal>
                   <h1 className="mt-3 lg:mt-5 text-[36px] lg:text-[80px] text-white font-light leading-none lg:leading-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)]">
-                    Where{" "}
-                    <span className="font-normal text-terracotta">Creativity</span>{" "}
+                    Where <span className="font-normal">Creativity</span>{" "}
                     Meets Innovation.
                   </h1>
                 </TextReveal>
@@ -215,6 +214,45 @@ export default async function Home() {
 
             <MarqueeStrip />
 
+            <Suspense
+              fallback={
+                <section className="relative xl:w-[1280px] mx-auto px-8 min-h-[512px] lg:min-h-screen flex flex-col justify-center overflow-hidden">
+                  <div className="flex justify-between items-center">
+                    <h2 className="text-[26px] lg:text-[48px] text-brand-accent2 leading-tight">
+                      News & Events
+                    </h2>
+                    <CenterUnderline>
+                      <Link
+                        href="/about/news-events"
+                        className="flex items-center gap-2 text-brand-accent2 text-[16px] lg:text-[20px]"
+                      >
+                        View All <ArrowRight className="w-[16px] h-auto" />
+                      </Link>
+                    </CenterUnderline>
+                  </div>
+                  <p className="font-light text-[14px] lg:text-[28px]">
+                    Stay up to date with the latest happenings at HCD IIIT
+                    Delhi. This section brings you important announcements,
+                    upcoming events, workshops, guest lectures, and achievements
+                    from our community.
+                  </p>
+                  <div className="mt-[1em] grid md:grid-cols-3 gap-8">
+                    <div className="relative bg-white aspect-square">
+                      <div className="absolute inset-0 w-full h-full bg-brand-gray1/70 animate-pulse rounded-md" />
+                    </div>
+                    <div className="relative bg-white aspect-square">
+                      <div className="absolute inset-0 w-full h-full bg-brand-gray1/70 animate-pulse rounded-md" />
+                    </div>
+                    <div className="relative bg-white aspect-square">
+                      <div className="absolute inset-0 w-full h-full bg-brand-gray1/70 animate-pulse rounded-md" />
+                    </div>
+                  </div>
+                </section>
+              }
+            >
+              <NewsSection />
+            </Suspense>
+
             {areas.length > 0 && <AreasOfPractice areas={areas} />}
 
             <section className="relative w-full py-[10vh] lg:py-[14vh] flex flex-col justify-center overflow-hidden">
@@ -263,45 +301,6 @@ export default async function Home() {
             <FeaturedPublications />
 
             <MomentsGallery />
-
-            <Suspense
-              fallback={
-                <section className="relative xl:w-[1280px] mx-auto px-8 min-h-[512px] lg:min-h-screen flex flex-col justify-center overflow-hidden">
-                  <div className="flex justify-between items-center">
-                    <h2 className="text-[26px] lg:text-[48px] text-brand-accent2 leading-tight">
-                      News & Events
-                    </h2>
-                    <CenterUnderline>
-                      <Link
-                        href="/about/news-events"
-                        className="flex items-center gap-2 text-brand-accent2 text-[16px] lg:text-[20px]"
-                      >
-                        View All <ArrowRight className="w-[16px] h-auto" />
-                      </Link>
-                    </CenterUnderline>
-                  </div>
-                  <p className="font-light text-[14px] lg:text-[28px]">
-                    Stay up to date with the latest happenings at HCD IIIT
-                    Delhi. This section brings you important announcements,
-                    upcoming events, workshops, guest lectures, and achievements
-                    from our community.
-                  </p>
-                  <div className="mt-[1em] grid md:grid-cols-3 gap-8">
-                    <div className="relative bg-white aspect-square">
-                      <div className="absolute inset-0 w-full h-full bg-brand-gray1/70 animate-pulse rounded-md" />
-                    </div>
-                    <div className="relative bg-white aspect-square">
-                      <div className="absolute inset-0 w-full h-full bg-brand-gray1/70 animate-pulse rounded-md" />
-                    </div>
-                    <div className="relative bg-white aspect-square">
-                      <div className="absolute inset-0 w-full h-full bg-brand-gray1/70 animate-pulse rounded-md" />
-                    </div>
-                  </div>
-                </section>
-              }
-            >
-              <NewsSection />
-            </Suspense>
 
             <section className="dot-grid relative w-full py-[10vh] lg:py-[14vh] overflow-hidden bg-brand-accent2/[0.04]">
               <div className="mx-auto xl:w-[1280px] px-8">

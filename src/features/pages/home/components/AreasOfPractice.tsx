@@ -28,8 +28,7 @@ export default function AreasOfPractice({ areas }: { areas: AreaItem[] }) {
       <div className="relative z-10 mx-auto xl:w-[1280px] px-8">
         <div className="max-w-[900px]">
           <h2 className="font-light text-[32px] lg:text-[64px] leading-[1.05] text-white">
-            Areas of{" "}
-            <span className="text-terracotta font-normal">practice</span>
+            Areas of <span className="font-normal">practice</span>
           </h2>
           <p className="mt-4 lg:mt-6 max-w-[640px] font-light text-[14px] lg:text-[22px] text-white/80 leading-snug">
             Our work cuts across disciplines — from interaction and interface
