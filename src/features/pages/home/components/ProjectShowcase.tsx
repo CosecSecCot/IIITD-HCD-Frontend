@@ -3,7 +3,7 @@
 import LinkButton from "@/components/LinkButton";
 import { useLenis } from "lenis/react";
 import Matter from "matter-js";
-import { ArrowRight, RotateCcw, X } from "lucide-react";
+import { ArrowRight, Hand, RotateCcw, X } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
@@ -243,6 +243,26 @@ export default function ProjectShowcase() {
     });
     World.add(world, bodies);
 
+    // First time the board scrolls into view, give each card a tiny impulse
+    // so a returning visitor can tell at a glance that the polaroids react.
+    const entranceObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          bodies.forEach((body) => {
+            Body.setVelocity(body, {
+              x: (Math.random() - 0.5) * 3.2,
+              y: (Math.random() - 0.5) * 2.2,
+            });
+            Body.setAngularVelocity(body, (Math.random() - 0.5) * 0.06);
+          });
+          entranceObserver.disconnect();
+        });
+      },
+      { threshold: 0.3 },
+    );
+    entranceObserver.observe(scene);
+
     const mouse = Mouse.create(scene);
     const wheelHandler = (
       mouse as unknown as { mousewheel: EventListener }
@@ -405,6 +425,7 @@ export default function ProjectShowcase() {
     return () => {
       cancelAnimationFrame(raf);
       if (resetRaf !== null) cancelAnimationFrame(resetRaf);
+      entranceObserver.disconnect();
       window.removeEventListener("resize", resize);
       Events.off(mouseConstraint, "mousedown", onDown);
       Events.off(mouseConstraint, "mousemove", onMove);
@@ -434,6 +455,16 @@ export default function ProjectShowcase() {
 
       {/* Desktop + tablet: interactive wooden pinboard */}
       <div className="relative mx-auto xl:w-[1280px] px-4 lg:px-8 hidden md:block">
+        <div
+          aria-hidden
+          className="absolute top-4 left-8 lg:left-12 z-[20] flex items-center gap-2 px-3.5 h-10 bg-white/15 backdrop-blur-sm rounded-full border border-white/25 text-white/90 text-[10px] lg:text-[11px] tracking-[0.22em] uppercase font-medium pointer-events-none"
+        >
+          <Hand
+            className="w-[14px] h-auto animate-[hcd-hand-wave_2.4s_ease-in-out_infinite]"
+            strokeWidth={1.75}
+          />
+          <span>Drag · Click to open</span>
+        </div>
         <button
           type="button"
           onClick={(e) => {
@@ -579,6 +610,10 @@ export default function ProjectShowcase() {
           box-shadow:
             0 24px 48px -10px rgba(0, 0, 0, 0.6),
             0 10px 24px -8px rgba(0, 0, 0, 0.5);
+        }
+        @keyframes hcd-hand-wave {
+          0%, 100% { transform: rotate(-12deg); }
+          50% { transform: rotate(12deg); }
         }
       `}</style>
     </section>
