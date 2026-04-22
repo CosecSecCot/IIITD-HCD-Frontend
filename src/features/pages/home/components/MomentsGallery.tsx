@@ -93,13 +93,13 @@ export default function MomentsGallery() {
           {moments.map((m) => (
             <figure
               key={m.src}
-              className="relative flex-shrink-0 w-[75vw] md:w-[45vw] lg:w-[32vw] aspect-[4/5] mx-2 lg:mx-3"
+              className="group relative flex-shrink-0 mx-2 lg:mx-3 w-[75vw] md:w-[45vw] lg:w-[32vw] h-[93.75vw] md:h-[56.25vw] lg:h-[40vw] hover:w-[90vw] md:hover:w-[70vw] lg:hover:w-[55vw] transition-[width] duration-500 ease-out"
             >
               <Image
                 src={m.src}
                 alt={m.caption}
                 fill
-                sizes="(max-width: 768px) 75vw, 32vw"
+                sizes="(max-width: 768px) 90vw, 55vw"
                 className="object-cover"
               />
               <figcaption className="absolute bottom-0 left-0 right-0 p-4 lg:p-6 bg-gradient-to-t from-brand-accent2-130/95 via-brand-accent2-130/50 to-transparent text-white">
