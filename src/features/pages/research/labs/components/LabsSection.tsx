@@ -26,8 +26,9 @@ export default function LabsSection({
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const initialExpandedId =
-    (initialSlug && labs.find((l) => l.slug === initialSlug)?.id) ?? null;
+  const initialExpandedId = initialSlug
+    ? labs.find((l) => l.slug === initialSlug)?.id ?? null
+    : null;
 
   const [expandedId, setExpandedId] = useState<number | null>(
     initialExpandedId
