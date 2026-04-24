@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <main>
+    <main id="main-content" tabIndex={-1}>
       <article className="mx-auto mt-12 px-8 xl:w-[1280px] font-light">
         <Banner
           title="Human-Centered Design at IIIT-Delhi — Design Technology with People at the Centre"

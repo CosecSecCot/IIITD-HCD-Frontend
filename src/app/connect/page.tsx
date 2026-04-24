@@ -36,7 +36,7 @@ export default function Page() {
     <>
       <div className="relative z-10 background-element bg-white font-anybody pb-8 shadow-xl">
         <Navbar type="solid" />
-        <main className="pt-24 mb-[10vh]">
+        <main id="main-content" tabIndex={-1} className="pt-24 mb-[10vh]">
           <PageHeading
             title={
               <span>

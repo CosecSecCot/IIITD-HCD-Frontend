@@ -34,7 +34,7 @@ export const metadata: Metadata = {
 
 export default async function Page() {
   return (
-    <main>
+    <main id="main-content" tabIndex={-1}>
       <article className="mx-auto my-12 px-8 xl:w-[1280px] font-light">
         <Banner
           title="Collaborating Across Borders to Shape the Future of Human-Centered Design"

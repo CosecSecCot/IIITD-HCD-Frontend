@@ -42,7 +42,7 @@ export default async function Page() {
           text="Publications"
           breadcrumbs={["research", "publications"]}
         />
-        <main className="mx-auto min-h-[50vh] xl:w-[1280px] px-8 py-[20vh] text-center">
+        <main id="main-content" tabIndex={-1} className="mx-auto min-h-[50vh] xl:w-[1280px] px-8 py-[20vh] text-center">
           <h2 className="text-[20px] lg:text-[28px] text-brand-accent2 font-semibold">
             Hmm...
           </h2>
@@ -78,7 +78,7 @@ export default async function Page() {
   return (
     <div>
       <Banner text="Publications" breadcrumbs={["research", "publications"]} />
-      <main className="mx-auto xl:w-[1280px] min-h-screen px-8 mt-8">
+      <main id="main-content" tabIndex={-1} className="mx-auto xl:w-[1280px] min-h-screen px-8 mt-8">
         <PublicationsSection publications={normalized} />
       </main>
     </div>

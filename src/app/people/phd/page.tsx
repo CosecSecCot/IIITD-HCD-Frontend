@@ -102,7 +102,7 @@ export default async function Page(pageProps: {
         />
       </section>
 
-      <main className="mt-[30px] lg:mt-[128px] mb-[10vh]">
+      <main id="main-content" tabIndex={-1} className="mt-[30px] lg:mt-[128px] mb-[10vh]">
         <article>
           <section className="xl:w-[1280px] mx-auto px-8">
             <Suspense

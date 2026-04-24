@@ -1,11 +1,37 @@
 "use client";
 
 import HeroShader from "./HeroShaderMount";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { useHoverGoPill } from "@/components/HoverGoPill";
 import LinkButton from "@/components/LinkButton";
+
+/**
+ * Tracks whether the user has opted into reduced motion via either the
+ * OS-level `prefers-reduced-motion` media query or the `a11y-reduce-motion`
+ * class toggled by the accessibility panel. Live, so toggling the panel
+ * updates in-flight animations.
+ */
+function useMotionDisabled() {
+  const prefersReduced = useReducedMotion();
+  const [classFlag, setClassFlag] = useState(false);
+  useEffect(() => {
+    const check = () =>
+      setClassFlag(
+        document.documentElement.classList.contains("a11y-reduce-motion"),
+      );
+    check();
+    const observer = new MutationObserver(check);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+    return () => observer.disconnect();
+  }, []);
+  return Boolean(prefersReduced) || classFlag;
+}
 
 export type AreaItem = {
   title: string;
@@ -67,13 +93,19 @@ function AreaCard({
   index,
 }: AreaItem & { index: number }) {
   const { pill, handlers } = useHoverGoPill();
+  const motionDisabled = useMotionDisabled();
+  // With reduced motion, render cards in their final state immediately
+  // (no fade-up, no stagger delay).
+  const motionProps = motionDisabled
+    ? {}
+    : {
+        initial: { opacity: 0, y: 20 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true, margin: "-80px" },
+        transition: { duration: 0.5, delay: index * 0.07 },
+      };
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.5, delay: index * 0.07 }}
-    >
+    <motion.div {...motionProps}>
       <Link
         href={href}
         target={external ? "_blank" : undefined}

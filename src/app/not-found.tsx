@@ -13,7 +13,7 @@ export default function NotFound() {
     <>
       <div className="relative z-10 background-element bg-white font-anybody pb-8 shadow-xl">
         <Navbar type="solid" />
-        <main className="min-h-[90vh] flex flex-col justify-center items-center">
+        <main id="main-content" tabIndex={-1} className="min-h-[90vh] flex flex-col justify-center items-center">
           <TextReveal>
             <h1 className="text-[5vw] text-brand-accent2 leading-tight">404</h1>
           </TextReveal>

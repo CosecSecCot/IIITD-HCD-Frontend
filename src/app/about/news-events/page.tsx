@@ -47,7 +47,7 @@ export default async function Page() {
 
   if (!data || data.error || data.data.length == 0) {
     return (
-      <main className="mx-auto min-h-[80vh] xl:w-[1280px] px-8 py-[20vh] text-center">
+      <main id="main-content" tabIndex={-1} className="mx-auto min-h-[80vh] xl:w-[1280px] px-8 py-[20vh] text-center">
         <h2 className="text-[20px] lg:text-[28px] text-brand-accent2 font-semibold">
           Hmm...
         </h2>
@@ -74,7 +74,7 @@ export default async function Page() {
 
   if (normalized.length === 0) {
     return (
-      <main className="mx-auto min-h-[80vh] xl:w-[1280px] px-8 py-[20vh] text-center">
+      <main id="main-content" tabIndex={-1} className="mx-auto min-h-[80vh] xl:w-[1280px] px-8 py-[20vh] text-center">
         <h2 className="text-[20px] lg:text-[28px] text-brand-accent2 font-semibold">
           Hmm...
         </h2>
@@ -98,7 +98,7 @@ export default async function Page() {
     });
 
   return (
-    <main>
+    <main id="main-content" tabIndex={-1}>
       <article className="mx-auto my-12 px-8 xl:w-[1280px] font-light">
         <Banner
           title={normalized[0].title}

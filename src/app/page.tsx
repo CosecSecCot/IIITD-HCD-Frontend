@@ -99,7 +99,7 @@ export default async function Home() {
       <PageReveal />
       <div className="background-element relative z-10 bg-white font-anybody shadow-xl">
         <Navbar type="hero" />
-        <main className="relative">
+        <main id="main-content" tabIndex={-1} className="relative">
           <article className="space-y-0">
             <section className="relative w-full h-screen flex flex-col justify-center items-center overflow-hidden">
               <HeroCarousel />

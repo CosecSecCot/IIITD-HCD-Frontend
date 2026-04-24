@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { motion, useMotionValue, useSpring } from "motion/react";
+import { useEffect, useState } from "react";
+import { motion, useMotionValue, useReducedMotion, useSpring } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 
 type Options = {
@@ -10,11 +10,37 @@ type Options = {
   size?: "sm" | "md";
 };
 
+/**
+ * Returns true if the user has either the OS-level prefers-reduced-motion
+ * set, or has toggled the accessibility panel's "Reduce motion" option
+ * (which adds `a11y-reduce-motion` to the <html> element).
+ */
+function useMotionDisabled() {
+  const prefersReduced = useReducedMotion();
+  const [classFlag, setClassFlag] = useState(false);
+  useEffect(() => {
+    const check = () =>
+      setClassFlag(
+        document.documentElement.classList.contains("a11y-reduce-motion"),
+      );
+    check();
+    const observer = new MutationObserver(check);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+    return () => observer.disconnect();
+  }, []);
+  return Boolean(prefersReduced) || classFlag;
+}
+
 export function useHoverGoPill({
   label = "VIEW",
   className = "",
   size = "md",
 }: Options = {}) {
+  const motionDisabled = useMotionDisabled();
+
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
@@ -52,6 +78,13 @@ export function useHoverGoPill({
     size === "sm"
       ? "px-3.5 py-1.5 text-[11px] lg:text-[12px] gap-1"
       : "px-4 py-2 text-[12px] lg:text-[14px] gap-1.5";
+
+  // When reduced motion is active, skip rendering the cursor-follow pill
+  // entirely. The content underneath (cards etc.) is still clickable and
+  // the motion layer is purely decorative.
+  if (motionDisabled) {
+    return { pill: null, handlers: {} };
+  }
 
   const pill = (
     <motion.div

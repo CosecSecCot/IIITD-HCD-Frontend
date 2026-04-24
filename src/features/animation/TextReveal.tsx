@@ -9,6 +9,22 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger, SplitText, useGSAP);
 
 /**
+ * Returns true when the user has opted into reduced motion, either via
+ * the OS-level `prefers-reduced-motion: reduce` media query or via the
+ * `a11y-reduce-motion` class our accessibility panel toggles on <html>.
+ * Safe for SSR (returns false on the server).
+ */
+function shouldReduceMotion(): boolean {
+  if (typeof window === "undefined") return false;
+  const mediaReduced = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+  const classReduced =
+    document.documentElement.classList.contains("a11y-reduce-motion");
+  return mediaReduced || classReduced;
+}
+
+/**
  * `TextReveal` marks a text element for scroll-triggered animation.
  *
  * @param {Object} props
@@ -33,6 +49,10 @@ const TextReveal = ({
   const elementRef = useRef<HTMLElement>(null);
 
   useGSAP(() => {
+    // Respect the user's reduced-motion preference. Skip the split-text
+    // animation entirely so the text just renders in its final position.
+    if (shouldReduceMotion()) return;
+
     const split = SplitText.create(elementRef.current, {
       type: "words",
       mask: "words",

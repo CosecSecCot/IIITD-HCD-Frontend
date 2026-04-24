@@ -45,7 +45,7 @@ export default async function Page(pageProps: {
     return (
       <div>
         <Banner text="Research Labs" breadcrumbs={["research", "labs"]} />
-        <main className="mx-auto min-h-[50vh] xl:w-[1280px] px-8 py-[20vh] text-center">
+        <main id="main-content" tabIndex={-1} className="mx-auto min-h-[50vh] xl:w-[1280px] px-8 py-[20vh] text-center">
           <h2 className="text-[20px] lg:text-[28px] text-brand-accent2 font-semibold">
             Hmm...
           </h2>
@@ -94,7 +94,7 @@ export default async function Page(pageProps: {
         text={activeFilter === "Teaching" ? "Teaching Labs" : "Research Labs"}
         breadcrumbs={["research", "labs"]}
       />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <article className="mx-auto px-8 xl:w-[1280px]">
           <div
             className="grid grid-cols-2 xl:grid-cols-3 grid-rows-1 text-[12px] lg:text-[18px] my-8"

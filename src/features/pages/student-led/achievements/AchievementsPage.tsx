@@ -97,7 +97,7 @@ export default function AchievementsPage() {
         <div className="absolute inset-0 w-full h-full bg-brand-accent2" />
       </section>
 
-      <main className="mt-[30px] lg:mt-[128px] mb-[10vh]">
+      <main id="main-content" tabIndex={-1} className="mt-[30px] lg:mt-[128px] mb-[10vh]">
         <article className="mx-auto xl:w-[1280px] px-8">
           {COMING_SOON ? (
             <ComingSoon />

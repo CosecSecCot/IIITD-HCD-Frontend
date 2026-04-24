@@ -142,7 +142,7 @@ export default async function Page(props: {
   const typeLabel = normalized.type === "Event" ? "Event" : "News";
 
   return (
-    <main className="bg-white/50">
+    <main id="main-content" tabIndex={-1} className="bg-white/50">
       <article className="mx-auto py-12 px-8 xl:w-[1280px] font-anybody font-light">
         <Banner
           title={normalized.title}

@@ -1,7 +1,7 @@
 "use client"
 
-import { useState } from "react"
-import { AnimationOptions, motion, stagger, useAnimate } from "motion/react"
+import { useEffect, useState } from "react"
+import { AnimationOptions, motion, stagger, useAnimate, useReducedMotion } from "motion/react"
 
 interface TextProps {
   label: string
@@ -11,6 +11,29 @@ interface TextProps {
   staggerFrom?: "first" | "last" | "center" | number
   className?: string
   onClick?: () => void
+}
+
+/**
+ * Returns true if the user has either the OS-level prefers-reduced-motion
+ * set, or has toggled the accessibility panel's "Reduce motion" option.
+ */
+function useMotionDisabled() {
+  const prefersReduced = useReducedMotion()
+  const [classFlag, setClassFlag] = useState(false)
+  useEffect(() => {
+    const check = () =>
+      setClassFlag(
+        document.documentElement.classList.contains("a11y-reduce-motion"),
+      )
+    check()
+    const observer = new MutationObserver(check)
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    })
+    return () => observer.disconnect()
+  }, [])
+  return Boolean(prefersReduced) || classFlag
 }
 
 const LetterSwapForward = ({
@@ -28,9 +51,13 @@ const LetterSwapForward = ({
 }: TextProps) => {
   const [scope, animate] = useAnimate()
   const [blocked, setBlocked] = useState(false)
+  const motionDisabled = useMotionDisabled()
 
   const hoverStart = () => {
     if (blocked) return
+    // Skip the letter-swap entirely when reduced motion is requested —
+    // the button still works, it just doesn't animate the label.
+    if (motionDisabled) return
 
     setBlocked(true)
 

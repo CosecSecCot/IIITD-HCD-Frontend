@@ -107,7 +107,7 @@ export default function Page() {
         />
       </section>
 
-      <main className="mt-[30px] lg:mt-[128px] mb-[10vh]">
+      <main id="main-content" tabIndex={-1} className="mt-[30px] lg:mt-[128px] mb-[10vh]">
         <article>
           <section>
             <Heading align="left">

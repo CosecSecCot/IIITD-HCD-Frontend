@@ -90,3 +90,382 @@ img, .noselect {
     );
     background-size: 22px 22px;
 }
+
+/* ------------------------------------------------------------------
+   Accessibility
+   ------------------------------------------------------------------ */
+
+/* Skip to main content link. Off-screen until keyboard-focused, then
+   slides into view at the top-left. */
+.skip-to-content {
+    position: fixed;
+    top: -200px;
+    left: 1rem;
+    z-index: 100001;
+    padding: 0.75rem 1.25rem;
+    background: var(--color-brand-accent2);
+    color: #fff;
+    font-family: var(--font-anybody);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 2px solid #fff;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    transition: top 0.2s ease;
+}
+.skip-to-content:focus,
+.skip-to-content:focus-visible {
+    top: 1rem;
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
+/* Text scaling. AccessibilityBar sets --a11y-zoom on <html>. Zoom is
+   well-supported in all modern browsers (including Firefox 126+) and
+   keeps layouts intact, unlike transform: scale. */
+html {
+    zoom: var(--a11y-zoom, 1);
+}
+
+/* Underline all links mode. */
+html.a11y-underline-links a {
+    text-decoration: underline !important;
+    text-underline-offset: 2px;
+}
+
+/* Reduced motion override. Both the explicit toggle and the OS-level
+   prefers-reduced-motion preference dial animations down. */
+html.a11y-reduce-motion *,
+html.a11y-reduce-motion *::before,
+html.a11y-reduce-motion *::after {
+    animation-duration: 0.001ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    transition-delay: 0s !important;
+    scroll-behavior: auto !important;
+}
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-delay: 0s !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        transition-delay: 0s !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* High contrast mode. Overrides the brand palette with a maximum-contrast
+   theme (black background, white text, yellow links). Kept deliberately
+   aggressive so it actually helps low-vision users; it is not meant to
+   preserve the branded look.
+
+   Approach:
+   - Override brand CSS variables so every `bg-brand-*`, `bg-terracotta*`
+     utility resolves to black automatically.
+   - Strip gradient and pattern backgrounds everywhere (kills photo
+     overlays like `bg-gradient-to-t from-black/60` and lets the image
+     below show through, instead of painting them solid black which
+     would hide the image entirely).
+   - Force explicit `bg-white` utilities to black so text remains
+     readable; leave translucent variants (`bg-white/20`, `bg-black/60`)
+     alone — they are used as subtle overlays, not content surfaces.
+   - Exempt the accessibility panel itself so it remains usable. */
+html.a11y-high-contrast {
+    --color-brand-accent1: #ffd000;
+    --color-brand-accent2: #000;
+    --color-brand-accent2-130: #000;
+    --color-brand-gray1: #ffffff;
+    --color-brand-gray2: #ffffff;
+    --color-brand-gray3: #ffffff;
+    --color-brand-gray4: #ffffff;
+    --color-brand-blue: #000;
+    --color-brand-green: #000;
+    --color-brand-red: #000;
+    --color-brand-voilet: #000;
+    --color-terracotta: #000;
+    --color-terracotta-130: #000;
+    --color-terracotta-light: #ffd000;
+    background: #000;
+}
+html.a11y-high-contrast body {
+    background: #000 !important;
+    color: #fff !important;
+}
+html.a11y-high-contrast body *:not(svg):not(path):not(circle):not(rect):not(line):not(polygon):not(polyline):not(g):not(#a11y-panel):not(#a11y-panel *):not(#a11y-trigger) {
+    background-image: none !important;
+    color: #fff !important;
+    border-color: #fff !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    mix-blend-mode: normal !important;
+}
+/* Solid opaque surfaces become black so white text stays readable.
+   Matches exact class tokens (`~=`) so semi-transparent variants like
+   `bg-white/20`, `bg-brand-accent2/55` are NOT turned solid black; those
+   are overlays that need to stay translucent.
+   Also catches arbitrary `bg-[#...]` literals used in a few components
+   (e.g. the PhilosophyShowcase section uses bg-[#FBF7EF]). */
+html.a11y-high-contrast body [class~="bg-white"]:not(#a11y-panel):not(#a11y-panel *),
+html.a11y-high-contrast body [class~="bg-black"]:not(#a11y-panel):not(#a11y-panel *),
+html.a11y-high-contrast body [class~="bg-brand-accent1"]:not(#a11y-panel):not(#a11y-panel *),
+html.a11y-high-contrast body [class~="bg-brand-accent2"]:not(#a11y-panel):not(#a11y-panel *),
+html.a11y-high-contrast body [class~="bg-brand-accent2-130"]:not(#a11y-panel):not(#a11y-panel *),
+html.a11y-high-contrast body [class~="bg-brand-blue"]:not(#a11y-panel):not(#a11y-panel *),
+html.a11y-high-contrast body [class~="bg-brand-green"]:not(#a11y-panel):not(#a11y-panel *),
+html.a11y-high-contrast body [class~="bg-brand-red"]:not(#a11y-panel):not(#a11y-panel *),
+html.a11y-high-contrast body [class~="bg-terracotta"]:not(#a11y-panel):not(#a11y-panel *),
+html.a11y-high-contrast body [class~="bg-terracotta-130"]:not(#a11y-panel):not(#a11y-panel *),
+html.a11y-high-contrast body [class~="bg-terracotta-light"]:not(#a11y-panel):not(#a11y-panel *),
+html.a11y-high-contrast body [class*="bg-[#"]:not(#a11y-panel):not(#a11y-panel *) {
+    background-color: #000 !important;
+}
+/* Tint overlays stacked over images (the common `absolute inset-0 bg-*`
+   pattern) keep their translucency in HC so text placed on top of the
+   hero carousel, Our-Way-of-Working section, etc. remains legible.
+
+   Gradient overlays (bg-gradient-to-*) would normally be stripped by the
+   universal `background-image: none` rule, which leaves the overlay
+   transparent and the image blindingly bright under white text. For HC
+   we replace stripped gradients with a solid semi-transparent black so
+   the text-over-image pattern still works -- same role the brand blue
+   plays in normal mode, but black for the high-contrast theme. */
+html.a11y-high-contrast body [class*="bg-gradient"]:not(#a11y-panel):not(#a11y-panel *) {
+    background-image: none !important;
+    background-color: rgba(0, 0, 0, 0.75) !important;
+}
+/* Hero carousel tint -- deeper than the default 55% so the large
+   banner headline reads clearly. */
+html.a11y-high-contrast body [class~="bg-brand-accent2/55"]:not(#a11y-panel):not(#a11y-panel *) {
+    background-color: rgba(0, 0, 0, 0.85) !important;
+}
+/* Links in HC get the high-visibility yellow accent but are NOT forced
+   to underline -- the separate "Underline Links" toggle remains the
+   explicit opt-in for underlines. */
+html.a11y-high-contrast a,
+html.a11y-high-contrast a * {
+    color: #ffd000 !important;
+}
+html.a11y-high-contrast button,
+html.a11y-high-contrast [role="button"],
+html.a11y-high-contrast input,
+html.a11y-high-contrast select,
+html.a11y-high-contrast textarea {
+    background-color: #000 !important;
+    color: #fff !important;
+    border: 2px solid #fff !important;
+}
+html.a11y-high-contrast button:hover,
+html.a11y-high-contrast [role="button"]:hover {
+    background-color: #fff !important;
+    color: #000 !important;
+}
+html.a11y-high-contrast :focus,
+html.a11y-high-contrast :focus-visible {
+    outline: 3px solid #ffd000 !important;
+    outline-offset: 2px !important;
+}
+html.a11y-high-contrast .texture-overlay {
+    display: none !important;
+}
+
+/* Accessibility panel — explicit high-contrast styling so the panel
+   itself remains fully usable when high contrast is on. Opaque black
+   body, yellow border and header, clearly visible radios and switches. */
+html.a11y-high-contrast #a11y-panel {
+    background-color: #000 !important;
+    border: 2px solid #ffd000 !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.9) !important;
+}
+html.a11y-high-contrast #a11y-panel,
+html.a11y-high-contrast #a11y-panel * {
+    color: #fff;
+    border-color: #ffd000;
+    text-shadow: none;
+    background-image: none;
+}
+html.a11y-high-contrast #a11y-panel header {
+    background-color: #ffd000 !important;
+    border-bottom: 2px solid #ffd000 !important;
+}
+html.a11y-high-contrast #a11y-panel header,
+html.a11y-high-contrast #a11y-panel header * {
+    color: #000 !important;
+}
+html.a11y-high-contrast #a11y-panel header button {
+    background-color: #ffd000 !important;
+    border: 2px solid #000 !important;
+}
+html.a11y-high-contrast #a11y-panel header button:hover,
+html.a11y-high-contrast #a11y-panel header button:hover *,
+html.a11y-high-contrast #a11y-panel header button:hover svg,
+html.a11y-high-contrast #a11y-panel header button:hover svg * {
+    background-color: #000 !important;
+    color: #fff !important;
+    border-color: #fff !important;
+    stroke: #fff !important;
+}
+/* Text-size radio buttons inside the panel */
+html.a11y-high-contrast #a11y-panel button[role="radio"] {
+    background-color: #000 !important;
+    color: #fff !important;
+    border: 2px solid #fff !important;
+}
+html.a11y-high-contrast #a11y-panel button[role="radio"][aria-checked="true"] {
+    background-color: #ffd000 !important;
+    color: #000 !important;
+    border-color: #ffd000 !important;
+}
+html.a11y-high-contrast #a11y-panel button[role="radio"]:hover {
+    background-color: #ffd000 !important;
+    color: #000 !important;
+    border-color: #ffd000 !important;
+}
+/* Toggle switches inside the panel. Outline is used instead of border so
+   the switch outer track keeps its natural size (borders would push the
+   ball thumb outside the bounds). */
+html.a11y-high-contrast #a11y-panel button[role="switch"] {
+    background-color: #000 !important;
+    border: 0 !important;
+    outline: 2px solid #fff !important;
+    outline-offset: 0 !important;
+}
+html.a11y-high-contrast #a11y-panel button[role="switch"][aria-checked="true"] {
+    background-color: #ffd000 !important;
+    outline-color: #ffd000 !important;
+}
+html.a11y-high-contrast #a11y-panel button[role="switch"] > span {
+    background-color: #fff !important;
+    border: 0 !important;
+}
+html.a11y-high-contrast #a11y-panel button[role="switch"][aria-checked="true"] > span {
+    background-color: #000 !important;
+}
+/* Reset button at the bottom of the panel */
+html.a11y-high-contrast #a11y-panel > div > button {
+    background-color: #000 !important;
+    color: #fff !important;
+    border: 2px solid #fff !important;
+}
+html.a11y-high-contrast #a11y-panel > div > button:hover {
+    background-color: #ffd000 !important;
+    color: #000 !important;
+    border-color: #ffd000 !important;
+}
+/* The floating trigger button on the bottom-right.
+   Default state: yellow background, black wheelchair icon, black border.
+   Hover state: colours flip -- black background, yellow wheelchair icon,
+   yellow border.
+   Each property is set on every relevant layer (button, children, svg,
+   svg descendants) with !important to defeat any residual Tailwind
+   or universal-selector conflict. */
+
+/* Default -- yellow field, black wheelchair icon. The ring sits on the
+   inside as an inset outline so it doesn't change the button's layout
+   size (a real border of 2px would shrink the icon's breathing room
+   and make the padding look uneven compared to the non-HC look).
+   The icon itself picks up `currentColor` from the button, so setting
+   `color` alone drives the stroke colour without needing extra SVG
+   selectors. */
+html.a11y-high-contrast button#a11y-trigger,
+html.a11y-high-contrast #a11y-trigger {
+    background-color: #ffd000 !important;
+    color: #000 !important;
+    border: none !important;
+    outline: 2px solid #000 !important;
+    outline-offset: -2px !important;
+    box-shadow: none !important;
+}
+
+/* Hover -- flipped: black field, yellow wheelchair icon. */
+html.a11y-high-contrast button#a11y-trigger:hover,
+html.a11y-high-contrast #a11y-trigger:hover {
+    background-color: #000 !important;
+    color: #ffd000 !important;
+    outline: 2px solid #ffd000 !important;
+}
+
+/* Focus: single clean white ring flush against the edge. */
+html.a11y-high-contrast button#a11y-trigger:focus,
+html.a11y-high-contrast button#a11y-trigger:focus-visible,
+html.a11y-high-contrast #a11y-trigger:focus,
+html.a11y-high-contrast #a11y-trigger:focus-visible {
+    outline: 2px solid #ffffff !important;
+    outline-offset: 0 !important;
+}
+
+/* Navbar <header> is solid black in HC so the hero carousel image
+   behind it doesn't bleed through and make the search / menu controls
+   look floaty. The rule is applied only to the inner <header> (not the
+   sticky wrapper) because the header is what translates off-screen
+   when the user scrolls down; styling the wrapper would leave a
+   black bar stuck at the top even when the navbar is hidden. */
+html.a11y-high-contrast #navigation-menu > header {
+    background-color: #000 !important;
+}
+
+/* Button-style links ("Submit Your Achievement", "View Faculty",
+   "View all labs", LinkButton variants, etc.) get a yellow outline in
+   HC so they read as actionable controls rather than floating text.
+   Matches two patterns:
+     1. Links with a `border` utility class (all LinkButton variants).
+     2. Links with a solid brand-colour background (free-standing <Link>
+        elements styled like buttons without a border class -- e.g. the
+        "View Faculty" button on the landing page uses
+        bg-brand-accent2). */
+html.a11y-high-contrast body a[class~="border"]:not(#a11y-panel):not(#a11y-panel *),
+html.a11y-high-contrast body a[class~="bg-brand-accent2"]:not(#a11y-panel):not(#a11y-panel *),
+html.a11y-high-contrast body a[class~="bg-brand-accent2-130"]:not(#a11y-panel):not(#a11y-panel *),
+html.a11y-high-contrast body a[class~="bg-terracotta"]:not(#a11y-panel):not(#a11y-panel *),
+html.a11y-high-contrast body a[class~="bg-brand-accent1"]:not(#a11y-panel):not(#a11y-panel *) {
+    outline: 2px solid #ffd000 !important;
+    outline-offset: 0 !important;
+    border-color: transparent !important;
+}
+
+/* The cursor-follow VIEW pill (used on the landing page and the labs
+   listing). Its brand-blue fill resolves to black via the CSS-var
+   override, so we paint a yellow outline on it so the shape is still
+   discoverable against the dark surface. */
+html.a11y-high-contrast [class~="rounded-full"][class~="bg-brand-accent2"]:not(#a11y-panel):not(#a11y-panel *),
+html.a11y-high-contrast [class~="rounded-full"][class~="bg-brand-accent2-130"]:not(#a11y-panel):not(#a11y-panel *) {
+    outline: 2px solid #ffd000 !important;
+    outline-offset: 2px !important;
+    color: #ffd000 !important;
+}
+html.a11y-high-contrast [class~="rounded-full"][class~="bg-brand-accent2"] *,
+html.a11y-high-contrast [class~="rounded-full"][class~="bg-brand-accent2-130"] * {
+    color: #ffd000 !important;
+}
+
+/* Stronger, more visible underlines when the Underline Links toggle is
+   on. Default text-decoration can render as a hair-thin line that's
+   easy to miss on button-style links where the text sits inside a
+   flex layout. */
+html.a11y-underline-links a {
+    text-decoration: underline !important;
+    text-decoration-thickness: 2px !important;
+    text-underline-offset: 3px !important;
+}
+html.a11y-underline-links a * {
+    text-decoration: underline !important;
+    text-decoration-thickness: 2px !important;
+    text-underline-offset: 3px !important;
+}
+
+/* Screen reader only utility (visually hidden but still announced). */
+.sr-only-extra {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}

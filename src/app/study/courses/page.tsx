@@ -48,7 +48,7 @@ export default async function Page(pageProps: {
             "Design tomorrow's information technology products, services and systems which combine emerging technologies"
           }
         />
-        <main className="mx-auto min-h-[60vh] xl:w-[1280px] px-8 py-[20vh] text-center">
+        <main id="main-content" tabIndex={-1} className="mx-auto min-h-[60vh] xl:w-[1280px] px-8 py-[20vh] text-center">
           <h2 className="text-[20px] lg:text-[28px] text-brand-accent2 font-semibold">
             Hmm...
           </h2>
@@ -86,7 +86,7 @@ export default async function Page(pageProps: {
           "Design tomorrow's information technology products, services and systems which combine emerging technologies"
         }
       />
-      <main className="xl:w-[1280px] mx-auto px-8 min-h-screen mt-[30px] mb-[10vh]">
+      <main id="main-content" tabIndex={-1} className="xl:w-[1280px] mx-auto px-8 min-h-screen mt-[30px] mb-[10vh]">
         <CoursesSection courses={courses} filter={searchParams.filter} />
       </main>
     </>

@@ -7,7 +7,7 @@ export default function Loading() {
     <>
       <div className="relative z-10 background-element bg-white font-anybody pb-8 shadow-xl">
         <Navbar type="solid" />
-        <main className="min-h-[90vh] flex justify-center items-center">
+        <main id="main-content" tabIndex={-1} className="min-h-[90vh] flex justify-center items-center">
           <LoaderCircle
             size={128}
             role="status"
