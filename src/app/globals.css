@@ -238,10 +238,10 @@ html.a11y-high-contrast body [class*="bg-gradient"]:not(#a11y-panel):not(#a11y-p
     background-image: none !important;
     background-color: rgba(0, 0, 0, 0.75) !important;
 }
-/* Hero carousel tint -- deeper than the default 55% so the large
-   banner headline reads clearly. */
+/* Hero carousel tint -- a moderate black wash that keeps the headline
+   readable without fully hiding the image behind it. */
 html.a11y-high-contrast body [class~="bg-brand-accent2/55"]:not(#a11y-panel):not(#a11y-panel *) {
-    background-color: rgba(0, 0, 0, 0.85) !important;
+    background-color: rgba(0, 0, 0, 0.55) !important;
 }
 /* Links in HC get the high-visibility yellow accent but are NOT forced
    to underline -- the separate "Underline Links" toggle remains the
