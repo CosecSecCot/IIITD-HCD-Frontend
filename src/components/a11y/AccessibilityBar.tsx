@@ -46,6 +46,30 @@ export default function AccessibilityBar() {
   const [open, setOpen] = useState(false);
   const [prefs, setPrefs] = useState<Prefs>(DEFAULT_PREFS);
   const [hydrated, setHydrated] = useState(false);
+  // Gates rendering until the page-reveal loader is gone. Without this
+  // the yellow-or-blue a11y button peeks through the top-right corner
+  // of the loader on first load.
+  const [loaderReady, setLoaderReady] = useState(false);
+
+  // Wait for the landing-page loader (`PageReveal`) to finish before
+  // rendering. If the loader isn't present on this page (or was already
+  // shown in this session), ready is set immediately.
+  useEffect(() => {
+    const loader = document.querySelector(".page-reveal-hero");
+    if (!loader) {
+      setLoaderReady(true);
+      return;
+    }
+    // Watch for the loader node being removed from the DOM.
+    const observer = new MutationObserver(() => {
+      if (!document.querySelector(".page-reveal-hero")) {
+        setLoaderReady(true);
+        observer.disconnect();
+      }
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+    return () => observer.disconnect();
+  }, []);
 
   // Load stored preferences on mount and apply them
   useEffect(() => {
@@ -87,6 +111,11 @@ export default function AccessibilityBar() {
     setPrefs((prev) => ({ ...prev, ...patch }));
 
   const reset = () => setPrefs(DEFAULT_PREFS);
+
+  // Don't render anything until the loader is done. The prefs effect
+  // above still ran so stored settings are applied to <html> even when
+  // the UI isn't visible yet.
+  if (!loaderReady) return null;
 
   return (
     <>
