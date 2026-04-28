@@ -131,53 +131,14 @@ export default function Navbar({
     abortControllerRef.current = controller;
     setSearchLoading(true);
 
-    const base = process.env.NEXT_PUBLIC_STRAPI_URL;
-    const q = encodeURIComponent(query);
-    const endpoints = [
-      {
-        url: `/api/news-and-events?filters[$or][0][Title][$containsi]=${q}&filters[$or][1][Description][$containsi]=${q}&populate=*&pagination[pageSize]=3&sort[0]=Date:desc`,
-        map: (d: any): SearchResult => ({
-          title: d.Title,
-          description: d.Description,
-          link: `/about/news-events/${d.documentId}`,
-          image: d.CoverImage ? `${base}${d.CoverImage.url}` : undefined,
-          date: d.Date,
-          category: "News & Events",
-        }),
-      },
-      {
-        url: `/api/labs?filters[$or][0][LabName][$containsi]=${q}&filters[$or][1][LongDescription][$containsi]=${q}&populate=*&pagination[pageSize]=2`,
-        map: (d: any): SearchResult => ({
-          title: d.LabName,
-          description: d.LongDescription,
-          link: "/research/labs",
-          image: d.LabLogo ? `${base}${d.LabLogo.url}` : undefined,
-          category: "Labs",
-        }),
-      },
-      {
-        url: `/api/department-projects?filters[$or][0][Title][$containsi]=${q}&filters[$or][1][LongDescription][$containsi]=${q}&pagination[pageSize]=2`,
-        map: (d: any): SearchResult => ({
-          title: d.Title,
-          description: d.LongDescription,
-          link: "/research/projects",
-          category: "Projects",
-        }),
-      },
-    ];
     try {
-      const all = await Promise.all(
-        endpoints.map(async (ep) => {
-          const res = await fetch(`${base}${ep.url}`, { signal: controller.signal });
-          const json = await res.json();
-          if (!json?.data) return [];
-          return json.data
-            .filter((item: any) => item.Draft !== true)
-            .map(ep.map);
-        })
+      const res = await fetch(
+        `/api/search?q=${encodeURIComponent(query)}`,
+        { signal: controller.signal },
       );
+      const json = await res.json();
       if (!controller.signal.aborted) {
-        setSearchResults(all.flat().slice(0, 5));
+        setSearchResults(Array.isArray(json?.results) ? json.results : []);
         setHasSearched(true);
       }
     } catch (e: any) {
@@ -418,11 +379,15 @@ export default function Navbar({
                             className="flex items-center gap-3 px-4 py-3 hover:bg-brand-accent2/5 transition-colors border-b border-black/5 last:border-b-0"
                           >
                             {result.image ? (
-                              <img
-                                src={result.image}
-                                alt={result.title}
-                                className="w-12 h-12 rounded-lg object-cover flex-shrink-0 bg-black/5"
-                              />
+                              <div className="relative w-12 h-12 rounded-lg overflow-hidden flex-shrink-0 bg-black/5">
+                                <Image
+                                  src={result.image}
+                                  alt={result.title}
+                                  fill
+                                  sizes="48px"
+                                  className="object-cover"
+                                />
+                              </div>
                             ) : (
                               <div className="w-12 h-12 rounded-lg bg-brand-accent2/10 flex items-center justify-center flex-shrink-0">
                                 <Search size={16} className="text-brand-accent2/40" />
