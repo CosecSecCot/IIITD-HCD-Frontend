@@ -418,6 +418,19 @@ html.a11y-high-contrast #navigation-menu > header button {
     border: none !important;
 }
 
+html.a11y-high-contrast #nav-sidebar-second {
+    background-color: #0a0a0a !important;
+    border-left: 1px solid #fff !important;
+}
+html.a11y-high-contrast #nav-sidebar-first svg,
+html.a11y-high-contrast #nav-sidebar-second svg {
+    color: #fff !important;
+}
+html.a11y-high-contrast #nav-sidebar-first button:hover svg,
+html.a11y-high-contrast #nav-sidebar-second button:hover svg {
+    color: #000 !important;
+}
+
 /* Button-style links ("Submit Your Achievement", "View Faculty",
    "View all labs", LinkButton variants, etc.) get a yellow outline in
    HC so they read as actionable controls rather than floating text.
