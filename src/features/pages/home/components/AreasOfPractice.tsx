@@ -95,9 +95,11 @@ function AreaCard({
 }: AreaItem & { index: number }) {
   const { pill, handlers } = useHoverGoPill();
   const motionDisabled = useMotionDisabled();
-  // With reduced motion, render cards in their final state immediately
-  // (no fade-up, no stagger delay).
-  const motionProps = motionDisabled
+  // With reduced motion, skip motion.div entirely. Otherwise an SSR/first
+  // render with motion enabled latches `initial: opacity 0` inline styles
+  // that never get driven back to 1 once the hook flips disabled=true.
+  const Wrapper = motionDisabled ? "div" : motion.div;
+  const wrapperProps = motionDisabled
     ? {}
     : {
         initial: { opacity: 0, y: 20 },
@@ -106,7 +108,7 @@ function AreaCard({
         transition: { duration: 0.5, delay: index * 0.07 },
       };
   return (
-    <motion.div {...motionProps}>
+    <Wrapper {...wrapperProps}>
       <Link
         href={href}
         target={external ? "_blank" : undefined}
@@ -139,6 +141,6 @@ function AreaCard({
         </p>
         {pill}
       </Link>
-    </motion.div>
+    </Wrapper>
   );
 }
