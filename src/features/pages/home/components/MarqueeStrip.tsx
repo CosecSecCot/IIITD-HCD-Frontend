@@ -24,7 +24,7 @@ export default function MarqueeStrip() {
           </span>
           <span
             aria-hidden
-            className="block w-[8px] h-[8px] lg:w-[12px] lg:h-[12px] rounded-full bg-terracotta shrink-0"
+            className="marquee-dot block w-[8px] h-[8px] lg:w-[12px] lg:h-[12px] rounded-full bg-terracotta shrink-0"
           />
         </span>
       ))}
