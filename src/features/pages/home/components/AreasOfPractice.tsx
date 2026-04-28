@@ -1,38 +1,13 @@
 "use client";
 
 import HeroShader from "./HeroShaderMount";
-import { motion, useReducedMotion } from "motion/react";
-import { useEffect, useState } from "react";
+import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { useHoverGoPill } from "@/components/HoverGoPill";
 import LinkButton from "@/components/LinkButton";
-
-/**
- * Tracks whether the user has opted into reduced motion via either the
- * OS-level `prefers-reduced-motion` media query or the `a11y-reduce-motion`
- * class toggled by the accessibility panel. Live, so toggling the panel
- * updates in-flight animations.
- */
-function useMotionDisabled() {
-  const prefersReduced = useReducedMotion();
-  const [classFlag, setClassFlag] = useState(false);
-  useEffect(() => {
-    const check = () =>
-      setClassFlag(
-        document.documentElement.classList.contains("a11y-reduce-motion"),
-      );
-    check();
-    const observer = new MutationObserver(check);
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-    return () => observer.disconnect();
-  }, []);
-  return Boolean(prefersReduced) || classFlag;
-}
+import { useMotionDisabled } from "@/hooks/useMotionDisabled";
 
 export type AreaItem = {
   title: string;

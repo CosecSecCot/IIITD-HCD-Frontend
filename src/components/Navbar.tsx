@@ -11,6 +11,21 @@ import { useRouter } from "next/navigation";
 
 gsap.registerPlugin(useGSAP);
 
+/**
+ * Read the user's reduced-motion preference at the moment of a click,
+ * without subscribing to it via a hook. Avoiding the hook keeps the
+ * navbar's render path identical to its pre-a11y behavior; the only
+ * branch is at handler time, where we collapse the GSAP timeline to its
+ * end state instead of animating it.
+ */
+function isMotionReduced(): boolean {
+  if (typeof window === "undefined") return false;
+  return (
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+    document.documentElement.classList.contains("a11y-reduce-motion")
+  );
+}
+
 type NavigationItem = {
   title: string;
   url?: string;
@@ -255,6 +270,7 @@ export default function Navbar({
         },
         "-=0.5"
       );
+    if (isMotionReduced()) timeline.progress(1);
   });
 
   const openSecondSidebar = contextSafe(() => {
@@ -264,6 +280,7 @@ export default function Navbar({
       x: isMobileNavbarActive ? "-50%" : 0,
       ease: "expo.out",
     });
+    if (isMotionReduced()) timeline.progress(1);
   });
 
   const closeSidebar = contextSafe(() => {
@@ -297,6 +314,7 @@ export default function Navbar({
         setFirstSidebarOpen(false);
         setActiveGroup(null);
       });
+    if (isMotionReduced()) timeline.progress(1);
   });
 
   return (
@@ -534,12 +552,13 @@ export default function Navbar({
             <div className="absolute top-0 right-0 pr-[70px] pt-[60px]">
               <button
                 onClick={() => {
-                  contextSafe(() =>
-                    gsap.to("#nav-container", {
+                  contextSafe(() => {
+                    const tween = gsap.to("#nav-container", {
                       x: 0,
                       ease: "expo.out",
-                    })
-                  )();
+                    });
+                    if (isMotionReduced()) tween.progress(1);
+                  })();
                 }}
                 className="flex items-center gap-[2px] border border-brand-accent2 rounded-full p-[1em]"
               >
@@ -601,12 +620,13 @@ export default function Navbar({
                         setActiveGroup(linkGroup);
                         openSecondSidebar();
                       } else {
-                        contextSafe(() =>
-                          gsap.to("#nav-container", {
+                        contextSafe(() => {
+                          const tween = gsap.to("#nav-container", {
                             x: "50%",
                             ease: "expo.out",
-                          })
-                        )();
+                          });
+                          if (isMotionReduced()) tween.progress(1);
+                        })();
                         setActiveGroup(null);
                       }
                     }}
