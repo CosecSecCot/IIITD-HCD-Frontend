@@ -318,7 +318,7 @@ export default function Navbar({
           }`}
         >
           <Link
-            className="relative left-[12.5vw] xl:left-[calc(12.5vw-96px)]"
+            className="relative left-8 xl:left-[calc(12.5vw-96px)]"
             href="/"
           >
             <Image
@@ -338,7 +338,7 @@ export default function Navbar({
               priority
             /> */}
           </Link>
-          <div className="relative right-[12.5vw] xl:right-[calc(12.5vw-82px)] flex items-center gap-28">
+          <div className="relative right-8 xl:right-[calc(12.5vw-82px)] flex items-center gap-28">
             <div className="flex items-center xl:gap-[36px] gap-[20px]">
               <div className="relative" ref={searchRef}>
                 <div className="flex justify-between items-center lg:gap-[14px] gap-[8px] lg:px-6 px-3 lg:py-[0.8em] py-2 border border-white rounded-full overflow-hidden">
