@@ -3,6 +3,7 @@
 import HeroShader from "./HeroShaderMount";
 import { motion, useReducedMotion } from "motion/react";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { useHoverGoPill } from "@/components/HoverGoPill";
@@ -114,13 +115,14 @@ function AreaCard({
         className="group relative block h-full p-6 lg:p-8 bg-white hover:bg-terracotta transition-colors duration-300 overflow-hidden"
       >
         <div className="flex items-start justify-between gap-3">
-          <div className="h-[40px] lg:h-[48px] w-[40px] lg:w-[48px] flex items-center justify-center">
+          <div className="relative h-[40px] lg:h-[48px] w-[40px] lg:w-[48px] flex items-center justify-center">
             {logo ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
+              <Image
                 src={logo}
                 alt={`${title} logo`}
-                className="max-h-full max-w-full object-contain"
+                fill
+                sizes="48px"
+                className="object-contain"
               />
             ) : null}
           </div>
