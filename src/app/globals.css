@@ -259,8 +259,12 @@ html.a11y-high-contrast textarea {
     color: #fff !important;
     border: 2px solid #fff !important;
 }
-html.a11y-high-contrast button:hover,
-html.a11y-high-contrast [role="button"]:hover {
+/* The trailing `:not()` chain matches the universal HC rule's specificity
+   so the hover color flip actually wins -- without it the universal rule
+   keeps text/icons white on the now-white hover background, making them
+   invisible (e.g. the Moments gallery arrow buttons). */
+html.a11y-high-contrast body button:hover:not(#a11y-panel):not(#a11y-panel *):not(#a11y-trigger),
+html.a11y-high-contrast body [role="button"]:hover:not(#a11y-panel):not(#a11y-panel *):not(#a11y-trigger) {
     background-color: #fff !important;
     color: #000 !important;
 }
