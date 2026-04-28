@@ -408,6 +408,16 @@ html.a11y-high-contrast #navigation-menu > header {
     background-color: #000 !important;
 }
 
+/* The navbar's search input is wrapped in a rounded-pill div that already
+   has its own white border, and the hamburger menu trigger reads as a
+   button purely from its icon. The blanket HC button/input border rule
+   would stack a redundant rectangle inside the pill and around the menu
+   icon, so suppress it here. */
+html.a11y-high-contrast #navigation-menu > header input,
+html.a11y-high-contrast #navigation-menu > header button {
+    border: none !important;
+}
+
 /* Button-style links ("Submit Your Achievement", "View Faculty",
    "View all labs", LinkButton variants, etc.) get a yellow outline in
    HC so they read as actionable controls rather than floating text.
@@ -417,11 +427,16 @@ html.a11y-high-contrast #navigation-menu > header {
         elements styled like buttons without a border class -- e.g. the
         "View Faculty" button on the landing page uses
         bg-brand-accent2). */
-html.a11y-high-contrast body a[class~="border"]:not(#a11y-panel):not(#a11y-panel *),
-html.a11y-high-contrast body a[class~="bg-brand-accent2"]:not(#a11y-panel):not(#a11y-panel *),
-html.a11y-high-contrast body a[class~="bg-brand-accent2-130"]:not(#a11y-panel):not(#a11y-panel *),
-html.a11y-high-contrast body a[class~="bg-terracotta"]:not(#a11y-panel):not(#a11y-panel *),
-html.a11y-high-contrast body a[class~="bg-brand-accent1"]:not(#a11y-panel):not(#a11y-panel *) {
+/* The trailing `:not(#a11y-trigger)` is a specificity bump, not a real
+   filter -- the universal HC rule above has three IDs in its :not()
+   chain, so we need three here too or its `border-color: #fff` would
+   win over our `border-color: transparent` and the buttons would show
+   a redundant white inner border alongside the yellow outline. */
+html.a11y-high-contrast body a[class~="border"]:not(#a11y-panel):not(#a11y-panel *):not(#a11y-trigger),
+html.a11y-high-contrast body a[class~="bg-brand-accent2"]:not(#a11y-panel):not(#a11y-panel *):not(#a11y-trigger),
+html.a11y-high-contrast body a[class~="bg-brand-accent2-130"]:not(#a11y-panel):not(#a11y-panel *):not(#a11y-trigger),
+html.a11y-high-contrast body a[class~="bg-terracotta"]:not(#a11y-panel):not(#a11y-panel *):not(#a11y-trigger),
+html.a11y-high-contrast body a[class~="bg-brand-accent1"]:not(#a11y-panel):not(#a11y-panel *):not(#a11y-trigger) {
     outline: 2px solid #ffd000 !important;
     outline-offset: 0 !important;
     border-color: transparent !important;
