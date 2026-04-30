@@ -402,6 +402,19 @@ html.a11y-high-contrast #a11y-trigger:focus-visible {
     outline-offset: 0 !important;
 }
 
+/* Hide the floating accessibility trigger while the navbar sidebar is open
+   so it doesn't sit on top of (or fight z-index with) the active sidebar. */
+html.nav-sidebar-open #a11y-trigger {
+    display: none !important;
+}
+
+/* In HC mode the page background is solid black, so the sidebar dim
+   overlay (`bg-black/20`) becomes invisible against it. Repaint with a
+   translucent white wash so the dim layer is still perceptible. */
+html.a11y-high-contrast #nav-bg {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
 /* Navbar <header> is solid black in HC so the hero carousel image
    behind it doesn't bleed through and make the search / menu controls
    look floaty. The rule is applied only to the inner <header> (not the

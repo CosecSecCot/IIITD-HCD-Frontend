@@ -165,8 +165,8 @@ export default function AccessibilityBar() {
         aria-expanded={open}
         aria-controls="a11y-panel"
         onClick={() => setOpen((o) => !o)}
-        className={`fixed right-4 bottom-4 z-[100000] p-3.5 rounded-full shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-accent1 transition-colors cursor-pointer ${
-          onDark
+        className={`fixed right-4 bottom-4 z-[9000] p-3.5 rounded-full shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-accent1 transition-colors cursor-pointer ${
+          onDark && !prefs.highContrast
             ? "bg-white text-brand-accent2 hover:bg-white/90"
             : "bg-brand-accent2 text-white hover:bg-brand-accent2-130"
         }`}

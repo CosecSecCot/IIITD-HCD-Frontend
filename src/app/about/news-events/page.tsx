@@ -7,7 +7,7 @@ import qs from "qs";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "HCD News & Events | IIIT-Delhi",
+  title: "HCD News & Updates | IIIT-Delhi",
   description:
     "See the latest from HCD at IIIT-Delhi. Learn more about workshops, talks, showcases, and announcements from our design, HCI, and creative technology community.",
   keywords: [],
@@ -104,7 +104,7 @@ export default async function Page() {
           title={normalized[0].title}
           subtitle={normalized[0].description}
           imageSrc={normalized[0].img}
-          breadcrumbs={["about", "news & Events"]}
+          breadcrumbs={["about", "news & updates"]}
           asLink
           href={`/about/news-events/${normalized[0].id}`}
         />

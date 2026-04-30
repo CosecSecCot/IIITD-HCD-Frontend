@@ -42,7 +42,7 @@ const navigationMap: NavigationItem[] = [
     title: "about",
     children: [
       { title: "overview", url: "/about/overview" },
-      { title: "News & Events", url: "/about/news-events" },
+      { title: "News & Updates", url: "/about/news-events" },
       { title: "collaborations", url: "/about/collaborations" },
       { title: "placements", url: "/about/placements" },
       { title: "Careers", url: "https://iiitd.ac.in/careers/", external: true },
@@ -72,17 +72,17 @@ const navigationMap: NavigationItem[] = [
     ],
   },
   {
-    title: "Student-Led",
+    title: "Events",
     children: [
       { title: "", url: "" },
       { title: "", url: "" },
       { title: "", url: "" },
-      { title: "Clubs & Chapters", url: "/student-led/clubs-chapters" },
       {
         title: "1Pixel Design Conf.",
         url: "https://1pxdesignconf.iiitd.edu.in/",
         external: true,
       },
+      { title: "Clubs & Chapters", url: "/student-led/clubs-chapters" },
       { title: "Achievements", url: "/student-led/achievements" },
     ],
   },
@@ -180,6 +180,13 @@ export default function Navbar({
 
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("nav-sidebar-open", firstSidebarOpen);
+    return () => {
+      document.documentElement.classList.remove("nav-sidebar-open");
+    };
+  }, [firstSidebarOpen]);
 
   // State to track scroll position and navbar visibility
   const [lastScrollY, setLastScrollY] = useState(0);
