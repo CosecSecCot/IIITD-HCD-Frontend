@@ -56,23 +56,60 @@ export default function AccessibilityBar() {
   const [loaderReady, setLoaderReady] = useState(false);
 
   // Wait for the landing-page loader (`PageReveal`) to finish before
-  // rendering. If the loader isn't present on this page (or was already
-  // shown in this session), ready is set immediately.
+  // rendering. We can't just check "is .page-reveal-hero in the DOM right
+  // now" because the layout (this component) can hydrate before children
+  // (PageReveal) under streaming SSR -- in prod this caused the trigger
+  // to flash on top of the loader. So we check three signals:
+  //   1. PageReveal's session flag (set when its animation completes)
+  //   2. Loader appeared then disappeared from the DOM
+  //   3. Grace timeout (covers non-home pages with no PageReveal at all)
   useEffect(() => {
-    const loader = document.querySelector(".page-reveal-hero");
-    if (!loader) {
-      setLoaderReady(true);
-      return;
-    }
-    // Watch for the loader node being removed from the DOM.
-    const observer = new MutationObserver(() => {
-      if (!document.querySelector(".page-reveal-hero")) {
+    const PAGE_REVEAL_KEY = "hcd:page-reveal-seen";
+
+    try {
+      if (sessionStorage.getItem(PAGE_REVEAL_KEY) === "1") {
         setLoaderReady(true);
-        observer.disconnect();
+        return;
+      }
+    } catch {
+      // sessionStorage unavailable -- fall through to observer/timeout.
+    }
+
+    let sawLoader = !!document.querySelector(".page-reveal-hero");
+    let timeoutId: number | null = null;
+
+    const ready = () => {
+      setLoaderReady(true);
+      observer.disconnect();
+      if (timeoutId !== null) window.clearTimeout(timeoutId);
+    };
+
+    const observer = new MutationObserver(() => {
+      const present = !!document.querySelector(".page-reveal-hero");
+      if (present) {
+        sawLoader = true;
+      } else if (sawLoader) {
+        ready();
+        return;
+      }
+      try {
+        if (sessionStorage.getItem(PAGE_REVEAL_KEY) === "1") ready();
+      } catch {
+        // ignore
       }
     });
     observer.observe(document.body, { childList: true, subtree: true });
-    return () => observer.disconnect();
+
+    timeoutId = window.setTimeout(() => {
+      if (!sawLoader && !document.querySelector(".page-reveal-hero")) {
+        ready();
+      }
+    }, 1500);
+
+    return () => {
+      observer.disconnect();
+      if (timeoutId !== null) window.clearTimeout(timeoutId);
+    };
   }, []);
 
   // Load stored preferences on mount and apply them
@@ -105,8 +142,11 @@ export default function AccessibilityBar() {
   // Sections opt in via `data-a11y-bg="dark"`. We use `elementsFromPoint`
   // (not bare rect overlap) because the footer is `sticky bottom-0` -- its
   // rect is always at the viewport bottom even while a higher z-index
-  // wrapper covers it visually. `elementsFromPoint` respects stacking, so
-  // we check the topmost element that isn't the trigger itself.
+  // wrapper covers it visually. `elementsFromPoint` respects stacking.
+  // We also skip pointer-events:none elements -- the global
+  // `.texture-overlay` is fixed full-screen at z-99999 (just under the
+  // trigger) and would otherwise always come back as the topmost match,
+  // making the check report "not dark" everywhere.
   // The page uses Lenis smooth scroll (which suppresses native scroll
   // events), so we subscribe via `useLenis` instead of `window.scroll`.
   const checkDark = useCallback(() => {
@@ -120,6 +160,7 @@ export default function AccessibilityBar() {
     for (const el of stack) {
       if (el.id === "a11y-trigger" || el.id === "a11y-panel") continue;
       if (el.closest("#a11y-trigger") || el.closest("#a11y-panel")) continue;
+      if (window.getComputedStyle(el).pointerEvents === "none") continue;
       topVisible = el;
       break;
     }
