@@ -55,7 +55,10 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="sticky z-0 bottom-0 left-0 w-full bg-brand-accent2 text-white font-anybody">
+    <footer
+      data-a11y-bg="dark"
+      className="sticky z-0 bottom-0 left-0 w-full bg-brand-accent2 text-white font-anybody"
+    >
       <div className="mx-auto xl:w-[1280px] px-8 py-14 lg:py-20">
         {/* top: brand left, nav columns right */}
         <div className="flex flex-col lg:flex-row lg:justify-between gap-14 lg:gap-24">

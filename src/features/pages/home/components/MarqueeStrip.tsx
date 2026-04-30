@@ -34,6 +34,7 @@ export default function MarqueeStrip() {
   return (
     <section
       aria-label="What we do"
+      data-a11y-bg="dark"
       className="relative w-full py-[6vh] lg:py-[8vh] bg-brand-accent2 text-white overflow-hidden"
     >
       <div className="absolute top-0 left-0 right-0 h-px bg-white/15" />

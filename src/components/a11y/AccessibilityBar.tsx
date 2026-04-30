@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  Accessibility,
   Eye,
   Link2,
   RotateCcw,
@@ -9,7 +8,9 @@ import {
   Waves,
   X,
 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { PiWheelchair } from "react-icons/pi";
+import { useLenis } from "lenis/react";
+import { useCallback, useEffect, useState } from "react";
 
 const STORAGE_KEY = "hcd-a11y-prefs";
 
@@ -46,6 +47,9 @@ export default function AccessibilityBar() {
   const [open, setOpen] = useState(false);
   const [prefs, setPrefs] = useState<Prefs>(DEFAULT_PREFS);
   const [hydrated, setHydrated] = useState(false);
+  // Tracks whether the trigger overlaps a section marked as dark so we
+  // can flip its colors for visibility (white pill, blue icon).
+  const [onDark, setOnDark] = useState(false);
   // Gates rendering until the page-reveal loader is gone. Without this
   // the yellow-or-blue a11y button peeks through the top-right corner
   // of the loader on first load.
@@ -97,6 +101,41 @@ export default function AccessibilityBar() {
     }
   }, [prefs, hydrated]);
 
+  // Flip button colors when the trigger sits over a dark-bg section.
+  // Sections opt in via `data-a11y-bg="dark"`. We use `elementsFromPoint`
+  // (not bare rect overlap) because the footer is `sticky bottom-0` -- its
+  // rect is always at the viewport bottom even while a higher z-index
+  // wrapper covers it visually. `elementsFromPoint` respects stacking, so
+  // we check the topmost element that isn't the trigger itself.
+  // The page uses Lenis smooth scroll (which suppresses native scroll
+  // events), so we subscribe via `useLenis` instead of `window.scroll`.
+  const checkDark = useCallback(() => {
+    const btn = document.getElementById("a11y-trigger");
+    if (!btn) return;
+    const r = btn.getBoundingClientRect();
+    const cx = r.left + r.width / 2;
+    const cy = r.top + r.height / 2;
+    const stack = document.elementsFromPoint(cx, cy);
+    let topVisible: Element | null = null;
+    for (const el of stack) {
+      if (el.id === "a11y-trigger" || el.id === "a11y-panel") continue;
+      if (el.closest("#a11y-trigger") || el.closest("#a11y-panel")) continue;
+      topVisible = el;
+      break;
+    }
+    const dark = !!topVisible?.closest('[data-a11y-bg="dark"]');
+    setOnDark((prev) => (prev === dark ? prev : dark));
+  }, []);
+
+  useLenis(checkDark);
+
+  useEffect(() => {
+    if (!loaderReady) return;
+    checkDark();
+    window.addEventListener("resize", checkDark);
+    return () => window.removeEventListener("resize", checkDark);
+  }, [loaderReady, checkDark]);
+
   // Close on Escape
   useEffect(() => {
     if (!open) return;
@@ -126,9 +165,13 @@ export default function AccessibilityBar() {
         aria-expanded={open}
         aria-controls="a11y-panel"
         onClick={() => setOpen((o) => !o)}
-        className="fixed right-4 bottom-4 z-[100000] p-3 rounded-full bg-brand-accent2 text-white shadow-lg hover:bg-brand-accent2-130 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-accent1 transition-colors cursor-pointer"
+        className={`fixed right-4 bottom-4 z-[100000] p-3.5 rounded-full shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-accent1 transition-colors cursor-pointer ${
+          onDark
+            ? "bg-white text-brand-accent2 hover:bg-white/90"
+            : "bg-brand-accent2 text-white hover:bg-brand-accent2-130"
+        }`}
       >
-        <Accessibility className="w-5 h-5" aria-hidden="true" />
+        <PiWheelchair className="w-6 h-6" aria-hidden="true" />
       </button>
 
       <div

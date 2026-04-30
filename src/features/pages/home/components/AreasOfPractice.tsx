@@ -19,7 +19,10 @@ export type AreaItem = {
 
 export default function AreasOfPractice({ areas }: { areas: AreaItem[] }) {
   return (
-    <section className="relative w-full overflow-hidden py-[10vh] lg:py-[14vh]">
+    <section
+      data-a11y-bg="dark"
+      className="relative w-full overflow-hidden py-[10vh] lg:py-[14vh]"
+    >
       {/* cursor-reactive shader backdrop */}
       <div className="absolute inset-0 opacity-[0.85] pointer-events-none">
         <HeroShader />

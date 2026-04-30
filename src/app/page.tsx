@@ -101,7 +101,10 @@ export default async function Home() {
         <Navbar type="hero" />
         <main id="main-content" tabIndex={-1} className="relative">
           <article className="space-y-0">
-            <section className="relative w-full h-screen flex flex-col justify-center items-center overflow-hidden">
+            <section
+              data-a11y-bg="dark"
+              className="relative w-full h-screen flex flex-col justify-center items-center overflow-hidden"
+            >
               <HeroCarousel />
               <div className="relative z-10 text-center px-8 max-w-[900px] mx-auto">
                 <TextReveal>
